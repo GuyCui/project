@@ -6,29 +6,29 @@ package generic_class;
  * @param <T>
  */
 public class Pair<T> {
-    private T fairst;
+    private T first;
     private T second;
 
     public Pair() {
-        fairst = null;
+        first = null;
         second = null;
     }
 
     public Pair(T fairst, T second) {
-        this.fairst = fairst;
+        this.first = fairst;
         this.second = second;
     }
 
-    public T getFairst() {
-        return fairst;
+    public T getFirst() {
+        return first;
     }
 
     public T getSecond() {
         return second;
     }
 
-    public void setFairst(T newValue) {
-        fairst = newValue;
+    public void setFirst(T newValue) {
+        first = newValue;
     }
 
     public void setSecond(T newValue) {

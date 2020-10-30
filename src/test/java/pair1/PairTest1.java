@@ -9,8 +9,12 @@ public class PairTest1 {
     public static void main(String[] args) {
         String[] words = {"Mary", "had", "a", "little", "lamb"};
         Pair<String> mm = ArrayAlg.minmax(words);
-        System.out.println("min = " + mm.getFairst());
+        System.out.println("min = " + mm.getFirst());
         System.out.println("max = " + mm.getSecond());
+
+        // 调用一个泛型方法
+        String middle = ArrayAlg.<String>getMiddle("John","Q.","public");
+        System.out.println(middle);
     }
 
     static class ArrayAlg{
@@ -35,6 +39,16 @@ public class PairTest1 {
                 }
             }
             return new Pair<String>(min,max);
+        }
+
+        /**
+         * 泛型方法
+         * @param a
+         * @param <T>
+         * @return
+         */
+        public static <T> T getMiddle(T... a){
+            return a[a.length / 2];
         }
     }
 }
