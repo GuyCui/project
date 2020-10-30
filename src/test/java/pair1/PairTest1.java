@@ -13,6 +13,9 @@ public class PairTest1 {
         System.out.println("max = " + mm.getSecond());
 
         // 调用一个泛型方法
+        /*
+            在大多数情况下可以直接省略<String>类型参数，编译器将参数的类型与泛型类型 T 进行匹配，推断出 T 类型
+         */
         String middle = ArrayAlg.<String>getMiddle("John","Q.","public");
         System.out.println(middle);
     }
