@@ -217,3 +217,27 @@ Maven 会自动根据 dependencies 里面的依赖项，直接从 Maven 仓库�
 mvn install:install-file -Dfile=l:\jar包目录 -DgroupId=kcDgroupId -DartifactId=kcartifactId -Dversion=版本号 -Dpackaging=jar
 ```
 
+-- -
+
+## 使用开发工具
+
+### 3.1.4 安装插件 Lombok
+
+#### 3.Lombok 注解简介
+
+在项目开发过程中需要使用注解来开启 Lombok 相应的功能，其注解及对应功能如下。
+
+* @Data：自动生成 Getter/Setter、toString、equals、hashCode 方法，以及不带参数的构造方法。
+* @NonNull：帮助处理 NullPointerException。
+* @CleanUp：自动管理资源，不用再在 finally 中添加资源的 close 方法。
+* @Setter/@Getter：自动生成 Getter/Setter方法。
+* @ToString：自动生成 toString 方法。
+* @EqualsAndHashcode：从对象的字段中重写 hashCode 和 equals 方法。
+* @NoArgsConstructor/@RequiredArgsConstructor/@AllArgsConstructor:自动生成构造方法。
+* @Value:用于注解 final 类。
+* @Builder：产生复杂的构建器 API 类。
+* @SneakyThrows：用于处理异常。
+* Synchronized：同步方法的转化。
+* @Log：支持使用各种日志(logger)对象。只要在使用时，用对应的注解进行标注，比如使用 Log4j 作为日志库，则在需要加入日志的位置写上注解@Log4j 即可。
+
+实战
