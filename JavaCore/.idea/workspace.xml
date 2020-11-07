@@ -19,8 +19,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="73f2248c-9e21-4c88-82c9-6126d264e61b" name="Default Changelist" comment="新增 类型字面量">
-      <change afterPath="$PROJECT_DIR$/JavaCore/src/test/java/linkedList/LinkedListTest.java" afterDir="false" />
+    <list default="true" id="73f2248c-9e21-4c88-82c9-6126d264e61b" name="Default Changelist" comment="fix： 整改目录">
+      <change afterPath="$PROJECT_DIR$/../Markdown/Spring、Spring Boot、Spring Cloud 的关系.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/pair1/PairTest1$ArrayAlg.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/pair1/PairTest1$ArrayAlg.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/pair1/PairTest1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/pair1/PairTest1.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,7 +40,7 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/JavaCore" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="GitToolBoxStore">
     <option name="projectConfigVersion" value="2" />
@@ -79,15 +81,15 @@
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
-    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/java/generic_class" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.TypeLiterals">
-    <configuration name="GenericReflectionTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Application.GenericReflectionTest">
+    <configuration name="GenericReflectionTest" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="genericReflection.GenericReflectionTest" />
       <module name="my_project" />
       <extension name="coverage">
@@ -100,12 +102,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PairTest2" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="pair2.PairTest2" />
-      <module name="my_project" />
+    <configuration name="PairTest1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="pair1.PairTest1" />
+      <module name="JavaCore" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="pair2.*" />
+          <option name="PATTERN" value="pair1.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -154,11 +156,10 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.TypeLiterals" />
-        <item itemvalue="Application.GenericReflectionTest" />
-        <item itemvalue="Application.test" />
         <item itemvalue="Application.PairTest3" />
-        <item itemvalue="Application.PairTest2" />
+        <item itemvalue="Application.PairTest1" />
+        <item itemvalue="Application.TypeLiterals" />
+        <item itemvalue="Application.test" />
       </list>
     </recent_temporary>
   </component>
@@ -187,7 +188,9 @@
       <workItem from="1604578547933" duration="144000" />
       <workItem from="1604578724451" duration="6529000" />
       <workItem from="1604663829506" duration="4529000" />
-      <workItem from="1604714825006" duration="3928000" />
+      <workItem from="1604714825006" duration="3632000" />
+      <workItem from="1604720137296" duration="170000" />
+      <workItem from="1604720359701" duration="1711000" />
     </task>
     <task id="LOCAL-00001" summary="添加泛型方法">
       <created>1604059373844</created>
@@ -245,7 +248,35 @@
       <option name="project" value="LOCAL" />
       <updated>1604584915168</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="fix： 整改目录">
+      <created>1604720224753</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1604720224753</updated>
+    </task>
+    <task id="LOCAL-00010" summary="fix： 整改目录">
+      <created>1604720388315</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1604720388315</updated>
+    </task>
+    <task id="LOCAL-00011" summary="fix： 整改目录">
+      <created>1604720471176</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1604720471176</updated>
+    </task>
+    <task id="LOCAL-00012" summary="fix： 整改目录">
+      <created>1604720578597</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1604720578597</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -264,6 +295,9 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$" />
+    </ignored-roots>
     <MESSAGE value="添加泛型方法" />
     <MESSAGE value="类型变量的限定" />
     <MESSAGE value="泛型基础完成" />
@@ -271,17 +305,22 @@
     <MESSAGE value="虚拟机中的泛型类信息" />
     <MESSAGE value="feat: &#10;&#10;修改输出换行问题" />
     <MESSAGE value="新增 类型字面量" />
-    <option name="LAST_COMMIT_MESSAGE" value="新增 类型字面量" />
+    <MESSAGE value="fix： 整改目录" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix： 整改目录" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="984" y="349" key="#GenericReflectionTest" timestamp="1604736358294">
+      <screen x="56" y="23" width="2504" height="1417" />
+    </state>
+    <state x="984" y="349" key="#GenericReflectionTest/56.23.2504.1417@56.23.2504.1417" timestamp="1604736358294" />
+    <state x="984" y="349" key="#PairTest3" timestamp="1604736349290">
+      <screen x="56" y="23" width="2504" height="1417" />
+    </state>
+    <state x="984" y="349" key="#PairTest3/56.23.2504.1417@56.23.2504.1417" timestamp="1604736349290" />
     <state x="1121" y="445" key="#com.intellij.ide.util.MemberChooser" timestamp="1604668143860">
       <screen x="56" y="23" width="2504" height="1417" />
     </state>
     <state x="1121" y="445" key="#com.intellij.ide.util.MemberChooser/56.23.2504.1417@56.23.2504.1417" timestamp="1604668143860" />
-    <state x="976" y="413" key="#com.intellij.openapi.keymap.impl.ui.EditKeymapsDialog" timestamp="1604720106082">
-      <screen x="56" y="23" width="2504" height="1417" />
-    </state>
-    <state x="976" y="413" key="#com.intellij.openapi.keymap.impl.ui.EditKeymapsDialog/56.23.2504.1417@56.23.2504.1417" timestamp="1604720106082" />
     <state x="67" y="23" width="670" height="1417" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1604059275778">
       <screen x="67" y="23" width="2493" height="1417" />
     </state>
@@ -290,32 +329,32 @@
       <screen x="0" y="23" width="2560" height="1417" />
     </state>
     <state x="1043" y="440" key="#xdebugger.evaluate/0.23.2560.1417@0.23.2560.1417" timestamp="1603975768877" />
-    <state width="2462" height="492" key="GridCell.Tab.0.bottom" timestamp="1604585547416">
+    <state width="2400" height="393" key="GridCell.Tab.0.bottom" timestamp="1604745918985">
       <screen x="56" y="23" width="2504" height="1417" />
     </state>
     <state width="2518" height="492" key="GridCell.Tab.0.bottom/0.23.2560.1417@0.23.2560.1417" timestamp="1603975947066" />
-    <state width="2462" height="492" key="GridCell.Tab.0.bottom/56.23.2504.1417@56.23.2504.1417" timestamp="1604585547416" />
+    <state width="2400" height="393" key="GridCell.Tab.0.bottom/56.23.2504.1417@56.23.2504.1417" timestamp="1604745918985" />
     <state width="2458" height="400" key="GridCell.Tab.0.bottom/60.23.2500.1417@60.23.2500.1417" timestamp="1604327731882" />
     <state width="2456" height="400" key="GridCell.Tab.0.bottom/62.23.2498.1417@62.23.2498.1417" timestamp="1604068020203" />
-    <state width="2462" height="492" key="GridCell.Tab.0.center" timestamp="1604585547416">
+    <state width="2400" height="393" key="GridCell.Tab.0.center" timestamp="1604745918984">
       <screen x="56" y="23" width="2504" height="1417" />
     </state>
     <state width="2518" height="492" key="GridCell.Tab.0.center/0.23.2560.1417@0.23.2560.1417" timestamp="1603975947065" />
-    <state width="2462" height="492" key="GridCell.Tab.0.center/56.23.2504.1417@56.23.2504.1417" timestamp="1604585547416" />
+    <state width="2400" height="393" key="GridCell.Tab.0.center/56.23.2504.1417@56.23.2504.1417" timestamp="1604745918984" />
     <state width="2458" height="400" key="GridCell.Tab.0.center/60.23.2500.1417@60.23.2500.1417" timestamp="1604327731882" />
     <state width="2456" height="400" key="GridCell.Tab.0.center/62.23.2498.1417@62.23.2498.1417" timestamp="1604068020201" />
-    <state width="2462" height="492" key="GridCell.Tab.0.left" timestamp="1604585547415">
+    <state width="2400" height="393" key="GridCell.Tab.0.left" timestamp="1604745918984">
       <screen x="56" y="23" width="2504" height="1417" />
     </state>
     <state width="2518" height="492" key="GridCell.Tab.0.left/0.23.2560.1417@0.23.2560.1417" timestamp="1603975947065" />
-    <state width="2462" height="492" key="GridCell.Tab.0.left/56.23.2504.1417@56.23.2504.1417" timestamp="1604585547415" />
+    <state width="2400" height="393" key="GridCell.Tab.0.left/56.23.2504.1417@56.23.2504.1417" timestamp="1604745918984" />
     <state width="2458" height="400" key="GridCell.Tab.0.left/60.23.2500.1417@60.23.2500.1417" timestamp="1604327731881" />
     <state width="2456" height="400" key="GridCell.Tab.0.left/62.23.2498.1417@62.23.2498.1417" timestamp="1604068020201" />
-    <state width="2462" height="492" key="GridCell.Tab.0.right" timestamp="1604585547416">
+    <state width="2400" height="393" key="GridCell.Tab.0.right" timestamp="1604745918985">
       <screen x="56" y="23" width="2504" height="1417" />
     </state>
     <state width="2518" height="492" key="GridCell.Tab.0.right/0.23.2560.1417@0.23.2560.1417" timestamp="1603975947065" />
-    <state width="2462" height="492" key="GridCell.Tab.0.right/56.23.2504.1417@56.23.2504.1417" timestamp="1604585547416" />
+    <state width="2400" height="393" key="GridCell.Tab.0.right/56.23.2504.1417@56.23.2504.1417" timestamp="1604745918985" />
     <state width="2458" height="400" key="GridCell.Tab.0.right/60.23.2500.1417@60.23.2500.1417" timestamp="1604327731882" />
     <state width="2456" height="400" key="GridCell.Tab.0.right/62.23.2498.1417@62.23.2498.1417" timestamp="1604068020202" />
     <state width="2462" height="492" key="GridCell.Tab.1.bottom" timestamp="1604585547417">
@@ -348,16 +387,16 @@
     </state>
     <state x="950" y="514" key="MultipleFileMergeDialog/60.23.2500.1417@60.23.2500.1417" timestamp="1604240198869" />
     <state x="955" y="514" key="MultipleFileMergeDialog/67.23.2493.1417@67.23.2493.1417" timestamp="1604059576933" />
-    <state x="665" y="137" width="2493" height="1417" key="SettingsEditor" timestamp="1604716528148">
+    <state x="665" y="137" width="2493" height="1417" key="SettingsEditor" timestamp="1604720376018">
       <screen x="56" y="23" width="2504" height="1417" />
     </state>
-    <state x="665" y="137" key="SettingsEditor/56.23.2504.1417@56.23.2504.1417" timestamp="1604716528148" />
+    <state x="665" y="137" key="SettingsEditor/56.23.2504.1417@56.23.2504.1417" timestamp="1604720376018" />
     <state x="67" y="23" key="SettingsEditor/64.23.2496.1417@64.23.2496.1417" timestamp="1604062959960" />
     <state x="67" y="23" width="2493" height="1417" key="SettingsEditor/67.23.2493.1417@67.23.2493.1417" timestamp="1604062058480" />
-    <state x="906" y="458" key="Vcs.Push.Dialog.v2" timestamp="1604584916807">
+    <state x="906" y="458" key="Vcs.Push.Dialog.v2" timestamp="1604720580880">
       <screen x="56" y="23" width="2504" height="1417" />
     </state>
-    <state x="906" y="458" key="Vcs.Push.Dialog.v2/56.23.2504.1417@56.23.2504.1417" timestamp="1604584916806" />
+    <state x="906" y="458" key="Vcs.Push.Dialog.v2/56.23.2504.1417@56.23.2504.1417" timestamp="1604720580880" />
     <state x="909" y="458" key="Vcs.Push.Dialog.v2/60.23.2500.1417@60.23.2500.1417" timestamp="1604327713303" />
     <state x="910" y="458" key="Vcs.Push.Dialog.v2/62.23.2498.1417@62.23.2498.1417" timestamp="1604065074265" />
     <state x="913" y="458" key="Vcs.Push.Dialog.v2/67.23.2493.1417@67.23.2493.1417" timestamp="1604059749814" />
