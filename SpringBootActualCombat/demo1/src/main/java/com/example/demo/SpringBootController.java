@@ -3,6 +3,9 @@ package com.example.demo;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * @author guycui
+ */
 @RestController
 public class SpringBootController {
     @RequestMapping("/hello")
