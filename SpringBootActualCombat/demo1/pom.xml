@@ -28,12 +28,14 @@
 			<artifactId>spring-boot-starter-webflux</artifactId>
 		</dependency>
 
+<!--        Spring Boot 热部署-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
 			<scope>runtime</scope>
 			<optional>true</optional>
 		</dependency>
+<!--        Lombok 插件-->
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>

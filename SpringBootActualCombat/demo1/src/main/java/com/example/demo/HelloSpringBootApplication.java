@@ -1,13 +1,20 @@
 package com.example.demo;
 
+import org.springframework.boot.Banner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+/**
+ * @author guycui
+ */
 @SpringBootApplication
 public class HelloSpringBootApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(HelloSpringBootApplication.class, args);
+//		SpringApplication.run(HelloSpringBootApplication.class, args);
+		SpringApplication springApplication = new SpringApplication(HelloSpringBootApplication.class);
+		springApplication.setBannerMode(Banner.Mode.OFF);
+		springApplication.run(args);
 	}
 
 }
