@@ -6,7 +6,7 @@
 
 ### 1.Spring
 
- 	Spring 框架(为解决企业应用开发的复杂性而创建的框架)为开发 Java 应用程序提供了全面的基础架构支持。它提供了依赖注入和“开箱即用”的一些模块，如 Spring MVC、Spring JDBC、Spring Security、Spring AOP、Spring IOC、Spring ORM、Spring Test。这些模块大大地缩短了应用程序的开发时间，提高了开关应用程序的效率。
+​ 	Spring 框架(为解决企业应用开发的复杂性而创建的框架)为开发 Java 应用程序提供了全面的基础架构支持。它提供了依赖注入和“开箱即用”的一些模块，如 Spring MVC、Spring JDBC、Spring Security、Spring AOP、Spring IOC、Spring ORM、Spring Test。这些模块大大地缩短了应用程序的开发时间，提高了开关应用程序的效率。
 
 ​	在 Spring 出现之前，如果要进行 Java Web 开发，则非常复杂，例如，若需要将记录插入数据库，则必须编写大量的代码来实现打开、操作和关闭数据库。而通过使用 Spring JDBC 模块的 JDBCTemplate，只需要进行数据操作即可，打开和关闭交由 Spring 管理。而且实现这些数据操作只需要配置几行代码。
 
