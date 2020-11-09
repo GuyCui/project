@@ -30,7 +30,7 @@ Spring Boot 是 Spring 框架的扩展和自动化，它消除了在 Spring 中�
 
 从上面三者的介绍中可以看出，Spring Boot 其实是要依赖 Spring 的，并不是另起炉灶创建了一个全新的框架，它是 Spring 的自动化。Spring Cloud 通过依赖 Spring Boot 来构建微服务应用。三者关系如图1-1 所示：
 
-![](https://gitee.com/GuyCui/img/raw/master/img/SpringCloud、SpringBoot、Spring 关系依赖图.png)
+![](https://gitee.com/GuyCui/img/blob/master/img/SpringCloud%E3%80%81SpringBoot%E3%80%81Spring%20%E5%85%B3%E7%B3%BB%E4%BE%9D%E8%B5%96%E5%9B%BE.png)
 
 -- -
 
