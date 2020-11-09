@@ -31,7 +31,6 @@ Spring Boot 是 Spring 框架的扩展和自动化，它消除了在 Spring 中�
 从上面三者的介绍中可以看出，Spring Boot 其实是要依赖 Spring 的，并不是另起炉灶创建了一个全新的框架，它是 Spring 的自动化。Spring Cloud 通过依赖 Spring Boot 来构建微服务应用。三者关系如图1-1 所示：
 
 ![](https://gitee.com/GuyCui/img/blob/master/img/SpringCloud、SpringBoot、Spring 关系依赖图.png)
-![](https://gitee.com/GuyCui/img/raw/master/img/SpringCloud、SpringBoot、Spring 关系依赖图.png)
 -- -
 
 Bean(豆子的意思，可以理解为 Java 类。Java 的名字来源于程序员经常喝的一种咖啡“爪哇”。这种咖啡使用“爪哇豆”磨出来的。所以，他们用“豆”来命名类。Java 语言中的许多类名称，多与咖啡有关，如咖啡豆—JavaBeans、网络豆—NetBeans 和对象豆—ObjectBeans)。
