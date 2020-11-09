@@ -6,7 +6,7 @@
 
 ### 1.Spring
 
-​ 	Spring 框架(为解决企业应用开发的复杂性而创建的框架)为开发 Java 应用程序提供了全面的基础架构支持。它提供了依赖注入和“开箱即用”的一些模块，如 Spring MVC、Spring JDBC、Spring Security、Spring AOP、Spring IOC、Spring ORM、Spring Test。这些模块大大地缩短了应用程序的开发时间，提高了开关应用程序的效率。
+ 	Spring 框架(为解决企业应用开发的复杂性而创建的框架)为开发 Java 应用程序提供了全面的基础架构支持。它提供了依赖注入和“开箱即用”的一些模块，如 Spring MVC、Spring JDBC、Spring Security、Spring AOP、Spring IOC、Spring ORM、Spring Test。这些模块大大地缩短了应用程序的开发时间，提高了开关应用程序的效率。
 
 ​	在 Spring 出现之前，如果要进行 Java Web 开发，则非常复杂，例如，若需要将记录插入数据库，则必须编写大量的代码来实现打开、操作和关闭数据库。而通过使用 Spring JDBC 模块的 JDBCTemplate，只需要进行数据操作即可，打开和关闭交由 Spring 管理。而且实现这些数据操作只需要配置几行代码。
 
@@ -319,5 +319,201 @@ spring.main.banner-mode=off
 
 -- -
 
-### Spring Boot 常用注解
+### 4.2 Spring Boot 常用注解
+
+未来框架的趋势是“约定大于配置”，所以注解式编程会被更加广泛地使用。
+
+#### 什么是注解式编程
+
+注解(annotations)用来定义一个类、属性或一个方法，以便程序能被编译处理。它相当于一个说明文件，告诉应用程序某个被注解的类或属性是什么，要怎么处理。注解可以用于标注包、类、方法和变量等。
+
+下方代码中的注解@RestController，是一个用来定义 Rest 风格的控制器。其中，注解@GetMapping("/hello")定义的访问路径是"/hello"。
+
+```java
+@RestController
+public class SpringBootController {
+    @RequestMapping("/hello")
+    public String hello(){
+    	return "Hello,Spring Boot!";
+    }
+}
+```
+
+#### 了解系统注解
+
+系统注解见表 4-1。
+
+​																													**表 4-1 系统注解**
+
+|       注解        |                             说明                             |
+| :---------------: | :----------------------------------------------------------: |
+|     @Override     |           用于修饰方法，表示此方法重写了父类方法。           |
+|    @Deprecated    | 用于修饰方法，表示此方法已经过时。经常在版本更新升级后遇到。 |
+| @SuppressWarnings |                 告诉编译器忽视某类编译警告。                 |
+
+下面重点介绍一下@SuppressWarnings 注解。它有以下几种属性。
+
+* unchecked：未检查的转化。
+* unused：未使用的变量。
+* resource：泛型，即未指定类型。
+* path：在类中的路径。原文件路径中有不存在的路径。
+* deprecation：使用了某些不赞成使用的类和方法。
+* fallthrough：switch 语句执行到底，不会遇到 break 关键字。
+* serial：实现了 Serializable，但未定义 serialVersionUID。
+* rawtypes：没有传递带有泛型的参数。
+* all：代表全部类型的警告。
+
+
+
+#### Spring Boot 的常用注解
+
+##### 使用在类名上的注解
+
+表 4-2 中列出了是用在类名上的注解。
+
+​																									**表 4-2 使用在类名上的注解**
+
+|      注解       |           使用位置           |                             说明                             |
+| :-------------: | :--------------------------: | :----------------------------------------------------------: |
+| @RestController |            类名上            |            作用相当于@ResponseBody 加@Controller             |
+|   @Controller   |            类名上            |           声明此类是一个 SpringMVC Controller 对象           |
+|    @Service     |            类名上            |              声明一个业务处理类（实现非接口类）              |
+|   @Repository   |            类名上            |               声明数据库访问类（实现非接口类）               |
+|   @Component    |            类名上            | 代表其是 Spring 管理类，常用在无法用@Service、@Repository 描述的 Spring 管理的类上，相当于通用的注解。 |
+| @Configuration  |            类名上            |           声明此类是一个配置类，常于@Bean 配合使用           |
+|    @Resource    | 类名上、属性或构造函数参数上 |                    默认按byName 自动注入                     |
+|   @Autowired    | 类名上、属性或构造函数参数上 |                    默认按 byType 自动注入                    |
+| @RequestMapping |        类名上或方法上        | 如果用在类上，则表示所有响应请求的方法都是以该地址作为父路径的 |
+| @Transactional  |        类名上或方法上        |                         用于处理事务                         |
+|   @Qualifier    |        类名上或属性上        |          为 Bean 指定名称，随后再通过名字引用 Bean           |
+
+下面进一步讲解各个注解的知识点和用法。
+
+（1）@RestController。
+
+它用于返回 JSON(JavaScript Object Notation，JS 对象简谱)、XML(eXtensible Markup Language)等数据，但不能返回 HTML(HyperTest Markup Language)页面。相当于注解@ResponseBody 和注解 @Controller合在一起的作用。
+
+(2) @Controller。
+
+它用于标注控制器层，在 MVC 开发模式中代表 C (控制器)。
+
+@Controller 主要用于构建 MVC 模式的程序。
+
+(2)和(1)是一样的，也是返回 JSON 格式的数据。
+
+例如，第一个实例程序输出的就是一个 JSON 格式的字符串“Hello，Spring Boot”，见一下代码：
+
+```Java
+@RestController
+public class SpringBootController {
+    @RequestMapping("/hello")
+    public String hello(){
+    	return "Hello,Spring Boot!";
+    }
+}
+```
+
+（3）@Service。
+
+它用于声明一个业务处理类（实现非接口类）用于标注服务层，处理业务逻辑。
+
+例如，以下代码就是集成 ArticleService 来实现其方法。
+
+```java
+/**
+ * Description：标注为服务类
+ */
+@Service
+public class ArticleServiceImpl implements ArticleService{
+    @Autowired
+    private ArticleRepository articleRepository;
+    /**
+     * Description: 重写 Service 接口的实现，实现根据 ID 查询对象功能
+     */
+    @Override
+    public Article findArticleById(long id){
+        return articleRepository.findById(id);
+    }
+}
+```
+
+（4）@Repository。
+
+它用于标注数据访问层。
+
+（5）@Component。
+
+它用于把普通 POJO（Plain Ordinary JavaObjects，简单的 Java 对象）实例化到 Spring 容器中。当类不属于注解@Controller 和@Service 等时，就可以使用注解@Component 来标注这个类。它可配合 CommandLineRunner 使用，以便在程序启动后执行一些基础任务。
+
+*Spring 会把被注解@Controller、@Service、@Repository、@Component 标注的类纳入 Spring 容器中进行管理。*
+
+（6）@Configuration。
+
+它用于标注配置类，并且可以由 Spring 容器自动处理。它作为Bean 的载体，用来指示一个类声明、一个或多个@Bean方法，在运行时为这些 Bean 生成 BeanDefinition 和服务请求。
+
+（7）@Resource。
+
+@Autowired 与@Resource 都可以用来装配 Bean，也都可以写在字段上或 Setter 方法上。
+
+```java
+public class AritcleController {
+    @Resource
+    private ArticeRepository articeRepository;
+    /**
+     * Description:新增保存方法
+     */
+    @PostMapping("")
+    public String saveArtice(Article model){
+        articeRepository.save(model);
+        return "redirect:/article/";
+    }
+}
+```
+
+(8) @Autowired。
+
+它表示被修饰的类需要注入对象。Spring 会扫描所有被@Autowired 标注的类，然后根据类型在 IOC 容器中找到匹配的类进行注入。被@Autowired 注解后的类不需要再导入文件。
+
+（9）@RequestMapping。
+
+它用来处理请求地址映射，用在类或方法上。如果用在类上，则表示类中的所有响应请求的方法都是以该地址作为父路径的。该注解有 6 个属性。
+
+* Params：指定 Request 中必须包含某些参数值，才让该方法处理。
+* Headers：指定 Request 中必须包含某些指定的 header 值，才能让该方法处理请求。
+* Value：指定请求的实际地址，指定的地址可以是 UPI Template 模式。
+* Method：指定请求的 Method 类型，如 GET、POST、PUT、DELETE 等。
+* Consumes：指定处理请求的提交内容类型 Content-Type，如“application/json,text/html”。
+* Produces：指定返回的内容类型。只有当 Request 请求头中的 Accept 类型中包含该指定类型时才返回。
+
+（10）@Transactional。
+
+它可以用在接口、接口方法、类及类方法上。
+
+但 Spring 不建议在接口或者接口方法上使用该注解，因为该注解只要在使用基于接口的代理时才会生效。如果异常类被捕获(try{}catch{})了，则事务就不回滚了。如果想让事务回滚，则必须再往外抛出异常(try{}catch{throw Exception})。
+
+（11）@Qualifier。
+
+它的意思是“合格者”，用于标注哪一个实现类才是需要注入的。需要注意的是，@Qualifier 的参数名称为被注入的类中的注解@Service 标注的名称。
+
+@Qualifier 常和@Autowired 一起使用，如下代码：
+
+```java
+@Autowired
+@Qualifier("articleService")
+```
+
+而@Resource 和它不同，@Resource 自带 Name 属性。
+
+##### 使用在方法上的注解
+
+表 4-3 列出了使用在方法上的主要注解。
+
+​															**表 4-3 使用在方法上的注解**
+
+| 注解 | 使用位置 | 说明 |
+| :--: | :------: | :--: |
+|      |          |      |
+|      |          |      |
+|      |          |      |
+|      |          |      |
 
