@@ -510,10 +510,87 @@ public class AritcleController {
 
 ​															**表 4-3 使用在方法上的注解**
 
-| 注解 | 使用位置 | 说明 |
-| :--: | :------: | :--: |
-|      |          |      |
-|      |          |      |
-|      |          |      |
-|      |          |      |
+|     注解      |  使用位置  |                             说明                             |
+| :-----------: | :--------: | :----------------------------------------------------------: |
+| @RequestBody  | 方法参数前 | 常用来处理 application/json、application/xml 等 Content-Type 类型的数据，意味着 HTTP 消息是 JSON/XML 格式，需将其转化为指定类型参数 |
+| @PathVariable | 方法参数前 |              将 URL 获取的参数映射到方法参数上               |
+|     @Bean     |   方法上   |     声明该方法的返回结果是一个由 Spring 容器管理的 Bean      |
+| @ResponseBody |   方法上   | 通过适当的 HttpMessageConverter 将控制器中方法返回的对象转换为指定格式（JSON/XML）后，写入 Response 对象的 body 数据区 |
+
+（1）@RequestBody。
+
+他常用来处理 JSON/XML 格式的数据。通过@RequestBody 可以将请求体中的（JSON/XML）字符串绑定到相应的 Bean 上，也可以将其分别绑定到对应的字符串上。
+
+举例：用 AJAX(前端)提交的数据，在控制器(后端)接收数据。
+
+在前端页面使用 AJAX 提交数据的代码如下：
+
+```js
+$.ajax({
+	url:"/post",
+	type:"POST",
+	data:'{"name":"longzhiran"}',
+	// 这里不能写成 content-type
+	contentType:"application/json charset=uft-8"
+	success:function(data){
+	alert("request success!");
+	}
+});
+```
+
+在控制器中接收数据的代码如下：
+
+```java
+@requestMapping("/post")
+	public void post(@requesBody String name){
+	// 省略
+	}
+```
+
+（2）@PathVariable。
+
+用于获取路径中的参数。
+
+（3）@Bean。
+
+它代表产生一个 Bean，并交给 Spring 管理。用于封装数据，一般有 Setter、Getter 方法。在 MVC 模型中，对应的是 M（模型）
+
+（4）@ResponseBody
+
+它的作用是通过转换器将控制方法返回的对象转换为指定的格式，然后写入 Response 对象的 body 区。它常用来返回 JSON/XML 格式的数据。
+
+使用此注解后，数据直接写入输入流中，不需要进行视图渲染。用法见以下代码：
+
+```
+@GetMapping("/test")
+@ResponseBody
+public String test(){
+return "test";
+}
+```
+
+-- -
+
+#### 使用配置文件
+
+Spring Boot 支持使用 Properties 和 YAML 两种配置方式。两者功能类似，都能完成 Spring Boot 的配置，但是 Properties 的优先级要高于 YAML（YAML 语言的文件以“.yml”为后缀）
+
+YAML文件的好处是——它采用的是树状结构，一目了然。但是，使用 YAML 配置方式时要注意一下几点：
+
+* 原来以“.”分隔的 key 会变成树状结构。例如，“server.port=8080”会变成：
+
+  ```yml
+  server:
+  	port: 8080
+  ```
+
+* 在 key 后的冒号一定要跟一个空格，如“port: 8080”。
+
+* 如果把原有的 application.properties 删除，则建议执行以下"maven -X clean install"命令。
+
+* YAML 格式不支持使用注解@PropertySource 导入配置。
+
+  ##### 实例 3：演示如何使用 application.yml 文件
+
+  本实例演示如何使用 application.yml 文件配置 Spring Boot 项目。注要对 Spring Boot 项目的端口、超时时间、参数值进行配置。
 
