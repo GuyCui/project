@@ -1,0 +1,18 @@
+# 定义服务器配置
+server:
+  # 定义要访问的端口号 默认 8080
+  port: 8081
+  server:
+    session:
+      # 定义 Session 的超时时间是 30秒
+      timeout: 30
+  tomcat:
+    # 定义 URI 编码是 UTF-8 格式
+    uri-encoding: UTF-8
+
+age: 21
+name: GuyCui
+personinfo:
+  name: Cui
+  age: 22
+# debug: true

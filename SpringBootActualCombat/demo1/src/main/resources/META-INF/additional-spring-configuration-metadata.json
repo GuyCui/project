@@ -1,0 +1,28 @@
+{
+  "properties": [
+    {
+      "name": "server.server.session.timeout",
+      "type": "java.lang.String",
+      "description": "Description for server.server.session.timeout."
+    },
+    {
+      "name": "age",
+      "type": "java.lang.String",
+      "description": "Description for age."
+    },
+    {
+      "name": "name",
+      "type": "java.lang.String",
+      "description": "Description for name."
+    },
+    {
+      "name": "personinfo.name",
+      "type": "java.lang.String",
+      "description": "Description for personinfo.name."
+    },
+    {
+      "name": "personinfo.age",
+      "type": "java.lang.String",
+      "description": "Description for personinfo.age."
+    }
+  ] }
