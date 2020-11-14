@@ -594,3 +594,52 @@ YAML文件的好处是——它采用的是树状结构，一目了然。但是�
 
   本实例演示如何使用 application.yml 文件配置 Spring Boot 项目。注要对 Spring Boot 项目的端口、超时时间、参数值进行配置。
 
+-- -
+
+#### 分层开发Web 应用程序
+
+#### 5.1.1了解 MVC 模式
+
+Spring Boot 开发 Web 应用程序主要使用 MVC 模式。MVC 是 Model(模型)、View(视图)、Controller(控制器)的简写。
+
+* Model：是 Java 的实体 Ben，代表存取数据的对象或 POJO(Plain Ordinary Java Object，简单的 Java 对象)，也可以带有逻辑。其作用是在内存中暂时存储数据，并在数据变化时更新控制器(如果要持久化，则需要把它写入数据库或者磁盘文件中)。
+* View：主要用来解析、处理、显示内容，并进行模板的渲染。
+* Controller：主要用来处理视图中的响应。他决定如何调用 Model(模型)的实体 Bean、如何调用业务层的数据增加、删除、修改和查询业务操作，以及如何将结果返给试图进行渲染。建议在控制器中尽量不放业务逻辑代码。
+
+这样分层的好处是：将应用程序的用户界面和业务逻辑分离，使得代码具备良好的可扩展性、可复用性、可维护性和灵活性。
+
+如果不想使用 MVC 进行开发模式也是可以的，MVC 只是一个非常合理的规范。MVC 的关系如图 5-1 所示。
+
+![image-20201114151145770](https://gitee.com/GuyCui/img/raw/master/img/MVC%E6%A8%A1%E5%BC%8F.png)
+
+MVC 开发模式是访问 DispatcherServlet 处理映射和调用视图渲染，然后返回给用户的数据。
+
+在整个 SpringMVC 框架中，DispatcherServlet处于核心位置，继承自 HttpServlet。它负责协调和组织不同组件，以完成请求处理并返回响应工作。
+
+整个工作流程如下：
+
+​	（1）客户端(用户)发出请求由 Tomcat(服务器)接收，然后 Tomcat 将请求转交给 DispatcherServlet 处理。
+
+​	（2）DispatcherServlet 匹配控制器中配置的映射路径，进行下一步处理。
+
+​	（3）ViewResolver 将 ModelAndView 或 Exception 解析成 View。然后 View 会调用 render()方法，并根据 ModelAndView 中的数据渲染出页面。
+
+在 MVC 开发模式中，容易混淆的还有 Model，它往往会被认为是业务逻辑层或 DAO 层。这种理解并不能说是错误的，但并不是严格意义上的 MVC 模式。
+
+-- -
+
+#### 5.1.2 MVC 和三层架构的关系
+
+三层架构，就是将整个应用程序划分为表现层(UI)、业务逻辑层(Service)、数据访问层(DAO/Repository)。
+
+* 表现层：用于展示页面。主要对用户的请求进行接收，以及进行数据的返回。它为客户端(用户)提供应用程序的访问接口(界面)。
+* 业务逻辑层：是三层架构的服务层，负责业务逻辑处理，主要是调用 DAO 层对数据进行增加、删除、修改和查询等操作。
+* 数据访问层：与数据库进行交互的持久层，被 Service 调用。在 Spring Data JPA 中由 Hibernate 来实现。
+
+Repository 和 DAO 层一样，都可以进行数据的增加、删除、修改和查询。他们相当于仓库管理员，执行进/出货操作。
+
+DAO 层的工作是存取对象。Repository 层的工作是存取和管理对象。
+
+简单理解就是：Repository = 管理对象(对象缓存和在 Repository 的状态) + DAO。
+
+严格来说，MVC 是三层架构中的 UI 层。通过 MVC 把三层架构中的 UI 层又进行了分层。由此可见，三层架构是基于业务逻辑或功能来划分的，而 MVC 是基于页面或功能来划分的。
