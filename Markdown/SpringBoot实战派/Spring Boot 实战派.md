@@ -643,3 +643,22 @@ DAO 层的工作是存取对象。Repository 层的工作是存取和管理对�
 简单理解就是：Repository = 管理对象(对象缓存和在 Repository 的状态) + DAO。
 
 严格来说，MVC 是三层架构中的 UI 层。通过 MVC 把三层架构中的 UI 层又进行了分层。由此可见，三层架构是基于业务逻辑或功能来划分的，而 MVC 是基于页面或功能来划分的。
+
+--- -
+
+#### 5.3 使用注解
+
+在 Spring MVC 中，控制器(Controller)负责处理由 DispatcherServlet 接受并分发过来的请求。它把用户请求的数据通过业务处理层封装成一个 Model，然后再把改 Model 返回给对应的 View 进行展示。
+
+Controller 无须继承特定的类或实现特定的接口。只需使用@Controller(@RestController)来标记一个控制器，然后用注解@RequestMapping 定义 URL 请求和 Controller 方法之间的映射，这样 Controller 就能被外界访问到。它可以包含多个请求处理方法。
+
+GET 和 POST 的区别？
+
+* Get 在浏览器中可以回退，而 POST 访问同一个地址时也是再次提交请求。
+* Get 请求会被浏览器主动缓存，而 POST 则不会。
+* Get 中的参数会被完整的保留在浏览器历史记录里，而 POST 中的参数则不会被保留。
+* Get 只能进行 URL 编码，而 POST 支持多种编码方式。
+* Get 只接受 ASCII 字符，而 POST 没有限制。
+* Get 的安全性相比 POST 低，因为参数直接暴露在 URL 上，所以不能用它传递敏感信息。
+* Get 的参数是通过 URL 传递的，而 POST 的参数是放在 request body 中的。但是，这些不是绝对的，比如 POST 也可以通过 URL 路径提交参数。
+
