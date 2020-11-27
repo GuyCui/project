@@ -32,37 +32,36 @@ public class UserController {
     return Flux.fromIterable(new ArrayList<>(users.values()));
   }
 
+  @GetMapping("/aop")
+  public String aVoid() {
+    return "hello aop test";
+}
+
   /** 获取单个用户 */
   @GetMapping("/{id}")
   public Mono<User> getUser(@PathVariable Long id) {
     return Mono.justOrEmpty(users.get(id));
   }
 
-	/**
-	 * 创建用户
-	 */
-	@PostMapping("")
-	public Mono<ResponseEntity<String>> addUser(User user){
-		users.put(user.getId(),user);
-		return Mono.just(new ResponseEntity<>("添加成功", HttpStatus.CREATED));
-	}
+  /** 创建用户 */
+  @PostMapping("")
+  public Mono<ResponseEntity<String>> addUser(User user) {
+    users.put(user.getId(), user);
+    return Mono.just(new ResponseEntity<>("添加成功", HttpStatus.CREATED));
+  }
 
-	/**
-	 * 修改用户
-	 */
-	@PutMapping("/{id}")
-	public Mono<ResponseEntity<User>> putUser(@PathVariable Long id,User user){
-		user.setId(id);
-		users.put(id,user);
-		return Mono.just(new ResponseEntity<>(user,HttpStatus.CREATED));
-	}
+  /** 修改用户 */
+  @PutMapping("/{id}")
+  public Mono<ResponseEntity<User>> putUser(@PathVariable Long id, User user) {
+    user.setId(id);
+    users.put(id, user);
+    return Mono.just(new ResponseEntity<>(user, HttpStatus.CREATED));
+  }
 
-	/**
-	 * 删除用户
-	 */
-	@DeleteMapping("/{id}")
-	public Mono<ResponseEntity<String>> deleteUser(@PathVariable Long id){
-		users.remove(id);
-		return Mono.just(new ResponseEntity<>("删除成功",HttpStatus.ACCEPTED));
-	}
+  /** 删除用户 */
+  @DeleteMapping("/{id}")
+  public Mono<ResponseEntity<String>> deleteUser(@PathVariable Long id) {
+    users.remove(id);
+    return Mono.just(new ResponseEntity<>("删除成功", HttpStatus.ACCEPTED));
+  }
 }
