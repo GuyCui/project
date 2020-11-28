@@ -1,6 +1,6 @@
-package com.example.demo.entity;
+package com.example.demo.demo.entity;
 
-import com.example.demo.annotation.MyCustomConstraint;
+import com.example.demo.demo.annotation.MyCustomConstraint;
 import lombok.Data;
 import org.hibernate.validator.constraints.Length;
 

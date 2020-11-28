@@ -1,6 +1,6 @@
-package com.example.webFlux.controller;
+package com.example.demo.controller;
 
-import com.example.webFlux.entity.User;
+import com.example.demo.entity.User;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -11,7 +11,6 @@ import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 /** FileName: UserController @Author：guycui Date: 2020/11/27 下午7:52 Description: 控制层 */
 @RestController
@@ -32,10 +31,6 @@ public class UserController {
     return Flux.fromIterable(new ArrayList<>(users.values()));
   }
 
-  @GetMapping("/aop")
-  public String aVoid() {
-    return "hello aop test";
-}
 
   /** 获取单个用户 */
   @GetMapping("/{id}")

@@ -1,9 +1,7 @@
-package com.example.webFlux.controller;
+package com.example.demo.aop;
 
 import org.aspectj.lang.JoinPoint;
-import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
-import org.aspectj.lang.annotation.Pointcut;
+import org.aspectj.lang.annotation.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
@@ -39,12 +37,28 @@ public class AopLog {
 		// 接收到请求，记录请求
 		ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
 		HttpServletRequest request = attributes.getRequest();
-
 		// 记录下请求内容
-		logger.info("URL:" + request.getRequestURI());
+		logger.info("URL:" + request.getRequestURL().toString());
 		logger.info("HTTP方法：" + request.getMethod());
 		logger.info("IP地址" + request.getRemoteAddr());
 		logger.info("类的方法：" + joinPoint.getSignature().getDeclaringTypeName() + "." + joinPoint.getSignature().getName());
 		logger.info("参数：" + request.getQueryString());
+	}
+
+	@AfterReturning(pointcut = "aopWebLog()",returning = "retObject")
+	public void doAfterReturning(Object retObject) throws Throwable{
+		// 处理完请求，返回内容
+		logger.info("答应值："+ retObject);
+		logger.info("费事："+(System.currentTimeMillis() - startTime.get()));
+	}
+
+	/**
+	 * 方法抛出异常退出时执行的通知
+	 * @param joinPoint
+	 * @param ex
+	 */
+	@AfterThrowing(pointcut = "aopWebLog()",throwing = "ex")
+	public void addAfterThrowingLogger(JoinPoint joinPoint,Exception ex){
+		logger.error("执行："+ "异常",ex);
 	}
 }

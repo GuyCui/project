@@ -1,8 +1,7 @@
-package com.example.demo;
+package com.example.demo.demo;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.aop.scope.ScopedProxyUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;

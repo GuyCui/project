@@ -1,3 +1,3 @@
 Manifest-Version: 1.0
-Main-Class: com.example.demo.HelloSpringBootApplication
+Main-Class: com.example.demo.demo.HelloSpringBootApplication
 

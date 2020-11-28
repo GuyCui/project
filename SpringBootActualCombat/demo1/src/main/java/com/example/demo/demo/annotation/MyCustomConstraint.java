@@ -1,6 +1,6 @@
-package com.example.demo.annotation;
+package com.example.demo.demo.annotation;
 
-import com.example.demo.validator.MyCustomConstraintValidator;
+import com.example.demo.demo.validator.MyCustomConstraintValidator;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

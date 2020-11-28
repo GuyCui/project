@@ -1,6 +1,6 @@
-package com.example.demo.validator;
+package com.example.demo.demo.validator;
 
-import com.example.demo.annotation.MyCustomConstraint;
+import com.example.demo.demo.annotation.MyCustomConstraint;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
