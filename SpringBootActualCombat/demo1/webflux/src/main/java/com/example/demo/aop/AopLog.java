@@ -27,7 +27,7 @@ public class AopLog {
 	/**
 	 * 定义切点
  	 */
-	@Pointcut("execution(public * com.example..*.*(..))")
+	@Pointcut("execution(public * com.example.demo.controller.AopLogController.*(..))")
 	public void aopWebLog(){}
 
 	@Before("aopWebLog()")

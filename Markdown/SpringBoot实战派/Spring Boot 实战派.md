@@ -662,3 +662,42 @@ GET 和 POST 的区别？
 * Get 的安全性相比 POST 低，因为参数直接暴露在 URL 上，所以不能用它传递敏感信息。
 * Get 的参数是通过 URL 传递的，而 POST 的参数是放在 request body 中的。但是，这些不是绝对的，比如 POST 也可以通过 URL 路径提交参数。
 
+--- -
+
+#### 7.3 认识过滤器
+
+##### 哪些情况下会使用过滤器？
+
+参数过滤、防止SQL注入、防止页面攻击、空参数矫正、Token 验证、Session 验证、点击率统计等。
+
+##### 为什么使用过滤器？
+
+在 web 开发中常常会有在接口中去除用户输入的非法字符，以防止引起业务异常。
+
+* 在前端参数传入时进行校验，先过滤掉非法字符串，然后，返回用户界面提示用户重新输入。
+* 后端接收前端没有过滤的数据，然后过滤非法字符。
+* 利用 Filer 处理项目中所有非法字符。
+
+很明显前两种实现方法会存在重复代码，因为每一个前端或后端都需要处理，这样会导致代码极难维护。如果用过滤器来实现，则只需要用过滤器对所有接口进行过滤处理。这样非常方便，同时不会出现冗余代码。
+
+##### 使用 Filer 的步骤
+
+（1）新建类，实现 Filer 抽象类。
+
+（2）重写 init、doFilter、dostroy 方法。
+
+（3）在 SpringBoot 入口中添加注解@ServletComponetScan，以注册 Filter。
+
+在重写 3 个方法后，还可以进一步修改 request 参数使用的封装方式，如：
+
+（1）编写 ParameterRequestWrapper类继承 HttpServletRequestWrapper 类。
+
+（2）编写 ParameterRequestWrapper类构造器。
+
+（3）在构造器中覆写父类构造器，并将 request.getParameterMap 加入子类的成员变量。
+
+（4）编写 addParam 方法。
+
+（5）修改参数并调用 ParameterRequestWrapper 实例，并保存 params。
+
+（6）调用 doFilter 方法中的 FilterChain 变量，以重新封装修改后的 request。
