@@ -1,6 +1,5 @@
 package com.example.demo;
 
-import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 /**
@@ -10,8 +9,14 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
  * @Author：guycui
  */
 @ConfigurationProperties(prefix = "spring.mystarter")
-@Data
 public class MyStarterProperties {
 // 参数
 	private String parameter;
+
+	public String getParameter(){
+	    return parameter;
+    }
+    public void setParameter(String parameter){
+	    this.parameter = parameter;
+    }
 }

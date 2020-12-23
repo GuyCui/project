@@ -3,11 +3,11 @@ package com.example.demo;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-//@SpringBootApplication
-public class MystarterApplication {
+@SpringBootApplication
+public class StartertestApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(MystarterApplication.class, args);
+		SpringApplication.run(StartertestApplication.class, args);
 	}
 
 }
