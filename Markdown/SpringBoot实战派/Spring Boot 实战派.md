@@ -717,3 +717,81 @@ GET 和 POST 的区别？
 * 保存用户的当前操作，或者进行数据回滚。
 * 释放资源。
 
+---
+
+### 用 ORM 操作 SQL 数据库
+
+#### 8.1.3 认识ORM
+
+ORM(Object Relation Mapping)是对象/关系映射。它提供了概念性的、易于理解的数据模型，将数据库中的表和内存中的对象建立映射关系。它是随着面向对象的软件开发方法的发展而产生的，面向对象的开发方法依然是当前主流的开发方法。
+
+对象和关系型数据是业务实体的两种表现形式。业务实体在内存中表现为对象，在数据库中表现为关系型数据。内存中的对象不会被永久保存，只有关系型数据库（或 NoSQL 数据库，或文件）中的对象会被永久保存。
+
+对象/关系映射（ORM）系统一般以中间件的形式存在，因为内存中的对象之间存在关联和继承关系，而在数据库中，关系型数据无法直接表达多对多的关联和继承关系。对象、数据库通过 ORM 映射的关系如图 8-1 所示。
+
+![image-20210117105950300](https://gitee.com/GuyCui/img/raw/master/img/image-20210117105950300.png)
+
+##### 1、JPA的常用注解
+
+| 注解               | 说明                                                         |
+| :----------------- | :----------------------------------------------------------- |
+| @Entity            | 声明类为实体。                                               |
+| @Table             | 声明表名，@Entity和@Table注解一般块使用，如果表名和实体类名相同，那么@Table可以省略。 |
+| @Basic             | 指定非约束明确的各个字段。                                   |
+| @Embedded          | 用于注释属性，表示该属性的类是嵌入类（ @embeddable 用于注释Java类的，表示类是嵌入类）。 |
+| @ld                | 指定的类的属性，一个表中的主键。                             |
+| @GeneratedValue    | 指定如何标识属性可以被初始化，如@GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "repair_seq")：表示主键生成策略是sequence，还有Auto、 ldentity、 Native 等。 |
+| @Transient         | 表示该属性并非一个数据库表的字段的映射，ORM框架将忽略该属性。如果一个属性并非数据库表的字段映射，就务必将其标示为@Transient，即它是不持久的，为虚拟字段。 |
+| @Column            | 指定持久属性，即字段名。如果字段名与列名相同，则可以省略。使用方法如：@Column(length=11,name="phone",nullable=false,columnDefinition = "varchar(11) unique comment'电话号码'") |
+| @SequenceGenerator | 指定在 @SequenceGenerator 注解中指定的属性的值。它创建一个序列。 |
+| @TableGenerator    | 在数据库生成一张表来管理主键生成策略。                       |
+| @AccessType        | 这种类型的注释用于设置访问类型。如果设置@AccessType(FIELD)，则可以直接访问变量，并且不需要使用Gtter和Stter方法，但必须为public属性。如果设置@AccessType(PROPERTY)，则通过Getter和Setter方法访问Entity的变量。 |
+| @UniqueConstraint  | 指定的字段和用于主要或辅助表的唯一约束。                     |
+| @ColumnResult      | 可以参考使用select子句的SQL查询中的列名。                    |
+| @NamedQueries      | 指定命名查询的列表。                                         |
+| @NamedQuery        | 指定使用静态名称的查询。                                     |
+| @Basic             | 指定实体属性的加载方式，如@Basic(fetch=FetchType.LAZY)。     |
+| @Jsonlgnore        | 作用是JSON序列化时将Java Bean中的一些属性忽略掉，序列化和反序列化都受影响。 |
+
+ 
+
+##### 2、映射关系的注解
+
+| 注解        | 说明                                                         |
+| :---------- | :----------------------------------------------------------- |
+| @JoinColumn | 指定一个实体组织或实体集合。用在“多对一”和“一对多”的关联中。 |
+| @OneToOne   | 定义表之间“一对一”的关系。                                   |
+| @OneToMany  | 定义表之间“一对多”的关系。                                   |
+| @ManyToOne  | 定义表之间“多对一”的关系。                                   |
+| @ManyToMany | 定义表之间“多对多”的关系。                                   |
+
+ 
+
+##### 3、映射关系的属性
+
+| 属性名               | 说明                                                         |
+| :------------------- | :----------------------------------------------------------- |
+| targetEntity         | 表示默认关联的实体类型，默认为当前标注的实体类。             |
+| cascade              | 表示与此实体一对一关联的实体的级联样式类型，以及当对实体进行操作时的策略。在定义关系时经常会涉及是否定义Cascade（级联处理）属性，如果担心级联处理容易造成负面影响，则可以不定义。它的类型包括CascadeType.PERSIST（级联新建）、CascadeType.REMOVE （级联删除）、CascadeType.REFRESH（级联刷新）、CascadeType.MERGE（级联更新）、CascadeType.ALL （级联新建、更新、删除、刷新）。 |
+| fetch                | 该实体的加载方式，包含 LAZY 和 EAGER。                       |
+| optional             | 表示关联的实体是否能够存在null值。默认为true，表示可以存在null值。如果为false，则要同时配合使用@JoinColumn标记。 |
+| mappedBy             | 双向关联实体时使用，标注在不保存关系的实体中。               |
+| JoinColumn           | 关联指定列。该属性值可接收多个@JoinColumn。用于配置连接表中外键列的信息。@JoinColumn配置的外键列参照当前实体对应表的主键列。 |
+| JoinTable            | 两张表通过中间的关联表建立联系时使用，即多对多关系。         |
+| PrimaryKeyJoinColumn | 主键关联。在关联的两个实体中直接使用注解@PrimaryKeyJoinColumn注释。 |
+
+> 懒加载LAZY和实时加载EAGER的目的是，实现关联数据的选择性加载。
+>
+> 懒加载是在属性被引用时才生成查询语句，抽取相关联数据。
+>
+> 实时加载则是执行完主查询后，不管是否被引用，都会马上执行后续的关联数据查询。
+>
+> 使用懒加载来调用关联数据，必须要保证主查询的Session（数据库连接会话）的生命周期没有结束，否则是无法抽取到数据的。
+
+在Spring Data JPA中，要控制Session的生命周期，否则会出现“could not initialize proxy [xxxx#18] - no Session”错误。可以在配置文件中配置一下代码来控制Session的生命周期：
+
+```properties
+spring.jpa.open-in-view=true
+spring.jpa.properties.hibernate.enable_lazy_load_no_trans=true
+```
+
