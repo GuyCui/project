@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <meta content="width=device-width, initial-scale=1, maximum-scale=10, user-scalable=yes" name="viewport">
+    <title>GroupTabs Example</title>
+    <!-- Ext -->
+
+    <link href="../shared/examples.css" rel="stylesheet" type="text/css" />
+    <link href="../portal/_portal.css" rel="stylesheet" type="text/css" />
+
+    <!-- GC -->
+
+    <!-- <x-compile> -->
+    <!-- <x-bootstrap> -->
+    <script src="../shared/include-ext.js" type="text/javascript"></script>
+    <script src="../shared/options-toolbar.js" type="text/javascript"></script>
+    <!-- </x-bootstrap> -->
+    <script src="all-classes.js" type="text/javascript"></script>
+
+    <!-- shared example code -->
+    <script src="../shared/examples.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        Ext.Loader.setPath({
+            'Portal.model': '../portal/app/model/',
+            'Portal.store': '../portal/app/store/',
+            'Portal.view': '../portal/attic/',
+            'Portal.view.markets': '../portal/app/view/markets/',
+            'Portal.view.stocks': '../portal/app/view/stocks/'
+        });
+
+        Ext.require([
+            'Ext.Viewport',
+            'Ext.data.JsonStore',
+            'Ext.tip.QuickTipManager',
+            'Ext.tab.Panel',
+            'Ext.ux.GroupTabPanel',
+            'Ext.grid.*',
+            'Portal.model.Company',
+            'Portal.store.Markets',
+            'Portal.store.Stocks',
+            'Portal.view.PortalColumn',
+            'Portal.view.PortalDropZone',
+            'Portal.view.Portlet',
+            'Portal.view.PortalPanel',            
+            'Portal.view.markets.Markets',
+            'Portal.view.stocks.Stocks'
+        ]);
+    </script>
+    <script src="grouptabs.js" type="text/javascript"></script>
+    <!-- </x-compile> -->
+
+    <!-- page specific -->
+    <style type="text/css">
+        /* styles for iconCls */
+        .x-icon-tickets {
+            background-image: url('images/tickets.png');
+        }
+        .x-icon-subscriptions {
+            background-image: url('images/subscriptions.png');
+        }
+        .x-icon-users {
+            background-image: url('images/group.png');
+        }
+        .x-icon-templates {
+            background-image: url('images/templates.png');
+        }
+    </style>
+</head>
+<body></body>
+</html>

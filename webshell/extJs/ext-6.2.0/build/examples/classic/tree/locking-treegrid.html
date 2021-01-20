@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta content="IE=edge" http-equiv="X-UA-Compatible">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta content="width=device-width, initial-scale=1, maximum-scale=10, user-scalable=yes" name="viewport">
+        <title>
+            Locking TreeGrid Example
+        </title>
+        <link href="../shared/examples.css" rel="stylesheet" type="text/css">
+
+    <!-- GC -->
+
+        <script src="../shared/include-ext.js" type="text/javascript"></script>
+        <script src="../shared/options-toolbar.js" type="text/javascript"></script>
+        <script src="locking-treegrid.js" type="text/javascript"></script>
+        <style type="text/css">
+            .task {
+                background-image: url(../shared/icons/fam/cog.gif) !important;
+            }
+            .task-folder {
+                background-image: url(../shared/icons/fam/folder_go.gif) !important;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>
+            Locking TreeGrid Example
+        </h1>
+        <p>
+            This example is an advanced tree example. It illustrates:
+        </p>
+        <ul class="feature-list">
+            <li>Locked columns
+            </li>
+            <li>Multiple headers
+            </li>
+            <li>Preloading of nodes with a single AJAX request
+            </li>
+            <li>Header hiding, showing, reordering and resizing
+            </li>
+            <li>useArrows configuration
+            </li>
+            <li>Keyboard Navigation
+            </li>
+            <li>Discontiguous selection by holding the CTRL key
+            </li>
+            <li>Using custom iconCls
+            </li>
+            <li>Animation disabled because the right side is a normal grid (which does not animate record insertion).
+            </li>
+        </ul>
+        <p>
+            Note that the js is not minified so it is readable. See <a href="locking-treegrid.js">locking-treegrid.js</a>.
+        </p>
+        <div id="tree-example"></div>
+    </body>
+</html>

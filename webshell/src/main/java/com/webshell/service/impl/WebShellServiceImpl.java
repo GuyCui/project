@@ -11,6 +11,7 @@ import com.webshell.entity.ConnectEntity;
 import com.webshell.entity.WebShellData;
 import com.webshell.service.WebShellService;
 import lombok.AllArgsConstructor;
+import org.apache.commons.lang3.concurrent.BasicThreadFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -24,8 +25,8 @@ import java.util.Arrays;
 import java.util.Map;
 import java.util.Properties;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.ScheduledThreadPoolExecutor;
 
 /**
  * FileName: WebShellServiceImpl
@@ -39,14 +40,15 @@ public class WebShellServiceImpl implements WebShellService {
     /**
      * 存放ssh连接信息的map
      */
-    private static Map<String, Object> sshMap = new ConcurrentHashMap<>();
+    private static final Map<String, Object> SSH_MAP = new ConcurrentHashMap<>();
 
     private final Logger logger = LoggerFactory.getLogger(WebShellServiceImpl.class);
 
     /**
      * 线程池
      */
-    private final ExecutorService executorService = Executors.newCachedThreadPool();
+    private final ScheduledExecutorService executorService = new ScheduledThreadPoolExecutor(1,
+            new BasicThreadFactory.Builder().namingPattern("example-schedule-pool-%d").daemon(true).build());
 
     @Override
     public void initConnection(WebSocketSession socketSession) {
@@ -56,7 +58,7 @@ public class WebShellServiceImpl implements WebShellService {
         sshConnectInfo.setWebSocketSession(socketSession);
         String uuid = String.valueOf(socketSession.getAttributes().get(ConstantPool.USER_UUID_KEY));
         //将这个ssh连接信息放入map中
-        sshMap.put(uuid, sshConnectInfo);
+        SSH_MAP.put(uuid, sshConnectInfo);
     }
 
     @Override
@@ -73,7 +75,7 @@ public class WebShellServiceImpl implements WebShellService {
         String userId = String.valueOf(socketSession.getAttributes().get(ConstantPool.USER_UUID_KEY));
         if (ConstantPool.WEB_SHELL_OPERATE_CONNECT.equals(webShellData.getOperate())) {
             //找到刚才存储的ssh连接对象
-            ConnectEntity connectEntity = (ConnectEntity) sshMap.get(userId);
+            ConnectEntity connectEntity = (ConnectEntity) SSH_MAP.get(userId);
             //启动线程异步处理
             executorService.execute(() -> {
                 try {
@@ -86,7 +88,7 @@ public class WebShellServiceImpl implements WebShellService {
             });
         } else if (ConstantPool.WEB_SHELL_OPERATE_COMMAND.equals(webShellData.getOperate())) {
             String command = webShellData.getCommand();
-            ConnectEntity connectEntity = (ConnectEntity) sshMap.get(userId);
+            ConnectEntity connectEntity = (ConnectEntity) SSH_MAP.get(userId);
             if (connectEntity != null) {
                 try {
                     transToShell(connectEntity.getChannel(), command);
@@ -110,14 +112,14 @@ public class WebShellServiceImpl implements WebShellService {
     @Override
     public void close(WebSocketSession socketSession) {
         String userId = String.valueOf(socketSession.getAttributes().get(ConstantPool.USER_UUID_KEY));
-        ConnectEntity connectEntity = (ConnectEntity) sshMap.get(userId);
+        ConnectEntity connectEntity = (ConnectEntity) SSH_MAP.get(userId);
         if (connectEntity != null) {
             //断开连接
             if (connectEntity.getChannel() != null) {
                 connectEntity.getChannel().disconnect();
             }
             //map中移除
-            sshMap.remove(userId);
+            SSH_MAP.remove(userId);
         }
     }
 

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <meta content="width=device-width, initial-scale=1, maximum-scale=10, user-scalable=yes" name="viewport">
+    <title>Buffer Rendered Grid</title>
+
+    <link href="../shared/examples.css" rel="stylesheet" type="text/css" />
+
+    <!-- GC -->
+
+    <script src="../shared/include-ext.js" type="text/javascript"></script>
+    <script src="../shared/options-toolbar.js" type="text/javascript"></script>
+
+    <script src="buffer-grid.js" type="text/javascript"></script>
+</head>
+<body>
+    <h1>Buffer Rendered Grid</h1>
+    <p>Ext JS's grid supports buffered rendering, which enables you to load large numbers of records into a grid without paging.</p>
+    <p>Only the <b>visible</b> portions of the loaded store are rendered into the DOM. As the edge of the rendered data scrolls towards being in
+        view, the table has new rows appended just in time, and rows removed from the receding side.</p>
+    <p>This example illustrates loading of all the records up front and buffering the rendering, but sorting is not enabled. Grid may be grouped by salary level.</p>
+    <p>The code is not minified, see <a href="buffer-grid.js">buffer-grid.js</a></p>
+</body>
+</html>
