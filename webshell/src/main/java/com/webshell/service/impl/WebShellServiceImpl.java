@@ -10,6 +10,7 @@ import com.webshell.constant.ConstantPool;
 import com.webshell.entity.ConnectEntity;
 import com.webshell.entity.WebShellData;
 import com.webshell.service.WebShellService;
+import lombok.AllArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -32,6 +33,7 @@ import java.util.concurrent.Executors;
  * Description: 业务接口实现类
  * @Author：guycui
  */
+@AllArgsConstructor
 @Service
 public class WebShellServiceImpl implements WebShellService {
     /**

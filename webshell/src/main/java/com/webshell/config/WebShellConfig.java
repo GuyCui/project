@@ -2,7 +2,7 @@ package com.webshell.config;
 
 import com.webshell.interceptor.WebSocketInterceptor;
 import com.webshell.websocket.WebShellSocketHandler;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.socket.config.annotation.EnableWebSocket;
 import org.springframework.web.socket.config.annotation.WebSocketConfigurer;
@@ -16,8 +16,8 @@ import org.springframework.web.socket.config.annotation.WebSocketHandlerRegistry
  */
 @Configuration
 @EnableWebSocket
+@AllArgsConstructor
 public class WebShellConfig implements WebSocketConfigurer {
-    @Autowired
     WebShellSocketHandler webShellSocketHandler;
 
     @Override

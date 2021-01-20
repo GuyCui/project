@@ -3,9 +3,9 @@ package com.webshell.websocket;
 
 import com.webshell.constant.ConstantPool;
 import com.webshell.service.WebShellService;
+import lombok.AllArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.socket.*;
 
@@ -16,9 +16,10 @@ import org.springframework.web.socket.*;
  * @Date: 2020/3/8
  */
 @Component
+@AllArgsConstructor
 public class WebShellSocketHandler implements WebSocketHandler {
     private final Logger logger = LoggerFactory.getLogger(WebShellSocketHandler.class);
-    @Autowired
+
     private WebShellService webShellService;
 
     /**
