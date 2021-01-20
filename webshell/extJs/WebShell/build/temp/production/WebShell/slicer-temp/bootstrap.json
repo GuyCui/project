@@ -44,7 +44,7 @@
     "Ext.app": "../../../../../ext/packages/core/src/app",
     "Ext.browser": "../../../../../ext/packages/core/src/env/Browser.js",
     "Ext.class": "../../../../../ext/packages/core/src/class",
-    "Ext.cmd": "../../../../../../../../../../bin/Sencha/Cmd/7.3.0.19/plugins/src",
+    "Ext.cmd": "../../../../../../../../../../bin/Sencha/Cmd/6.7.0.63/plugins/src",
     "Ext.data": "../../../../../ext/packages/core/src/data",
     "Ext.direct": "../../../../../ext/packages/core/src/direct",
     "Ext.dom": "../../../../../ext/packages/core/src/dom",
@@ -104,7 +104,8 @@
     "WebShell.view.pages.Blank": "../../../../../app/view/main/pages/Blank.js",
     "WebShell.view.pages.Error404": "../../../../../app/view/main/pages/Error404.js",
     "WebShell.view.pages.Error500": "../../../../../app/view/main/pages/Error500.js",
-    "WebShell.view.pages.FAQ": "../../../../../app/view/main/pages/FAQ.js"
+    "WebShell.view.pages.FAQ": "../../../../../app/view/main/pages/FAQ.js",
+    "app.config": "../../../../../app/config.js"
   },
   "loadOrder": [
     {
@@ -182,85 +183,100 @@
     {
       "path": "../../../../../app/Application.js",
       "requires": [],
-      "uses": [],
+      "uses": [
+        13,
+        16
+      ],
       "idx": 12
     },
     {
-      "path": "../../../../../app/store/NavigationTree.js",
+      "path": "../../../../../app/config.js",
       "requires": [],
       "uses": [],
       "idx": 13
     },
     {
-      "path": "../../../../../app/store/Views.js",
+      "path": "../../../../../app/store/NavigationTree.js",
       "requires": [],
       "uses": [],
       "idx": 14
     },
     {
-      "path": "../../../../../app/view/Home.js",
+      "path": "../../../../../app/store/Views.js",
       "requires": [],
       "uses": [],
       "idx": 15
     },
     {
-      "path": "../../../../../app/view/login/LoginController.js",
+      "path": "../../../../../app/util.js",
       "requires": [],
       "uses": [],
       "idx": 16
     },
     {
-      "path": "../../../../../app/view/login/Login.js",
-      "requires": [
-        16
-      ],
+      "path": "../../../../../app/view/Home.js",
+      "requires": [],
       "uses": [],
       "idx": 17
     },
     {
-      "path": "../../../../../app/view/main/Box.js",
+      "path": "../../../../../app/view/login/LoginController.js",
       "requires": [],
       "uses": [],
       "idx": 18
     },
     {
-      "path": "../../../../../app/view/main/MainController.js",
-      "requires": [],
-      "uses": [
-        16,
-        17
+      "path": "../../../../../app/view/login/Login.js",
+      "requires": [
+        18
       ],
+      "uses": [],
       "idx": 19
     },
     {
-      "path": "../../../../../app/view/main/Model.js",
+      "path": "../../../../../app/view/main/Box.js",
       "requires": [],
       "uses": [],
       "idx": 20
     },
     {
-      "path": "../../../../../app/view/main/pages/Blank.js",
+      "path": "../../../../../app/view/main/MainController.js",
       "requires": [],
-      "uses": [],
+      "uses": [
+        18,
+        19
+      ],
       "idx": 21
     },
     {
-      "path": "../../../../../app/view/main/pages/Error404.js",
+      "path": "../../../../../app/view/main/Model.js",
       "requires": [],
       "uses": [],
       "idx": 22
     },
     {
-      "path": "../../../../../app/view/main/pages/Error500.js",
+      "path": "../../../../../app/view/main/pages/Blank.js",
       "requires": [],
       "uses": [],
       "idx": 23
     },
     {
-      "path": "../../../../../app/view/main/pages/FAQ.js",
+      "path": "../../../../../app/view/main/pages/Error404.js",
       "requires": [],
       "uses": [],
       "idx": 24
+    },
+    {
+      "path": "../../../../../app/view/main/pages/Error500.js",
+      "requires": [],
+      "uses": [],
+      "idx": 25
+    },
+    {
+      "path": "../../../../../app/view/main/pages/FAQ.js",
+      "requires": [],
+      "uses": [],
+      "idx": 26
     },
     {
       "path": "../../../../../app.js",
@@ -278,7 +294,6 @@
         10,
         11,
         12,
-        13,
         14,
         15,
         16,
@@ -289,18 +304,20 @@
         21,
         22,
         23,
-        24
+        24,
+        25,
+        26
       ],
       "uses": [],
-      "idx": 25
+      "idx": 27
     },
     {
       "path": "../sencha-compiler/app/full-page-master-bundle.js",
       "requires": [
-        25
+        27
       ],
       "uses": [],
-      "idx": 26
+      "idx": 28
     }
   ],
   "classes": {
@@ -4159,84 +4176,98 @@
       "alternates": []
     },
     "WebShell.store.NavigationTree": {
-      "idx": 13,
+      "idx": 14,
       "alias": [],
       "alternates": []
     },
     "WebShell.store.Views": {
-      "idx": 14,
+      "idx": 15,
       "alias": [
         "store.views"
       ],
       "alternates": []
     },
+    "WebShell.util": {
+      "idx": 16,
+      "alias": [],
+      "alternates": [
+        "util"
+      ]
+    },
     "WebShell.view.Home": {
-      "idx": 15,
+      "idx": 17,
       "alias": [
         "widget.home"
       ],
       "alternates": []
     },
     "WebShell.view.login.Login": {
-      "idx": 17,
+      "idx": 19,
       "alias": [
         "widget.login"
       ],
       "alternates": []
     },
     "WebShell.view.login.LoginController": {
-      "idx": 16,
+      "idx": 18,
       "alias": [
         "controller.login"
       ],
       "alternates": []
     },
     "WebShell.view.main.Box": {
-      "idx": 18,
+      "idx": 20,
       "alias": [],
       "alternates": []
     },
     "WebShell.view.main.Controller": {
-      "idx": 19,
+      "idx": 21,
       "alias": [
         "controller.main"
       ],
       "alternates": []
     },
     "WebShell.view.main.Model": {
-      "idx": 20,
+      "idx": 22,
       "alias": [
         "viewmodel.main"
       ],
       "alternates": []
     },
     "WebShell.view.pages.Blank": {
-      "idx": 21,
+      "idx": 23,
       "alias": [
         "widget.pageblank"
       ],
       "alternates": []
     },
     "WebShell.view.pages.Error404": {
-      "idx": 22,
+      "idx": 24,
       "alias": [
         "widget.page404"
       ],
       "alternates": []
     },
     "WebShell.view.pages.Error500": {
-      "idx": 23,
+      "idx": 25,
       "alias": [
         "widget.page500"
       ],
       "alternates": []
     },
     "WebShell.view.pages.FAQ": {
-      "idx": 24,
+      "idx": 26,
       "alias": [
         "widget.faq"
       ],
       "alternates": []
+    },
+    "app.config": {
+      "idx": 13,
+      "alias": [],
+      "alternates": [
+        "config"
+      ]
     }
   },
   "packages": {
@@ -4253,7 +4284,7 @@
     },
     "cmd": {
       "current": "7.3.0.19",
-      "version": "7.3.0.19"
+      "version": "6.7.0.63"
     },
     "core": {
       "css": true,
@@ -4590,7 +4621,7 @@
   "toolkit": "classic",
   "theme": "theme-triton",
   "loader": {
-    "cache": "20210120172623",
+    "cache": "20210120225910",
     "cacheParam": "_dc"
   },
   "id": "06739440-b717-4c75-beb6-33350f319a7a"

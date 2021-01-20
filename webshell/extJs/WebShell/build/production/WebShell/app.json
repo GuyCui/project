@@ -13,7 +13,7 @@
     },
     "cmd": {
       "current": "7.3.0.19",
-      "version": "7.3.0.19"
+      "version": "6.7.0.63"
     },
     "core": {
       "css": true,
@@ -163,13 +163,12 @@
   "toolkit": "classic",
   "theme": "theme-triton",
   "loader": {
-    "cache": "20210120172623",
+    "cache": "20210120225910",
     "cacheParam": "_dc"
   },
   "id": "06739440-b717-4c75-beb6-33350f319a7a",
-  "hash": "710e2b1ff7776b6116923f3b891b18264039cf18",
+  "hash": "e0fbcdfde378a5e8102398682bb332d257ec8e35",
   "profile": "",
-  "appCacheEnabled": false,
   "resources": {
     "path": "resources"
   }

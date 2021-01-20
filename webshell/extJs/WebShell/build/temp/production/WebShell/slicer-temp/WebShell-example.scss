@@ -1,5 +1,5 @@
 $app-name: dynamic('WebShell');
-$image-search-path: '/Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/build/production/WebShell/resources';
+$image-search-path: '/Users/guycui/IdeaProjects/my_project/webshell/extJs/WebShell/build/production/WebShell/resources';
 $theme-name: dynamic('theme-triton');
 $include-ext-abstractcomponent: dynamic(true);
 ;
@@ -1817,6 +1817,8 @@ $include-webshell-store-navigationtree: dynamic(true);
 ;
 $include-webshell-store-views: dynamic(true);
 ;
+$include-webshell-util: dynamic(true);
+;
 $include-webshell-view-home: dynamic(true);
 ;
 $include-webshell-view-login-login: dynamic(true);
@@ -1836,6 +1838,12 @@ $include-webshell-view-pages-error404: dynamic(true);
 $include-webshell-view-pages-error500: dynamic(true);
 ;
 $include-webshell-view-pages-faq: dynamic(true);
+;
+$include-app-config: dynamic(true);
+;
+$include-config: dynamic(true);
+;
+$include-util: dynamic(true);
 ;
 
 

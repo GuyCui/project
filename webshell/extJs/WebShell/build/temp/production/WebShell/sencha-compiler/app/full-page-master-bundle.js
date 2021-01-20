@@ -1,2 +1,2 @@
 // @tag full-page
-// @require /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/app.js
+// @require /Users/guycui/IdeaProjects/my_project/webshell/extJs/WebShell/app.js
