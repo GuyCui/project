@@ -1,3 +1,31 @@
+/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/sass/etc/all.scss:41 */
+body.x-ios.x-webview.x-portrait {
+    /*#endregion*/
+    /*#region 默认样式*/
+    /*#endregion*/
+    /*#region 默认样式*/
+    margin-top: 20px;
+}
+/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/sass/etc/all.scss:45 */
+.x-menu-header {
+    z-index: 0 !important;
+}
+/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/sass/etc/all.scss:49 */
+.x-css-shadow {
+    box-shadow: none !important;
+}
+/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/sass/etc/all.scss:53 */
+.shadow {
+    -webkit-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+    -ms-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+}
+/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/sass/etc/all.scss:57 */
+.x-fa {
+    display: inline-block;
+    font: normal normal normal 14px/1 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
+}
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/packages/core/sass/src/util/SizeMonitor.scss:5 */
 .x-size-monitored {
     /**
@@ -322,7 +350,7 @@
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/packages/core/sass/src/list/TreeItem.scss:190 */
 .x-treelist-item-icon,
 .x-treelist-item-tool {
-    color: #5fa2dd;
+    color: #35baf6;
     font-size: 16px;
     width: 16px;
 }
@@ -332,7 +360,7 @@
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/packages/core/sass/src/list/TreeItem.scss:213 */
 .x-treelist-item-expander {
-    color: #5fa2dd;
+    color: #35baf6;
     font-size: 16px;
     width: 18px;
 }
@@ -404,7 +432,7 @@
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/packages/core/sass/src/list/TreeItem.scss:344 */
 &.x-treelist-highlight-path .x-treelist-item-over > * > .x-treelist-item-icon {
-    color: #5fa2dd;
+    color: #35baf6;
     transition: color 0.5s;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/packages/core/sass/src/list/TreeItem.scss:348 */
@@ -414,16 +442,16 @@
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/packages/core/sass/src/list/TreeItem.scss:352 */
 &.x-treelist-highlight-path .x-treelist-item-over > * > .x-treelist-item-expander {
-    color: #5fa2dd;
+    color: #35baf6;
     transition: color 0.5s;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/packages/core/sass/src/list/TreeItem.scss:359 */
 .x-treelist-row-over {
-    background-color: #eaeff4;
+    background-color: #e6f1f6;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/packages/core/sass/src/list/TreeItem.scss:362 */
 .x-treelist-row-over > * > .x-treelist-item-icon {
-    color: #5fa2dd;
+    color: #35baf6;
     transition: color 0.5s;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/packages/core/sass/src/list/TreeItem.scss:366 */
@@ -433,7 +461,7 @@
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/packages/core/sass/src/list/TreeItem.scss:370 */
 .x-treelist-row-over > * > .x-treelist-item-expander {
-    color: #5fa2dd;
+    color: #35baf6;
     transition: color 0.5s;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/packages/core/sass/src/list/TreeItem.scss:377 */
@@ -656,7 +684,6 @@ td.x-frame-br {
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     -ms-border-radius: 5px;
-    -o-border-radius: 5px;
     border-radius: 5px;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/src/Component.scss:200 */
@@ -1751,7 +1778,6 @@ td.x-frame-mc {
     -webkit-border-radius: 0;
     -moz-border-radius: 0;
     -ms-border-radius: 0;
-    -o-border-radius: 0;
     border-radius: 0;
     display: block;
     background: repeat-x 0 0;
@@ -1930,7 +1956,7 @@ the height of a multi-line element */
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/src/view/View.scss:1 */
 .x-view-item-focused {
-    outline: 1px dashed #5fa2dd!important;
+    outline: 1px dashed #35baf6!important;
     outline-offset: -1px;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/src/view/BoundList.scss:8 */
@@ -2366,7 +2392,7 @@ the height of a multi-line element */
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/src/grid/column/Action.scss:5 */
 .x-grid-cell-inner-action-col :focus {
-    outline: 1px solid #5fa2dd;
+    outline: 1px solid #35baf6;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/src/grid/column/Action.scss:10 */
 .x-action-col-icon {
@@ -2387,7 +2413,7 @@ the height of a multi-line element */
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/src/grid/column/Check.scss:18 */
 .x-grid-checkcolumn-cell-inner :focus {
-    outline: 1px solid #5fa2dd;
+    outline: 1px solid #35baf6;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/src/grid/feature/Grouping.scss:1 */
 .x-group-hd-container {
@@ -2617,7 +2643,7 @@ the height of a multi-line element */
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/src/grid/plugin/RowExpander.scss:7 */
 .x-grid-row-expander:focus {
-    outline: 1px solid #5fa2dd;
+    outline: 1px solid #35baf6;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/src/grid/plugin/RowExpander.scss:11 */
 .x-grid-hide-row-expander-spacer .x-grid-row-expander-spacer {
@@ -3062,7 +3088,7 @@ the height of a multi-line element */
     color: #404040;
     font-size: 13px;
     line-height: 17px;
-    font-weight: 300;
+    font-weight: 400;
     font-family: 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
     background: #f6f6f6;
 }
@@ -3107,7 +3133,7 @@ body > .x-mask {
 .x-mask.x-focus {
     border-style: solid;
     border-width: 1px;
-    border-color: #5fa2dd;
+    border-color: #35baf6;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/LoadMask.scss:29 */
 .x-mask-msg {
@@ -3119,7 +3145,7 @@ body > .x-mask {
     padding: 0;
     background-color: transparent;
     color: #404040;
-    font: 300 13px 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
+    font: 400 13px 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/LoadMask.scss:59 */
 .x-mask-msg-text {
@@ -3137,18 +3163,18 @@ body > .x-mask {
     background-color: #ececec;
     border-width: 0;
     height: 24px;
-    border-color: #5fa2dd;
+    border-color: #35baf6;
     border-style: solid;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/ProgressBar.scss:111 */
 .x-progress-default .x-progress-bar-default {
     background-image: none;
-    background-color: #7fb5e4;
+    background-color: #458fd2;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/ProgressBar.scss:126 */
 .x-progress-default .x-progress-text {
     color: #fff;
-    font-weight: 400;
+    font-weight: 500;
     font-size: 13px;
     font-family: 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
     text-align: center;
@@ -3167,8 +3193,14 @@ body > .x-mask {
     right: 0;
     bottom: 0;
     left: 0;
-    border: 0 solid #5fa2dd;
+    border: 0 solid #35baf6;
     pointer-events: none;
+}
+/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/slicer.scss:83 */
+.x-cmd-slicer.x-progress-bar-default:before {
+    /*<if slicer>*/
+    display: none;
+    content: "x-slicer:, stretch:bottom" !important;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/ProgressBar.scss:160 */
 .x-progressbar-default-cell > .x-grid-cell-inner,
@@ -3188,16 +3220,15 @@ body > .x-mask {
     -webkit-border-radius: 0;
     -moz-border-radius: 0;
     -ms-border-radius: 0;
-    -o-border-radius: 0;
     border-radius: 0;
     padding: 7px 7px 7px 7px;
     border-width: 1px;
     border-style: solid;
-    background-color: #5fa2dd;
+    background-color: #35baf6;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/frame.scss:237 */
 .x-btn-default-small-mc {
-    background-color: #5fa2dd;
+    background-color: #35baf6;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/frame.scss:264 */
 .x-nbr .x-btn-default-small {
@@ -3206,7 +3237,6 @@ body > .x-mask {
     -webkit-border-radius: 0px;
     -moz-border-radius: 0px;
     -ms-border-radius: 0px;
-    -o-border-radius: 0px;
     border-radius: 0px;
     background-color: transparent !important;
     box-shadow: none !important;
@@ -3288,9 +3318,15 @@ body > .x-mask {
 .x-btn-default-small-mc {
     padding: 7px 7px 7px 7px;
 }
+/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/slicer.scss:83 */
+.x-cmd-slicer.x-btn-default-small:before {
+    /*<if slicer>*/
+    display: none;
+    content: "x-slicer:, frame:1px 1px 1px 1px, corners:url(images/btn/btn-default-small-corners.gif), sides:url(images/btn/btn-default-small-sides.gif)" !important;
+}
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:445 */
 .x-btn-default-small {
-    border-color: #5897ce;
+    border-color: #31ade5;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:452 */
 .x-btn-button-default-small {
@@ -3303,7 +3339,7 @@ body > .x-mask {
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:464 */
 .x-btn-inner-default-small {
-    font: 400 12px/16px 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
+    font: 500 12px/16px 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
     color: #f0f0f0;
     padding: 0 5px;
     max-width: 100%;
@@ -3443,10 +3479,11 @@ body > .x-mask {
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:727 */
 .x-btn-focus.x-btn-default-small {
     background-image: none;
-    background-color: #5fa2dd;
-    -webkit-box-shadow: #d3e0ec 0 1px 0px 0 inset, #d3e0ec 0 -1px 0px 0 inset, #d3e0ec -1px 0 0px 0 inset, #d3e0ec 1px 0 0px 0 inset;
-    -moz-box-shadow: #d3e0ec 0 1px 0px 0 inset, #d3e0ec 0 -1px 0px 0 inset, #d3e0ec -1px 0 0px 0 inset, #d3e0ec 1px 0 0px 0 inset;
-    box-shadow: #d3e0ec 0 1px 0px 0 inset, #d3e0ec 0 -1px 0px 0 inset, #d3e0ec -1px 0 0px 0 inset, #d3e0ec 1px 0 0px 0 inset;
+    background-color: #35baf6;
+    -webkit-box-shadow: #cbe5f1 0 1px 0px 0 inset;
+    -moz-box-shadow: #cbe5f1 0 1px 0px 0 inset;
+    -ms-box-shadow: #cbe5f1 0 1px 0px 0 inset;
+    box-shadow: #cbe5f1 0 1px 0px 0 inset;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:762 */
 .x-btn-default-small .x-btn-arrow-el {
@@ -3464,38 +3501,40 @@ body > .x-mask {
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:778 */
 .x-btn-default-small.x-arrow-focus .x-btn-arrow-el {
-    border: 1px solid #d3e0ec;
+    border: 1px solid #cbe5f1;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:785 */
 .x-btn-over.x-btn-default-small {
-    border-color: #518bbd;
+    border-color: #2d9fd2;
     background-image: none;
-    background-color: #5795cb;
+    background-color: #31abe2;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:812 */
 .x-btn-focus.x-btn-over.x-btn-default-small {
-    -webkit-box-shadow: #d1dee9 0 1px 0px 0 inset, #d1dee9 0 -1px 0px 0 inset, #d1dee9 -1px 0 0px 0 inset, #d1dee9 1px 0 0px 0 inset;
-    -moz-box-shadow: #d1dee9 0 1px 0px 0 inset, #d1dee9 0 -1px 0px 0 inset, #d1dee9 -1px 0 0px 0 inset, #d1dee9 1px 0 0px 0 inset;
-    box-shadow: #d1dee9 0 1px 0px 0 inset, #d1dee9 0 -1px 0px 0 inset, #d1dee9 -1px 0 0px 0 inset, #d1dee9 1px 0 0px 0 inset;
+    -webkit-box-shadow: #cae2ed 0 1px 0px 0 inset;
+    -moz-box-shadow: #cae2ed 0 1px 0px 0 inset;
+    -ms-box-shadow: #cae2ed 0 1px 0px 0 inset;
+    box-shadow: #cae2ed 0 1px 0px 0 inset;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:840 */
 .x-btn.x-btn-menu-active.x-btn-default-small,
 .x-btn.x-btn-pressed.x-btn-default-small {
-    border-color: #42719a;
+    border-color: #2582ac;
     background-image: none;
-    background-color: #477aa6;
+    background-color: #288cb9;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:868 */
 .x-btn-focus.x-btn-menu-active.x-btn-default-small,
 .x-btn-focus.x-btn-pressed.x-btn-default-small {
-    -webkit-box-shadow: #ced8e1 0 1px 0px 0 inset, #ced8e1 0 -1px 0px 0 inset, #ced8e1 -1px 0 0px 0 inset, #ced8e1 1px 0 0px 0 inset;
-    -moz-box-shadow: #ced8e1 0 1px 0px 0 inset, #ced8e1 0 -1px 0px 0 inset, #ced8e1 -1px 0 0px 0 inset, #ced8e1 1px 0 0px 0 inset;
-    box-shadow: #ced8e1 0 1px 0px 0 inset, #ced8e1 0 -1px 0px 0 inset, #ced8e1 -1px 0 0px 0 inset, #ced8e1 1px 0 0px 0 inset;
+    -webkit-box-shadow: #c8dce5 0 1px 0px 0 inset;
+    -moz-box-shadow: #c8dce5 0 1px 0px 0 inset;
+    -ms-box-shadow: #c8dce5 0 1px 0px 0 inset;
+    box-shadow: #c8dce5 0 1px 0px 0 inset;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:897 */
 .x-btn.x-btn-disabled.x-btn-default-small {
     background-image: none;
-    background-color: #5fa2dd;
+    background-color: #35baf6;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:929 */
 .x-btn-focus .x-btn-default-small-tl,
@@ -3513,7 +3552,7 @@ body > .x-mask {
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:941 */
 .x-btn-focus .x-btn-default-small-mc {
-    background-color: #5fa2dd;
+    background-color: #35baf6;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:953 */
 .x-btn-over .x-btn-default-small-tl,
@@ -3531,7 +3570,7 @@ body > .x-mask {
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:965 */
 .x-btn-over .x-btn-default-small-mc {
-    background-color: #5795cb;
+    background-color: #31abe2;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:977 */
 .x-btn-focus.x-btn-over .x-btn-default-small-tl,
@@ -3549,7 +3588,7 @@ body > .x-mask {
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:989 */
 .x-btn-focus.x-btn-over .x-btn-default-small-mc {
-    background-color: #5795cb;
+    background-color: #31abe2;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:1003 */
 .x-btn.x-btn-menu-active .x-btn-default-small-tl,
@@ -3576,7 +3615,7 @@ body > .x-mask {
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:1015 */
 .x-btn.x-btn-menu-active .x-btn-default-small-mc,
 .x-btn.x-btn-pressed .x-btn-default-small-mc {
-    background-color: #477aa6;
+    background-color: #288cb9;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:1028 */
 .x-btn-focus.x-btn-menu-active .x-btn-default-small-tl,
@@ -3603,7 +3642,7 @@ body > .x-mask {
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:1040 */
 .x-btn-focus.x-btn-menu-active .x-btn-default-small-mc,
 .x-btn-focus.x-btn-pressed .x-btn-default-small-mc {
-    background-color: #477aa6;
+    background-color: #288cb9;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:1053 */
 .x-btn.x-btn-disabled .x-btn-default-small-tl,
@@ -3621,7 +3660,7 @@ body > .x-mask {
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:1065 */
 .x-btn.x-btn-disabled .x-btn-default-small-mc {
-    background-color: #5fa2dd;
+    background-color: #35baf6;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:1075 */
 .x-nbr .x-btn-default-small {
@@ -3714,18 +3753,54 @@ body > .x-mask {
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:1190 */
 .x-nbr .x-segmented-button-item.x-btn-focus.x-btn-default-small:after {
     border-width: 1px;
-    border-color: #d3e0ec;
+    border-color: #cbe5f1;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:1204 */
 .x-nbr .x-segmented-button-item.x-btn-focus.x-btn-over.x-btn-default-small:after {
     border-width: 1px;
-    border-color: #d1dee9;
+    border-color: #cae2ed;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:1219 */
 .x-nbr .x-segmented-button-item.x-btn-focus.x-btn-menu-active.x-btn-default-small:after,
 .x-nbr .x-segmented-button-item.x-btn-focus.x-btn-pressed.x-btn-default-small:after {
     border-width: 1px;
-    border-color: #ced8e1;
+    border-color: #c8dce5;
+}
+/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/slicer.scss:83 */
+.x-cmd-slicer.x-btn-focus.x-btn-default-small:before {
+    /*<if slicer>*/
+    display: none;
+    content: "x-slicer:, stretch:bottom, frame:2px 2px 2px 2px, corners:url(images/btn/btn-default-small-focus-corners.gif), sides:url(images/btn/btn-default-small-focus-sides.gif)" !important;
+}
+/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/slicer.scss:83 */
+.x-cmd-slicer.x-btn-over.x-btn-default-small:before {
+    /*<if slicer>*/
+    display: none;
+    content: "x-slicer:, stretch:bottom, frame:2px 2px 2px 2px, corners:url(images/btn/btn-default-small-over-corners.gif), sides:url(images/btn/btn-default-small-over-sides.gif)" !important;
+}
+/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/slicer.scss:83 */
+.x-cmd-slicer.x-btn-focus.x-btn-over.x-btn-default-small:before {
+    /*<if slicer>*/
+    display: none;
+    content: "x-slicer:, stretch:bottom, frame:2px 2px 2px 2px, corners:url(images/btn/btn-default-small-focus-over-corners.gif), sides:url(images/btn/btn-default-small-focus-over-sides.gif)" !important;
+}
+/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/slicer.scss:83 */
+.x-cmd-slicer.x-btn-pressed.x-btn-default-small:before {
+    /*<if slicer>*/
+    display: none;
+    content: "x-slicer:, stretch:bottom, frame:2px 2px 2px 2px, corners:url(images/btn/btn-default-small-pressed-corners.gif), sides:url(images/btn/btn-default-small-pressed-sides.gif)" !important;
+}
+/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/slicer.scss:83 */
+.x-cmd-slicer.x-btn-focus.x-btn-pressed.x-btn-default-small:before {
+    /*<if slicer>*/
+    display: none;
+    content: "x-slicer:, stretch:bottom, frame:2px 2px 2px 2px, corners:url(images/btn/btn-default-small-focus-pressed-corners.gif), sides:url(images/btn/btn-default-small-focus-pressed-sides.gif)" !important;
+}
+/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/slicer.scss:83 */
+.x-cmd-slicer.x-btn-disabled.x-btn-default-small:before {
+    /*<if slicer>*/
+    display: none;
+    content: "x-slicer:, stretch:bottom, frame:2px 2px 2px 2px, corners:url(images/btn/btn-default-small-disabled-corners.gif), sides:url(images/btn/btn-default-small-disabled-sides.gif)" !important;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:1246 */
 .x-button-default-small-cell > .x-grid-cell-inner {
@@ -3741,16 +3816,15 @@ body > .x-mask {
     -webkit-border-radius: 0;
     -moz-border-radius: 0;
     -ms-border-radius: 0;
-    -o-border-radius: 0;
     border-radius: 0;
     padding: 8px 8px 8px 8px;
     border-width: 1px;
     border-style: solid;
-    background-color: #5fa2dd;
+    background-color: #35baf6;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/frame.scss:237 */
 .x-btn-default-medium-mc {
-    background-color: #5fa2dd;
+    background-color: #35baf6;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/frame.scss:264 */
 .x-nbr .x-btn-default-medium {
@@ -3759,7 +3833,6 @@ body > .x-mask {
     -webkit-border-radius: 0px;
     -moz-border-radius: 0px;
     -ms-border-radius: 0px;
-    -o-border-radius: 0px;
     border-radius: 0px;
     background-color: transparent !important;
     box-shadow: none !important;
@@ -3841,9 +3914,15 @@ body > .x-mask {
 .x-btn-default-medium-mc {
     padding: 8px 8px 8px 8px;
 }
+/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/slicer.scss:83 */
+.x-cmd-slicer.x-btn-default-medium:before {
+    /*<if slicer>*/
+    display: none;
+    content: "x-slicer:, frame:1px 1px 1px 1px, corners:url(images/btn/btn-default-medium-corners.gif), sides:url(images/btn/btn-default-medium-sides.gif)" !important;
+}
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:445 */
 .x-btn-default-medium {
-    border-color: #5897ce;
+    border-color: #31ade5;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:452 */
 .x-btn-button-default-medium {
@@ -3856,7 +3935,7 @@ body > .x-mask {
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:464 */
 .x-btn-inner-default-medium {
-    font: 400 14px/18px 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
+    font: 500 14px/18px 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
     color: #f0f0f0;
     padding: 0 8px;
     max-width: 100%;
@@ -3996,10 +4075,11 @@ body > .x-mask {
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:727 */
 .x-btn-focus.x-btn-default-medium {
     background-image: none;
-    background-color: #5fa2dd;
-    -webkit-box-shadow: #d3e0ec 0 1px 0px 0 inset, #d3e0ec 0 -1px 0px 0 inset, #d3e0ec -1px 0 0px 0 inset, #d3e0ec 1px 0 0px 0 inset;
-    -moz-box-shadow: #d3e0ec 0 1px 0px 0 inset, #d3e0ec 0 -1px 0px 0 inset, #d3e0ec -1px 0 0px 0 inset, #d3e0ec 1px 0 0px 0 inset;
-    box-shadow: #d3e0ec 0 1px 0px 0 inset, #d3e0ec 0 -1px 0px 0 inset, #d3e0ec -1px 0 0px 0 inset, #d3e0ec 1px 0 0px 0 inset;
+    background-color: #35baf6;
+    -webkit-box-shadow: #cbe5f1 0 1px 0px 0 inset;
+    -moz-box-shadow: #cbe5f1 0 1px 0px 0 inset;
+    -ms-box-shadow: #cbe5f1 0 1px 0px 0 inset;
+    box-shadow: #cbe5f1 0 1px 0px 0 inset;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:762 */
 .x-btn-default-medium .x-btn-arrow-el {
@@ -4017,38 +4097,40 @@ body > .x-mask {
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:778 */
 .x-btn-default-medium.x-arrow-focus .x-btn-arrow-el {
-    border: 1px solid #d3e0ec;
+    border: 1px solid #cbe5f1;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:785 */
 .x-btn-over.x-btn-default-medium {
-    border-color: #518bbd;
+    border-color: #2d9fd2;
     background-image: none;
-    background-color: #5795cb;
+    background-color: #31abe2;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:812 */
 .x-btn-focus.x-btn-over.x-btn-default-medium {
-    -webkit-box-shadow: #d1dee9 0 1px 0px 0 inset, #d1dee9 0 -1px 0px 0 inset, #d1dee9 -1px 0 0px 0 inset, #d1dee9 1px 0 0px 0 inset;
-    -moz-box-shadow: #d1dee9 0 1px 0px 0 inset, #d1dee9 0 -1px 0px 0 inset, #d1dee9 -1px 0 0px 0 inset, #d1dee9 1px 0 0px 0 inset;
-    box-shadow: #d1dee9 0 1px 0px 0 inset, #d1dee9 0 -1px 0px 0 inset, #d1dee9 -1px 0 0px 0 inset, #d1dee9 1px 0 0px 0 inset;
+    -webkit-box-shadow: #cae2ed 0 1px 0px 0 inset;
+    -moz-box-shadow: #cae2ed 0 1px 0px 0 inset;
+    -ms-box-shadow: #cae2ed 0 1px 0px 0 inset;
+    box-shadow: #cae2ed 0 1px 0px 0 inset;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:840 */
 .x-btn.x-btn-menu-active.x-btn-default-medium,
 .x-btn.x-btn-pressed.x-btn-default-medium {
-    border-color: #42719a;
+    border-color: #2582ac;
     background-image: none;
-    background-color: #477aa6;
+    background-color: #288cb9;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:868 */
 .x-btn-focus.x-btn-menu-active.x-btn-default-medium,
 .x-btn-focus.x-btn-pressed.x-btn-default-medium {
-    -webkit-box-shadow: #ced8e1 0 1px 0px 0 inset, #ced8e1 0 -1px 0px 0 inset, #ced8e1 -1px 0 0px 0 inset, #ced8e1 1px 0 0px 0 inset;
-    -moz-box-shadow: #ced8e1 0 1px 0px 0 inset, #ced8e1 0 -1px 0px 0 inset, #ced8e1 -1px 0 0px 0 inset, #ced8e1 1px 0 0px 0 inset;
-    box-shadow: #ced8e1 0 1px 0px 0 inset, #ced8e1 0 -1px 0px 0 inset, #ced8e1 -1px 0 0px 0 inset, #ced8e1 1px 0 0px 0 inset;
+    -webkit-box-shadow: #c8dce5 0 1px 0px 0 inset;
+    -moz-box-shadow: #c8dce5 0 1px 0px 0 inset;
+    -ms-box-shadow: #c8dce5 0 1px 0px 0 inset;
+    box-shadow: #c8dce5 0 1px 0px 0 inset;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:897 */
 .x-btn.x-btn-disabled.x-btn-default-medium {
     background-image: none;
-    background-color: #5fa2dd;
+    background-color: #35baf6;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:929 */
 .x-btn-focus .x-btn-default-medium-tl,
@@ -4066,7 +4148,7 @@ body > .x-mask {
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:941 */
 .x-btn-focus .x-btn-default-medium-mc {
-    background-color: #5fa2dd;
+    background-color: #35baf6;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:953 */
 .x-btn-over .x-btn-default-medium-tl,
@@ -4084,7 +4166,7 @@ body > .x-mask {
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:965 */
 .x-btn-over .x-btn-default-medium-mc {
-    background-color: #5795cb;
+    background-color: #31abe2;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:977 */
 .x-btn-focus.x-btn-over .x-btn-default-medium-tl,
@@ -4102,7 +4184,7 @@ body > .x-mask {
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:989 */
 .x-btn-focus.x-btn-over .x-btn-default-medium-mc {
-    background-color: #5795cb;
+    background-color: #31abe2;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:1003 */
 .x-btn.x-btn-menu-active .x-btn-default-medium-tl,
@@ -4129,7 +4211,7 @@ body > .x-mask {
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:1015 */
 .x-btn.x-btn-menu-active .x-btn-default-medium-mc,
 .x-btn.x-btn-pressed .x-btn-default-medium-mc {
-    background-color: #477aa6;
+    background-color: #288cb9;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:1028 */
 .x-btn-focus.x-btn-menu-active .x-btn-default-medium-tl,
@@ -4156,7 +4238,7 @@ body > .x-mask {
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:1040 */
 .x-btn-focus.x-btn-menu-active .x-btn-default-medium-mc,
 .x-btn-focus.x-btn-pressed .x-btn-default-medium-mc {
-    background-color: #477aa6;
+    background-color: #288cb9;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:1053 */
 .x-btn.x-btn-disabled .x-btn-default-medium-tl,
@@ -4174,7 +4256,7 @@ body > .x-mask {
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:1065 */
 .x-btn.x-btn-disabled .x-btn-default-medium-mc {
-    background-color: #5fa2dd;
+    background-color: #35baf6;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:1075 */
 .x-nbr .x-btn-default-medium {
@@ -4267,18 +4349,54 @@ body > .x-mask {
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:1190 */
 .x-nbr .x-segmented-button-item.x-btn-focus.x-btn-default-medium:after {
     border-width: 1px;
-    border-color: #d3e0ec;
+    border-color: #cbe5f1;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:1204 */
 .x-nbr .x-segmented-button-item.x-btn-focus.x-btn-over.x-btn-default-medium:after {
     border-width: 1px;
-    border-color: #d1dee9;
+    border-color: #cae2ed;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:1219 */
 .x-nbr .x-segmented-button-item.x-btn-focus.x-btn-menu-active.x-btn-default-medium:after,
 .x-nbr .x-segmented-button-item.x-btn-focus.x-btn-pressed.x-btn-default-medium:after {
     border-width: 1px;
-    border-color: #ced8e1;
+    border-color: #c8dce5;
+}
+/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/slicer.scss:83 */
+.x-cmd-slicer.x-btn-focus.x-btn-default-medium:before {
+    /*<if slicer>*/
+    display: none;
+    content: "x-slicer:, stretch:bottom, frame:2px 2px 2px 2px, corners:url(images/btn/btn-default-medium-focus-corners.gif), sides:url(images/btn/btn-default-medium-focus-sides.gif)" !important;
+}
+/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/slicer.scss:83 */
+.x-cmd-slicer.x-btn-over.x-btn-default-medium:before {
+    /*<if slicer>*/
+    display: none;
+    content: "x-slicer:, stretch:bottom, frame:2px 2px 2px 2px, corners:url(images/btn/btn-default-medium-over-corners.gif), sides:url(images/btn/btn-default-medium-over-sides.gif)" !important;
+}
+/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/slicer.scss:83 */
+.x-cmd-slicer.x-btn-focus.x-btn-over.x-btn-default-medium:before {
+    /*<if slicer>*/
+    display: none;
+    content: "x-slicer:, stretch:bottom, frame:2px 2px 2px 2px, corners:url(images/btn/btn-default-medium-focus-over-corners.gif), sides:url(images/btn/btn-default-medium-focus-over-sides.gif)" !important;
+}
+/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/slicer.scss:83 */
+.x-cmd-slicer.x-btn-pressed.x-btn-default-medium:before {
+    /*<if slicer>*/
+    display: none;
+    content: "x-slicer:, stretch:bottom, frame:2px 2px 2px 2px, corners:url(images/btn/btn-default-medium-pressed-corners.gif), sides:url(images/btn/btn-default-medium-pressed-sides.gif)" !important;
+}
+/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/slicer.scss:83 */
+.x-cmd-slicer.x-btn-focus.x-btn-pressed.x-btn-default-medium:before {
+    /*<if slicer>*/
+    display: none;
+    content: "x-slicer:, stretch:bottom, frame:2px 2px 2px 2px, corners:url(images/btn/btn-default-medium-focus-pressed-corners.gif), sides:url(images/btn/btn-default-medium-focus-pressed-sides.gif)" !important;
+}
+/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/slicer.scss:83 */
+.x-cmd-slicer.x-btn-disabled.x-btn-default-medium:before {
+    /*<if slicer>*/
+    display: none;
+    content: "x-slicer:, stretch:bottom, frame:2px 2px 2px 2px, corners:url(images/btn/btn-default-medium-disabled-corners.gif), sides:url(images/btn/btn-default-medium-disabled-sides.gif)" !important;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:1246 */
 .x-button-default-medium-cell > .x-grid-cell-inner {
@@ -4294,16 +4412,15 @@ body > .x-mask {
     -webkit-border-radius: 0;
     -moz-border-radius: 0;
     -ms-border-radius: 0;
-    -o-border-radius: 0;
     border-radius: 0;
     padding: 9px 9px 9px 9px;
     border-width: 1px;
     border-style: solid;
-    background-color: #5fa2dd;
+    background-color: #35baf6;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/frame.scss:237 */
 .x-btn-default-large-mc {
-    background-color: #5fa2dd;
+    background-color: #35baf6;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/frame.scss:264 */
 .x-nbr .x-btn-default-large {
@@ -4312,7 +4429,6 @@ body > .x-mask {
     -webkit-border-radius: 0px;
     -moz-border-radius: 0px;
     -ms-border-radius: 0px;
-    -o-border-radius: 0px;
     border-radius: 0px;
     background-color: transparent !important;
     box-shadow: none !important;
@@ -4394,9 +4510,15 @@ body > .x-mask {
 .x-btn-default-large-mc {
     padding: 9px 9px 9px 9px;
 }
+/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/slicer.scss:83 */
+.x-cmd-slicer.x-btn-default-large:before {
+    /*<if slicer>*/
+    display: none;
+    content: "x-slicer:, frame:1px 1px 1px 1px, corners:url(images/btn/btn-default-large-corners.gif), sides:url(images/btn/btn-default-large-sides.gif)" !important;
+}
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:445 */
 .x-btn-default-large {
-    border-color: #5897ce;
+    border-color: #31ade5;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:452 */
 .x-btn-button-default-large {
@@ -4409,7 +4531,7 @@ body > .x-mask {
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:464 */
 .x-btn-inner-default-large {
-    font: 400 16px/20px 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
+    font: 500 16px/20px 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
     color: #f0f0f0;
     padding: 0 10px;
     max-width: 100%;
@@ -4549,10 +4671,11 @@ body > .x-mask {
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:727 */
 .x-btn-focus.x-btn-default-large {
     background-image: none;
-    background-color: #5fa2dd;
-    -webkit-box-shadow: #d3e0ec 0 1px 0px 0 inset, #d3e0ec 0 -1px 0px 0 inset, #d3e0ec -1px 0 0px 0 inset, #d3e0ec 1px 0 0px 0 inset;
-    -moz-box-shadow: #d3e0ec 0 1px 0px 0 inset, #d3e0ec 0 -1px 0px 0 inset, #d3e0ec -1px 0 0px 0 inset, #d3e0ec 1px 0 0px 0 inset;
-    box-shadow: #d3e0ec 0 1px 0px 0 inset, #d3e0ec 0 -1px 0px 0 inset, #d3e0ec -1px 0 0px 0 inset, #d3e0ec 1px 0 0px 0 inset;
+    background-color: #35baf6;
+    -webkit-box-shadow: #cbe5f1 0 1px 0px 0 inset;
+    -moz-box-shadow: #cbe5f1 0 1px 0px 0 inset;
+    -ms-box-shadow: #cbe5f1 0 1px 0px 0 inset;
+    box-shadow: #cbe5f1 0 1px 0px 0 inset;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:762 */
 .x-btn-default-large .x-btn-arrow-el {
@@ -4570,38 +4693,40 @@ body > .x-mask {
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:778 */
 .x-btn-default-large.x-arrow-focus .x-btn-arrow-el {
-    border: 1px solid #d3e0ec;
+    border: 1px solid #cbe5f1;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:785 */
 .x-btn-over.x-btn-default-large {
-    border-color: #518bbd;
+    border-color: #2d9fd2;
     background-image: none;
-    background-color: #5795cb;
+    background-color: #31abe2;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:812 */
 .x-btn-focus.x-btn-over.x-btn-default-large {
-    -webkit-box-shadow: #d1dee9 0 1px 0px 0 inset, #d1dee9 0 -1px 0px 0 inset, #d1dee9 -1px 0 0px 0 inset, #d1dee9 1px 0 0px 0 inset;
-    -moz-box-shadow: #d1dee9 0 1px 0px 0 inset, #d1dee9 0 -1px 0px 0 inset, #d1dee9 -1px 0 0px 0 inset, #d1dee9 1px 0 0px 0 inset;
-    box-shadow: #d1dee9 0 1px 0px 0 inset, #d1dee9 0 -1px 0px 0 inset, #d1dee9 -1px 0 0px 0 inset, #d1dee9 1px 0 0px 0 inset;
+    -webkit-box-shadow: #cae2ed 0 1px 0px 0 inset;
+    -moz-box-shadow: #cae2ed 0 1px 0px 0 inset;
+    -ms-box-shadow: #cae2ed 0 1px 0px 0 inset;
+    box-shadow: #cae2ed 0 1px 0px 0 inset;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:840 */
 .x-btn.x-btn-menu-active.x-btn-default-large,
 .x-btn.x-btn-pressed.x-btn-default-large {
-    border-color: #42719a;
+    border-color: #2582ac;
     background-image: none;
-    background-color: #477aa6;
+    background-color: #288cb9;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:868 */
 .x-btn-focus.x-btn-menu-active.x-btn-default-large,
 .x-btn-focus.x-btn-pressed.x-btn-default-large {
-    -webkit-box-shadow: #ced8e1 0 1px 0px 0 inset, #ced8e1 0 -1px 0px 0 inset, #ced8e1 -1px 0 0px 0 inset, #ced8e1 1px 0 0px 0 inset;
-    -moz-box-shadow: #ced8e1 0 1px 0px 0 inset, #ced8e1 0 -1px 0px 0 inset, #ced8e1 -1px 0 0px 0 inset, #ced8e1 1px 0 0px 0 inset;
-    box-shadow: #ced8e1 0 1px 0px 0 inset, #ced8e1 0 -1px 0px 0 inset, #ced8e1 -1px 0 0px 0 inset, #ced8e1 1px 0 0px 0 inset;
+    -webkit-box-shadow: #c8dce5 0 1px 0px 0 inset;
+    -moz-box-shadow: #c8dce5 0 1px 0px 0 inset;
+    -ms-box-shadow: #c8dce5 0 1px 0px 0 inset;
+    box-shadow: #c8dce5 0 1px 0px 0 inset;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:897 */
 .x-btn.x-btn-disabled.x-btn-default-large {
     background-image: none;
-    background-color: #5fa2dd;
+    background-color: #35baf6;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:929 */
 .x-btn-focus .x-btn-default-large-tl,
@@ -4619,7 +4744,7 @@ body > .x-mask {
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:941 */
 .x-btn-focus .x-btn-default-large-mc {
-    background-color: #5fa2dd;
+    background-color: #35baf6;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:953 */
 .x-btn-over .x-btn-default-large-tl,
@@ -4637,7 +4762,7 @@ body > .x-mask {
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:965 */
 .x-btn-over .x-btn-default-large-mc {
-    background-color: #5795cb;
+    background-color: #31abe2;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:977 */
 .x-btn-focus.x-btn-over .x-btn-default-large-tl,
@@ -4655,7 +4780,7 @@ body > .x-mask {
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:989 */
 .x-btn-focus.x-btn-over .x-btn-default-large-mc {
-    background-color: #5795cb;
+    background-color: #31abe2;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:1003 */
 .x-btn.x-btn-menu-active .x-btn-default-large-tl,
@@ -4682,7 +4807,7 @@ body > .x-mask {
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:1015 */
 .x-btn.x-btn-menu-active .x-btn-default-large-mc,
 .x-btn.x-btn-pressed .x-btn-default-large-mc {
-    background-color: #477aa6;
+    background-color: #288cb9;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:1028 */
 .x-btn-focus.x-btn-menu-active .x-btn-default-large-tl,
@@ -4709,7 +4834,7 @@ body > .x-mask {
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:1040 */
 .x-btn-focus.x-btn-menu-active .x-btn-default-large-mc,
 .x-btn-focus.x-btn-pressed .x-btn-default-large-mc {
-    background-color: #477aa6;
+    background-color: #288cb9;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:1053 */
 .x-btn.x-btn-disabled .x-btn-default-large-tl,
@@ -4727,7 +4852,7 @@ body > .x-mask {
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:1065 */
 .x-btn.x-btn-disabled .x-btn-default-large-mc {
-    background-color: #5fa2dd;
+    background-color: #35baf6;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:1075 */
 .x-nbr .x-btn-default-large {
@@ -4820,18 +4945,54 @@ body > .x-mask {
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:1190 */
 .x-nbr .x-segmented-button-item.x-btn-focus.x-btn-default-large:after {
     border-width: 1px;
-    border-color: #d3e0ec;
+    border-color: #cbe5f1;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:1204 */
 .x-nbr .x-segmented-button-item.x-btn-focus.x-btn-over.x-btn-default-large:after {
     border-width: 1px;
-    border-color: #d1dee9;
+    border-color: #cae2ed;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:1219 */
 .x-nbr .x-segmented-button-item.x-btn-focus.x-btn-menu-active.x-btn-default-large:after,
 .x-nbr .x-segmented-button-item.x-btn-focus.x-btn-pressed.x-btn-default-large:after {
     border-width: 1px;
-    border-color: #ced8e1;
+    border-color: #c8dce5;
+}
+/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/slicer.scss:83 */
+.x-cmd-slicer.x-btn-focus.x-btn-default-large:before {
+    /*<if slicer>*/
+    display: none;
+    content: "x-slicer:, stretch:bottom, frame:2px 2px 2px 2px, corners:url(images/btn/btn-default-large-focus-corners.gif), sides:url(images/btn/btn-default-large-focus-sides.gif)" !important;
+}
+/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/slicer.scss:83 */
+.x-cmd-slicer.x-btn-over.x-btn-default-large:before {
+    /*<if slicer>*/
+    display: none;
+    content: "x-slicer:, stretch:bottom, frame:2px 2px 2px 2px, corners:url(images/btn/btn-default-large-over-corners.gif), sides:url(images/btn/btn-default-large-over-sides.gif)" !important;
+}
+/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/slicer.scss:83 */
+.x-cmd-slicer.x-btn-focus.x-btn-over.x-btn-default-large:before {
+    /*<if slicer>*/
+    display: none;
+    content: "x-slicer:, stretch:bottom, frame:2px 2px 2px 2px, corners:url(images/btn/btn-default-large-focus-over-corners.gif), sides:url(images/btn/btn-default-large-focus-over-sides.gif)" !important;
+}
+/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/slicer.scss:83 */
+.x-cmd-slicer.x-btn-pressed.x-btn-default-large:before {
+    /*<if slicer>*/
+    display: none;
+    content: "x-slicer:, stretch:bottom, frame:2px 2px 2px 2px, corners:url(images/btn/btn-default-large-pressed-corners.gif), sides:url(images/btn/btn-default-large-pressed-sides.gif)" !important;
+}
+/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/slicer.scss:83 */
+.x-cmd-slicer.x-btn-focus.x-btn-pressed.x-btn-default-large:before {
+    /*<if slicer>*/
+    display: none;
+    content: "x-slicer:, stretch:bottom, frame:2px 2px 2px 2px, corners:url(images/btn/btn-default-large-focus-pressed-corners.gif), sides:url(images/btn/btn-default-large-focus-pressed-sides.gif)" !important;
+}
+/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/slicer.scss:83 */
+.x-cmd-slicer.x-btn-disabled.x-btn-default-large:before {
+    /*<if slicer>*/
+    display: none;
+    content: "x-slicer:, stretch:bottom, frame:2px 2px 2px 2px, corners:url(images/btn/btn-default-large-disabled-corners.gif), sides:url(images/btn/btn-default-large-disabled-sides.gif)" !important;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:1246 */
 .x-button-default-large-cell > .x-grid-cell-inner {
@@ -4847,7 +5008,6 @@ body > .x-mask {
     -webkit-border-radius: 0;
     -moz-border-radius: 0;
     -ms-border-radius: 0;
-    -o-border-radius: 0;
     border-radius: 0;
     padding: 7px 7px 7px 7px;
     border-width: 1px;
@@ -4865,7 +5025,6 @@ body > .x-mask {
     -webkit-border-radius: 0px;
     -moz-border-radius: 0px;
     -ms-border-radius: 0px;
-    -o-border-radius: 0px;
     border-radius: 0px;
     background-color: transparent !important;
     box-shadow: none !important;
@@ -4947,6 +5106,12 @@ body > .x-mask {
 .x-btn-default-toolbar-small-mc {
     padding: 7px 7px 7px 7px;
 }
+/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/slicer.scss:83 */
+.x-cmd-slicer.x-btn-default-toolbar-small:before {
+    /*<if slicer>*/
+    display: none;
+    content: "x-slicer:, frame:1px 1px 1px 1px, corners:url(images/btn/btn-default-toolbar-small-corners.gif), sides:url(images/btn/btn-default-toolbar-small-sides.gif)" !important;
+}
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:445 */
 .x-btn-default-toolbar-small {
     border-color: #e4e4e4;
@@ -4962,7 +5127,7 @@ body > .x-mask {
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:464 */
 .x-btn-inner-default-toolbar-small {
-    font: 400 12px/16px 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
+    font: 500 12px/16px 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
     color: #606060;
     padding: 0 5px;
     max-width: 100%;
@@ -5103,9 +5268,10 @@ body > .x-mask {
 .x-btn-focus.x-btn-default-toolbar-small {
     background-image: none;
     background-color: #f6f6f6;
-    -webkit-box-shadow: #5fa2dd 0 1px 0px 0 inset, #5fa2dd 0 -1px 0px 0 inset, #5fa2dd -1px 0 0px 0 inset, #5fa2dd 1px 0 0px 0 inset;
-    -moz-box-shadow: #5fa2dd 0 1px 0px 0 inset, #5fa2dd 0 -1px 0px 0 inset, #5fa2dd -1px 0 0px 0 inset, #5fa2dd 1px 0 0px 0 inset;
-    box-shadow: #5fa2dd 0 1px 0px 0 inset, #5fa2dd 0 -1px 0px 0 inset, #5fa2dd -1px 0 0px 0 inset, #5fa2dd 1px 0 0px 0 inset;
+    -webkit-box-shadow: #35baf6 0 1px 0px 0 inset;
+    -moz-box-shadow: #35baf6 0 1px 0px 0 inset;
+    -ms-box-shadow: #35baf6 0 1px 0px 0 inset;
+    box-shadow: #35baf6 0 1px 0px 0 inset;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:762 */
 .x-btn-default-toolbar-small .x-btn-arrow-el {
@@ -5123,7 +5289,7 @@ body > .x-mask {
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:778 */
 .x-btn-default-toolbar-small.x-arrow-focus .x-btn-arrow-el {
-    border: 1px solid #5fa2dd;
+    border: 1px solid #35baf6;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:785 */
 .x-btn-over.x-btn-default-toolbar-small {
@@ -5133,9 +5299,10 @@ body > .x-mask {
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:812 */
 .x-btn-focus.x-btn-over.x-btn-default-toolbar-small {
-    -webkit-box-shadow: #5fa2dd 0 1px 0px 0 inset, #5fa2dd 0 -1px 0px 0 inset, #5fa2dd -1px 0 0px 0 inset, #5fa2dd 1px 0 0px 0 inset;
-    -moz-box-shadow: #5fa2dd 0 1px 0px 0 inset, #5fa2dd 0 -1px 0px 0 inset, #5fa2dd -1px 0 0px 0 inset, #5fa2dd 1px 0 0px 0 inset;
-    box-shadow: #5fa2dd 0 1px 0px 0 inset, #5fa2dd 0 -1px 0px 0 inset, #5fa2dd -1px 0 0px 0 inset, #5fa2dd 1px 0 0px 0 inset;
+    -webkit-box-shadow: #35baf6 0 1px 0px 0 inset;
+    -moz-box-shadow: #35baf6 0 1px 0px 0 inset;
+    -ms-box-shadow: #35baf6 0 1px 0px 0 inset;
+    box-shadow: #35baf6 0 1px 0px 0 inset;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:840 */
 .x-btn.x-btn-menu-active.x-btn-default-toolbar-small,
@@ -5147,9 +5314,10 @@ body > .x-mask {
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:868 */
 .x-btn-focus.x-btn-menu-active.x-btn-default-toolbar-small,
 .x-btn-focus.x-btn-pressed.x-btn-default-toolbar-small {
-    -webkit-box-shadow: #5fa2dd 0 1px 0px 0 inset, #5fa2dd 0 -1px 0px 0 inset, #5fa2dd -1px 0 0px 0 inset, #5fa2dd 1px 0 0px 0 inset;
-    -moz-box-shadow: #5fa2dd 0 1px 0px 0 inset, #5fa2dd 0 -1px 0px 0 inset, #5fa2dd -1px 0 0px 0 inset, #5fa2dd 1px 0 0px 0 inset;
-    box-shadow: #5fa2dd 0 1px 0px 0 inset, #5fa2dd 0 -1px 0px 0 inset, #5fa2dd -1px 0 0px 0 inset, #5fa2dd 1px 0 0px 0 inset;
+    -webkit-box-shadow: #35baf6 0 1px 0px 0 inset;
+    -moz-box-shadow: #35baf6 0 1px 0px 0 inset;
+    -ms-box-shadow: #35baf6 0 1px 0px 0 inset;
+    box-shadow: #35baf6 0 1px 0px 0 inset;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:897 */
 .x-btn.x-btn-disabled.x-btn-default-toolbar-small {
@@ -5373,18 +5541,54 @@ body > .x-mask {
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:1190 */
 .x-nbr .x-segmented-button-item.x-btn-focus.x-btn-default-toolbar-small:after {
     border-width: 1px;
-    border-color: #5fa2dd;
+    border-color: #35baf6;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:1204 */
 .x-nbr .x-segmented-button-item.x-btn-focus.x-btn-over.x-btn-default-toolbar-small:after {
     border-width: 1px;
-    border-color: #5fa2dd;
+    border-color: #35baf6;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:1219 */
 .x-nbr .x-segmented-button-item.x-btn-focus.x-btn-menu-active.x-btn-default-toolbar-small:after,
 .x-nbr .x-segmented-button-item.x-btn-focus.x-btn-pressed.x-btn-default-toolbar-small:after {
     border-width: 1px;
-    border-color: #5fa2dd;
+    border-color: #35baf6;
+}
+/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/slicer.scss:83 */
+.x-cmd-slicer.x-btn-focus.x-btn-default-toolbar-small:before {
+    /*<if slicer>*/
+    display: none;
+    content: "x-slicer:, stretch:bottom, frame:2px 2px 2px 2px, corners:url(images/btn/btn-default-toolbar-small-focus-corners.gif), sides:url(images/btn/btn-default-toolbar-small-focus-sides.gif)" !important;
+}
+/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/slicer.scss:83 */
+.x-cmd-slicer.x-btn-over.x-btn-default-toolbar-small:before {
+    /*<if slicer>*/
+    display: none;
+    content: "x-slicer:, stretch:bottom, frame:2px 2px 2px 2px, corners:url(images/btn/btn-default-toolbar-small-over-corners.gif), sides:url(images/btn/btn-default-toolbar-small-over-sides.gif)" !important;
+}
+/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/slicer.scss:83 */
+.x-cmd-slicer.x-btn-focus.x-btn-over.x-btn-default-toolbar-small:before {
+    /*<if slicer>*/
+    display: none;
+    content: "x-slicer:, stretch:bottom, frame:2px 2px 2px 2px, corners:url(images/btn/btn-default-toolbar-small-focus-over-corners.gif), sides:url(images/btn/btn-default-toolbar-small-focus-over-sides.gif)" !important;
+}
+/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/slicer.scss:83 */
+.x-cmd-slicer.x-btn-pressed.x-btn-default-toolbar-small:before {
+    /*<if slicer>*/
+    display: none;
+    content: "x-slicer:, stretch:bottom, frame:2px 2px 2px 2px, corners:url(images/btn/btn-default-toolbar-small-pressed-corners.gif), sides:url(images/btn/btn-default-toolbar-small-pressed-sides.gif)" !important;
+}
+/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/slicer.scss:83 */
+.x-cmd-slicer.x-btn-focus.x-btn-pressed.x-btn-default-toolbar-small:before {
+    /*<if slicer>*/
+    display: none;
+    content: "x-slicer:, stretch:bottom, frame:2px 2px 2px 2px, corners:url(images/btn/btn-default-toolbar-small-focus-pressed-corners.gif), sides:url(images/btn/btn-default-toolbar-small-focus-pressed-sides.gif)" !important;
+}
+/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/slicer.scss:83 */
+.x-cmd-slicer.x-btn-disabled.x-btn-default-toolbar-small:before {
+    /*<if slicer>*/
+    display: none;
+    content: "x-slicer:, stretch:bottom, frame:2px 2px 2px 2px, corners:url(images/btn/btn-default-toolbar-small-disabled-corners.gif), sides:url(images/btn/btn-default-toolbar-small-disabled-sides.gif)" !important;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:1246 */
 .x-button-default-toolbar-small-cell > .x-grid-cell-inner {
@@ -5400,7 +5604,6 @@ body > .x-mask {
     -webkit-border-radius: 0;
     -moz-border-radius: 0;
     -ms-border-radius: 0;
-    -o-border-radius: 0;
     border-radius: 0;
     padding: 8px 8px 8px 8px;
     border-width: 1px;
@@ -5418,7 +5621,6 @@ body > .x-mask {
     -webkit-border-radius: 0px;
     -moz-border-radius: 0px;
     -ms-border-radius: 0px;
-    -o-border-radius: 0px;
     border-radius: 0px;
     background-color: transparent !important;
     box-shadow: none !important;
@@ -5500,6 +5702,12 @@ body > .x-mask {
 .x-btn-default-toolbar-medium-mc {
     padding: 8px 8px 8px 8px;
 }
+/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/slicer.scss:83 */
+.x-cmd-slicer.x-btn-default-toolbar-medium:before {
+    /*<if slicer>*/
+    display: none;
+    content: "x-slicer:, frame:1px 1px 1px 1px, corners:url(images/btn/btn-default-toolbar-medium-corners.gif), sides:url(images/btn/btn-default-toolbar-medium-sides.gif)" !important;
+}
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:445 */
 .x-btn-default-toolbar-medium {
     border-color: #e4e4e4;
@@ -5515,7 +5723,7 @@ body > .x-mask {
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:464 */
 .x-btn-inner-default-toolbar-medium {
-    font: 400 14px/18px 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
+    font: 500 14px/18px 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
     color: #606060;
     padding: 0 8px;
     max-width: 100%;
@@ -5656,9 +5864,10 @@ body > .x-mask {
 .x-btn-focus.x-btn-default-toolbar-medium {
     background-image: none;
     background-color: #f6f6f6;
-    -webkit-box-shadow: #5fa2dd 0 1px 0px 0 inset, #5fa2dd 0 -1px 0px 0 inset, #5fa2dd -1px 0 0px 0 inset, #5fa2dd 1px 0 0px 0 inset;
-    -moz-box-shadow: #5fa2dd 0 1px 0px 0 inset, #5fa2dd 0 -1px 0px 0 inset, #5fa2dd -1px 0 0px 0 inset, #5fa2dd 1px 0 0px 0 inset;
-    box-shadow: #5fa2dd 0 1px 0px 0 inset, #5fa2dd 0 -1px 0px 0 inset, #5fa2dd -1px 0 0px 0 inset, #5fa2dd 1px 0 0px 0 inset;
+    -webkit-box-shadow: #35baf6 0 1px 0px 0 inset;
+    -moz-box-shadow: #35baf6 0 1px 0px 0 inset;
+    -ms-box-shadow: #35baf6 0 1px 0px 0 inset;
+    box-shadow: #35baf6 0 1px 0px 0 inset;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:762 */
 .x-btn-default-toolbar-medium .x-btn-arrow-el {
@@ -5676,7 +5885,7 @@ body > .x-mask {
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:778 */
 .x-btn-default-toolbar-medium.x-arrow-focus .x-btn-arrow-el {
-    border: 1px solid #5fa2dd;
+    border: 1px solid #35baf6;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:785 */
 .x-btn-over.x-btn-default-toolbar-medium {
@@ -5686,9 +5895,10 @@ body > .x-mask {
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:812 */
 .x-btn-focus.x-btn-over.x-btn-default-toolbar-medium {
-    -webkit-box-shadow: #5fa2dd 0 1px 0px 0 inset, #5fa2dd 0 -1px 0px 0 inset, #5fa2dd -1px 0 0px 0 inset, #5fa2dd 1px 0 0px 0 inset;
-    -moz-box-shadow: #5fa2dd 0 1px 0px 0 inset, #5fa2dd 0 -1px 0px 0 inset, #5fa2dd -1px 0 0px 0 inset, #5fa2dd 1px 0 0px 0 inset;
-    box-shadow: #5fa2dd 0 1px 0px 0 inset, #5fa2dd 0 -1px 0px 0 inset, #5fa2dd -1px 0 0px 0 inset, #5fa2dd 1px 0 0px 0 inset;
+    -webkit-box-shadow: #35baf6 0 1px 0px 0 inset;
+    -moz-box-shadow: #35baf6 0 1px 0px 0 inset;
+    -ms-box-shadow: #35baf6 0 1px 0px 0 inset;
+    box-shadow: #35baf6 0 1px 0px 0 inset;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:840 */
 .x-btn.x-btn-menu-active.x-btn-default-toolbar-medium,
@@ -5700,9 +5910,10 @@ body > .x-mask {
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:868 */
 .x-btn-focus.x-btn-menu-active.x-btn-default-toolbar-medium,
 .x-btn-focus.x-btn-pressed.x-btn-default-toolbar-medium {
-    -webkit-box-shadow: #5fa2dd 0 1px 0px 0 inset, #5fa2dd 0 -1px 0px 0 inset, #5fa2dd -1px 0 0px 0 inset, #5fa2dd 1px 0 0px 0 inset;
-    -moz-box-shadow: #5fa2dd 0 1px 0px 0 inset, #5fa2dd 0 -1px 0px 0 inset, #5fa2dd -1px 0 0px 0 inset, #5fa2dd 1px 0 0px 0 inset;
-    box-shadow: #5fa2dd 0 1px 0px 0 inset, #5fa2dd 0 -1px 0px 0 inset, #5fa2dd -1px 0 0px 0 inset, #5fa2dd 1px 0 0px 0 inset;
+    -webkit-box-shadow: #35baf6 0 1px 0px 0 inset;
+    -moz-box-shadow: #35baf6 0 1px 0px 0 inset;
+    -ms-box-shadow: #35baf6 0 1px 0px 0 inset;
+    box-shadow: #35baf6 0 1px 0px 0 inset;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:897 */
 .x-btn.x-btn-disabled.x-btn-default-toolbar-medium {
@@ -5926,18 +6137,54 @@ body > .x-mask {
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:1190 */
 .x-nbr .x-segmented-button-item.x-btn-focus.x-btn-default-toolbar-medium:after {
     border-width: 1px;
-    border-color: #5fa2dd;
+    border-color: #35baf6;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:1204 */
 .x-nbr .x-segmented-button-item.x-btn-focus.x-btn-over.x-btn-default-toolbar-medium:after {
     border-width: 1px;
-    border-color: #5fa2dd;
+    border-color: #35baf6;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:1219 */
 .x-nbr .x-segmented-button-item.x-btn-focus.x-btn-menu-active.x-btn-default-toolbar-medium:after,
 .x-nbr .x-segmented-button-item.x-btn-focus.x-btn-pressed.x-btn-default-toolbar-medium:after {
     border-width: 1px;
-    border-color: #5fa2dd;
+    border-color: #35baf6;
+}
+/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/slicer.scss:83 */
+.x-cmd-slicer.x-btn-focus.x-btn-default-toolbar-medium:before {
+    /*<if slicer>*/
+    display: none;
+    content: "x-slicer:, stretch:bottom, frame:2px 2px 2px 2px, corners:url(images/btn/btn-default-toolbar-medium-focus-corners.gif), sides:url(images/btn/btn-default-toolbar-medium-focus-sides.gif)" !important;
+}
+/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/slicer.scss:83 */
+.x-cmd-slicer.x-btn-over.x-btn-default-toolbar-medium:before {
+    /*<if slicer>*/
+    display: none;
+    content: "x-slicer:, stretch:bottom, frame:2px 2px 2px 2px, corners:url(images/btn/btn-default-toolbar-medium-over-corners.gif), sides:url(images/btn/btn-default-toolbar-medium-over-sides.gif)" !important;
+}
+/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/slicer.scss:83 */
+.x-cmd-slicer.x-btn-focus.x-btn-over.x-btn-default-toolbar-medium:before {
+    /*<if slicer>*/
+    display: none;
+    content: "x-slicer:, stretch:bottom, frame:2px 2px 2px 2px, corners:url(images/btn/btn-default-toolbar-medium-focus-over-corners.gif), sides:url(images/btn/btn-default-toolbar-medium-focus-over-sides.gif)" !important;
+}
+/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/slicer.scss:83 */
+.x-cmd-slicer.x-btn-pressed.x-btn-default-toolbar-medium:before {
+    /*<if slicer>*/
+    display: none;
+    content: "x-slicer:, stretch:bottom, frame:2px 2px 2px 2px, corners:url(images/btn/btn-default-toolbar-medium-pressed-corners.gif), sides:url(images/btn/btn-default-toolbar-medium-pressed-sides.gif)" !important;
+}
+/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/slicer.scss:83 */
+.x-cmd-slicer.x-btn-focus.x-btn-pressed.x-btn-default-toolbar-medium:before {
+    /*<if slicer>*/
+    display: none;
+    content: "x-slicer:, stretch:bottom, frame:2px 2px 2px 2px, corners:url(images/btn/btn-default-toolbar-medium-focus-pressed-corners.gif), sides:url(images/btn/btn-default-toolbar-medium-focus-pressed-sides.gif)" !important;
+}
+/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/slicer.scss:83 */
+.x-cmd-slicer.x-btn-disabled.x-btn-default-toolbar-medium:before {
+    /*<if slicer>*/
+    display: none;
+    content: "x-slicer:, stretch:bottom, frame:2px 2px 2px 2px, corners:url(images/btn/btn-default-toolbar-medium-disabled-corners.gif), sides:url(images/btn/btn-default-toolbar-medium-disabled-sides.gif)" !important;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:1246 */
 .x-button-default-toolbar-medium-cell > .x-grid-cell-inner {
@@ -5953,7 +6200,6 @@ body > .x-mask {
     -webkit-border-radius: 0;
     -moz-border-radius: 0;
     -ms-border-radius: 0;
-    -o-border-radius: 0;
     border-radius: 0;
     padding: 9px 9px 9px 9px;
     border-width: 1px;
@@ -5971,7 +6217,6 @@ body > .x-mask {
     -webkit-border-radius: 0px;
     -moz-border-radius: 0px;
     -ms-border-radius: 0px;
-    -o-border-radius: 0px;
     border-radius: 0px;
     background-color: transparent !important;
     box-shadow: none !important;
@@ -6053,6 +6298,12 @@ body > .x-mask {
 .x-btn-default-toolbar-large-mc {
     padding: 9px 9px 9px 9px;
 }
+/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/slicer.scss:83 */
+.x-cmd-slicer.x-btn-default-toolbar-large:before {
+    /*<if slicer>*/
+    display: none;
+    content: "x-slicer:, frame:1px 1px 1px 1px, corners:url(images/btn/btn-default-toolbar-large-corners.gif), sides:url(images/btn/btn-default-toolbar-large-sides.gif)" !important;
+}
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:445 */
 .x-btn-default-toolbar-large {
     border-color: #e4e4e4;
@@ -6068,7 +6319,7 @@ body > .x-mask {
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:464 */
 .x-btn-inner-default-toolbar-large {
-    font: 400 16px/20px 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
+    font: 500 16px/20px 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
     color: #606060;
     padding: 0 10px;
     max-width: 100%;
@@ -6209,9 +6460,10 @@ body > .x-mask {
 .x-btn-focus.x-btn-default-toolbar-large {
     background-image: none;
     background-color: #f6f6f6;
-    -webkit-box-shadow: #5fa2dd 0 1px 0px 0 inset, #5fa2dd 0 -1px 0px 0 inset, #5fa2dd -1px 0 0px 0 inset, #5fa2dd 1px 0 0px 0 inset;
-    -moz-box-shadow: #5fa2dd 0 1px 0px 0 inset, #5fa2dd 0 -1px 0px 0 inset, #5fa2dd -1px 0 0px 0 inset, #5fa2dd 1px 0 0px 0 inset;
-    box-shadow: #5fa2dd 0 1px 0px 0 inset, #5fa2dd 0 -1px 0px 0 inset, #5fa2dd -1px 0 0px 0 inset, #5fa2dd 1px 0 0px 0 inset;
+    -webkit-box-shadow: #35baf6 0 1px 0px 0 inset;
+    -moz-box-shadow: #35baf6 0 1px 0px 0 inset;
+    -ms-box-shadow: #35baf6 0 1px 0px 0 inset;
+    box-shadow: #35baf6 0 1px 0px 0 inset;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:762 */
 .x-btn-default-toolbar-large .x-btn-arrow-el {
@@ -6229,7 +6481,7 @@ body > .x-mask {
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:778 */
 .x-btn-default-toolbar-large.x-arrow-focus .x-btn-arrow-el {
-    border: 1px solid #5fa2dd;
+    border: 1px solid #35baf6;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:785 */
 .x-btn-over.x-btn-default-toolbar-large {
@@ -6239,9 +6491,10 @@ body > .x-mask {
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:812 */
 .x-btn-focus.x-btn-over.x-btn-default-toolbar-large {
-    -webkit-box-shadow: #5fa2dd 0 1px 0px 0 inset, #5fa2dd 0 -1px 0px 0 inset, #5fa2dd -1px 0 0px 0 inset, #5fa2dd 1px 0 0px 0 inset;
-    -moz-box-shadow: #5fa2dd 0 1px 0px 0 inset, #5fa2dd 0 -1px 0px 0 inset, #5fa2dd -1px 0 0px 0 inset, #5fa2dd 1px 0 0px 0 inset;
-    box-shadow: #5fa2dd 0 1px 0px 0 inset, #5fa2dd 0 -1px 0px 0 inset, #5fa2dd -1px 0 0px 0 inset, #5fa2dd 1px 0 0px 0 inset;
+    -webkit-box-shadow: #35baf6 0 1px 0px 0 inset;
+    -moz-box-shadow: #35baf6 0 1px 0px 0 inset;
+    -ms-box-shadow: #35baf6 0 1px 0px 0 inset;
+    box-shadow: #35baf6 0 1px 0px 0 inset;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:840 */
 .x-btn.x-btn-menu-active.x-btn-default-toolbar-large,
@@ -6253,9 +6506,10 @@ body > .x-mask {
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:868 */
 .x-btn-focus.x-btn-menu-active.x-btn-default-toolbar-large,
 .x-btn-focus.x-btn-pressed.x-btn-default-toolbar-large {
-    -webkit-box-shadow: #5fa2dd 0 1px 0px 0 inset, #5fa2dd 0 -1px 0px 0 inset, #5fa2dd -1px 0 0px 0 inset, #5fa2dd 1px 0 0px 0 inset;
-    -moz-box-shadow: #5fa2dd 0 1px 0px 0 inset, #5fa2dd 0 -1px 0px 0 inset, #5fa2dd -1px 0 0px 0 inset, #5fa2dd 1px 0 0px 0 inset;
-    box-shadow: #5fa2dd 0 1px 0px 0 inset, #5fa2dd 0 -1px 0px 0 inset, #5fa2dd -1px 0 0px 0 inset, #5fa2dd 1px 0 0px 0 inset;
+    -webkit-box-shadow: #35baf6 0 1px 0px 0 inset;
+    -moz-box-shadow: #35baf6 0 1px 0px 0 inset;
+    -ms-box-shadow: #35baf6 0 1px 0px 0 inset;
+    box-shadow: #35baf6 0 1px 0px 0 inset;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:897 */
 .x-btn.x-btn-disabled.x-btn-default-toolbar-large {
@@ -6479,18 +6733,54 @@ body > .x-mask {
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:1190 */
 .x-nbr .x-segmented-button-item.x-btn-focus.x-btn-default-toolbar-large:after {
     border-width: 1px;
-    border-color: #5fa2dd;
+    border-color: #35baf6;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:1204 */
 .x-nbr .x-segmented-button-item.x-btn-focus.x-btn-over.x-btn-default-toolbar-large:after {
     border-width: 1px;
-    border-color: #5fa2dd;
+    border-color: #35baf6;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:1219 */
 .x-nbr .x-segmented-button-item.x-btn-focus.x-btn-menu-active.x-btn-default-toolbar-large:after,
 .x-nbr .x-segmented-button-item.x-btn-focus.x-btn-pressed.x-btn-default-toolbar-large:after {
     border-width: 1px;
-    border-color: #5fa2dd;
+    border-color: #35baf6;
+}
+/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/slicer.scss:83 */
+.x-cmd-slicer.x-btn-focus.x-btn-default-toolbar-large:before {
+    /*<if slicer>*/
+    display: none;
+    content: "x-slicer:, stretch:bottom, frame:2px 2px 2px 2px, corners:url(images/btn/btn-default-toolbar-large-focus-corners.gif), sides:url(images/btn/btn-default-toolbar-large-focus-sides.gif)" !important;
+}
+/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/slicer.scss:83 */
+.x-cmd-slicer.x-btn-over.x-btn-default-toolbar-large:before {
+    /*<if slicer>*/
+    display: none;
+    content: "x-slicer:, stretch:bottom, frame:2px 2px 2px 2px, corners:url(images/btn/btn-default-toolbar-large-over-corners.gif), sides:url(images/btn/btn-default-toolbar-large-over-sides.gif)" !important;
+}
+/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/slicer.scss:83 */
+.x-cmd-slicer.x-btn-focus.x-btn-over.x-btn-default-toolbar-large:before {
+    /*<if slicer>*/
+    display: none;
+    content: "x-slicer:, stretch:bottom, frame:2px 2px 2px 2px, corners:url(images/btn/btn-default-toolbar-large-focus-over-corners.gif), sides:url(images/btn/btn-default-toolbar-large-focus-over-sides.gif)" !important;
+}
+/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/slicer.scss:83 */
+.x-cmd-slicer.x-btn-pressed.x-btn-default-toolbar-large:before {
+    /*<if slicer>*/
+    display: none;
+    content: "x-slicer:, stretch:bottom, frame:2px 2px 2px 2px, corners:url(images/btn/btn-default-toolbar-large-pressed-corners.gif), sides:url(images/btn/btn-default-toolbar-large-pressed-sides.gif)" !important;
+}
+/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/slicer.scss:83 */
+.x-cmd-slicer.x-btn-focus.x-btn-pressed.x-btn-default-toolbar-large:before {
+    /*<if slicer>*/
+    display: none;
+    content: "x-slicer:, stretch:bottom, frame:2px 2px 2px 2px, corners:url(images/btn/btn-default-toolbar-large-focus-pressed-corners.gif), sides:url(images/btn/btn-default-toolbar-large-focus-pressed-sides.gif)" !important;
+}
+/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/slicer.scss:83 */
+.x-cmd-slicer.x-btn-disabled.x-btn-default-toolbar-large:before {
+    /*<if slicer>*/
+    display: none;
+    content: "x-slicer:, stretch:bottom, frame:2px 2px 2px 2px, corners:url(images/btn/btn-default-toolbar-large-disabled-corners.gif), sides:url(images/btn/btn-default-toolbar-large-disabled-sides.gif)" !important;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:1246 */
 .x-button-default-toolbar-large-cell > .x-grid-cell-inner {
@@ -6528,7 +6818,7 @@ body > .x-mask {
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/panel/Tool.scss:29 */
 .x-tool-focus {
-    outline: 1px solid #5fa2dd;
+    outline: 1px solid #35baf6;
     outline-offset: 1px;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/css-outline.scss:64 */
@@ -6547,7 +6837,7 @@ body > .x-mask {
     right: -2px;
     bottom: -2px;
     left: -2px;
-    border: 1px solid #5fa2dd;
+    border: 1px solid #35baf6;
     pointer-events: none;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/panel/Tool.scss:38 */
@@ -7066,7 +7356,7 @@ body > .x-mask {
     right: 1px;
     bottom: 1px;
     left: 1px;
-    border: 1px solid #4c82b1;
+    border: 1px solid #2a95c5;
     pointer-events: none;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/toolbar/Toolbar.scss:232 */
@@ -7139,8 +7429,8 @@ body > .x-mask {
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/toolbar/Toolbar.scss:328 */
 .x-toolbar-text-default {
     padding: 0 4px;
-    color: #4b4c4c;
-    font: 300 13px/16px 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
+    color: #464a4c;
+    font: 400 13px/16px 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/toolbar/Toolbar.scss:334 */
 .x-toolbar-spacer-default {
@@ -7255,6 +7545,12 @@ body > .x-mask {
 .x-toolbar-more-icon:before {
     content: "\f0c9";
 }
+/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/slicer.scss:83 */
+.x-cmd-slicer.x-toolbar-default:before {
+    /*<if slicer>*/
+    display: none;
+    content: "x-slicer:" !important;
+}
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/toolbar/Toolbar.scss:232 */
 .x-toolbar-footer {
     padding: 6px 0 6px 6px;
@@ -7325,8 +7621,8 @@ body > .x-mask {
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/toolbar/Toolbar.scss:328 */
 .x-toolbar-text-footer {
     padding: 0 4px;
-    color: #4b4c4c;
-    font: 300 13px/16px 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
+    color: #464a4c;
+    font: 400 13px/16px 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/toolbar/Toolbar.scss:334 */
 .x-toolbar-spacer-footer {
@@ -7411,10 +7707,16 @@ body > .x-mask {
 .x-toolbar-more-icon:before {
     content: "\f0c9";
 }
+/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/slicer.scss:83 */
+.x-cmd-slicer.x-toolbar-footer:before {
+    /*<if slicer>*/
+    display: none;
+    content: "x-slicer:" !important;
+}
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/dd/StatusProxy.scss:1 */
 .x-dd-drag-proxy {
     color: #404040;
-    font: 300 13px/17px 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
+    font: 400 13px/17px 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
     border: 1px solid #d0d0d0;
     background-color: #fff;
 }
@@ -7471,17 +7773,17 @@ body > .x-mask {
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/panel/Panel.scss:276 */
 .x-panel-default {
-    border-color: #5fa2dd;
+    border-color: #35baf6;
     padding: 0;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/panel/Panel.scss:282 */
 .x-panel-header-default {
     font-size: 16px;
-    border: 1px solid #5fa2dd;
+    border: 1px solid #35baf6;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/panel/Panel.scss:307 */
 .x-panel-header-default .x-tool-tool-el {
-    background-color: #5fa2dd;
+    background-color: #35baf6;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/panel/Panel.scss:313 */
 .x-panel-header-default-horizontal {
@@ -7541,7 +7843,7 @@ body > .x-mask {
 .x-panel-header-title-default {
     color: #f0f0f0;
     font-size: 16px;
-    font-weight: 400;
+    font-weight: 500;
     font-family: 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
     line-height: 20px;
 }
@@ -7598,7 +7900,7 @@ body > .x-mask {
     border-color: #d0d0d0;
     color: #404040;
     font-size: 13px;
-    font-weight: 300;
+    font-weight: 400;
     font-family: 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
     border-width: 1px;
     border-style: solid;
@@ -7606,17 +7908,17 @@ body > .x-mask {
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/panel/Panel.scss:676 */
 .x-panel-header-default {
     background-image: none;
-    background-color: #5fa2dd;
+    background-color: #35baf6;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/panel/Panel.scss:680 */
 .x-panel-header-default-vertical {
     background-image: none;
-    background-color: #5fa2dd;
+    background-color: #35baf6;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/panel/Panel.scss:685 */
 .x-rtl.x-panel-header-default-vertical {
     background-image: none;
-    background-color: #5fa2dd;
+    background-color: #35baf6;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/panel/Panel.scss:738 */
 .x-panel .x-panel-header-default-collapsed-border-top {
@@ -7633,6 +7935,30 @@ body > .x-mask {
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/panel/Panel.scss:750 */
 .x-panel .x-panel-header-default-collapsed-border-left {
     border-right-width: 1px !important;
+}
+/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/slicer.scss:83 */
+.x-cmd-slicer.x-panel-header-default-top:before {
+    /*<if slicer>*/
+    display: none;
+    content: "x-slicer:, stretch:bottom" !important;
+}
+/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/slicer.scss:83 */
+.x-cmd-slicer.x-panel-header-default-bottom:before {
+    /*<if slicer>*/
+    display: none;
+    content: "x-slicer:, stretch:top" !important;
+}
+/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/slicer.scss:83 */
+.x-cmd-slicer.x-panel-header-default-left:before {
+    /*<if slicer>*/
+    display: none;
+    content: "x-slicer:, stretch:right" !important;
+}
+/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/slicer.scss:83 */
+.x-cmd-slicer.x-panel-header-default-right:before {
+    /*<if slicer>*/
+    display: none;
+    content: "x-slicer:, stretch:left" !important;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/panel/Panel.scss:786 */
 .x-panel-header-default-horizontal .x-tool-after-title {
@@ -7705,120 +8031,120 @@ body > .x-mask {
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/border-management.scss:2 */
 .x-panel-default-outer-border-l {
-    border-left-color: #5fa2dd !important;
+    border-left-color: #35baf6 !important;
     border-left-width: 1px !important;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/border-management.scss:6 */
 .x-panel-default-outer-border-b {
-    border-bottom-color: #5fa2dd !important;
+    border-bottom-color: #35baf6 !important;
     border-bottom-width: 1px !important;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/border-management.scss:10 */
 .x-panel-default-outer-border-bl {
-    border-bottom-color: #5fa2dd !important;
+    border-bottom-color: #35baf6 !important;
     border-bottom-width: 1px !important;
-    border-left-color: #5fa2dd !important;
+    border-left-color: #35baf6 !important;
     border-left-width: 1px !important;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/border-management.scss:16 */
 .x-panel-default-outer-border-r {
-    border-right-color: #5fa2dd !important;
+    border-right-color: #35baf6 !important;
     border-right-width: 1px !important;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/border-management.scss:20 */
 .x-panel-default-outer-border-rl {
-    border-right-color: #5fa2dd !important;
+    border-right-color: #35baf6 !important;
     border-right-width: 1px !important;
-    border-left-color: #5fa2dd !important;
+    border-left-color: #35baf6 !important;
     border-left-width: 1px !important;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/border-management.scss:26 */
 .x-panel-default-outer-border-rb {
-    border-right-color: #5fa2dd !important;
+    border-right-color: #35baf6 !important;
     border-right-width: 1px !important;
-    border-bottom-color: #5fa2dd !important;
+    border-bottom-color: #35baf6 !important;
     border-bottom-width: 1px !important;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/border-management.scss:32 */
 .x-panel-default-outer-border-rbl {
-    border-right-color: #5fa2dd !important;
+    border-right-color: #35baf6 !important;
     border-right-width: 1px !important;
-    border-bottom-color: #5fa2dd !important;
+    border-bottom-color: #35baf6 !important;
     border-bottom-width: 1px !important;
-    border-left-color: #5fa2dd !important;
+    border-left-color: #35baf6 !important;
     border-left-width: 1px !important;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/border-management.scss:40 */
 .x-panel-default-outer-border-t {
-    border-top-color: #5fa2dd !important;
+    border-top-color: #35baf6 !important;
     border-top-width: 1px !important;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/border-management.scss:44 */
 .x-panel-default-outer-border-tl {
-    border-top-color: #5fa2dd !important;
+    border-top-color: #35baf6 !important;
     border-top-width: 1px !important;
-    border-left-color: #5fa2dd !important;
+    border-left-color: #35baf6 !important;
     border-left-width: 1px !important;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/border-management.scss:50 */
 .x-panel-default-outer-border-tb {
-    border-top-color: #5fa2dd !important;
+    border-top-color: #35baf6 !important;
     border-top-width: 1px !important;
-    border-bottom-color: #5fa2dd !important;
+    border-bottom-color: #35baf6 !important;
     border-bottom-width: 1px !important;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/border-management.scss:56 */
 .x-panel-default-outer-border-tbl {
-    border-top-color: #5fa2dd !important;
+    border-top-color: #35baf6 !important;
     border-top-width: 1px !important;
-    border-bottom-color: #5fa2dd !important;
+    border-bottom-color: #35baf6 !important;
     border-bottom-width: 1px !important;
-    border-left-color: #5fa2dd !important;
+    border-left-color: #35baf6 !important;
     border-left-width: 1px !important;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/border-management.scss:64 */
 .x-panel-default-outer-border-tr {
-    border-top-color: #5fa2dd !important;
+    border-top-color: #35baf6 !important;
     border-top-width: 1px !important;
-    border-right-color: #5fa2dd !important;
+    border-right-color: #35baf6 !important;
     border-right-width: 1px !important;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/border-management.scss:70 */
 .x-panel-default-outer-border-trl {
-    border-top-color: #5fa2dd !important;
+    border-top-color: #35baf6 !important;
     border-top-width: 1px !important;
-    border-right-color: #5fa2dd !important;
+    border-right-color: #35baf6 !important;
     border-right-width: 1px !important;
-    border-left-color: #5fa2dd !important;
+    border-left-color: #35baf6 !important;
     border-left-width: 1px !important;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/border-management.scss:78 */
 .x-panel-default-outer-border-trb {
-    border-top-color: #5fa2dd !important;
+    border-top-color: #35baf6 !important;
     border-top-width: 1px !important;
-    border-right-color: #5fa2dd !important;
+    border-right-color: #35baf6 !important;
     border-right-width: 1px !important;
-    border-bottom-color: #5fa2dd !important;
+    border-bottom-color: #35baf6 !important;
     border-bottom-width: 1px !important;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/border-management.scss:86 */
 .x-panel-default-outer-border-trbl {
-    border-color: #5fa2dd !important;
+    border-color: #35baf6 !important;
     border-width: 1px !important;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/panel/Panel.scss:276 */
 .x-panel-default-framed {
-    border-color: #5fa2dd;
+    border-color: #35baf6;
     padding: 0;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/panel/Panel.scss:282 */
 .x-panel-header-default-framed {
     font-size: 16px;
-    border: 2px solid #5fa2dd;
+    border: 2px solid #35baf6;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/panel/Panel.scss:307 */
 .x-panel-header-default-framed .x-tool-tool-el {
-    background-color: #5fa2dd;
+    background-color: #35baf6;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/panel/Panel.scss:313 */
 .x-panel-header-default-framed-horizontal {
@@ -7878,7 +8204,7 @@ body > .x-mask {
 .x-panel-header-title-default-framed {
     color: #f0f0f0;
     font-size: 16px;
-    font-weight: 400;
+    font-weight: 500;
     font-family: 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
     line-height: 20px;
 }
@@ -7935,7 +8261,7 @@ body > .x-mask {
     border-color: #d0d0d0;
     color: #404040;
     font-size: 13px;
-    font-weight: 300;
+    font-weight: 400;
     font-family: 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
     border-width: 1px;
     border-style: solid;
@@ -7970,7 +8296,6 @@ body > .x-mask {
     -webkit-border-radius: 0px;
     -moz-border-radius: 0px;
     -ms-border-radius: 0px;
-    -o-border-radius: 0px;
     border-radius: 0px;
     background-color: transparent !important;
     box-shadow: none !important;
@@ -8052,6 +8377,12 @@ body > .x-mask {
 .x-panel-default-framed-mc {
     padding: 0px 0px 0px 0px;
 }
+/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/slicer.scss:83 */
+.x-cmd-slicer.x-panel-default-framed:before {
+    /*<if slicer>*/
+    display: none;
+    content: "x-slicer:, frame:2px 2px 2px 2px, corners:url(images/panel/panel-default-framed-corners.gif), sides:url(images/panel/panel-default-framed-sides.gif)" !important;
+}
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/frame.scss:187 */
 .x-panel-header-default-framed-top {
     -moz-border-radius-topleft: 0;
@@ -8069,11 +8400,11 @@ body > .x-mask {
     padding: 10px 14px 10px 14px;
     border-width: 2px 2px 0 2px;
     border-style: solid;
-    background-color: #5fa2dd;
+    background-color: #35baf6;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/frame.scss:237 */
 .x-panel-header-default-framed-top-mc {
-    background-color: #5fa2dd;
+    background-color: #35baf6;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/frame.scss:264 */
 .x-nbr .x-panel-header-default-framed-top {
@@ -8082,7 +8413,6 @@ body > .x-mask {
     -webkit-border-radius: 0px;
     -moz-border-radius: 0px;
     -ms-border-radius: 0px;
-    -o-border-radius: 0px;
     border-radius: 0px;
     background-color: transparent !important;
     box-shadow: none !important;
@@ -8164,6 +8494,12 @@ body > .x-mask {
 .x-panel-header-default-framed-top-mc {
     padding: 10px 14px 10px 14px;
 }
+/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/slicer.scss:83 */
+.x-cmd-slicer.x-panel-header-default-framed-top:before {
+    /*<if slicer>*/
+    display: none;
+    content: "x-slicer:, frame:2px 2px 0 2px, corners:url(images/panel-header/panel-header-default-framed-top-corners.gif), sides:url(images/panel-header/panel-header-default-framed-top-sides.gif)" !important;
+}
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/frame.scss:187 */
 .x-panel-header-default-framed-right {
     -moz-border-radius-topleft: 0;
@@ -8181,16 +8517,16 @@ body > .x-mask {
     padding: 14px 10px 14px 10px;
     border-width: 2px 2px 2px 0;
     border-style: solid;
-    background-color: #5fa2dd;
+    background-color: #35baf6;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/frame.scss:226 */
 .x-rtl.x-panel-header-default-framed-right {
     background-image: none;
-    background-color: #5fa2dd;
+    background-color: #35baf6;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/frame.scss:237 */
 .x-panel-header-default-framed-right-mc {
-    background-color: #5fa2dd;
+    background-color: #35baf6;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/frame.scss:264 */
 .x-nbr .x-panel-header-default-framed-right {
@@ -8199,7 +8535,6 @@ body > .x-mask {
     -webkit-border-radius: 0px;
     -moz-border-radius: 0px;
     -ms-border-radius: 0px;
-    -o-border-radius: 0px;
     border-radius: 0px;
     background-color: transparent !important;
     box-shadow: none !important;
@@ -8290,6 +8625,12 @@ body > .x-mask {
 .x-panel-header-default-framed-right-mc {
     padding: 14px 10px 14px 10px;
 }
+/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/slicer.scss:83 */
+.x-cmd-slicer.x-panel-header-default-framed-right:before {
+    /*<if slicer>*/
+    display: none;
+    content: "x-slicer:, frame:2px 2px 2px 0, corners:url(images/panel-header/panel-header-default-framed-right-corners.gif), corners-rtl:url(images/panel-header/panel-header-default-framed-right-corners-rtl.gif), sides:url(images/panel-header/panel-header-default-framed-right-sides.gif)" !important;
+}
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/frame.scss:187 */
 .x-panel-header-default-framed-bottom {
     -moz-border-radius-topleft: 0;
@@ -8307,11 +8648,11 @@ body > .x-mask {
     padding: 10px 14px 10px 14px;
     border-width: 0 2px 2px 2px;
     border-style: solid;
-    background-color: #5fa2dd;
+    background-color: #35baf6;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/frame.scss:237 */
 .x-panel-header-default-framed-bottom-mc {
-    background-color: #5fa2dd;
+    background-color: #35baf6;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/frame.scss:264 */
 .x-nbr .x-panel-header-default-framed-bottom {
@@ -8320,7 +8661,6 @@ body > .x-mask {
     -webkit-border-radius: 0px;
     -moz-border-radius: 0px;
     -ms-border-radius: 0px;
-    -o-border-radius: 0px;
     border-radius: 0px;
     background-color: transparent !important;
     box-shadow: none !important;
@@ -8402,6 +8742,12 @@ body > .x-mask {
 .x-panel-header-default-framed-bottom-mc {
     padding: 10px 14px 10px 14px;
 }
+/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/slicer.scss:83 */
+.x-cmd-slicer.x-panel-header-default-framed-bottom:before {
+    /*<if slicer>*/
+    display: none;
+    content: "x-slicer:, frame:0 2px 2px 2px, corners:url(images/panel-header/panel-header-default-framed-bottom-corners.gif), sides:url(images/panel-header/panel-header-default-framed-bottom-sides.gif)" !important;
+}
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/frame.scss:187 */
 .x-panel-header-default-framed-left {
     -moz-border-radius-topleft: 0;
@@ -8419,16 +8765,16 @@ body > .x-mask {
     padding: 14px 10px 14px 10px;
     border-width: 2px 0 2px 2px;
     border-style: solid;
-    background-color: #5fa2dd;
+    background-color: #35baf6;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/frame.scss:226 */
 .x-rtl.x-panel-header-default-framed-left {
     background-image: none;
-    background-color: #5fa2dd;
+    background-color: #35baf6;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/frame.scss:237 */
 .x-panel-header-default-framed-left-mc {
-    background-color: #5fa2dd;
+    background-color: #35baf6;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/frame.scss:264 */
 .x-nbr .x-panel-header-default-framed-left {
@@ -8437,7 +8783,6 @@ body > .x-mask {
     -webkit-border-radius: 0px;
     -moz-border-radius: 0px;
     -ms-border-radius: 0px;
-    -o-border-radius: 0px;
     border-radius: 0px;
     background-color: transparent !important;
     box-shadow: none !important;
@@ -8528,6 +8873,12 @@ body > .x-mask {
 .x-panel-header-default-framed-left-mc {
     padding: 14px 10px 14px 10px;
 }
+/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/slicer.scss:83 */
+.x-cmd-slicer.x-panel-header-default-framed-left:before {
+    /*<if slicer>*/
+    display: none;
+    content: "x-slicer:, frame:2px 0 2px 2px, corners:url(images/panel-header/panel-header-default-framed-left-corners.gif), corners-rtl:url(images/panel-header/panel-header-default-framed-left-corners-rtl.gif), sides:url(images/panel-header/panel-header-default-framed-left-sides.gif)" !important;
+}
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/frame.scss:187 */
 .x-panel-header-default-framed-collapsed-top {
     -moz-border-radius-topleft: 0;
@@ -8545,11 +8896,11 @@ body > .x-mask {
     padding: 10px 14px 10px 14px;
     border-width: 2px;
     border-style: solid;
-    background-color: #5fa2dd;
+    background-color: #35baf6;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/frame.scss:237 */
 .x-panel-header-default-framed-collapsed-top-mc {
-    background-color: #5fa2dd;
+    background-color: #35baf6;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/frame.scss:264 */
 .x-nbr .x-panel-header-default-framed-collapsed-top {
@@ -8558,7 +8909,6 @@ body > .x-mask {
     -webkit-border-radius: 0px;
     -moz-border-radius: 0px;
     -ms-border-radius: 0px;
-    -o-border-radius: 0px;
     border-radius: 0px;
     background-color: transparent !important;
     box-shadow: none !important;
@@ -8640,6 +8990,12 @@ body > .x-mask {
 .x-panel-header-default-framed-collapsed-top-mc {
     padding: 10px 14px 10px 14px;
 }
+/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/slicer.scss:83 */
+.x-cmd-slicer.x-panel-header-default-framed-collapsed-top:before {
+    /*<if slicer>*/
+    display: none;
+    content: "x-slicer:, frame:2px 2px 2px 2px, corners:url(images/panel-header/panel-header-default-framed-collapsed-top-corners.gif), sides:url(images/panel-header/panel-header-default-framed-collapsed-top-sides.gif)" !important;
+}
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/frame.scss:187 */
 .x-panel-header-default-framed-collapsed-right {
     -moz-border-radius-topleft: 0;
@@ -8657,16 +9013,16 @@ body > .x-mask {
     padding: 14px 10px 14px 10px;
     border-width: 2px;
     border-style: solid;
-    background-color: #5fa2dd;
+    background-color: #35baf6;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/frame.scss:226 */
 .x-rtl.x-panel-header-default-framed-collapsed-right {
     background-image: none;
-    background-color: #5fa2dd;
+    background-color: #35baf6;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/frame.scss:237 */
 .x-panel-header-default-framed-collapsed-right-mc {
-    background-color: #5fa2dd;
+    background-color: #35baf6;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/frame.scss:264 */
 .x-nbr .x-panel-header-default-framed-collapsed-right {
@@ -8675,7 +9031,6 @@ body > .x-mask {
     -webkit-border-radius: 0px;
     -moz-border-radius: 0px;
     -ms-border-radius: 0px;
-    -o-border-radius: 0px;
     border-radius: 0px;
     background-color: transparent !important;
     box-shadow: none !important;
@@ -8766,6 +9121,12 @@ body > .x-mask {
 .x-panel-header-default-framed-collapsed-right-mc {
     padding: 14px 10px 14px 10px;
 }
+/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/slicer.scss:83 */
+.x-cmd-slicer.x-panel-header-default-framed-collapsed-right:before {
+    /*<if slicer>*/
+    display: none;
+    content: "x-slicer:, frame:2px 2px 2px 2px, corners:url(images/panel-header/panel-header-default-framed-collapsed-right-corners.gif), corners-rtl:url(images/panel-header/panel-header-default-framed-collapsed-right-corners-rtl.gif), sides:url(images/panel-header/panel-header-default-framed-collapsed-right-sides.gif)" !important;
+}
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/frame.scss:187 */
 .x-panel-header-default-framed-collapsed-bottom {
     -moz-border-radius-topleft: 0;
@@ -8783,11 +9144,11 @@ body > .x-mask {
     padding: 10px 14px 10px 14px;
     border-width: 2px;
     border-style: solid;
-    background-color: #5fa2dd;
+    background-color: #35baf6;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/frame.scss:237 */
 .x-panel-header-default-framed-collapsed-bottom-mc {
-    background-color: #5fa2dd;
+    background-color: #35baf6;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/frame.scss:264 */
 .x-nbr .x-panel-header-default-framed-collapsed-bottom {
@@ -8796,7 +9157,6 @@ body > .x-mask {
     -webkit-border-radius: 0px;
     -moz-border-radius: 0px;
     -ms-border-radius: 0px;
-    -o-border-radius: 0px;
     border-radius: 0px;
     background-color: transparent !important;
     box-shadow: none !important;
@@ -8878,6 +9238,12 @@ body > .x-mask {
 .x-panel-header-default-framed-collapsed-bottom-mc {
     padding: 10px 14px 10px 14px;
 }
+/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/slicer.scss:83 */
+.x-cmd-slicer.x-panel-header-default-framed-collapsed-bottom:before {
+    /*<if slicer>*/
+    display: none;
+    content: "x-slicer:, frame:2px 2px 2px 2px, corners:url(images/panel-header/panel-header-default-framed-collapsed-bottom-corners.gif), sides:url(images/panel-header/panel-header-default-framed-collapsed-bottom-sides.gif)" !important;
+}
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/frame.scss:187 */
 .x-panel-header-default-framed-collapsed-left {
     -moz-border-radius-topleft: 0;
@@ -8895,16 +9261,16 @@ body > .x-mask {
     padding: 14px 10px 14px 10px;
     border-width: 2px;
     border-style: solid;
-    background-color: #5fa2dd;
+    background-color: #35baf6;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/frame.scss:226 */
 .x-rtl.x-panel-header-default-framed-collapsed-left {
     background-image: none;
-    background-color: #5fa2dd;
+    background-color: #35baf6;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/frame.scss:237 */
 .x-panel-header-default-framed-collapsed-left-mc {
-    background-color: #5fa2dd;
+    background-color: #35baf6;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/frame.scss:264 */
 .x-nbr .x-panel-header-default-framed-collapsed-left {
@@ -8913,7 +9279,6 @@ body > .x-mask {
     -webkit-border-radius: 0px;
     -moz-border-radius: 0px;
     -ms-border-radius: 0px;
-    -o-border-radius: 0px;
     border-radius: 0px;
     background-color: transparent !important;
     box-shadow: none !important;
@@ -9003,6 +9368,12 @@ body > .x-mask {
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/frame.scss:464 */
 .x-panel-header-default-framed-collapsed-left-mc {
     padding: 14px 10px 14px 10px;
+}
+/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/slicer.scss:83 */
+.x-cmd-slicer.x-panel-header-default-framed-collapsed-left:before {
+    /*<if slicer>*/
+    display: none;
+    content: "x-slicer:, frame:2px 2px 2px 2px, corners:url(images/panel-header/panel-header-default-framed-collapsed-left-corners.gif), corners-rtl:url(images/panel-header/panel-header-default-framed-collapsed-left-corners-rtl.gif), sides:url(images/panel-header/panel-header-default-framed-collapsed-left-sides.gif)" !important;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/panel/Panel.scss:638 */
 .x-panel .x-panel-header-default-framed-top {
@@ -9107,113 +9478,114 @@ body > .x-mask {
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/border-management.scss:2 */
 .x-panel-default-framed-outer-border-l {
-    border-left-color: #5fa2dd !important;
+    border-left-color: #35baf6 !important;
     border-left-width: 1px !important;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/border-management.scss:6 */
 .x-panel-default-framed-outer-border-b {
-    border-bottom-color: #5fa2dd !important;
+    border-bottom-color: #35baf6 !important;
     border-bottom-width: 1px !important;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/border-management.scss:10 */
 .x-panel-default-framed-outer-border-bl {
-    border-bottom-color: #5fa2dd !important;
+    border-bottom-color: #35baf6 !important;
     border-bottom-width: 1px !important;
-    border-left-color: #5fa2dd !important;
+    border-left-color: #35baf6 !important;
     border-left-width: 1px !important;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/border-management.scss:16 */
 .x-panel-default-framed-outer-border-r {
-    border-right-color: #5fa2dd !important;
+    border-right-color: #35baf6 !important;
     border-right-width: 1px !important;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/border-management.scss:20 */
 .x-panel-default-framed-outer-border-rl {
-    border-right-color: #5fa2dd !important;
+    border-right-color: #35baf6 !important;
     border-right-width: 1px !important;
-    border-left-color: #5fa2dd !important;
+    border-left-color: #35baf6 !important;
     border-left-width: 1px !important;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/border-management.scss:26 */
 .x-panel-default-framed-outer-border-rb {
-    border-right-color: #5fa2dd !important;
+    border-right-color: #35baf6 !important;
     border-right-width: 1px !important;
-    border-bottom-color: #5fa2dd !important;
+    border-bottom-color: #35baf6 !important;
     border-bottom-width: 1px !important;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/border-management.scss:32 */
 .x-panel-default-framed-outer-border-rbl {
-    border-right-color: #5fa2dd !important;
+    border-right-color: #35baf6 !important;
     border-right-width: 1px !important;
-    border-bottom-color: #5fa2dd !important;
+    border-bottom-color: #35baf6 !important;
     border-bottom-width: 1px !important;
-    border-left-color: #5fa2dd !important;
+    border-left-color: #35baf6 !important;
     border-left-width: 1px !important;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/border-management.scss:40 */
 .x-panel-default-framed-outer-border-t {
-    border-top-color: #5fa2dd !important;
+    border-top-color: #35baf6 !important;
     border-top-width: 1px !important;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/border-management.scss:44 */
 .x-panel-default-framed-outer-border-tl {
-    border-top-color: #5fa2dd !important;
+    border-top-color: #35baf6 !important;
     border-top-width: 1px !important;
-    border-left-color: #5fa2dd !important;
+    border-left-color: #35baf6 !important;
     border-left-width: 1px !important;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/border-management.scss:50 */
 .x-panel-default-framed-outer-border-tb {
-    border-top-color: #5fa2dd !important;
+    border-top-color: #35baf6 !important;
     border-top-width: 1px !important;
-    border-bottom-color: #5fa2dd !important;
+    border-bottom-color: #35baf6 !important;
     border-bottom-width: 1px !important;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/border-management.scss:56 */
 .x-panel-default-framed-outer-border-tbl {
-    border-top-color: #5fa2dd !important;
+    border-top-color: #35baf6 !important;
     border-top-width: 1px !important;
-    border-bottom-color: #5fa2dd !important;
+    border-bottom-color: #35baf6 !important;
     border-bottom-width: 1px !important;
-    border-left-color: #5fa2dd !important;
+    border-left-color: #35baf6 !important;
     border-left-width: 1px !important;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/border-management.scss:64 */
 .x-panel-default-framed-outer-border-tr {
-    border-top-color: #5fa2dd !important;
+    border-top-color: #35baf6 !important;
     border-top-width: 1px !important;
-    border-right-color: #5fa2dd !important;
+    border-right-color: #35baf6 !important;
     border-right-width: 1px !important;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/border-management.scss:70 */
 .x-panel-default-framed-outer-border-trl {
-    border-top-color: #5fa2dd !important;
+    border-top-color: #35baf6 !important;
     border-top-width: 1px !important;
-    border-right-color: #5fa2dd !important;
+    border-right-color: #35baf6 !important;
     border-right-width: 1px !important;
-    border-left-color: #5fa2dd !important;
+    border-left-color: #35baf6 !important;
     border-left-width: 1px !important;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/border-management.scss:78 */
 .x-panel-default-framed-outer-border-trb {
-    border-top-color: #5fa2dd !important;
+    border-top-color: #35baf6 !important;
     border-top-width: 1px !important;
-    border-right-color: #5fa2dd !important;
+    border-right-color: #35baf6 !important;
     border-right-width: 1px !important;
-    border-bottom-color: #5fa2dd !important;
+    border-bottom-color: #35baf6 !important;
     border-bottom-width: 1px !important;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/border-management.scss:86 */
 .x-panel-default-framed-outer-border-trbl {
-    border-color: #5fa2dd !important;
+    border-color: #35baf6 !important;
     border-width: 1px !important;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/container/ButtonGroup.scss:101 */
 .x-btn-group-default {
     border-color: #d0d0d0;
-    -webkit-box-shadow: #fff 0 1px 0px 0 inset, #fff 0 -1px 0px 0 inset, #fff -1px 0 0px 0 inset, #fff 1px 0 0px 0 inset;
-    -moz-box-shadow: #fff 0 1px 0px 0 inset, #fff 0 -1px 0px 0 inset, #fff -1px 0 0px 0 inset, #fff 1px 0 0px 0 inset;
-    box-shadow: #fff 0 1px 0px 0 inset, #fff 0 -1px 0px 0 inset, #fff -1px 0 0px 0 inset, #fff 1px 0 0px 0 inset;
+    -webkit-box-shadow: #fff 0 1px 0px 0 inset;
+    -moz-box-shadow: #fff 0 1px 0px 0 inset;
+    -ms-box-shadow: #fff 0 1px 0px 0 inset;
+    box-shadow: #fff 0 1px 0px 0 inset;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/container/ButtonGroup.scss:110 */
 .x-btn-group-header-default {
@@ -9234,7 +9606,7 @@ body > .x-mask {
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/container/ButtonGroup.scss:132 */
 .x-btn-group-header-title-default {
-    font: 300 14px 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
+    font: 400 14px 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
     line-height: 16px;
     color: #606060;
 }
@@ -9251,7 +9623,6 @@ body > .x-mask {
     -webkit-border-radius: 2px;
     -moz-border-radius: 2px;
     -ms-border-radius: 2px;
-    -o-border-radius: 2px;
     border-radius: 2px;
     padding: 1px 1px 1px 1px;
     border-width: 1px;
@@ -9269,7 +9640,6 @@ body > .x-mask {
     -webkit-border-radius: 0px;
     -moz-border-radius: 0px;
     -ms-border-radius: 0px;
-    -o-border-radius: 0px;
     border-radius: 0px;
     background-color: transparent !important;
     box-shadow: none !important;
@@ -9351,12 +9721,17 @@ body > .x-mask {
 .x-btn-group-default-framed-mc {
     padding: 0px 0px 0px 0px;
 }
+/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/slicer.scss:83 */
+.x-cmd-slicer.x-btn-group-default-framed:before {
+    /*<if slicer>*/
+    display: none;
+    content: "x-slicer:, frame:2px 2px 2px 2px, corners:url(images/btn-group/btn-group-default-framed-corners.gif), sides:url(images/btn-group/btn-group-default-framed-sides.gif)" !important;
+}
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/frame.scss:187 */
 .x-btn-group-default-framed-notitle {
     -webkit-border-radius: 2px;
     -moz-border-radius: 2px;
     -ms-border-radius: 2px;
-    -o-border-radius: 2px;
     border-radius: 2px;
     padding: 1px 1px 1px 1px;
     border-width: 1px;
@@ -9374,7 +9749,6 @@ body > .x-mask {
     -webkit-border-radius: 0px;
     -moz-border-radius: 0px;
     -ms-border-radius: 0px;
-    -o-border-radius: 0px;
     border-radius: 0px;
     background-color: transparent !important;
     box-shadow: none !important;
@@ -9456,12 +9830,19 @@ body > .x-mask {
 .x-btn-group-default-framed-notitle-mc {
     padding: 0px 0px 0px 0px;
 }
+/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/slicer.scss:83 */
+.x-cmd-slicer.x-btn-group-default-framed-notitle:before {
+    /*<if slicer>*/
+    display: none;
+    content: "x-slicer:, frame:2px 2px 2px 2px, corners:url(images/btn-group/btn-group-default-framed-notitle-corners.gif), sides:url(images/btn-group/btn-group-default-framed-notitle-sides.gif)" !important;
+}
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/container/ButtonGroup.scss:101 */
 .x-btn-group-default-framed {
     border-color: #d0d0d0;
-    -webkit-box-shadow: #fff 0 1px 0px 0 inset, #fff 0 -1px 0px 0 inset, #fff -1px 0 0px 0 inset, #fff 1px 0 0px 0 inset;
-    -moz-box-shadow: #fff 0 1px 0px 0 inset, #fff 0 -1px 0px 0 inset, #fff -1px 0 0px 0 inset, #fff 1px 0 0px 0 inset;
-    box-shadow: #fff 0 1px 0px 0 inset, #fff 0 -1px 0px 0 inset, #fff -1px 0 0px 0 inset, #fff 1px 0 0px 0 inset;
+    -webkit-box-shadow: #fff 0 1px 0px 0 inset;
+    -moz-box-shadow: #fff 0 1px 0px 0 inset;
+    -ms-box-shadow: #fff 0 1px 0px 0 inset;
+    box-shadow: #fff 0 1px 0px 0 inset;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/container/ButtonGroup.scss:110 */
 .x-btn-group-header-default-framed {
@@ -9482,7 +9863,7 @@ body > .x-mask {
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/container/ButtonGroup.scss:132 */
 .x-btn-group-header-title-default-framed {
-    font: 300 14px 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
+    font: 400 14px 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
     line-height: 16px;
     color: #606060;
 }
@@ -9530,11 +9911,10 @@ body > .x-mask {
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/window/Window.scss:228 */
 .x-window-default {
-    border-color: #5fa2dd;
+    border-color: #35baf6;
     -webkit-border-radius: 0 0 0 0;
     -moz-border-radius: 0 0 0 0;
     -ms-border-radius: 0 0 0 0;
-    -o-border-radius: 0 0 0 0;
     border-radius: 0 0 0 0;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/frame.scss:187 */
@@ -9567,7 +9947,6 @@ body > .x-mask {
     -webkit-border-radius: 0px;
     -moz-border-radius: 0px;
     -ms-border-radius: 0px;
-    -o-border-radius: 0px;
     border-radius: 0px;
     background-color: transparent !important;
     box-shadow: none !important;
@@ -9649,26 +10028,32 @@ body > .x-mask {
 .x-window-default-mc {
     padding: 0px 0px 0px 0px;
 }
+/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/slicer.scss:83 */
+.x-cmd-slicer.x-window-default:before {
+    /*<if slicer>*/
+    display: none;
+    content: "x-slicer:, frame:2px 2px 2px 2px, corners:url(images/window/window-default-corners.gif), sides:url(images/window/window-default-sides.gif)" !important;
+}
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/window/Window.scss:250 */
 .x-window-body-default {
-    border-color: #5fa2dd;
+    border-color: #35baf6;
     border-width: 1px;
     border-style: solid;
     background: #fff;
     color: #000;
     font-size: 13px;
-    font-weight: 300;
+    font-weight: 400;
     font-family: 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/window/Window.scss:264 */
 .x-window-header-default {
     font-size: 16px;
-    border-color: #5fa2dd;
-    background-color: #5fa2dd;
+    border-color: #35baf6;
+    background-color: #35baf6;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/window/Window.scss:269 */
 .x-window-header-default .x-tool-img {
-    background-color: #5fa2dd;
+    background-color: #35baf6;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/window/Window.scss:282 */
 .x-window-header-default-horizontal .x-window-header-default-tab-bar {
@@ -9689,7 +10074,7 @@ body > .x-mask {
 .x-window-header-title-default {
     color: #f0f0f0;
     font-size: 16px;
-    font-weight: 400;
+    font-weight: 500;
     font-family: 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
     line-height: 20px;
 }
@@ -9757,11 +10142,11 @@ body > .x-mask {
     padding: 10px 14px 10px 14px;
     border-width: 2px 2px 2px 2px;
     border-style: solid;
-    background-color: #5fa2dd;
+    background-color: #35baf6;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/frame.scss:237 */
 .x-window-header-default-top-mc {
-    background-color: #5fa2dd;
+    background-color: #35baf6;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/frame.scss:264 */
 .x-nbr .x-window-header-default-top {
@@ -9770,7 +10155,6 @@ body > .x-mask {
     -webkit-border-radius: 0px;
     -moz-border-radius: 0px;
     -ms-border-radius: 0px;
-    -o-border-radius: 0px;
     border-radius: 0px;
     background-color: transparent !important;
     box-shadow: none !important;
@@ -9852,6 +10236,12 @@ body > .x-mask {
 .x-window-header-default-top-mc {
     padding: 10px 14px 10px 14px;
 }
+/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/slicer.scss:83 */
+.x-cmd-slicer.x-window-header-default-top:before {
+    /*<if slicer>*/
+    display: none;
+    content: "x-slicer:, frame:2px 2px 2px 2px, corners:url(images/window-header/window-header-default-top-corners.gif), sides:url(images/window-header/window-header-default-top-sides.gif)" !important;
+}
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/frame.scss:187 */
 .x-window-header-default-right {
     -moz-border-radius-topleft: 0;
@@ -9869,11 +10259,11 @@ body > .x-mask {
     padding: 14px 10px 14px 10px;
     border-width: 2px 2px 2px 2px;
     border-style: solid;
-    background-color: #5fa2dd;
+    background-color: #35baf6;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/frame.scss:237 */
 .x-window-header-default-right-mc {
-    background-color: #5fa2dd;
+    background-color: #35baf6;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/frame.scss:264 */
 .x-nbr .x-window-header-default-right {
@@ -9882,7 +10272,6 @@ body > .x-mask {
     -webkit-border-radius: 0px;
     -moz-border-radius: 0px;
     -ms-border-radius: 0px;
-    -o-border-radius: 0px;
     border-radius: 0px;
     background-color: transparent !important;
     box-shadow: none !important;
@@ -9973,6 +10362,12 @@ body > .x-mask {
 .x-window-header-default-right-mc {
     padding: 14px 10px 14px 10px;
 }
+/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/slicer.scss:83 */
+.x-cmd-slicer.x-window-header-default-right:before {
+    /*<if slicer>*/
+    display: none;
+    content: "x-slicer:, frame:2px 2px 2px 2px, corners:url(images/window-header/window-header-default-right-corners.gif), corners-rtl:url(images/window-header/window-header-default-right-corners-rtl.gif), sides:url(images/window-header/window-header-default-right-sides.gif)" !important;
+}
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/frame.scss:187 */
 .x-window-header-default-bottom {
     -moz-border-radius-topleft: 0;
@@ -9990,11 +10385,11 @@ body > .x-mask {
     padding: 10px 14px 10px 14px;
     border-width: 2px 2px 2px 2px;
     border-style: solid;
-    background-color: #5fa2dd;
+    background-color: #35baf6;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/frame.scss:237 */
 .x-window-header-default-bottom-mc {
-    background-color: #5fa2dd;
+    background-color: #35baf6;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/frame.scss:264 */
 .x-nbr .x-window-header-default-bottom {
@@ -10003,7 +10398,6 @@ body > .x-mask {
     -webkit-border-radius: 0px;
     -moz-border-radius: 0px;
     -ms-border-radius: 0px;
-    -o-border-radius: 0px;
     border-radius: 0px;
     background-color: transparent !important;
     box-shadow: none !important;
@@ -10085,6 +10479,12 @@ body > .x-mask {
 .x-window-header-default-bottom-mc {
     padding: 10px 14px 10px 14px;
 }
+/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/slicer.scss:83 */
+.x-cmd-slicer.x-window-header-default-bottom:before {
+    /*<if slicer>*/
+    display: none;
+    content: "x-slicer:, frame:2px 2px 2px 2px, corners:url(images/window-header/window-header-default-bottom-corners.gif), sides:url(images/window-header/window-header-default-bottom-sides.gif)" !important;
+}
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/frame.scss:187 */
 .x-window-header-default-left {
     -moz-border-radius-topleft: 0;
@@ -10102,11 +10502,11 @@ body > .x-mask {
     padding: 14px 10px 14px 10px;
     border-width: 2px 2px 2px 2px;
     border-style: solid;
-    background-color: #5fa2dd;
+    background-color: #35baf6;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/frame.scss:237 */
 .x-window-header-default-left-mc {
-    background-color: #5fa2dd;
+    background-color: #35baf6;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/frame.scss:264 */
 .x-nbr .x-window-header-default-left {
@@ -10115,7 +10515,6 @@ body > .x-mask {
     -webkit-border-radius: 0px;
     -moz-border-radius: 0px;
     -ms-border-radius: 0px;
-    -o-border-radius: 0px;
     border-radius: 0px;
     background-color: transparent !important;
     box-shadow: none !important;
@@ -10206,6 +10605,12 @@ body > .x-mask {
 .x-window-header-default-left-mc {
     padding: 14px 10px 14px 10px;
 }
+/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/slicer.scss:83 */
+.x-cmd-slicer.x-window-header-default-left:before {
+    /*<if slicer>*/
+    display: none;
+    content: "x-slicer:, frame:2px 2px 2px 2px, corners:url(images/window-header/window-header-default-left-corners.gif), corners-rtl:url(images/window-header/window-header-default-left-corners-rtl.gif), sides:url(images/window-header/window-header-default-left-sides.gif)" !important;
+}
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/frame.scss:187 */
 .x-window-header-default-collapsed-top {
     -moz-border-radius-topleft: 0;
@@ -10223,11 +10628,11 @@ body > .x-mask {
     padding: 10px 14px 10px 14px;
     border-width: 2px;
     border-style: solid;
-    background-color: #5fa2dd;
+    background-color: #35baf6;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/frame.scss:237 */
 .x-window-header-default-collapsed-top-mc {
-    background-color: #5fa2dd;
+    background-color: #35baf6;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/frame.scss:264 */
 .x-nbr .x-window-header-default-collapsed-top {
@@ -10236,7 +10641,6 @@ body > .x-mask {
     -webkit-border-radius: 0px;
     -moz-border-radius: 0px;
     -ms-border-radius: 0px;
-    -o-border-radius: 0px;
     border-radius: 0px;
     background-color: transparent !important;
     box-shadow: none !important;
@@ -10318,6 +10722,12 @@ body > .x-mask {
 .x-window-header-default-collapsed-top-mc {
     padding: 10px 14px 10px 14px;
 }
+/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/slicer.scss:83 */
+.x-cmd-slicer.x-window-header-default-collapsed-top:before {
+    /*<if slicer>*/
+    display: none;
+    content: "x-slicer:, frame:2px 2px 2px 2px, corners:url(images/window-header/window-header-default-collapsed-top-corners.gif), sides:url(images/window-header/window-header-default-collapsed-top-sides.gif)" !important;
+}
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/frame.scss:187 */
 .x-window-header-default-collapsed-right {
     -moz-border-radius-topleft: 0;
@@ -10335,11 +10745,11 @@ body > .x-mask {
     padding: 14px 10px 14px 10px;
     border-width: 2px;
     border-style: solid;
-    background-color: #5fa2dd;
+    background-color: #35baf6;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/frame.scss:237 */
 .x-window-header-default-collapsed-right-mc {
-    background-color: #5fa2dd;
+    background-color: #35baf6;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/frame.scss:264 */
 .x-nbr .x-window-header-default-collapsed-right {
@@ -10348,7 +10758,6 @@ body > .x-mask {
     -webkit-border-radius: 0px;
     -moz-border-radius: 0px;
     -ms-border-radius: 0px;
-    -o-border-radius: 0px;
     border-radius: 0px;
     background-color: transparent !important;
     box-shadow: none !important;
@@ -10439,6 +10848,12 @@ body > .x-mask {
 .x-window-header-default-collapsed-right-mc {
     padding: 14px 10px 14px 10px;
 }
+/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/slicer.scss:83 */
+.x-cmd-slicer.x-window-header-default-collapsed-right:before {
+    /*<if slicer>*/
+    display: none;
+    content: "x-slicer:, frame:2px 2px 2px 2px, corners:url(images/window-header/window-header-default-collapsed-right-corners.gif), corners-rtl:url(images/window-header/window-header-default-collapsed-right-corners-rtl.gif), sides:url(images/window-header/window-header-default-collapsed-right-sides.gif)" !important;
+}
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/frame.scss:187 */
 .x-window-header-default-collapsed-bottom {
     -moz-border-radius-topleft: 0;
@@ -10456,11 +10871,11 @@ body > .x-mask {
     padding: 10px 14px 10px 14px;
     border-width: 2px;
     border-style: solid;
-    background-color: #5fa2dd;
+    background-color: #35baf6;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/frame.scss:237 */
 .x-window-header-default-collapsed-bottom-mc {
-    background-color: #5fa2dd;
+    background-color: #35baf6;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/frame.scss:264 */
 .x-nbr .x-window-header-default-collapsed-bottom {
@@ -10469,7 +10884,6 @@ body > .x-mask {
     -webkit-border-radius: 0px;
     -moz-border-radius: 0px;
     -ms-border-radius: 0px;
-    -o-border-radius: 0px;
     border-radius: 0px;
     background-color: transparent !important;
     box-shadow: none !important;
@@ -10551,6 +10965,12 @@ body > .x-mask {
 .x-window-header-default-collapsed-bottom-mc {
     padding: 10px 14px 10px 14px;
 }
+/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/slicer.scss:83 */
+.x-cmd-slicer.x-window-header-default-collapsed-bottom:before {
+    /*<if slicer>*/
+    display: none;
+    content: "x-slicer:, frame:2px 2px 2px 2px, corners:url(images/window-header/window-header-default-collapsed-bottom-corners.gif), sides:url(images/window-header/window-header-default-collapsed-bottom-sides.gif)" !important;
+}
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/frame.scss:187 */
 .x-window-header-default-collapsed-left {
     -moz-border-radius-topleft: 0;
@@ -10568,11 +10988,11 @@ body > .x-mask {
     padding: 14px 10px 14px 10px;
     border-width: 2px;
     border-style: solid;
-    background-color: #5fa2dd;
+    background-color: #35baf6;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/frame.scss:237 */
 .x-window-header-default-collapsed-left-mc {
-    background-color: #5fa2dd;
+    background-color: #35baf6;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/frame.scss:264 */
 .x-nbr .x-window-header-default-collapsed-left {
@@ -10581,7 +11001,6 @@ body > .x-mask {
     -webkit-border-radius: 0px;
     -moz-border-radius: 0px;
     -ms-border-radius: 0px;
-    -o-border-radius: 0px;
     border-radius: 0px;
     background-color: transparent !important;
     box-shadow: none !important;
@@ -10672,6 +11091,12 @@ body > .x-mask {
 .x-window-header-default-collapsed-left-mc {
     padding: 14px 10px 14px 10px;
 }
+/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/slicer.scss:83 */
+.x-cmd-slicer.x-window-header-default-collapsed-left:before {
+    /*<if slicer>*/
+    display: none;
+    content: "x-slicer:, frame:2px 2px 2px 2px, corners:url(images/window-header/window-header-default-collapsed-left-corners.gif), corners-rtl:url(images/window-header/window-header-default-collapsed-left-corners-rtl.gif), sides:url(images/window-header/window-header-default-collapsed-left-sides.gif)" !important;
+}
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/window/Window.scss:540 */
 .x-window-header-default .x-window-header-icon {
     width: 16px;
@@ -10757,105 +11182,105 @@ body > .x-mask {
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/border-management.scss:2 */
 .x-window-default-outer-border-l {
-    border-left-color: #5fa2dd !important;
+    border-left-color: #35baf6 !important;
     border-left-width: 1px !important;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/border-management.scss:6 */
 .x-window-default-outer-border-b {
-    border-bottom-color: #5fa2dd !important;
+    border-bottom-color: #35baf6 !important;
     border-bottom-width: 1px !important;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/border-management.scss:10 */
 .x-window-default-outer-border-bl {
-    border-bottom-color: #5fa2dd !important;
+    border-bottom-color: #35baf6 !important;
     border-bottom-width: 1px !important;
-    border-left-color: #5fa2dd !important;
+    border-left-color: #35baf6 !important;
     border-left-width: 1px !important;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/border-management.scss:16 */
 .x-window-default-outer-border-r {
-    border-right-color: #5fa2dd !important;
+    border-right-color: #35baf6 !important;
     border-right-width: 1px !important;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/border-management.scss:20 */
 .x-window-default-outer-border-rl {
-    border-right-color: #5fa2dd !important;
+    border-right-color: #35baf6 !important;
     border-right-width: 1px !important;
-    border-left-color: #5fa2dd !important;
+    border-left-color: #35baf6 !important;
     border-left-width: 1px !important;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/border-management.scss:26 */
 .x-window-default-outer-border-rb {
-    border-right-color: #5fa2dd !important;
+    border-right-color: #35baf6 !important;
     border-right-width: 1px !important;
-    border-bottom-color: #5fa2dd !important;
+    border-bottom-color: #35baf6 !important;
     border-bottom-width: 1px !important;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/border-management.scss:32 */
 .x-window-default-outer-border-rbl {
-    border-right-color: #5fa2dd !important;
+    border-right-color: #35baf6 !important;
     border-right-width: 1px !important;
-    border-bottom-color: #5fa2dd !important;
+    border-bottom-color: #35baf6 !important;
     border-bottom-width: 1px !important;
-    border-left-color: #5fa2dd !important;
+    border-left-color: #35baf6 !important;
     border-left-width: 1px !important;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/border-management.scss:40 */
 .x-window-default-outer-border-t {
-    border-top-color: #5fa2dd !important;
+    border-top-color: #35baf6 !important;
     border-top-width: 1px !important;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/border-management.scss:44 */
 .x-window-default-outer-border-tl {
-    border-top-color: #5fa2dd !important;
+    border-top-color: #35baf6 !important;
     border-top-width: 1px !important;
-    border-left-color: #5fa2dd !important;
+    border-left-color: #35baf6 !important;
     border-left-width: 1px !important;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/border-management.scss:50 */
 .x-window-default-outer-border-tb {
-    border-top-color: #5fa2dd !important;
+    border-top-color: #35baf6 !important;
     border-top-width: 1px !important;
-    border-bottom-color: #5fa2dd !important;
+    border-bottom-color: #35baf6 !important;
     border-bottom-width: 1px !important;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/border-management.scss:56 */
 .x-window-default-outer-border-tbl {
-    border-top-color: #5fa2dd !important;
+    border-top-color: #35baf6 !important;
     border-top-width: 1px !important;
-    border-bottom-color: #5fa2dd !important;
+    border-bottom-color: #35baf6 !important;
     border-bottom-width: 1px !important;
-    border-left-color: #5fa2dd !important;
+    border-left-color: #35baf6 !important;
     border-left-width: 1px !important;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/border-management.scss:64 */
 .x-window-default-outer-border-tr {
-    border-top-color: #5fa2dd !important;
+    border-top-color: #35baf6 !important;
     border-top-width: 1px !important;
-    border-right-color: #5fa2dd !important;
+    border-right-color: #35baf6 !important;
     border-right-width: 1px !important;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/border-management.scss:70 */
 .x-window-default-outer-border-trl {
-    border-top-color: #5fa2dd !important;
+    border-top-color: #35baf6 !important;
     border-top-width: 1px !important;
-    border-right-color: #5fa2dd !important;
+    border-right-color: #35baf6 !important;
     border-right-width: 1px !important;
-    border-left-color: #5fa2dd !important;
+    border-left-color: #35baf6 !important;
     border-left-width: 1px !important;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/border-management.scss:78 */
 .x-window-default-outer-border-trb {
-    border-top-color: #5fa2dd !important;
+    border-top-color: #35baf6 !important;
     border-top-width: 1px !important;
-    border-right-color: #5fa2dd !important;
+    border-right-color: #35baf6 !important;
     border-right-width: 1px !important;
-    border-bottom-color: #5fa2dd !important;
+    border-bottom-color: #35baf6 !important;
     border-bottom-width: 1px !important;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/border-management.scss:86 */
 .x-window-default-outer-border-trbl {
-    border-color: #5fa2dd !important;
+    border-color: #35baf6 !important;
     border-width: 1px !important;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/window/Window.scss:708 */
@@ -10865,7 +11290,7 @@ body > .x-mask {
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/form/Labelable.scss:97 */
 .x-form-item-label-default {
     color: #404040;
-    font: 300 13px/17px 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
+    font: 400 13px/17px 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
     min-height: 32px;
     padding-top: 8px;
     padding-right: 5px;
@@ -10907,7 +11332,7 @@ body > .x-mask {
 .x-form-invalid-under-default {
     padding: 2px 2px 2px 20px;
     color: #cf4c35;
-    font: 300 13px/16px 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
+    font: 400 13px/16px 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
     background: no-repeat 0 2px;
     background-image: url(images/form/exclamation.png);
 }
@@ -10951,7 +11376,7 @@ body > .x-mask {
     color: #404040;
     padding: 5px 10px 4px;
     background-color: #fff;
-    font: 300 13px/21px 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
+    font: 400 13px/21px 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
     min-height: 30px;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/form/field/Text.scss:272 */
@@ -11159,7 +11584,7 @@ body > .x-mask {
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/var/form/field/Checkbox.scss:169 */
 .x-form-cb-label-default {
     margin-top: 8px;
-    font: 300 13px/17px 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
+    font: 400 13px/17px 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
     color: #404040;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/var/form/field/Checkbox.scss:174 */
@@ -11216,7 +11641,7 @@ body > .x-mask {
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/form/FieldSet.scss:148 */
 .x-fieldset-header-default > .x-fieldset-header-text {
-    font: 400 16px/20px 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
+    font: 500 16px/20px 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
     color: #919191;
     padding: 1px 0;
 }
@@ -11458,14 +11883,14 @@ body > .x-mask {
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/view/BoundList.scss:25 */
 .x-boundlist-selected {
     color: #fff;
-    background: #5fa2dd;
-    border-color: #5fa2dd;
+    background: #35baf6;
+    border-color: #35baf6;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/view/BoundList.scss:33 */
 .x-boundlist-item-over {
     color: #fff;
-    background: #7fb5e4;
-    border-color: #7fb5e4;
+    background: #5dc8f8;
+    border-color: #5dc8f8;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/view/BoundList.scss:42 */
 .x-boundlist-floating {
@@ -11580,7 +12005,7 @@ div.x-datepicker-arrow:hover {
 .x-datepicker-column-header {
     width: 44px;
     color: #404040;
-    font: 400 13px 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
+    font: 500 13px 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
     text-align: right;
     background-color: #ececec;
 }
@@ -11597,7 +12022,7 @@ div.x-datepicker-arrow:hover {
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/picker/Date.scss:163 */
 .x-datepicker-date {
     padding: 0 15px 0 0;
-    font: 300 13px 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
+    font: 400 13px 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
     color: #404040;
     cursor: pointer;
     line-height: 36px;
@@ -11610,19 +12035,19 @@ div.x-datepicker-date:hover {
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/picker/Date.scss:178 */
 .x-datepicker-selected {
     border-style: solid;
-    border-color: #7fb5e4;
+    border-color: #5dc8f8;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/picker/Date.scss:181 */
 .x-datepicker-selected div.x-datepicker-date {
-    background-color: #5fa2dd;
+    background-color: #35baf6;
     color: #fff;
-    font-weight: 300;
+    font-weight: 400;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/picker/Date.scss:188 */
 .x-datepicker-today {
     border-color: darkred;
     border-style: solid;
-    background-color: #bfdaf1;
+    background-color: #aee3fb;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/picker/Date.scss:199 */
 .x-datepicker-prevday .x-datepicker-date,
@@ -11682,7 +12107,7 @@ div.x-datepicker-date:hover {
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/picker/Date.scss:274 */
 .x-monthpicker-item {
     margin: 5px 0 5px;
-    font: 300 13px 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
+    font: 400 13px 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
     text-align: center;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/picker/Date.scss:280 */
@@ -11700,10 +12125,10 @@ a.x-monthpicker-item-inner:hover {
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/picker/Date.scss:301 */
 .x-monthpicker-item a.x-monthpicker-selected {
-    background-color: #5fa2dd;
+    background-color: #35baf6;
     color: #fff;
     border-style: solid;
-    border-color: #7fb5e4;
+    border-color: #5dc8f8;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/picker/Date.scss:308 */
 .x-monthpicker-yearnav {
@@ -11762,6 +12187,18 @@ a.x-monthpicker-yearnav-button:hover {
 .x-monthpicker-small .x-monthpicker-yearnav-button {
     margin-top: 12px;
 }
+/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/slicer.scss:83 */
+.x-cmd-slicer.x-datepicker-header:before {
+    /*<if slicer>*/
+    display: none;
+    content: "x-slicer:, stretch:bottom" !important;
+}
+/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/slicer.scss:83 */
+.x-cmd-slicer.x-datepicker-footer:before {
+    /*<if slicer>*/
+    display: none;
+    content: "x-slicer:, stretch:bottom" !important;
+}
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/form/field/Date.scss:2 */
 .x-form-field-date .x-form-date-trigger {
     font-size: 16px;
@@ -11774,7 +12211,7 @@ a.x-monthpicker-yearnav-button:hover {
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/var/form/field/Display.scss:52 */
 .x-form-display-field-default {
     min-height: 32px;
-    font: 300 13px/17px 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
+    font: 400 13px/17px 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
     color: #404040;
     margin-top: 8px;
 }
@@ -11811,7 +12248,6 @@ a.x-monthpicker-yearnav-button:hover {
     -webkit-border-radius: 2px;
     -moz-border-radius: 2px;
     -ms-border-radius: 2px;
-    -o-border-radius: 2px;
     border-radius: 2px;
     padding: 1px 1px 1px 1px;
     border-width: 1px;
@@ -11829,7 +12265,6 @@ a.x-monthpicker-yearnav-button:hover {
     -webkit-border-radius: 0px;
     -moz-border-radius: 0px;
     -ms-border-radius: 0px;
-    -o-border-radius: 0px;
     border-radius: 0px;
     background-color: transparent !important;
     box-shadow: none !important;
@@ -11911,6 +12346,12 @@ a.x-monthpicker-yearnav-button:hover {
 .x-tip-default-mc {
     padding: 0px 0px 0px 0px;
 }
+/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/slicer.scss:83 */
+.x-cmd-slicer.x-tip-default:before {
+    /*<if slicer>*/
+    display: none;
+    content: "x-slicer:, frame:2px 2px 2px 2px, corners:url(images/tip/tip-default-corners.gif), sides:url(images/tip/tip-default-sides.gif)" !important;
+}
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/var/tip/Tip.scss:313 */
 .x-tip-default {
     background-color: #747474;
@@ -11952,7 +12393,7 @@ a.x-monthpicker-yearnav-button:hover {
     padding: 6px 8px;
     color: #f0f0f0;
     font-size: 13px;
-    font-weight: 300;
+    font-weight: 400;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/var/tip/Tip.scss:374 */
 .x-tip-body-default a {
@@ -11993,7 +12434,6 @@ a.x-monthpicker-yearnav-button:hover {
     -webkit-border-radius: 2px;
     -moz-border-radius: 2px;
     -ms-border-radius: 2px;
-    -o-border-radius: 2px;
     border-radius: 2px;
     padding: 1px 1px 1px 1px;
     border-width: 1px;
@@ -12011,7 +12451,6 @@ a.x-monthpicker-yearnav-button:hover {
     -webkit-border-radius: 0px;
     -moz-border-radius: 0px;
     -ms-border-radius: 0px;
-    -o-border-radius: 0px;
     border-radius: 0px;
     background-color: transparent !important;
     box-shadow: none !important;
@@ -12093,6 +12532,12 @@ a.x-monthpicker-yearnav-button:hover {
 .x-tip-form-invalid-mc {
     padding: 0px 0px 0px 0px;
 }
+/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/slicer.scss:83 */
+.x-cmd-slicer.x-tip-form-invalid:before {
+    /*<if slicer>*/
+    display: none;
+    content: "x-slicer:, frame:2px 2px 2px 2px, corners:url(images/tip/tip-form-invalid-corners.gif), sides:url(images/tip/tip-form-invalid-sides.gif)" !important;
+}
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/var/tip/Tip.scss:313 */
 .x-tip-form-invalid {
     background-color: #747474;
@@ -12134,7 +12579,7 @@ a.x-monthpicker-yearnav-button:hover {
     padding: 3px 3px 3px 22px;
     color: #f0f0f0;
     font-size: 13px;
-    font-weight: 300;
+    font-weight: 400;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/var/tip/Tip.scss:374 */
 .x-tip-body-form-invalid a {
@@ -12390,7 +12835,7 @@ a.x-color-picker-item:hover {
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/form/field/HtmlEditor.scss:171 */
 .x-html-editor-wrap textarea {
-    font: 300 13px 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
+    font: 400 13px 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
     background-color: #fff;
     resize: none;
 }
@@ -12412,7 +12857,6 @@ a.x-color-picker-item:hover {
     -webkit-border-radius: 0;
     -moz-border-radius: 0;
     -ms-border-radius: 0;
-    -o-border-radius: 0;
     border-radius: 0;
     background-color: #ececec;
     border: 1px solid #ececec;
@@ -12429,8 +12873,8 @@ a.x-color-picker-item:hover {
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/var/form/field/Tag.scss:352 */
 .x-form-text-default .x-tagfield-item.x-tagfield-item-selected {
-    background-color: #7fb5e4;
-    border-color: #7fb5e4;
+    background-color: #5dc8f8;
+    border-color: #5dc8f8;
     color: #fff;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/var/form/field/Tag.scss:361 */
@@ -12493,12 +12937,12 @@ a.x-color-picker-item:hover {
     padding: 10px;
     color: grey;
     background-color: #fff;
-    font: 300 13px 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
+    font: 400 13px 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/view/Table.scss:25 */
 .x-grid-item {
     color: #404040;
-    font: 300 13px/19px 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
+    font: 400 13px/19px 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
     background-color: #fff;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/view/Table.scss:31 */
@@ -12508,7 +12952,7 @@ a.x-color-picker-item:hover {
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/view/Table.scss:35 */
 .x-grid-item-over {
     color: #404040;
-    background-color: #eaeff4;
+    background-color: #e6f1f6;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/view/Table.scss:42 */
 .x-grid-item-focused {
@@ -12529,7 +12973,7 @@ a.x-color-picker-item:hover {
     bottom: 0px;
     left: 0px;
     pointer-events: none;
-    border: 1px solid #5fa2dd;
+    border: 1px solid #35baf6;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/view/Table.scss:76 */
 .x-grid-item-selected {
@@ -12549,12 +12993,12 @@ a.x-color-picker-item:hover {
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/view/Table.scss:94 */
 .x-grid-with-row-lines .x-grid-item.x-grid-item-over {
     border-style: solid;
-    border-color: #dee3e8;
+    border-color: #dbe5ea;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/view/Table.scss:99 */
 .x-grid-with-row-lines .x-grid-item-over + .x-grid-item {
     border-top-style: solid;
-    border-top-color: #dee3e8;
+    border-top-color: #dbe5ea;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/view/Table.scss:104 */
 .x-grid-with-row-lines .x-grid-item.x-grid-item-selected {
@@ -12624,7 +13068,7 @@ a.x-color-picker-item:hover {
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/view/Table.scss:244 */
 .x-grid-with-col-lines .x-grid-item-over .x-grid-cell {
-    border-color: #dee3e8;
+    border-color: #dbe5ea;
     border-style: solid;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/view/Table.scss:249 */
@@ -12729,7 +13173,7 @@ a.x-color-picker-item:hover {
 .x-column-header {
     border-right: 1px solid #d0d0d0;
     color: #404040;
-    font: 400 13px/19px 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
+    font: 500 13px/19px 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
     outline: 0;
     background-color: #fff;
 }
@@ -12768,7 +13212,7 @@ a.x-color-picker-item:hover {
     right: 0px;
     bottom: 0px;
     left: 0px;
-    border: 1px solid #7fb5e4;
+    border: 1px solid #5dc8f8;
     pointer-events: none;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/grid/column/Column.scss:64 */
@@ -12778,7 +13222,7 @@ a.x-color-picker-item:hover {
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/grid/column/Column.scss:77 */
 .x-column-header-over {
     background-image: none;
-    background-color: #eaeff4;
+    background-color: #e6f1f6;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/grid/column/Column.scss:81 */
 .x-column-header-sort-ASC,
@@ -12788,11 +13232,11 @@ a.x-color-picker-item:hover {
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/grid/column/Column.scss:109 */
 .x-column-header-open {
-    background-color: #eaeff4;
+    background-color: #e6f1f6;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/grid/column/Column.scss:112 */
 .x-column-header-open .x-column-header-trigger {
-    background-color: #dee3e8;
+    background-color: #dbe5ea;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/grid/column/Column.scss:117 */
 .x-column-header-over .x-column-header-trigger,
@@ -12873,6 +13317,18 @@ a.x-color-picker-item:hover {
 .x-no-header-borders .x-column-header .x-column-header-inner {
     padding-top: 7px;
 }
+/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/slicer.scss:83 */
+.x-cmd-slicer.x-column-header:before {
+    /*<if slicer>*/
+    display: none;
+    content: "x-slicer:" !important;
+}
+/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/slicer.scss:83 */
+.x-cmd-slicer.x-column-header-over:before {
+    /*<if slicer>*/
+    display: none;
+    content: "x-slicer:" !important;
+}
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/grid/column/Action.scss:1 */
 .x-grid-cell-inner-action-col {
     padding: 7px 4px 7px 4px;
@@ -12943,16 +13399,15 @@ a.x-color-picker-item:hover {
     -webkit-border-radius: 0;
     -moz-border-radius: 0;
     -ms-border-radius: 0;
-    -o-border-radius: 0;
     border-radius: 0;
     padding: 7px 7px 7px 7px;
     border-width: 1px;
     border-style: solid;
-    background-color: #5fa2dd;
+    background-color: #35baf6;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/frame.scss:237 */
 .x-btn-grid-cell-small-mc {
-    background-color: #5fa2dd;
+    background-color: #35baf6;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/frame.scss:264 */
 .x-nbr .x-btn-grid-cell-small {
@@ -12961,7 +13416,6 @@ a.x-color-picker-item:hover {
     -webkit-border-radius: 0px;
     -moz-border-radius: 0px;
     -ms-border-radius: 0px;
-    -o-border-radius: 0px;
     border-radius: 0px;
     background-color: transparent !important;
     box-shadow: none !important;
@@ -13043,9 +13497,15 @@ a.x-color-picker-item:hover {
 .x-btn-grid-cell-small-mc {
     padding: 7px 7px 7px 7px;
 }
+/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/slicer.scss:83 */
+.x-cmd-slicer.x-btn-grid-cell-small:before {
+    /*<if slicer>*/
+    display: none;
+    content: "x-slicer:, frame:1px 1px 1px 1px, corners:url(images/btn/btn-grid-cell-small-corners.gif), sides:url(images/btn/btn-grid-cell-small-sides.gif)" !important;
+}
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:445 */
 .x-btn-grid-cell-small {
-    border-color: #5897ce;
+    border-color: #31ade5;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:452 */
 .x-btn-button-grid-cell-small {
@@ -13058,7 +13518,7 @@ a.x-color-picker-item:hover {
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:464 */
 .x-btn-inner-grid-cell-small {
-    font: 400 12px/16px 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
+    font: 500 12px/16px 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
     color: #f0f0f0;
     padding: 0 5px;
     max-width: 100%;
@@ -13198,7 +13658,7 @@ a.x-color-picker-item:hover {
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:727 */
 .x-btn-focus.x-btn-grid-cell-small {
     background-image: none;
-    background-color: #5fa2dd;
+    background-color: #35baf6;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:762 */
 .x-btn-grid-cell-small .x-btn-arrow-el {
@@ -13216,21 +13676,21 @@ a.x-color-picker-item:hover {
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:785 */
 .x-btn-over.x-btn-grid-cell-small {
-    border-color: #518bbd;
+    border-color: #2d9fd2;
     background-image: none;
-    background-color: #5795cb;
+    background-color: #31abe2;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:840 */
 .x-btn.x-btn-menu-active.x-btn-grid-cell-small,
 .x-btn.x-btn-pressed.x-btn-grid-cell-small {
-    border-color: #42719a;
+    border-color: #2582ac;
     background-image: none;
-    background-color: #477aa6;
+    background-color: #288cb9;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:897 */
 .x-btn.x-btn-disabled.x-btn-grid-cell-small {
     background-image: none;
-    background-color: #5fa2dd;
+    background-color: #35baf6;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:929 */
 .x-btn-focus .x-btn-grid-cell-small-tl,
@@ -13248,7 +13708,7 @@ a.x-color-picker-item:hover {
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:941 */
 .x-btn-focus .x-btn-grid-cell-small-mc {
-    background-color: #5fa2dd;
+    background-color: #35baf6;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:953 */
 .x-btn-over .x-btn-grid-cell-small-tl,
@@ -13266,7 +13726,7 @@ a.x-color-picker-item:hover {
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:965 */
 .x-btn-over .x-btn-grid-cell-small-mc {
-    background-color: #5795cb;
+    background-color: #31abe2;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:977 */
 .x-btn-focus.x-btn-over .x-btn-grid-cell-small-tl,
@@ -13284,7 +13744,7 @@ a.x-color-picker-item:hover {
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:989 */
 .x-btn-focus.x-btn-over .x-btn-grid-cell-small-mc {
-    background-color: #5795cb;
+    background-color: #31abe2;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:1003 */
 .x-btn.x-btn-menu-active .x-btn-grid-cell-small-tl,
@@ -13311,7 +13771,7 @@ a.x-color-picker-item:hover {
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:1015 */
 .x-btn.x-btn-menu-active .x-btn-grid-cell-small-mc,
 .x-btn.x-btn-pressed .x-btn-grid-cell-small-mc {
-    background-color: #477aa6;
+    background-color: #288cb9;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:1028 */
 .x-btn-focus.x-btn-menu-active .x-btn-grid-cell-small-tl,
@@ -13338,7 +13798,7 @@ a.x-color-picker-item:hover {
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:1040 */
 .x-btn-focus.x-btn-menu-active .x-btn-grid-cell-small-mc,
 .x-btn-focus.x-btn-pressed .x-btn-grid-cell-small-mc {
-    background-color: #477aa6;
+    background-color: #288cb9;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:1053 */
 .x-btn.x-btn-disabled .x-btn-grid-cell-small-tl,
@@ -13356,7 +13816,7 @@ a.x-color-picker-item:hover {
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:1065 */
 .x-btn.x-btn-disabled .x-btn-grid-cell-small-mc {
-    background-color: #5fa2dd;
+    background-color: #35baf6;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:1075 */
 .x-nbr .x-btn-grid-cell-small {
@@ -13446,6 +13906,42 @@ a.x-color-picker-item:hover {
 .x-nbr .x-segmented-button-item-vertical.x-btn-grid-cell-small.x-segmented-button-last:after {
     bottom: 1px;
 }
+/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/slicer.scss:83 */
+.x-cmd-slicer.x-btn-focus.x-btn-grid-cell-small:before {
+    /*<if slicer>*/
+    display: none;
+    content: "x-slicer:, stretch:bottom, frame:1px 1px 1px 1px, corners:url(images/btn/btn-grid-cell-small-focus-corners.gif), sides:url(images/btn/btn-grid-cell-small-focus-sides.gif)" !important;
+}
+/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/slicer.scss:83 */
+.x-cmd-slicer.x-btn-over.x-btn-grid-cell-small:before {
+    /*<if slicer>*/
+    display: none;
+    content: "x-slicer:, stretch:bottom, frame:1px 1px 1px 1px, corners:url(images/btn/btn-grid-cell-small-over-corners.gif), sides:url(images/btn/btn-grid-cell-small-over-sides.gif)" !important;
+}
+/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/slicer.scss:83 */
+.x-cmd-slicer.x-btn-focus.x-btn-over.x-btn-grid-cell-small:before {
+    /*<if slicer>*/
+    display: none;
+    content: "x-slicer:, stretch:bottom, frame:1px 1px 1px 1px, corners:url(images/btn/btn-grid-cell-small-focus-over-corners.gif), sides:url(images/btn/btn-grid-cell-small-focus-over-sides.gif)" !important;
+}
+/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/slicer.scss:83 */
+.x-cmd-slicer.x-btn-pressed.x-btn-grid-cell-small:before {
+    /*<if slicer>*/
+    display: none;
+    content: "x-slicer:, stretch:bottom, frame:1px 1px 1px 1px, corners:url(images/btn/btn-grid-cell-small-pressed-corners.gif), sides:url(images/btn/btn-grid-cell-small-pressed-sides.gif)" !important;
+}
+/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/slicer.scss:83 */
+.x-cmd-slicer.x-btn-focus.x-btn-pressed.x-btn-grid-cell-small:before {
+    /*<if slicer>*/
+    display: none;
+    content: "x-slicer:, stretch:bottom, frame:1px 1px 1px 1px, corners:url(images/btn/btn-grid-cell-small-focus-pressed-corners.gif), sides:url(images/btn/btn-grid-cell-small-focus-pressed-sides.gif)" !important;
+}
+/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/slicer.scss:83 */
+.x-cmd-slicer.x-btn-disabled.x-btn-grid-cell-small:before {
+    /*<if slicer>*/
+    display: none;
+    content: "x-slicer:, stretch:bottom, frame:1px 1px 1px 1px, corners:url(images/btn/btn-grid-cell-small-disabled-corners.gif), sides:url(images/btn/btn-grid-cell-small-disabled-sides.gif)" !important;
+}
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/button/Button.scss:1246 */
 .x-button-grid-cell-small-cell > .x-grid-cell-inner {
     padding-top: 0px;
@@ -13491,7 +13987,7 @@ a.x-color-picker-item:hover {
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/grid/feature/Grouping.scss:36 */
 .x-grid-group-title {
     color: #606060;
-    font: 400 13px/15px 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
+    font: 500 13px/15px 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/etc/mixins/font-icon.scss:126 */
 .x-grid-group-hd-collapsed .x-grid-group-title:before {
@@ -13510,7 +14006,7 @@ a.x-color-picker-item:hover {
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/grid/feature/RowBody.scss:1 */
 .x-grid-rowbody {
-    font: 300 13px/19px 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
+    font: 400 13px/19px 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
     padding: 5px 10px 5px 10px;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/grid/feature/Summary.scss:1 */
@@ -13531,7 +14027,7 @@ a.x-color-picker-item:hover {
     border-color: #e9e9e9;
     background-color: #fff !important;
     border-top: 1px solid #e9e9e9;
-    font: 300 13px/19px 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
+    font: 400 13px/19px 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/grid/feature/Summary.scss:26 */
 .x-docked-summary .x-grid-item,
@@ -13579,12 +14075,12 @@ a.x-color-picker-item:hover {
 .x-menu-item-default.x-menu-item-focus,
 .x-menu-item-default.x-menu-item-active {
     background-image: none;
-    background-color: #7fb5e4;
+    background-color: #5dc8f8;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/menu/Menu.scss:363 */
 .x-nlg .x-menu-item-default.x-menu-item-focus,
 .x-nlg .x-menu-item-default.x-menu-item-active {
-    background: #7fb5e4 repeat-x left top;
+    background: #5dc8f8 repeat-x left top;
     background-image: url(images/menu/menu-item-default-active-bg.gif);
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/menu/Menu.scss:370 */
@@ -13629,7 +14125,7 @@ a.x-color-picker-item:hover {
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/menu/Menu.scss:417 */
 .x-menu-item-text-default {
-    font: 300 13px 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
+    font: 400 13px 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
     line-height: 31px;
     padding-top: 1px;
     color: #000;
@@ -13933,12 +14429,12 @@ a.x-color-picker-item:hover {
 .x-menu-item-default-menubar.x-menu-item-focus,
 .x-menu-item-default-menubar.x-menu-item-active {
     background-image: none;
-    background-color: #7fb5e4;
+    background-color: #5dc8f8;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/menu/Menu.scss:363 */
 .x-nlg .x-menu-item-default-menubar.x-menu-item-focus,
 .x-nlg .x-menu-item-default-menubar.x-menu-item-active {
-    background: #7fb5e4 repeat-x left top;
+    background: #5dc8f8 repeat-x left top;
     background-image: url(images/menu/menu-item-default-menubar-active-bg.gif);
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/menu/Menu.scss:370 */
@@ -13983,7 +14479,7 @@ a.x-color-picker-item:hover {
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/menu/Menu.scss:417 */
 .x-menu-item-text-default-menubar {
-    font: 300 13px 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
+    font: 400 13px 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
     line-height: 31px;
     padding-top: 1px;
     color: #000;
@@ -14347,7 +14843,7 @@ a.x-color-picker-item:hover {
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/grid/locking/Lockable.scss:59 */
 .x-rtl.x-grid-inner-locked {
-    border-right-color: #5fa2dd;
+    border-right-color: #35baf6;
     border-left-color: #d0d0d0;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/grid/locking/Lockable.scss:61 */
@@ -14452,7 +14948,7 @@ a.x-color-picker-item:hover {
     border-top: 1px solid #d0d0d0 !important;
     border-bottom: 1px solid #d0d0d0 !important;
     padding: 5px 0 5px 0;
-    background-color: #e5edf4;
+    background-color: #e0f0f7;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/grid/plugin/RowEditing.scss:60 */
 .x-grid-with-col-lines .x-grid-row-editor .x-form-cb {
@@ -14480,11 +14976,11 @@ a.x-color-picker-item:hover {
     padding: 5px 5px 5px 5px;
     border-width: 0 1px 1px 1px;
     border-style: solid;
-    background-color: #e5edf4;
+    background-color: #e0f0f7;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/frame.scss:237 */
 .x-grid-row-editor-buttons-default-bottom-mc {
-    background-color: #e5edf4;
+    background-color: #e0f0f7;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/frame.scss:264 */
 .x-nbr .x-grid-row-editor-buttons-default-bottom {
@@ -14493,7 +14989,6 @@ a.x-color-picker-item:hover {
     -webkit-border-radius: 0px;
     -moz-border-radius: 0px;
     -ms-border-radius: 0px;
-    -o-border-radius: 0px;
     border-radius: 0px;
     background-color: transparent !important;
     box-shadow: none !important;
@@ -14575,6 +15070,12 @@ a.x-color-picker-item:hover {
 .x-grid-row-editor-buttons-default-bottom-mc {
     padding: 5px 1px 1px 1px;
 }
+/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/slicer.scss:83 */
+.x-cmd-slicer.x-grid-row-editor-buttons-default-bottom:before {
+    /*<if slicer>*/
+    display: none;
+    content: "x-slicer:, frame:0 5px 5px 5px, corners:url(images/grid-row-editor-buttons/grid-row-editor-buttons-default-bottom-corners.gif), sides:url(images/grid-row-editor-buttons/grid-row-editor-buttons-default-bottom-sides.gif)" !important;
+}
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/frame.scss:187 */
 .x-grid-row-editor-buttons-default-top {
     -moz-border-radius-topleft: 5px;
@@ -14592,11 +15093,11 @@ a.x-color-picker-item:hover {
     padding: 5px 5px 5px 5px;
     border-width: 1px 1px 0 1px;
     border-style: solid;
-    background-color: #e5edf4;
+    background-color: #e0f0f7;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/frame.scss:237 */
 .x-grid-row-editor-buttons-default-top-mc {
-    background-color: #e5edf4;
+    background-color: #e0f0f7;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/frame.scss:264 */
 .x-nbr .x-grid-row-editor-buttons-default-top {
@@ -14605,7 +15106,6 @@ a.x-color-picker-item:hover {
     -webkit-border-radius: 0px;
     -moz-border-radius: 0px;
     -ms-border-radius: 0px;
-    -o-border-radius: 0px;
     border-radius: 0px;
     background-color: transparent !important;
     box-shadow: none !important;
@@ -14687,6 +15187,12 @@ a.x-color-picker-item:hover {
 .x-grid-row-editor-buttons-default-top-mc {
     padding: 1px 1px 5px 1px;
 }
+/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/slicer.scss:83 */
+.x-cmd-slicer.x-grid-row-editor-buttons-default-top:before {
+    /*<if slicer>*/
+    display: none;
+    content: "x-slicer:, frame:5px 5px 0 5px, corners:url(images/grid-row-editor-buttons/grid-row-editor-buttons-default-top-corners.gif), sides:url(images/grid-row-editor-buttons/grid-row-editor-buttons-default-top-sides.gif)" !important;
+}
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/grid/plugin/RowEditing.scss:108 */
 .x-grid-row-editor-buttons {
     border-color: #d0d0d0;
@@ -14763,11 +15269,11 @@ a.x-color-picker-item:hover {
 .x-ssm-extender-drag-handle {
     height: 7px;
     width: 7px;
-    background-color: #5fa2dd;
+    background-color: #35baf6;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/grid/selection/SpreadsheetModel.scss:22 */
 .x-ssm-extender-mask {
-    border: 1px dotted #5fa2dd;
+    border: 1px dotted #35baf6;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/layout/container/Accordion.scss:1 */
 .x-accordion-layout-ct {
@@ -14777,7 +15283,7 @@ a.x-color-picker-item:hover {
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/layout/container/Accordion.scss:6 */
 .x-accordion-hd .x-panel-header-title {
     color: #404040;
-    font-weight: 300;
+    font-weight: 400;
     font-family: 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
     text-transform: none;
 }
@@ -14789,7 +15295,7 @@ a.x-color-picker-item:hover {
 .x-accordion-item .x-accordion-hd {
     background: #ececec;
     border-width: 0;
-    border-color: #5fa2dd;
+    border-color: #35baf6;
     padding: 12px 10px;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/layout/container/Accordion.scss:24 */
@@ -14798,7 +15304,7 @@ a.x-color-picker-item:hover {
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/layout/container/Accordion.scss:29 */
 .x-accordion-item .x-accordion-hd-sibling-expanded {
-    border-top-color: #5fa2dd;
+    border-top-color: #35baf6;
     border-top-width: 0;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/layout/container/Accordion.scss:34 */
@@ -14813,7 +15319,7 @@ a.x-color-picker-item:hover {
 .x-accordion-hd .x-tool-img {
     background-image: url(images/tools/tool-sprites-dark.png);
     background-color: #ececec;
-    color: #5fa2dd;
+    color: #35baf6;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/layout/container/Accordion.scss:58 */
 .x-accordion-hd .x-tool-collapse-top,
@@ -15108,7 +15614,7 @@ div.x-border-layout-ct {
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/slider/Multi.scss:33 */
 .x-slider-thumb-over {
     background-color: #fcfcfc;
-    border-color: #c8cdd2;
+    border-color: #c5cfd4;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/slider/Multi.scss:36 */
 .x-slider-thumb-over:before {
@@ -15117,11 +15623,11 @@ div.x-border-layout-ct {
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/slider/Multi.scss:41 */
 .x-slider-focus .x-slider-thumb {
     background-color: #f6f6f6;
-    border-color: #5fa2dd;
+    border-color: #35baf6;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/slider/Multi.scss:44 */
 .x-slider-focus .x-slider-thumb:before {
-    color: #a6c7e5;
+    color: #91d3f1;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/slider/Multi.scss:49 */
 .x-slider-focus .x-slider-thumb-over {
@@ -15130,7 +15636,7 @@ div.x-border-layout-ct {
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/slider/Multi.scss:53 */
 .x-slider-thumb-drag {
     background-color: #f1f1f1;
-    border-color: #c0c8cf;
+    border-color: #bbcbd2;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/slider/Multi.scss:56 */
 .x-slider-thumb-drag:before {
@@ -15246,7 +15752,6 @@ div.x-border-layout-ct {
     -webkit-border-radius: 0;
     -moz-border-radius: 0;
     -ms-border-radius: 0;
-    -o-border-radius: 0;
     border-radius: 0;
     padding: 8px 10px 8px 10px;
     border-width: 0;
@@ -15264,7 +15769,6 @@ div.x-border-layout-ct {
     -webkit-border-radius: 0px;
     -moz-border-radius: 0px;
     -ms-border-radius: 0px;
-    -o-border-radius: 0px;
     border-radius: 0px;
     background-color: transparent !important;
     box-shadow: none !important;
@@ -15329,6 +15833,12 @@ div.x-border-layout-ct {
 .x-tab-default-top-mc {
     padding: 8px 10px 8px 10px;
 }
+/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/slicer.scss:83 */
+.x-cmd-slicer.x-tab-default-top:before {
+    /*<if slicer>*/
+    display: none;
+    content: "x-slicer:, frame:0 0 0 0" !important;
+}
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/frame.scss:187 */
 .x-tab-default-bottom {
     -moz-border-radius-topleft: 0;
@@ -15359,7 +15869,6 @@ div.x-border-layout-ct {
     -webkit-border-radius: 0px;
     -moz-border-radius: 0px;
     -ms-border-radius: 0px;
-    -o-border-radius: 0px;
     border-radius: 0px;
     background-color: transparent !important;
     box-shadow: none !important;
@@ -15424,6 +15933,12 @@ div.x-border-layout-ct {
 .x-tab-default-bottom-mc {
     padding: 8px 10px 8px 10px;
 }
+/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/slicer.scss:83 */
+.x-cmd-slicer.x-tab-default-bottom:before {
+    /*<if slicer>*/
+    display: none;
+    content: "x-slicer:, frame:0 0 0 0" !important;
+}
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/frame.scss:187 */
 .x-tab-default-left {
     -moz-border-radius-topleft: 0;
@@ -15454,7 +15969,6 @@ div.x-border-layout-ct {
     -webkit-border-radius: 0px;
     -moz-border-radius: 0px;
     -ms-border-radius: 0px;
-    -o-border-radius: 0px;
     border-radius: 0px;
     background-color: transparent !important;
     box-shadow: none !important;
@@ -15519,6 +16033,12 @@ div.x-border-layout-ct {
 .x-tab-default-left-mc {
     padding: 8px 10px 8px 10px;
 }
+/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/slicer.scss:83 */
+.x-cmd-slicer.x-tab-default-left:before {
+    /*<if slicer>*/
+    display: none;
+    content: "x-slicer:, frame:0 0 0 0" !important;
+}
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/frame.scss:187 */
 .x-tab-default-right {
     -moz-border-radius-topleft: 0;
@@ -15549,7 +16069,6 @@ div.x-border-layout-ct {
     -webkit-border-radius: 0px;
     -moz-border-radius: 0px;
     -ms-border-radius: 0px;
-    -o-border-radius: 0px;
     border-radius: 0px;
     background-color: transparent !important;
     box-shadow: none !important;
@@ -15613,6 +16132,12 @@ div.x-border-layout-ct {
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/frame.scss:464 */
 .x-tab-default-right-mc {
     padding: 8px 10px 8px 10px;
+}
+/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/slicer.scss:83 */
+.x-cmd-slicer.x-tab-default-right:before {
+    /*<if slicer>*/
+    display: none;
+    content: "x-slicer:, frame:0 0 0 0" !important;
 }
 /* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/tab/Tab.scss:1597 */
 .x-tab-default {
@@ -15686,322 +16211,4 @@ div.x-border-layout-ct {
     -webkit-box-shadow: none;
     -moz-box-shadow: none;
     box-shadow: none;
-}
-/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/tab/Tab.scss:1886 */
-.x-tab-default-bottom {
-    margin: 0 4px 0 0;
-}
-/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/tab/Tab.scss:1890 */
-.x-tab-default-bottom.x-rtl {
-    margin: 0 0 0 4px;
-}
-/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/tab/Tab.scss:1895 */
-.x-tab-default-bottom.x-tab-rotate-left {
-    margin: 0 0 0 4px;
-}
-/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/tab/Tab.scss:1899 */
-.x-tab-default-bottom.x-tab-rotate-left.x-rtl {
-    margin: 0 4px 0 0;
-}
-/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/tab/Tab.scss:1917 */
-.x-tab-default-bottom.x-tab-focus {
-    -webkit-box-shadow: none;
-    -moz-box-shadow: none;
-    box-shadow: none;
-}
-/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/tab/Tab.scss:1946 */
-.x-tab-default-bottom.x-tab-focus.x-tab-over {
-    -webkit-box-shadow: none;
-    -moz-box-shadow: none;
-    box-shadow: none;
-}
-/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/tab/Tab.scss:1975 */
-.x-tab-default-bottom.x-tab-focus.x-tab-active {
-    -webkit-box-shadow: none;
-    -moz-box-shadow: none;
-    box-shadow: none;
-}
-/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/tab/Tab.scss:2001 */
-.x-tab-default-left {
-    margin: 0 0 4px 0;
-}
-/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/tab/Tab.scss:2005 */
-.x-tab-default-left.x-rtl {
-    margin: 0 0 4px 0;
-}
-/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/tab/Tab.scss:2010 */
-.x-tab-default-left.x-tab-rotate-right {
-    margin: 4px 0 0 0;
-}
-/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/tab/Tab.scss:2014 */
-.x-tab-default-left.x-tab-rotate-right.x-rtl {
-    margin: 4px 0 0 0;
-}
-/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/tab/Tab.scss:2032 */
-.x-tab-default-left.x-tab-focus {
-    -webkit-box-shadow: none;
-    -moz-box-shadow: none;
-    box-shadow: none;
-}
-/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/tab/Tab.scss:2061 */
-.x-tab-default-left.x-tab-focus.x-tab-over {
-    -webkit-box-shadow: none;
-    -moz-box-shadow: none;
-    box-shadow: none;
-}
-/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/tab/Tab.scss:2090 */
-.x-tab-default-left.x-tab-focus.x-tab-active {
-    -webkit-box-shadow: none;
-    -moz-box-shadow: none;
-    box-shadow: none;
-}
-/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/tab/Tab.scss:2116 */
-.x-tab-button-default {
-    height: 20px;
-}
-/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/tab/Tab.scss:2121 */
-.x-tab-inner-default {
-    font: 400 13px/20px 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
-    color: #f0f0f0;
-    max-width: 100%;
-}
-/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/tab/Tab.scss:2129 */
-.x-tab-bar-plain .x-tab-inner-default {
-    color: #606060;
-}
-/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/tab/Tab.scss:2137 */
-.x-tab-icon-right > .x-tab-inner-default,
-.x-tab-icon-left > .x-tab-inner-default {
-    max-width: calc(100% - 20px);
-}
-/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/tab/Tab.scss:2145 */
-.x-tab-icon-el-default {
-    min-height: 20px;
-    background-position: center center;
-    font-size: 20px;
-    line-height: 20px;
-    color: #f0f0f0;
-}
-/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/tab/Tab.scss:2146 */
-.x-tab-icon-left > .x-tab-icon-el-default,
-.x-tab-icon-right > .x-tab-icon-el-default {
-    width: 20px;
-}
-/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/tab/Tab.scss:2151 */
-.x-tab-icon-top > .x-tab-icon-el-default,
-.x-tab-icon-bottom > .x-tab-icon-el-default {
-    min-width: 20px;
-}
-/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/tab/Tab.scss:2162 */
-.x-tab-bar-plain .x-tab-icon-el-default {
-    color: #606060;
-}
-/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/tab/Tab.scss:2167 */
-.x-tab-icon-el-default.x-tab-glyph {
-    opacity: 0.7;
-}
-/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/tab/Tab.scss:2187 */
-.x-tab-text.x-tab-icon-left > .x-tab-icon-el-default {
-    margin-right: 6px;
-}
-/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/tab/Tab.scss:2191 */
-.x-tab-text.x-tab-icon-left > .x-tab-icon-el-default.x-rtl {
-    margin-right: 0;
-    margin-left: 6px;
-}
-/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/tab/Tab.scss:2198 */
-.x-tab-text.x-tab-icon-right > .x-tab-icon-el-default {
-    margin-left: 6px;
-}
-/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/tab/Tab.scss:2202 */
-.x-tab-text.x-tab-icon-right > .x-tab-icon-el-default.x-rtl {
-    margin-left: 0;
-    margin-right: 6px;
-}
-/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/tab/Tab.scss:2209 */
-.x-tab-text.x-tab-icon-top > .x-tab-icon-el-default {
-    margin-bottom: 6px;
-}
-/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/tab/Tab.scss:2213 */
-.x-tab-text.x-tab-icon-bottom > .x-tab-icon-el-default {
-    margin-top: 6px;
-}
-/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/tab/Tab.scss:2218 */
-.x-tab-focus.x-tab-default {
-    border-color: transparent;
-    background-color: transparent;
-    outline: 1px solid #5fa2dd;
-    outline-offset: -3px;
-}
-/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/css-outline.scss:64 */
-.x-ie .x-tab-focus.x-tab-default,
-.x-ie10p .x-tab-focus.x-tab-default,
-.x-edge .x-tab-focus.x-tab-default {
-    outline: none;
-}
-/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/css-outline.scss:40 */
-.x-ie .x-tab-focus.x-tab-default:after,
-.x-ie10p .x-tab-focus.x-tab-default:after,
-.x-edge .x-tab-focus.x-tab-default:after {
-    position: absolute;
-    content: ' ';
-    top: 2px;
-    right: 2px;
-    bottom: 2px;
-    left: 2px;
-    border: 1px solid #5fa2dd;
-    pointer-events: none;
-}
-/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/tab/Tab.scss:2314 */
-.x-tab-bar-plain .x-tab-focus.x-tab-default .x-tab-inner-default {
-    color: #606060;
-}
-/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/tab/Tab.scss:2346 */
-.x-tab-bar-plain .x-tab-focus.x-tab-default .x-tab-icon-el {
-    color: #606060;
-}
-/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/tab/Tab.scss:2354 */
-.x-tab-over.x-tab-default {
-    border-color: #000;
-    background-image: none;
-    background-color: rgba(0, 0, 0, 0.08);
-}
-/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/background-opacity.scss:19 */
-.x-ie8 .x-tab-over.x-tab-default {
-    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#14000000, endColorstr=#14000000)";
-    zoom: 1;
-}
-/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/tab/Tab.scss:2383 */
-.x-ie8 .x-tab-over.x-tab-default.x-tab-rotate-left {
-    -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=3)";
-}
-/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/tab/Tab.scss:2389 */
-.x-ie8 .x-tab-over.x-tab-default.x-tab-rotate-right {
-    -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=1)";
-}
-/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/tab/Tab.scss:2415 */
-.x-tab-bar-plain .x-tab-over.x-tab-default .x-tab-inner-default {
-    color: #606060;
-}
-/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/tab/Tab.scss:2446 */
-.x-tab-bar-plain .x-tab-over.x-tab-default .x-tab-icon-el {
-    color: #606060;
-}
-/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/tab/Tab.scss:2466 */
-.x-tab-focus.x-tab-over.x-tab-default {
-    border-color: #000;
-    background-image: none;
-    background-color: rgba(0, 0, 0, 0.08);
-}
-/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-base/sass/etc/mixins/background-opacity.scss:19 */
-.x-ie8 .x-tab-focus.x-tab-over.x-tab-default {
-    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#14000000, endColorstr=#14000000)";
-    zoom: 1;
-}
-/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/tab/Tab.scss:2495 */
-.x-ie8 .x-tab-focus.x-tab-over.x-tab-default.x-tab-rotate-left {
-    -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=3)";
-}
-/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/tab/Tab.scss:2501 */
-.x-ie8 .x-tab-focus.x-tab-over.x-tab-default.x-tab-rotate-right {
-    -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=1)";
-}
-/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/tab/Tab.scss:2527 */
-.x-tab-bar-plain .x-tab-focus.x-tab-over.x-tab-default .x-tab-inner-default {
-    color: #606060;
-}
-/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/tab/Tab.scss:2558 */
-.x-tab-bar-plain .x-tab-focus.x-tab-over.x-tab-default .x-tab-icon-el {
-    color: #606060;
-}
-/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/tab/Tab.scss:2581 */
-.x-tab.x-tab-active.x-tab-default {
-    border-color: #fff;
-    background-color: #fff;
-}
-/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/tab/Tab.scss:2637 */
-.x-tab.x-tab-active.x-tab-default .x-tab-inner-default {
-    color: #4c82b1;
-}
-/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/tab/Tab.scss:2642 */
-.x-tab-bar-plain .x-tab.x-tab-active.x-tab-default .x-tab-inner-default {
-    color: #404040;
-}
-/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/tab/Tab.scss:2657 */
-.x-tab.x-tab-active.x-tab-default .x-tab-icon-el {
-    color: #4c82b1;
-}
-/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/tab/Tab.scss:2665 */
-.x-ie8 .x-tab.x-tab-active.x-tab-default .x-tab-icon-el {
-    color: #82a7c8;
-}
-/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/tab/Tab.scss:2671 */
-.x-tab-bar-plain .x-tab.x-tab-active.x-tab-default .x-tab-icon-el {
-    color: #404040;
-}
-/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/tab/Tab.scss:2692 */
-.x-tab-focus.x-tab-active.x-tab-default {
-    border-color: #fff;
-    background-color: #fff;
-}
-/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/tab/Tab.scss:2753 */
-.x-tab-bar-plain .x-tab-focus.x-tab-active.x-tab-default .x-tab-inner-default {
-    color: #404040;
-}
-/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/tab/Tab.scss:2784 */
-.x-tab-bar-plain .x-tab-focus.x-tab-active.x-tab-default .x-tab-icon-el {
-    color: #404040;
-}
-/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/tab/Tab.scss:2808 */
-.x-tab.x-tab-disabled.x-tab-default {
-    border-color: transparent;
-    background-color: transparent;
-    cursor: default;
-}
-/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/tab/Tab.scss:2868 */
-.x-tab.x-tab-disabled.x-tab-default .x-tab-inner-default {
-    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=30)";
-    opacity: 0.3;
-}
-/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/tab/Tab.scss:2873 */
-.x-tab-bar-plain .x-tab.x-tab-disabled.x-tab-default .x-tab-inner-default {
-    color: #606060;
-}
-/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/tab/Tab.scss:2892 */
-.x-tab.x-tab-disabled.x-tab-default .x-tab-icon-el-default {
-    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
-    opacity: 0.5;
-}
-/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/tab/Tab.scss:2897 */
-.x-tab.x-tab-disabled.x-tab-default .x-tab-icon-el {
-    color: #f0f0f0;
-    opacity: 0.3;
-    filter: none;
-}
-/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/tab/Tab.scss:2918 */
-.x-tab-bar-plain .x-tab.x-tab-disabled.x-tab-default .x-tab-icon-el {
-    color: #606060;
-}
-/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/tab/Tab.scss:2938 */
-.x-nbr .x-tab-default {
-    background-image: none;
-}
-/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/tab/Tab.scss:2957 */
-.x-tab-over .x-tab-default-top-tl,
-.x-tab-over .x-tab-default-top-bl,
-.x-tab-over .x-tab-default-top-tr,
-.x-tab-over .x-tab-default-top-br,
-.x-tab-over .x-tab-default-top-tc,
-.x-tab-over .x-tab-default-top-bc {
-    background-image: url(images/tab/tab-default-top-over-corners.gif);
-}
-/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/tab/Tab.scss:2966 */
-.x-tab-over .x-tab-default-top-ml,
-.x-tab-over .x-tab-default-top-mr {
-    background-image: url(images/tab/tab-default-top-over-sides.gif);
-}
-/* /Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/ext/classic/theme-neutral/sass/src/tab/Tab.scss:2971 */
-.x-tab-over .x-tab-default-top-mc {
-    background-repeat: repeat-x;
-    background-image: url(images/tab/tab-default-top-over-fbg.gif);
 }

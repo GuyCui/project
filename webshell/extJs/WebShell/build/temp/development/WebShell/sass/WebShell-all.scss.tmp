@@ -908,13 +908,18 @@ $include-ext-window-messagebox: dynamic(true);;
 $include-ext-window-toast: dynamic(true);;
 $include-ext-window-window: dynamic(true);;
 $include-webshell-application: dynamic(true);;
-$include-webshell-store-personnel: dynamic(true);;
+$include-webshell-store-navigationtree: dynamic(true);;
+$include-webshell-store-views: dynamic(true);;
+$include-webshell-view-home: dynamic(true);;
 $include-webshell-view-login-login: dynamic(true);;
 $include-webshell-view-login-logincontroller: dynamic(true);;
-$include-webshell-view-main-list: dynamic(true);;
-$include-webshell-view-main-main: dynamic(true);;
-$include-webshell-view-main-maincontroller: dynamic(true);;
-$include-webshell-view-main-mainmodel: dynamic(true);;
+$include-webshell-view-main-box: dynamic(true);;
+$include-webshell-view-main-controller: dynamic(true);;
+$include-webshell-view-main-model: dynamic(true);;
+$include-webshell-view-pages-blank: dynamic(true);;
+$include-webshell-view-pages-error404: dynamic(true);;
+$include-webshell-view-pages-error500: dynamic(true);;
+$include-webshell-view-pages-faq: dynamic(true);;
 $output-paths: ("path": "../resources");
 
 /* ======================== ETC ======================== */
@@ -1374,11 +1379,3 @@ $relative-image-path-for-uis: $theme-triton-resource-path;
 @import '../../../../../ext/classic/theme-triton/sass/src/menu/Menu';
 @import '../../../../../ext/classic/theme-triton/sass/src/tab/Tab';
 @import '../../../../../ext/classic/theme-triton/sass/src/window/Toast';
-
-/* including package WebShell */
-$WebShell-resource-root: '' !default;
-$WebShell-resource-path: 'images' !default;
-$current-package: false;
-$current-resource-root: $WebShell-resource-root;
-$relative-image-path-for-uis: $WebShell-resource-path;
-@import '../../../../../sass/src/view/main/Main';

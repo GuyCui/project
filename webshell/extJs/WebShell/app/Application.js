@@ -15,15 +15,11 @@ Ext.define('WebShell.Application', {
         }
     },
 
-    stores: [
-        // TODO: add global / shared stores here
-    ],
-
     launch: function () {
 
         // It's important to note that this type of application could use
         // any type of storage, i.e., Cookies, LocalStorage, etc.
-        var loggedIn;
+        let loggedIn;
 
         // Check to see the current value of the localStorage key
         loggedIn = localStorage.getItem("TutorialLoggedIn");
@@ -38,7 +34,7 @@ Ext.define('WebShell.Application', {
     },
 
     onAppUpdate: function () {
-        Ext.Msg.confirm('Application Update', 'This application has an update, reload?',
+        Ext.Msg.confirm('应用程序更新', '当前应用程序有新版本，是否更新?',
             function (choice) {
                 if (choice === 'yes') {
                     window.location.reload();

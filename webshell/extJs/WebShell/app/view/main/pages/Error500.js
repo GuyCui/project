@@ -1,0 +1,1 @@
+Ext.define('WebShell.view.pages.Error500', {extend: 'Ext.container.Container', xtype: 'page500', html: '500 页'});
