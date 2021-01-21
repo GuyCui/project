@@ -1,1 +1,1 @@
-cache_path = '/Users/guycui/IdeaProjects/my_project/webshell/extJs/WebShell/build/.sass-cache'
+cache_path = '/Users/cuizhihui/IdeaProjects/project/webshell/extJs/WebShell/build/.sass-cache'

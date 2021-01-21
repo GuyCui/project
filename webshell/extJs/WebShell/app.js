@@ -10,5 +10,5 @@ Ext.application({
     stores: ['NavigationTree'],
     requires: ['WebShell.*'],
     // 默认起始页面
-    mainView: 'WebShell.view.main.Box'
+    // mainView: 'WebShell.view.main.Box'
 });

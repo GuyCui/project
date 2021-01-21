@@ -1,10 +1,13 @@
-//视图 //主容器
+//视图
+// 主容器
 Ext.define('WebShell.view.main.Box', {
     extend: 'Ext.container.Viewport',
     requires: ['Ext.button.Segmented', 'Ext.list.Tree'],
     controller: 'main',
     viewModel: 'main',
+    xtype: 'app-main',
     itemId: 'mainView',
+    plugins: 'viewport',
     layout: {
         type: 'vbox',
 //子视图铺满容器
@@ -16,42 +19,56 @@ Ext.define('WebShell.view.main.Box', {
     },
     items: [{
         //顶部导航栏
-        xtype: 'toolbar', cls: 'sencha-dash-dash-headerbar shadow',
+        xtype: 'toolbar',
+        cls: 'sencha-dash-dash-headerbar shadow',
         //高度
         height: 64, itemId: 'headerBar', items: [{
             //左侧文字与图标
             xtype: 'component',
             reference: 'senchaLogo',
             cls: 'sencha-logo',
-            html: '<div class="main-logo"><img src="resources/images/company-logo.png">Sencha</div>',
+            href: '#view.home',
+            hrefTarget: '_self',
+            html: '<div class="main-logo"><img src="resources/images/icons/hot-icon1.png">WebShell</div>',
             //宽度与导航菜单栏宽度相同
             width: 250
-        }, {
+        },
+        {
             //菜单折叠/展开按钮
             margin: '0 0 0 8',
             ui: 'header',
             iconCls: 'x-fa fa-navicon',
             id: 'main-navigation-btn',
             handler: 'onToggleNavigationSize'
-        }, '->', {
+        },
+        '->',
+        {
             //帮助按钮
             iconCls: 'x-fa fa-question', ui: 'header',
             //触发路由
             href: '#view.faq',
             //本页打开
             hrefTarget: '_self', tooltip: '帮助'
-        }, {
+        },
+        {
             //相当于一个label
             xtype: 'tbtext', text: '戈夫·史密斯'
         },
-            {
-                //图片
-                xtype: 'image', cls: 'header-right-profile-image',
-                height: 35,
-                width: 35,
-                alt: '当前用户图像',
-                src: 'resources/images/user-profile/2.png'
-            }]
+        {
+            //图片
+            xtype: 'image', cls: 'header-right-profile-image',
+            height: 35,
+            width: 35,
+            alt: '当前用户图像',
+            src: 'resources/images/user-profile/2.png'
+        },
+        {
+            xtype: 'button',
+            text: '退出登录',
+            margin: '10 0',
+            handler: 'onClickButton'
+        }
+        ]
     },
         {
             //下方容器
@@ -88,11 +105,11 @@ Ext.define('WebShell.view.main.Box', {
                     ui: 'nav',
                     store: 'navigationTree',
                     width: 250,
-//展开按钮显示在右侧
+                    //展开按钮显示在右侧
                     expanderFirst: false,
-//点击父菜单任何区域都可展开子菜单
+                    //点击父菜单任何区域都可展开子菜单
                     expanderOnly: false,
-//只有一个节点能展开
+                    //只有一个节点能展开
                     singleExpand: true,
                     listeners: {
                         //监听导航菜单选中改变事件
