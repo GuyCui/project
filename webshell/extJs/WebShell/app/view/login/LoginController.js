@@ -3,20 +3,25 @@ Ext.define('WebShell.view.login.LoginController', {
     alias: 'controller.login',
 
     onLoginClick: function() {
+        Ext.Ajax.request({
+                // 被用来向服务器发起请求默认的url
+                url: "http://localhost:8080/webShell",
+                // 请求成功时回调函数
+                success: function () {
+                    localStorage.setItem("TutorialLoggedIn", true);
 
-        // This would be the ideal location to verify the user's credentials via
-        // a server-side lookup. We'll just move forward for the sake of this example.
+                    this.getView().destroy();
 
-        // Set the localStorage value to true
-        localStorage.setItem("TutorialLoggedIn", true);
-
-        // Remove Login Window
-        this.getView().destroy();
-
-        // Add the main view to the viewport
-        Ext.create({
-            xtype: 'app-main'
-        });
+                    Ext.create({
+                        xtype: 'app-main'
+                    });
+                },
+                // 请求失败时回调函数
+                /*failure: function () {
+                    Ext.ux.Toast.msg("信息提示", "信息出错，请重新输入!");
+                }*/
+            }
+        );
 
     }
 });

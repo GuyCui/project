@@ -51,16 +51,13 @@ Ext.define('WebShell.view.main.Box', {
             hrefTarget: '_self', tooltip: '帮助'
         },
         {
-            //相当于一个label
-            xtype: 'tbtext', text: '戈夫·史密斯'
-        },
-        {
             //图片
-            xtype: 'image', cls: 'header-right-profile-image',
+            xtype: 'image',
+            cls: 'header-right-profile-image',
             height: 35,
             width: 35,
             alt: '当前用户图像',
-            src: 'resources/images/user-profile/2.png'
+            src: 'resources/images/user-profile/2.png',
         },
         {
             xtype: 'button',
