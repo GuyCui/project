@@ -1,14 +1,14 @@
 function WSSHClient() {
-};
+}
 
 WSSHClient.prototype._generateEndpoint = function () {
-    if (window.location.protocol == 'https:') {
-        var protocol = 'wss://';
+    let protocol;
+    if (window.location.protocol === 'https:') {
+        protocol = 'wss://';
     } else {
-        var protocol = 'ws://';
+        protocol = 'ws://';
     }
-    var endpoint = protocol + '127.0.0.1:8080/webssh';
-    return endpoint;
+    return protocol + '127.0.0.1:8080/webssh';
 };
 
 WSSHClient.prototype.connect = function (options) {
@@ -53,4 +53,4 @@ WSSHClient.prototype.sendClientData = function (data) {
     this._connection.send(JSON.stringify({"operate": "command", "command": data}))
 }
 
-var client = new WSSHClient();
+const client = new WSSHClient();

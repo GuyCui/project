@@ -188,11 +188,11 @@
   "theme": "theme-triton",
   "locale": "zh_CN",
   "loader": {
-    "cache": "20210121173545",
+    "cache": "20210122092533",
     "cacheParam": "_dc"
   },
   "id": "06739440-b717-4c75-beb6-33350f319a7a",
-  "hash": "56a13b2ec7068a970a14555031f50e0cb578f84e",
+  "hash": "9609f26068577e89408ea31f3081557f89b676ac",
   "profile": "",
   "appCacheEnabled": false,
   "resources": {
