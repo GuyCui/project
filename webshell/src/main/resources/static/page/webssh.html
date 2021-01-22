@@ -31,14 +31,13 @@
             tabStopWidth: 8, //制表宽度
             screenKeys: true
         });
-
         term.on('data', function (data) {
             //键盘输入时的回调函数
             client.sendClientData(data);
         });
         term.open(document.getElementById('terminal'));
         //在页面上显示连接中...
-        term.write('玩命连接...');
+        term.write('玩命连接...' + '\r\n');
         //执行连接操作
         client.connect({
             onError: function (error) {

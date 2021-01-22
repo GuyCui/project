@@ -8,7 +8,7 @@ WSSHClient.prototype._generateEndpoint = function () {
     } else {
         protocol = 'ws://';
     }
-    return protocol + '127.0.0.1:8080/webssh';
+    return protocol + '127.0.0.1:8081/webssh';
 };
 
 WSSHClient.prototype.connect = function (options) {
