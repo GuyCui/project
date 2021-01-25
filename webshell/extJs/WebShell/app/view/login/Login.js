@@ -9,13 +9,28 @@ Ext.define('WebShell.view.login.Login', {
 
     controller: 'login',
     bodyPadding: 10,
+    width: 400,
+    height: 300,
+    layout: 'hbox',
     title: '登录窗口',
     closable: false,
     autoShow: true,
-
-    items: {
+    onEsc: Ext.emptyFn,
+    items: [{
+        xtype: 'container',
+        bind: {
+            html: '<img src="{system.loginLogoUrl}">'
+        },
+        flex: 1
+    }, {
         xtype: 'form',
         reference: 'form',
+        flex: 4,
+        defaults: {
+            listeners: {
+                specialKey: 'onSpecialKey'
+            }
+        },
         items: [
             {
                 xtype: 'textfield',
@@ -31,25 +46,28 @@ Ext.define('WebShell.view.login.Login', {
                 allowBlank: false
             },
             {
-            xtype: 'textfield',
-            name: 'userName',
-            fieldLabel: '用户名',
-            allowBlank: false
+                xtype: 'textfield',
+                name: 'userName',
+                fieldLabel: '用户名',
+                allowOnlyWhitespace: false,
+                style: 'margin-top: 20px;'
             },
             {
-            xtype: 'textfield',
-            name: 'Password',
-            inputType: 'password',
-            fieldLabel: '密码',
-            allowBlank: false
-            }
-        ],
-        buttons: [
-            {
-            text: '登录',
-            formBind: true,
-            listeners: {click: 'onLoginClick'}
-            }
-        ]
-    }
+                xtype: 'textfield',
+                name: 'Password',
+                inputType: 'password',
+                fieldLabel: '密码',
+                blankText: '请输入密码',
+                allowBlank: false,
+                style: 'margin-top: 20px;'
+            }]
+    }],
+    buttons: [{
+        text: '登录',
+        formBind: true,
+        iconCls: 'fa fa-sign-in',
+        listeners: {
+            click: 'onLoginClick'
+        }
+    }]
 });

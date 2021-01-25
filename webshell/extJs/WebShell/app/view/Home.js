@@ -1,5 +1,3 @@
-// 初始化终端
-import 'xterm/dist/xterm.css'
 //视图
 //首页
 Ext.define('WebShell.view.Home', {
