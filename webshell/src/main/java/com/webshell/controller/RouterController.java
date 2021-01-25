@@ -1,7 +1,10 @@
 package com.webshell.controller;
 
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
+import com.webshell.util.ExtResult;
+import lombok.AllArgsConstructor;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * FileName: RouterController
@@ -9,10 +12,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * Description: 路由控制层
  * @Author：guycui
  */
-@Controller
+@RestController
+@AllArgsConstructor
 public class RouterController {
-    @RequestMapping("/webShell")
-    public String webShellPage() {
-        return "webssh";
+    @PostMapping("/webShell")
+    public Object webShellPage(@RequestParam String userName, @RequestParam String ip, @RequestParam String port,
+                               @RequestParam String Password) {
+        System.out.println(userName);
+        String sessionKey = "webssh";
+        return ExtResult.success(sessionKey);
+        // return "webssh";
     }
 }

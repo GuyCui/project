@@ -35,6 +35,7 @@ Ext.define('WebShell.view.login.Login', {
             {
                 xtype: 'textfield',
                 name: 'ip',
+                inputType: 'numberDecimal',
                 fieldLabel: 'IP地址',
                 allowBlank: false
             },
