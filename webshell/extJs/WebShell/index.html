@@ -4,7 +4,7 @@
     <meta content="IE=edge" http-equiv="X-UA-Compatible">
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=10, user-scalable=yes" name="viewport">
-
+    <link href="./sass/var/view/pages/xterm.css" rel="stylesheet"/>
     <title>WebShell</title>
     <!--加载动画css-->
     <style type="text/css">
@@ -59,6 +59,11 @@
 
 </head>
 <body>
+<div id="terminal" style="width: 100%;height: 100%"></div>
+
+<script src="./app/util/jquery-3.4.1.min.js"></script>
+<script charset="utf-8" src="./app/util/xterm.js"></script>
+<script charset="utf-8" src="./app/util/webssh.js"></script>
 <!--加载动画html-->
 <div id="loading-mask">
     <div id="appLoadingIndicator">

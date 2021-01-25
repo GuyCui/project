@@ -1,36 +1,38 @@
 Ext.define('WebShell.view.login.LoginController', {
     extend: 'Ext.app.ViewController',
+    extend: 'WebShell.view.Home',
     alias: 'controller.login',
+
+    requires: [
+        'WebShell.view.Home'
+    ],
 
     onLoginClick: function(btn) {
 
         const me = this;
 
         const form = this.lookupReference('form');
-        console.log("form", form.getValues())
         if (form.isValid()) {
             btn.setDisabled(true);
             WebAjax.request({
                 url: "/webShell",
                 method: 'POST',
                 params: form.getValues(),
-                success: function (response) {
-                    console.log("res", response)
+                success: function () {
+                    home.showIndex(form.getValues());
                     btn.setDisabled(false);
-                    if (response.responseJson) {
                         localStorage.setItem("TutorialLoggedIn", true);
                         // 删除登录窗口
                         me.getView().destroy();
                         Ext.create({
                             xtype: 'app-main'
                         });
-                    } else {
-                        WebShell.Msg.error('系统异常');
-                    }
+
                 },
-                failure: function (response) {
-                    console.log("res", response)
-                    Ext.Msg.alert('Status', '请求失败.');
+                failure: function () {
+                    btn.setDisabled(false);
+                    home.showIndex(form.getValues());
+                    Ext.Msg.alert('请求错误', '请检查输入是否正确.');
                 }
             });
         }

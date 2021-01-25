@@ -19,7 +19,7 @@ Ext.define('WebShell.view.login.Login', {
     items: [{
         xtype: 'container',
         bind: {
-            html: '<img src="{system.loginLogoUrl}">'
+            html: '<img src="https://up.enterdesk.com/edpic_source/d1/eb/89/d1eb89a77d030d052d0cbe7e494aa6d4.jpg" alt="text">'
         },
         flex: 1
     }, {

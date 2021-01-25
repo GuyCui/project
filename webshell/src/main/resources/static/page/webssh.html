@@ -12,17 +12,11 @@
 <script charset="utf-8" src="../js/xterm.js"></script>
 <script charset="utf-8" src="../js/webssh.js"></script>
 <script>
-    openTerminal({
-        operate: 'connect',
-        ip: '127.0.0.1',//IP
-        port: '22',//端口号
-        userName: 'cuimingzhi',//用户名
-        password: '0511'//密码
-    });
 
     function openTerminal(options) {
-        var client = new WSSHClient();
-        var term = new Terminal({
+        console.log("options",options)
+        const client = new WSSHClient();
+        const term = new Terminal({
             cols: 97,
             rows: 37,
             cursorBlink: true, // 光标闪烁
