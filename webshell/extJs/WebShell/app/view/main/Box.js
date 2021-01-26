@@ -42,7 +42,7 @@ Ext.define('app.view.main.Box', {
                 margin: '0 0 0 8',
                 ui: 'header',
                 iconCls: 'x-fa fa-navicon',
-                id: 'main-navigation-btn',
+                id: 'main-navigation-butt',
                 handler: 'onToggleNavigationSize'
             },
             '->', {
