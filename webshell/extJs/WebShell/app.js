@@ -11,5 +11,5 @@ Ext.application({
     //注意每次新增类需要执行一次sencha app build命令，如果执行后无反应可以尝试再执行sencha app watch命令
     requires: ['app.*'],
     // 默认起始页面
-    // mainView: 'app.view.main.Box'
+    mainView: 'app.view.main.Box'
 });

@@ -1,26 +1,15 @@
 Ext.define('app.view.login.Login', {
     extend: 'app.view.widget.LockingWindow',
     xtype: 'login',
-
-    requires: [
-        'app.view.login.LoginController',
-        'Ext.form.Panel',
-        'Ext.form.field.Checkbox'
-    ],
-
+    requires: ['Ext.form.field.Checkbox'],
     controller: 'user',
-    bodyPadding: 10,
-    width: 400,
-    height: 300,
-    layout: 'hbox',
     listeners: {
         //监听页面初始化事件
         render: 'onLoginRender'
     },
     title: '登录窗口',
-    closable: false,
-    autoShow: true,
     onEsc: Ext.emptyFn,
+    defaultFocus: 'authdialog',
     items: [{
         xtype: 'authdialog',
         //默认提交按钮
@@ -35,19 +24,6 @@ Ext.define('app.view.login.Login', {
         },
         defaults: {
             margin: '5 0'
-        },
-        /*bind: {
-            html: '<img src="https://up.enterdesk.com/edpic_source/d1/eb/89/d1eb89a77d030d052d0cbe7e494aa6d4.jpg" alt="text">'
-        },*/
-        flex: 1
-    }, {
-        xtype: 'form',
-        reference: 'form',
-        flex: 4,
-        defaults: {
-            listeners: {
-                specialKey: 'onSpecialKey'
-            }
         },
         items: [
             {
