@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class RouterController {
     @PostMapping("/webShell")
     public Object webShellPage(@RequestParam String userName, @RequestParam String ip, @RequestParam String port,
-                               @RequestParam String Password) {
+                               @RequestParam String password) {
         System.out.println(userName);
         String sessionKey = "webssh";
         return ExtResult.success(sessionKey);

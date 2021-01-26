@@ -34,7 +34,7 @@ Ext.define('app.view.login.Login', {
                 allowBlank: false,
                 triggers: {
                     glyphed: {
-                        cls: 'trigger-glyph-noop auth-email-trigger'
+                        cls: 'trigger-glyph-noop  fa-desktop fa-fw fa-2x'
                     }
                 }
             },
@@ -46,7 +46,7 @@ Ext.define('app.view.login.Login', {
                 allowBlank: false,
                 triggers: {
                     glyphed: {
-                        cls: 'trigger-glyph-noop auth-email-trigger'
+                        cls: 'trigger-glyph-noop fa-circle-o fa-fw fa-2x'
                     }
                 }
             },
