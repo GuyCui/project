@@ -6,9 +6,9 @@
 Ext.application({
     name: 'WebShell',
 
-    extend: 'WebShell.Application',
-    stores: ['NavigationTree'],
-    requires: ['WebShell.*'],
+    extend: 'app.Application',
+    stores: ['app.store.NavigationTree'],
+    requires: ['app.*'],
     // 默认起始页面
     // mainView: 'WebShell.view.main.Box'
 });

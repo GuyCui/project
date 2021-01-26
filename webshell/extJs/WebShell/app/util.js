@@ -1,6 +1,6 @@
 // 公用类
 // 公用方法
-Ext.define('WebShell.util', {
+Ext.define('app.util', {
     // 别名
     alternateClassName: 'util',
     statics: {

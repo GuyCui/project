@@ -1,4 +1,4 @@
-Ext.define('WebShell.Ajax', {
+Ext.define('app.Ajax', {
     extend: 'Ext.data.Connection',
     alternateClassName: ['WebAjax'],
     mixins: {

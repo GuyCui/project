@@ -1,9 +1,9 @@
-Ext.define('WebShell.view.login.Login', {
+Ext.define('app.view.login.Login', {
     extend: 'Ext.window.Window',
     xtype: 'login',
 
     requires: [
-        'WebShell.view.login.LoginController',
+        'app.view.login.LoginController',
         'Ext.form.Panel'
     ],
 

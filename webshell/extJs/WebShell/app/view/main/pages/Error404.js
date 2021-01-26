@@ -1,1 +1,1 @@
-Ext.define('WebShell.view.pages.Error404', {extend: 'Ext.container.Container', xtype: 'page404', html: '404 页'});
+Ext.define('app.view.pages.Error404', {extend: 'Ext.container.Container', xtype: 'page404', html: '404 页'});

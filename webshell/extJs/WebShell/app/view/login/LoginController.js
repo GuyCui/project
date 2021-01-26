@@ -1,16 +1,11 @@
-Ext.define('WebShell.view.login.LoginController', {
+Ext.define('app.view.login.LoginController', {
     extend: 'Ext.app.ViewController',
-    extend: 'WebShell.view.Home',
     alias: 'controller.login',
-
-    requires: [
-        'WebShell.view.Home'
-    ],
 
     onLoginClick: function(btn) {
 
         const me = this;
-
+        // const showIndex = new WebSSH();
         const form = this.lookupReference('form');
         if (form.isValid()) {
             btn.setDisabled(true);
@@ -19,9 +14,9 @@ Ext.define('WebShell.view.login.LoginController', {
                 method: 'POST',
                 params: form.getValues(),
                 success: function () {
-                    home.showIndex(form.getValues());
                     btn.setDisabled(false);
-                        localStorage.setItem("TutorialLoggedIn", true);
+                    // showIndex.showIndex(form.getValues());
+                    localStorage.setItem("TutorialLoggedIn", true);
                         // 删除登录窗口
                         me.getView().destroy();
                         Ext.create({

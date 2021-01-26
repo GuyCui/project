@@ -6,7 +6,7 @@
  */
 //控制层
 //核心控制层
-Ext.define('WebShell.view.main.Controller', {
+Ext.define('app.view.main.Controller', {
     extend: 'Ext.app.ViewController', alias: 'controller.main', routes: {
 //监听路由实现视图切换
 //这样写是为了方便扩展其他路由

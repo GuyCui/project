@@ -1,6 +1,6 @@
 //数据仓库
 // 导航菜单
-Ext.define('WebShell.store.NavigationTree', {
+Ext.define('app.store.NavigationTree', {
     extend: 'Ext.data.TreeStore',
 //全局 id 可以通过 Ext.getStore('navigationTree')找到这个对象
     storeId: 'navigationTree', fields: [{name: 'text'}], root: {

@@ -1,6 +1,6 @@
 //视图
 // 主容器
-Ext.define('WebShell.view.main.Box', {
+Ext.define('app.view.main.Box', {
     extend: 'Ext.container.Viewport',
     requires: ['Ext.button.Segmented', 'Ext.list.Tree'],
     controller: 'main',

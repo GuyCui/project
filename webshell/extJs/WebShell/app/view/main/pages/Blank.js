@@ -1,4 +1,4 @@
-Ext.define('WebShell.view.pages.Blank', {
+Ext.define('app.view.pages.Blank', {
     extend: 'Ext.container.Container',
     xtype: 'pageblank',
     // 引入需要的类

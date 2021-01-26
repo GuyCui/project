@@ -3,7 +3,7 @@
  * calls Ext.application(). This is the ideal place to handle application launch and
  * initialization details.
  */
-Ext.define('WebShell.Application', {
+Ext.define('app.Application', {
     extend: 'Ext.app.Application',
 
     name: 'WebShell',
