@@ -1,50 +1,39 @@
+//指定ux起调目录
+Ext.Loader.setPath({
+    'ux': 'app/ux'
+});
+
 /**
- * The main application class. An instance of this class is created by app.js when it
- * calls Ext.application(). This is the ideal place to handle application launch and
- * initialization details.
+ * 项目入口文件
  */
 Ext.define('app.Application', {
     extend: 'Ext.app.Application',
-
-    name: 'WebShell',
-
+    //应用命名空间
+    name: 'app',
     quickTips: false,
     platformConfig: {
         desktop: {
             quickTips: true
         }
     },
-
     //应用启动
     launch: function () {
-        let loggedIn;
-        loggedIn = localStorage.getItem("TutorialLoggedIn");
-        Ext.create({
-            xtype: loggedIn ? 'app-main' : 'login'
-        });
-        let eq = util.equals({a: 1}, {b: 2});
-        console.log('{ a: 1 } 与 { b: 2 }是否相同：', eq);
-        eq = util.equals({a: 1, c: {a: 1}}, {a: 1, c: {a: 1}});
-        console.log('{ a: 1, c: { a: 1 } } 与 { a: 1, c: { a: 1 } }是否相同：', eq);
-        console.log('当前版本号：', config.ver);
         //移除加载动画
         Ext.fly('loading-mask').destroy();
-
-        var link = document.createElement('link');
+        console.log('当前版本号：', config.ver);
+        var eq = util.equals({ a: 1 }, { b: 2 });
+        console.log('{ a: 1 } 与 { b: 2 }是否相同：', eq);
+        eq = util.equals({ a: 1, c: { a: 1 } }, { a: 1, c: { a: 1 } });
+        console.log('{ a: 1, c: { a: 1 } } 与 { a: 1, c: { a: 1 } }是否相同：', eq);
+        //util.neuropathyData('name', 10, 1, { a: 1, b: 2, c: 3 }, ['a', 'b']);
+        const link = document.createElement('link');
         link.type = 'image/x-icon';
         link.rel = 'shortcut icon';
         link.href = 'resources/images/favicon.ico';
         document.getElementsByTagName('head')[0].appendChild(link);
     },
-
-
+    //应用有更新就会触发
     onAppUpdate: function () {
-        Ext.Msg.confirm('应用程序更新', '当前应用程序有新版本，是否更新?',
-            function (choice) {
-                if (choice === 'yes') {
-                    window.location.reload();
-                }
-            }
-        );
+        window.location.reload();
     }
 });

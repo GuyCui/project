@@ -3,10 +3,19 @@
 Ext.define('app.model.User', {
     extend: 'Ext.data.Model',
     requires: ['Ext.data.proxy.LocalStorage'],
-    fields: [{
-        name: 'userid',
+    fields: [
+        {
+        name: 'ip',
         type: 'string'
-    },
+        },
+        {
+            name: 'port',
+            type: 'string'
+        },
+        {
+            name: 'userName',
+            type: 'string'
+        },
         {
             name: 'password',
             type: 'string'
