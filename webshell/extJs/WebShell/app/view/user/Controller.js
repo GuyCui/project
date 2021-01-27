@@ -1,51 +1,59 @@
-//视图控制器
-//用户控制器
 Ext.define('app.view.user.Controller', {
     extend: 'ux.app.ViewController',
     alias: 'controller.user',
-    //登录页面启动时
+
     onLoginRender: function () {
-        var me = this;
-        app.model.User.load(1, {
+        const me = this;
+        app.model.User.load({
             success: function (user) {
+                console.log("读取到本地用户信息:", user)
                 //如果读取到本地用户信息，自动填充到表单
                 me.getViewModel().setData(user.getData());
+                console.log("读取到本地:", me.getViewModel())
             }
         });
     },
     onSpecialkey: function (f, e) {
         var me = this;
-        if (e.getKey() == e.ENTER) {
+        if (e.getKey() === e.ENTER) {
             //按回车时自动提交数据
             me.onLoginClick();
         }
     },
-    //点击登录
-    onLoginClick: function () {
-        var me = this,
+
+    onLoginClick: function (btn) {
+        const me = this,
             view = me.getView(),
             form = view.down('form'),
             values = form.getValues();
-        //请求登录接口
-        util.ajaxB(config.user.login, values, 'POST').then(function (response) {
-            if (response.success) {
-                me.keepUser(values);
-                //登录成功
-                me.loginSuccess(response.data);
-            } else {
-                //登录失败
-                form.getForm().setValues({
-                    password: ''
-                });
-            }
-            //提示消息
-            Ext.toast(response.message);
-        });
+        console.log("form", form)
+        if (form.isValid()) {
+            btn.setDisabled(true);
+            util.ajaxB(config.user.login, values, 'POST').then(function (response) {
+                console.log("返回值：",response)
+                if (response.success) {
+                    btn.setDisabled(false);
+                    localStorage.setItem("TutorialLoggedIn", true);
+                    me.keepUser(values);
+                    //登录成功
+                    me.loginSuccess(response.data);
+                } else {
+                    btn.setDisabled(false);
+                    //登录失败
+                    form.getForm().setValues({
+                        password: ''
+                    });
+                }
+                //提示消息
+                Ext.toast(response.message);
+            });
+        }
     },
     //登录成功
-    loginSuccess: function (data) {
+      loginSuccess: function (data) {
         //全局变量写入用户信息
         config.userData = data;
+        console.log("全局变量本地用户信息:", data)
         //关闭弹窗
         this.getView().close();
         //触发路由
@@ -57,31 +65,9 @@ Ext.define('app.view.user.Controller', {
         if (!user.persist) {
             user.password = '';
         }
-        //id必须为int类型，否则localstorage代理不能正确存储ids
-        //感谢@纳新 提醒
-        user.id = 1;
-        var logUser = Ext.create('app.model.User', user);
+        console.log("保存用户信息:", user)
+        const logUser = Ext.create('app.model.User', user);
         //储存到本地
         logUser.save();
     },
-    //取消锁定
-    onUnLock: function () {
-        var me = this;
-        me.formSave(config.user.unLock).then(function () {
-            me.onClose();
-        });
-    },
-    //找回密码
-    onReset: function () {
-        var me = this;
-        me.formSave(config.user.reset);
-    },
-    //注册
-    onRegister: function () {
-        var me = this;
-        me.formSave(config.user.register).then(function (response) {
-            //注册成功后自动登录
-            me.loginSuccess(response.data);
-        });
-    }
 });
