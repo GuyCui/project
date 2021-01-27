@@ -508,15 +508,8 @@ Ext.define('app.view.main.Controller', {
         }
     },
     onClickButton: function () {
-        // Remove the localStorage key/value
-        localStorage.removeItem('TutorialLoggedIn');
-
-        // Remove Main View
-        this.getView().destroy();
-
-        // Add the Login Window
-        Ext.create({
-            xtype: 'login'
-        });
+        //直接刷新页面，避免出错
+        window.location.reload();
+        config.userData = null;
     }
 });

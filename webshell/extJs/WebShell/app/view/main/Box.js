@@ -1,12 +1,11 @@
 //视图
-// 主容器
+//主容器
 Ext.define('app.view.main.Box', {
     extend: 'Ext.container.Viewport',
     requires: ['Ext.button.Segmented', 'Ext.list.Tree'],
     controller: 'main',
     viewModel: 'main',
     itemId: 'mainView',
-    plugins: 'viewport',
     layout: {
         type: 'vbox',
         //子视图铺满容器
@@ -32,7 +31,7 @@ Ext.define('app.view.main.Box', {
             xtype: 'component',
             reference: 'senchaLogo',
             cls: 'sencha-logo',
-            html: '<div class="main-logo"><img src="resources/images/icons/hot-icon1.png">WebShell</div>',
+            html: '<div class="main-logo"><img src="resources/images/company-logo.png">WebShell</div>',
             //宽度与导航菜单栏宽度相同
             width: 250
         },
@@ -41,7 +40,7 @@ Ext.define('app.view.main.Box', {
                 margin: '0 0 0 8',
                 ui: 'header',
                 iconCls: 'x-fa fa-navicon',
-                id: 'main-navigation-butt',
+                id: 'main-navigation-btn',
                 handler: 'onToggleNavigationSize'
             },
             '->', {
