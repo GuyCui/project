@@ -5,7 +5,6 @@ Ext.define('app.view.main.Box', {
     requires: ['Ext.button.Segmented', 'Ext.list.Tree'],
     controller: 'main',
     viewModel: 'main',
-    xtype: 'app-main',
     itemId: 'mainView',
     plugins: 'viewport',
     layout: {

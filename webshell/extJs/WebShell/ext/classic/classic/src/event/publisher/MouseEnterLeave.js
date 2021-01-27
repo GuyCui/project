@@ -44,7 +44,7 @@ Ext.define('Ext.event.publisher.MouseEnterLeave', {
 
                             if (event) {
                                 // mouseenter/leave are always tracked by the "directs"
-                                // Ext.util.Event because they are listed in the directEvents
+                                // Ext.utils.Event because they are listed in the directEvents
                                 // map of Dom publisher
                                 event = event.directs;
                                 if (event) {

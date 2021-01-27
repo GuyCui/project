@@ -18,7 +18,7 @@ describe("Ext.fx.Anim", function() {
             });
         });
 
-        it("should mix in Ext.util.Observable", function(){
+        it("should mix in Ext.utils.Observable", function(){
             expect(anim.mixins.observable).toEqual(Ext.util.Observable.prototype);
         });
 

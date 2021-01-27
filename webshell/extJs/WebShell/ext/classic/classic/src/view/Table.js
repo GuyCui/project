@@ -20,7 +20,7 @@ Ext.define('Ext.view.Table', {
         'Ext.view.TableLayout',
         'Ext.grid.locking.RowSynchronizer',
         'Ext.view.NodeCache',
-        'Ext.util.DelayedTask',
+        'Ext.utils.DelayedTask',
         'Ext.util.MixedCollection',
         'Ext.scroll.TableScroller'
     ],

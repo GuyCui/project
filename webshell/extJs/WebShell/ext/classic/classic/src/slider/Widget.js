@@ -161,10 +161,10 @@ Ext.define('Ext.slider.Widget', {
 //            rtl = me.rtl;
 //
 //        if (rtl && Ext.rtl) {
-//            me.baseCls += ' ' + (Ext.rtl.util.Renderable.prototype._rtlCls);
+//            me.baseCls += ' ' + (Ext.rtl.utils.Renderable.prototype._rtlCls);
 //            me.horizontalProp = 'right';
 //        } else if (rtl === false) {
-//            me.addCls(Ext.rtl.util.Renderable.prototype._ltrCls);
+//            me.addCls(Ext.rtl.utils.Renderable.prototype._ltrCls);
 //        }
 //
 //        return me.callParent();

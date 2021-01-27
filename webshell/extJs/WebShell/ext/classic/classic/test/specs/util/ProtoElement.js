@@ -1,4 +1,4 @@
-describe("Exet.util.ProtoElement", function(){
+describe("Exet.utils.ProtoElement", function(){
     
     var makeEl, el;
     

@@ -1,5 +1,5 @@
 /**
- * A core util class to bring Draggable behavior to a Component. This class is specifically designed only for
+ * A core utils class to bring Draggable behavior to a Component. This class is specifically designed only for
  * absolutely positioned elements starting from top: 0, left: 0. The initialOffset can then be set via configuration
  * to have the elements in a different position.
  */

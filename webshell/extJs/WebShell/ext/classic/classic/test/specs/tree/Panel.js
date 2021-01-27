@@ -2273,7 +2273,7 @@ describe("Ext.tree.Panel", function(){
             expect(tree.el.down('.x-tree-node-text').dom.innerHTML).toEqual('RootFoo');
         });
         
-        it("should be able to use a string renderer that maps to Ext.util.Format", function () {
+        it("should be able to use a string renderer that maps to Ext.utils.Format", function () {
             tree = new Ext.tree.Panel({
                 animate: false,
                 renderTo: Ext.getBody(),

@@ -36,7 +36,7 @@ Ext.define('Ext.layout.container.SegmentedButton', {
 
     onDestroy: function() {
         // The items of a Segmented Button create an Ext.dom.Element reference
-        // to their "container" element (see Ext.util.Renderable#finishRender)
+        // to their "container" element (see Ext.utils.Renderable#finishRender)
         // for vertical Segmented Buttons this container ends up being the
         // 'segmented-button-row' element, which is not a childEl of either the container
         // or the layout and so it does not get automatically cleaned up upon destruction,

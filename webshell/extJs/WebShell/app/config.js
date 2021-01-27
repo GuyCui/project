@@ -44,7 +44,7 @@ Ext.define('app.config', {
             //解除绑定
             unLock: '~api/user/login',
             //登录
-            login: '~api/user/login',
+            login: '/webShell',
             //导航菜单
             navigation: '~api/user/navigation'
         },

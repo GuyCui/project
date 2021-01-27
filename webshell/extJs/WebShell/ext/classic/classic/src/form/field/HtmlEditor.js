@@ -77,7 +77,7 @@ Ext.define('Ext.form.field.HtmlEditor', {
         '{beforeTextAreaTpl}',
         '<textarea id="{id}-textareaEl" data-ref="textareaEl" name="{name}" tabindex="-1" {inputAttrTpl}',
                  ' class="{textareaCls}" autocomplete="off">',
-            '{[Ext.util.Format.htmlEncode(values.value)]}',
+            '{[Ext.utils.Format.htmlEncode(values.value)]}',
         '</textarea>',
         '{afterTextAreaTpl}',
         '{beforeIFrameTpl}',

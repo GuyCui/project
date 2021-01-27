@@ -43,7 +43,7 @@ Ext.define('Ext.util.Cookies', {
      * Retrieves cookies that are accessible by the current page. If a cookie does not exist, `get()` returns null. The
      * following example retrieves the cookie called "valid" and stores the String value in the variable validStatus.
      *
-     *     var validStatus = Ext.util.Cookies.get("valid");
+     *     var validStatus = Ext.utils.Cookies.get("valid");
      *
      * @param {String} name The name of the cookie to get
      * @return {Object} Returns the cookie value for the specified name;

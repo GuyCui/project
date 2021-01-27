@@ -14,7 +14,7 @@
  *
  * The below code shows a GeoLocation making a single retrieval of location information.
  *
- *     var geo = Ext.create('Ext.util.Geolocation', {
+ *     var geo = Ext.create('Ext.utils.Geolocation', {
  *         autoUpdate: false,
  *         listeners: {
  *             locationupdate: function(geo) {
@@ -33,7 +33,7 @@
  */
 Ext.define('Ext.util.Geolocation', {
     extend: 'Ext.Evented',
-    alternateClassName: ['Ext.util.GeoLocation'],
+    alternateClassName: ['Ext.utils.GeoLocation'],
 
     config: {
         /**

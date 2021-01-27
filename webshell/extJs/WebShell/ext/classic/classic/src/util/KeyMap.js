@@ -20,7 +20,7 @@
  * Usage:
  *
  *     // map one key by key code
- *     var map = new Ext.util.KeyMap({
+ *     var map = new Ext.utils.KeyMap({
  *         target: "my-element",
  *         key: 13, // or Ext.event.Event.ENTER
  *         fn: myHandler,
@@ -28,7 +28,7 @@
  *     });
  *
  *     // map multiple keys to one action by string
- *     var map = new Ext.util.KeyMap({
+ *     var map = new Ext.utils.KeyMap({
  *         target: "my-element",
  *         key: "a\r\n\t",
  *         fn: myHandler,
@@ -36,7 +36,7 @@
  *     });
  *
  *     // map multiple keys to multiple actions by strings and array of codes
- *     var map = new Ext.util.KeyMap({
+ *     var map = new Ext.utils.KeyMap({
  *         target: "my-element",
  *         binding: [{
  *             key: [10,13],
@@ -58,7 +58,7 @@
  * to listen for, and a `processEvent` implementation which returns the key event for further processing by
  * the KeyMap:
  *
- *     var map = new Ext.util.KeyMap({
+ *     var map = new Ext.utils.KeyMap({
  *         target: myGridView,
  *         eventName: 'itemkeydown',
  *         processEvent: function(view, record, node, index, event) {
@@ -189,7 +189,7 @@ Ext.define('Ext.util.KeyMap', {
      * Usage:
      *
      *     // Create a KeyMap
-     *     var map = new Ext.util.KeyMap(document, {
+     *     var map = new Ext.utils.KeyMap(document, {
      *         key: Ext.event.Event.ENTER,
      *         fn: handleKey,
      *         scope: this

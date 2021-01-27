@@ -10,25 +10,23 @@ Ext.define('app.view.login.LoginController', {
         console.log("form", form)
         if (form.isValid()) {
             btn.setDisabled(true);
-            WebAjax.request({
-                url: "/webShell",
-                method: 'POST',
-                params: values,
-                success: function () {
+            util.ajaxB(config.user.login, values, 'POST').then(function (response) {
+                console.log("返回值：",response)
+                if (response.success) {
                     btn.setDisabled(false);
                     localStorage.setItem("TutorialLoggedIn", true);
-                    // 删除登录窗口
-                    me.getView().destroy();
-                    Ext.create({
-                        xtype: 'app-main'
-                    });
                     me.keepUser(values);
+                    //登录成功
                     me.loginSuccess(response.data);
-                },
-                failure: function () {
+                } else {
                     btn.setDisabled(false);
-                    Ext.Msg.alert('请求错误', '请检查输入是否正确.');
+                    //登录失败
+                    form.getForm().setValues({
+                        password: ''
+                    });
                 }
+                //提示消息
+                Ext.toast(response.message);
             });
         }
     },
@@ -44,7 +42,7 @@ Ext.define('app.view.login.LoginController', {
         });
     },
     //登录成功
-    loginSuccess: function (data) {
+      loginSuccess: function (data) {
         //全局变量写入用户信息
         config.userData = data;
         console.log("全局变量本地用户信息:", data)

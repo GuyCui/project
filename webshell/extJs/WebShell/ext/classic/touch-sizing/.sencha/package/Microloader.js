@@ -198,13 +198,13 @@ Ext.Microloader = Ext.Microloader || (function () {
  *          alternates: [...],
  *          mixins: [...]
  *      },
- *      'Ext.rtl.util.Renderable': {
+ *      'Ext.rtl.utils.Renderable': {
  *          requires: [...],
  *          uses: [...],
  *          aliases: [...],
  *          alternates: [...],
  *          mixins: [...]
- *          override: 'Ext.util.Renderable'
+ *          override: 'Ext.utils.Renderable'
  *      },
  *      ...
  *  },

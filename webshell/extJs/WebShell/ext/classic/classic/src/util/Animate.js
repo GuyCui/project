@@ -1,7 +1,7 @@
 /**
  * This animation class is a mixin.
  *
- * Ext.util.Animate provides an API for the creation of animated transitions of properties and styles.
+ * Ext.utils.Animate provides an API for the creation of animated transitions of properties and styles.
  * This class is used as a mixin and currently applied to {@link Ext.dom.Element}, {@link Ext.CompositeElement},
  * {@link Ext.draw.sprite.Sprite}, {@link Ext.draw.sprite.Composite}, and {@link Ext.Component}.  Note that Components
  * have a limited subset of what attributes can be animated such as top, left, x, y, height, width, and
@@ -178,7 +178,7 @@
  *     }
  *
  * Due to the fact that animations run asynchronously, you can determine if an animation is currently
- * running on any target by using the {@link Ext.util.Animate#getActiveAnimation getActiveAnimation}
+ * running on any target by using the {@link Ext.utils.Animate#getActiveAnimation getActiveAnimation}
  * method.  This method will return false if there are no active animations or return the currently
  * running {@link Ext.fx.Anim} instance.
  *
@@ -360,7 +360,7 @@ Ext.define('Ext.util.Animate', {
 
     /**
      * @deprecated 4.0 Replaced by {@link #getActiveAnimation}
-     * @inheritdoc Ext.util.Animate#getActiveAnimation
+     * @inheritdoc Ext.utils.Animate#getActiveAnimation
      * @method
      */
     hasActiveFx: Ext.Function.alias(Ext.util.Animate, 'getActiveAnimation'),

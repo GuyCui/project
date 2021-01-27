@@ -185,7 +185,7 @@ Ext.define('Ext.grid.column.Column', {
          * or `'date("Y-m-d")'` to format a Date.
          *
          * In previous releases the `renderer` config had limited abilities to use one
-         * of the `Ext.util.Format` methods but `formatter` now replaces that usage and
+         * of the `Ext.utils.Format` methods but `formatter` now replaces that usage and
          * can also handle formatting parameters.
          *
          * When the value begins with `"this."` (for example, `"this.foo(2)"`), the

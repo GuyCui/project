@@ -40,7 +40,7 @@ describe("Ext.app.route.Router", function() {
         Router.routes      = [];
     });
 
-    it("should init Ext.util.History", function() {
+    it("should init Ext.utils.History", function() {
         expect(Ext.util.History.ready).toBe(true);
     });
 

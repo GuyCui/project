@@ -257,7 +257,7 @@ Ext.define('app.view.main.Controller', {
 
     //容器初始化时
     onMainViewRender: function() {
-        var me = this,
+        let me = this,
             //获取默认路由
             hash = window.location.hash.replace('#', '');
         me.onAjaxInit();
@@ -277,7 +277,7 @@ Ext.define('app.view.main.Controller', {
     onAjaxInit: function() {
         console.log('监听ajax，增加自动遮罩功能');
         //如果500毫秒类再次触发，之前触发的会自动取消
-        var me = this;
+        const me = this;
         //监听ajax事件，开始请求时显示遮罩
         Ext.Ajax.on('beforerequest',
             function(connection, options) {
@@ -352,7 +352,7 @@ Ext.define('app.view.main.Controller', {
 
     //登录成功
     loginSuccess: function() {
-        var me = this;
+        const me = this;
         me.loadNavigation();
         //绑定用户信息到数据源中
         me.getViewModel().setData({ userData: config.userData, isHiddenMain: false });
@@ -360,7 +360,7 @@ Ext.define('app.view.main.Controller', {
     //加载导航树
     loadNavigation: function() {
         console.log('正在加载导航树');
-        var me = this,
+        const me = this,
             store = Ext.getStore('navigationTree');
 
         store.on({
@@ -369,7 +369,7 @@ Ext.define('app.view.main.Controller', {
             //监听菜单请求完成事件
             load: function(t, records) {
                 //console.log('用户菜单请求完成');
-                var data, rec, tree;
+                let data, rec, tree;
                 if (records.length > 0) {
                     //获取第一个菜单
                     rec = records[0];
@@ -402,7 +402,7 @@ Ext.define('app.view.main.Controller', {
     //显示一个不在左侧菜单栏中的视图
     pushNavigationView: function(card, xtype) {
         //console.log('显示额外页面：', xtype);
-        var me = this,
+        let me = this,
             refs = me.getReferences(),
             //获取容器视图
             mainCard = refs[card],
@@ -432,7 +432,7 @@ Ext.define('app.view.main.Controller', {
     //如果存在则删除它之后的返回页面,并且返回该页面
     //如果不存在返回false
     pop: function(mainCard, count) {
-        var innerItems = mainCard.backView,
+        let innerItems = mainCard.backView,
             last = innerItems.length - 1,
             i, item;
         for (i = last; i >= 0; i--) {
@@ -448,7 +448,7 @@ Ext.define('app.view.main.Controller', {
         if (!Ext.isNumber(count)) {
             return false;
         }
-        var delItem;
+        let delItem;
         //在返回集合中则移除后面的返回界面
         for (i = 0; i < count; i++) {
             delItem = innerItems.pop();
@@ -476,7 +476,7 @@ Ext.define('app.view.main.Controller', {
     },
     //面板容器内部进行视图切换时
     onPanelActiveitemChange: function(t) {
-        var record = t.treeRecord;
+        const record = t.treeRecord;
         //返回模式不做操作
         if (record && !config.isBack) {
             //console.log('容器内部视图切换');
@@ -486,7 +486,7 @@ Ext.define('app.view.main.Controller', {
     },
     //左侧菜单发生变化时 内部容器切换时 触发
     viewLoad: function(tree, panel, record) {
-        var layout = panel.getLayout(),
+        const layout = panel.getLayout(),
             //获取当前显示页面
             view = layout.getActiveItem();
         //容器记录已选中的树
