@@ -84,7 +84,7 @@ Ext.define('app.util', {
         //params参数，这是一个json对象，示例{userName:'test',passWord:'test'}
         //update是否强制重新请求数据
         storeLoad: function (store, params, update) {
-            //console.log('store正在加载:', store.isLoading(), '参数：', params);
+            console.log('store正在加载:', store.isLoading(), '参数：', params,"是否重新请求：",update);
             //如果已经在请求数据，中断
             if (store.isLoading()) {
                 return;

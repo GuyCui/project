@@ -14,7 +14,7 @@ Ext.define('app.model.User', {
         },
         {
             name: 'userName',
-            type: 'string'
+            type: 'int'
         },
         {
             name: 'password',

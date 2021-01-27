@@ -1,5 +1,6 @@
 package com.webshell.controller;
 
+import com.webshell.entity.WebShellData;
 import com.webshell.util.ExtResult;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,11 +17,15 @@ import org.springframework.web.bind.annotation.RestController;
 @AllArgsConstructor
 public class RouterController {
     @PostMapping("/webShell")
-    public Object webShellPage(@RequestParam String userName, @RequestParam String ip, @RequestParam String port,
+    public Object webShellPage(@RequestParam String userName, @RequestParam String ip, @RequestParam Integer port,
                                @RequestParam String password) {
-        System.out.println(userName);
-        String sessionKey = "webssh";
-        return ExtResult.success(sessionKey);
+        WebShellData webShell = new WebShellData();
+        webShell.setIp(ip);
+        webShell.setUserName(userName);
+        webShell.setPort(port);
+        webShell.setPassword(password);
+
+        return ExtResult.success(webShell,"登录成功");
         // return "webssh";
     }
 }
