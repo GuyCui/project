@@ -54,13 +54,6 @@ Ext.define('app.view.main.Box', {
                 tooltip: '帮助'
             },
             {
-                //锁定按钮
-                iconCls: 'x-fa fa-lock',
-                ui: 'header',
-                tooltip: '锁定',
-                handler: 'onLock'
-            },
-            {
                 //退出登录按钮
                 iconCls: 'x-fa fa-sign-out',
                 ui: 'header',
@@ -71,19 +64,7 @@ Ext.define('app.view.main.Box', {
                 //相当于一个label
                 xtype: 'tbtext',
                 //动态绑定名称
-                bind: '{userData.fullName}'
-            },
-            {
-                //图片
-                xtype: 'image',
-                cls: 'header-right-profile-image',
-                height: 35,
-                width: 35,
-                alt: '当前用户图像',
-                //动态绑定头像
-                bind: {
-                    src: '{userData.img}'
-                }
+                bind: '{userData.userName}'
             }
         ]
     },
