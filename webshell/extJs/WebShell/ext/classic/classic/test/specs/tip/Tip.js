@@ -63,7 +63,7 @@ describe("Ext.tip.Tip", function() {
     });
 
     describe("draggable", function() {
-        it("should attach a Ext.utils.ComponentDragger instance to the tip", function() {
+        it("should attach a Ext.util.ComponentDragger instance to the tip", function() {
             createTip({draggable: true, title: 'Title'}).showAt(0, 0);
             expect(tip.dd).toBeDefined();
             expect(tip.dd instanceof Ext.util.ComponentDragger).toBeTruthy();

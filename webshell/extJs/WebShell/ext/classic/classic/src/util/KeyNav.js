@@ -8,7 +8,7 @@
  *
  * Usage:
  *
- *     var nav = new Ext.utils.KeyNav({
+ *     var nav = new Ext.util.KeyNav({
  *         target : "my-element",
  *         left   : function(e){
  *             this.moveLeft(e.ctrlKey);

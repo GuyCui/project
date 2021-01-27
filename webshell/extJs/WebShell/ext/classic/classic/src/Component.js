@@ -108,7 +108,7 @@ Ext.define('Ext.Component', {
         'Ext.layout.component.Auto',
         'Ext.LoadMask',
         'Ext.ZIndexManager',
-        'Ext.utils.DelayedTask',
+        'Ext.util.DelayedTask',
         'Ext.resizer.Resizer',
         'Ext.util.ComponentDragger'
     ],
@@ -592,7 +592,7 @@ Ext.define('Ext.Component', {
 
     /**
      * @cfg {Object/String[]/Object[]} childEls
-     * @inheritdoc Ext.utils.ElementContainer#childEls
+     * @inheritdoc Ext.util.ElementContainer#childEls
      */
     childEls: {
         frameTable: { frame: true },

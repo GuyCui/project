@@ -556,7 +556,7 @@ Ext.define('Ext.overrides.Widget', {
                 top: alignToBox.top,
                 left: alignToBox.left,
 
-                // Might be an Ext.utils.Point which does not have dimensions.
+                // Might be an Ext.util.Point which does not have dimensions.
                 alignToWidth: alignToBox.width || 0,
                 alignToHeight: alignToBox.height || 0,
 

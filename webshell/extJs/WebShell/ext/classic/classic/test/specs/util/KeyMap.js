@@ -671,7 +671,7 @@ describe("Ext.util.KeyMap", function(){
          * whether the item has been removed from the DOM. Tried:
          * a) expect(el.parentNode).toBeNull();
          * b) expect(el.parentNode).toBeFalsy();
-         * c) expect(jasmine.utils.argsToArray(Ext.getBody().dom.childNodes)).not.toContain(el)
+         * c) expect(jasmine.util.argsToArray(Ext.getBody().dom.childNodes)).not.toContain(el)
          * 
          * None of which work. Odd.
          */

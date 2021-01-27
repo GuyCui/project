@@ -23,7 +23,7 @@
  *         store: Ext.data.StoreManager.lookup('sampleStore'),
  *         columns: [
  *             { text: 'Symbol',         dataIndex: 'symbol', width: 100},
- *             { text: 'Current Price',  dataIndex: 'price',  renderer: Ext.utils.Format.usMoney },
+ *             { text: 'Current Price',  dataIndex: 'price',  renderer: Ext.util.Format.usMoney },
  *             { text: 'Change',         dataIndex: 'change', xtype: 'numbercolumn', format:'0.00' },
  *             { text: 'Volume',         dataIndex: 'volume', xtype: 'numbercolumn', format:'0,000' }
  *         ],

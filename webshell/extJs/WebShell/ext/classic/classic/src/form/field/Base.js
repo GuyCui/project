@@ -38,7 +38,7 @@ Ext.define('Ext.form.field.Base', {
     xtype: 'field',
     alternateClassName: ['Ext.form.Field', 'Ext.form.BaseField'],
     requires: [
-        'Ext.utils.DelayedTask',
+        'Ext.util.DelayedTask',
         'Ext.XTemplate'
     ],
     
@@ -54,7 +54,7 @@ Ext.define('Ext.form.field.Base', {
         '<input id="{id}" data-ref="inputEl" type="{type}" {inputAttrTpl}',
             ' size="1"', // allows inputs to fully respect CSS widths across all browsers
             '<tpl if="name"> name="{name}"</tpl>',
-            '<tpl if="value"> value="{[Ext.utils.Format.htmlEncode(values.value)]}"</tpl>',
+            '<tpl if="value"> value="{[Ext.util.Format.htmlEncode(values.value)]}"</tpl>',
             '<tpl if="placeholder"> placeholder="{placeholder}"</tpl>',
             '{%if (values.maxLength !== undefined){%} maxlength="{maxLength}"{%}%}',
             '<tpl if="readOnly"> readonly="readonly"</tpl>',

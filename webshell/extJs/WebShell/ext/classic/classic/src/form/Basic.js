@@ -72,7 +72,7 @@ Ext.define('Ext.form.Basic', {
         'Ext.form.action.StandardSubmit',
         'Ext.window.MessageBox',
         'Ext.data.ErrorCollection',
-        'Ext.utils.DelayedTask'
+        'Ext.util.DelayedTask'
     ],
 
     // Not a public API config, this is useful when we're unit testing so we can

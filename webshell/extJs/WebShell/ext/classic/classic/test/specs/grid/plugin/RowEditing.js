@@ -510,7 +510,7 @@ describe('Ext.grid.plugin.RowEditing', function () {
                 // will fail because the dataset has been filtered and the GroupStore#getByInternalId method will
                 // lookup the record in the data store. The fix is to lookup the record in the snapshot collection,
                 // if it exists. This mimics the solution implemented by v5 which solves this by maintaining another
-                // unfiltered collection, Ext.utils.CollectionKey. So, because we can get the record shows that the
+                // unfiltered collection, Ext.util.CollectionKey. So, because we can get the record shows that the
                 // bug has been fixed, since the record is being found (regardless of filtering).
                 // See EXTJS-13374.
                 //

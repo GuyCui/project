@@ -122,7 +122,7 @@ Ext.define('Ext.layout.container.Auto', {
      *             sortable: true,
      *             dataIndex: 'salary',
      *             align: 'right',
-     *             renderer: Ext.utils.Format.usMoney
+     *             renderer: Ext.util.Format.usMoney
      *         }]
      *     });
      *

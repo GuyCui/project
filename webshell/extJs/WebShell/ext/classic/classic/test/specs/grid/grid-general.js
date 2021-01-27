@@ -1384,7 +1384,7 @@ describe("grid-general", function() {
                     });
                 });
                 
-                it("should accept a string formatter that maps to Ext.utils.Format", function() {
+                it("should accept a string formatter that maps to Ext.util.Format", function() {
                     var oldFormat = Ext.util.Format.capitalize,
                         called;
                         
@@ -1402,7 +1402,7 @@ describe("grid-general", function() {
                     Ext.util.Format.capitalize = oldFormat;
                 });
 
-                it("should accept chained formatters that map to Ext.utils.Format", function() {
+                it("should accept chained formatters that map to Ext.util.Format", function() {
                     var oldFormat = Ext.util.Format.capitalize,
                         oldFormat2 = Ext.util.Format.lowercase,
                         called, called2;

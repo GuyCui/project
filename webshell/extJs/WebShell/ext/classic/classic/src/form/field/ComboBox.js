@@ -103,7 +103,7 @@
 Ext.define('Ext.form.field.ComboBox', {
     extend:'Ext.form.field.Picker',
     requires: [
-        'Ext.utils.DelayedTask',
+        'Ext.util.DelayedTask',
         'Ext.view.BoundList',
         'Ext.data.StoreManager'
     ],
@@ -836,7 +836,7 @@ Ext.define('Ext.form.field.ComboBox', {
     },
 
     /**
-     * Returns the `Ext.utils.FilterCollection`. Unless `autoCreate` is explicitly passed
+     * Returns the `Ext.util.FilterCollection`. Unless `autoCreate` is explicitly passed
      * as `false` this collection will be automatically created if it does not yet exist.
      * @param [autoCreate=true] Pass `false` to disable auto-creation of the collection.
      * @return {Ext.util.FilterCollection} The collection of filters.
@@ -1087,7 +1087,7 @@ Ext.define('Ext.form.field.ComboBox', {
 
             // Add a byValue index to the store so that we can efficiently look up records by the value field
             // when setValue passes string value(s).
-            // The two indices (Ext.utils.CollectionKeys) are configured unique: false, so that if duplicate keys
+            // The two indices (Ext.util.CollectionKeys) are configured unique: false, so that if duplicate keys
             // are found, they are all returned by the get call.
             // This is so that findByText and findByValue are able to return the *FIRST* matching value. By default,
             // if unique is true, CollectionKey keeps the *last* matching value.

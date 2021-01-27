@@ -36,7 +36,7 @@ Ext.define('Ext.form.field.TextArea', {
     alternateClassName: 'Ext.form.TextArea',
     requires: [
         'Ext.XTemplate', 
-        'Ext.utils.DelayedTask'
+        'Ext.util.DelayedTask'
     ],
 
     // This template includes a `\n` after `<textarea>` opening tag so that an
@@ -62,7 +62,7 @@ Ext.define('Ext.form.field.TextArea', {
             '<tpl foreach="ariaElAttributes"> {$}="{.}"</tpl>',
             '<tpl foreach="inputElAriaAttributes"> {$}="{.}"</tpl>',
             ' autocomplete="off">\n',
-            '<tpl if="value">{[Ext.utils.Format.htmlEncode(values.value)]}</tpl>',
+            '<tpl if="value">{[Ext.util.Format.htmlEncode(values.value)]}</tpl>',
         '</textarea>',
         {
             disableFormats: true

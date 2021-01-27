@@ -126,7 +126,7 @@ Ext.define('Ext.menu.Item', {
 
     /**
      * @cfg {String} menuAlign
-     * The default {@link Ext.util.Positionable#getAlignToXY Ext.utils.Positionable.getAlignToXY} anchor position value for this
+     * The default {@link Ext.util.Positionable#getAlignToXY Ext.util.Positionable.getAlignToXY} anchor position value for this
      * item's sub-menu relative to this item's position.
      */
     menuAlign: 'tl-tr?',

@@ -307,7 +307,7 @@ Ext.define('Ext.form.field.Tag', {
                 '<li id="{cmpId}-inputElCt" data-ref="inputElCt" role="presentation" class="' + Ext.baseCSSPrefix + 'tagfield-input">',
                     '<input id="{cmpId}-inputEl" data-ref="inputEl" type="{type}" ',
                     '<tpl if="name">name="{name}" </tpl>',
-                    '<tpl if="value"> value="{[Ext.utils.Format.htmlEncode(values.value)]}"</tpl>',
+                    '<tpl if="value"> value="{[Ext.util.Format.htmlEncode(values.value)]}"</tpl>',
                     '<tpl if="size">size="{size}" </tpl>',
                     '<tpl if="tabIdx != null">tabindex="{tabIdx}" </tpl>',
                     '<tpl if="disabled"> disabled="disabled"</tpl>',

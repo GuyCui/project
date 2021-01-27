@@ -67,7 +67,7 @@ Ext.define('Ext.overrides.Widget', {
     },
 
     getAnimationProps: function() {
-        // see Ext.utils.Animate mixin
+        // see Ext.util.Animate mixin
         return {};
     },
 

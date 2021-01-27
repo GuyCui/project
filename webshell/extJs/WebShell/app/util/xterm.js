@@ -44,7 +44,7 @@
         1: [function (require, module, exports) {
             "use strict";
             Object.defineProperty(exports, "__esModule", {value: true});
-            var CircularList_1 = require("./utils/CircularList");
+            var CircularList_1 = require("./util/CircularList");
             var Buffer = (function () {
                 function Buffer(_terminal) {
                     this._terminal = _terminal;
@@ -2368,7 +2368,7 @@
         }, {"./Charsets": 3, "./EscapeSequences": 5}], 10: [function (require, module, exports) {
             "use strict";
             Object.defineProperty(exports, "__esModule", {value: true});
-            var DomElementObjectPool_1 = require("./utils/DomElementObjectPool");
+            var DomElementObjectPool_1 = require("./util/DomElementObjectPool");
             var MAX_REFRESH_FRAME_SKIP = 5;
             var FLAGS;
             (function (FLAGS) {
@@ -2660,11 +2660,11 @@
                 };
             })();
             Object.defineProperty(exports, "__esModule", {value: true});
-            var Mouse = require("./utils/Mouse");
-            var Browser = require("./utils/Browser");
+            var Mouse = require("./util/Mouse");
+            var Browser = require("./util/Browser");
             var EventEmitter_1 = require("./EventEmitter");
             var SelectionModel_1 = require("./SelectionModel");
-            var BufferLine_1 = require("./utils/BufferLine");
+            var BufferLine_1 = require("./util/BufferLine");
             var DRAG_SCROLL_MAX_THRESHOLD = 50;
             var DRAG_SCROLL_MAX_SPEED = 15;
             var DRAG_SCROLL_INTERVAL = 50;
@@ -3744,10 +3744,10 @@
             var Renderer_1 = require("./Renderer");
             var Linkifier_1 = require("./Linkifier");
             var SelectionManager_1 = require("./SelectionManager");
-            var CharMeasure_1 = require("./utils/CharMeasure");
-            var Browser = require("./utils/Browser");
-            var Mouse_1 = require("./utils/Mouse");
-            var BufferLine_1 = require("./utils/BufferLine");
+            var CharMeasure_1 = require("./util/CharMeasure");
+            var Browser = require("./util/Browser");
+            var Mouse_1 = require("./util/Mouse");
+            var BufferLine_1 = require("./util/BufferLine");
             var document = (typeof window != 'undefined') ? window.document : null;
             var WRITE_BUFFER_PAUSE_THRESHOLD = 5;
             var WRITE_BATCH_SIZE = 300;

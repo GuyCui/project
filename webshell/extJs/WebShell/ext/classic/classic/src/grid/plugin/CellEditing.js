@@ -74,7 +74,7 @@
 Ext.define('Ext.grid.plugin.CellEditing', {
     alias: 'plugin.cellediting',
     extend: 'Ext.grid.plugin.Editing',
-    requires: ['Ext.grid.CellEditor', 'Ext.utils.DelayedTask'],
+    requires: ['Ext.grid.CellEditor', 'Ext.util.DelayedTask'],
 
     /**
      * @event beforeedit

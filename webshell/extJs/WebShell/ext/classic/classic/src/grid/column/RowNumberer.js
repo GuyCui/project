@@ -7,10 +7,10 @@
  *     columns: [
  *         {xtype: 'rownumberer'},
  *         {text: "Company", flex: 1, sortable: true, dataIndex: 'company'},
- *         {text: "Price", width: 120, sortable: true, renderer: Ext.utils.Format.usMoney, dataIndex: 'price'},
+ *         {text: "Price", width: 120, sortable: true, renderer: Ext.util.Format.usMoney, dataIndex: 'price'},
  *         {text: "Change", width: 120, sortable: true, dataIndex: 'change'},
  *         {text: "% Change", width: 120, sortable: true, dataIndex: 'pctChange'},
- *         {text: "Last Updated", width: 120, sortable: true, renderer: Ext.utils.Format.dateRenderer('m/d/Y'), dataIndex: 'lastChange'}
+ *         {text: "Last Updated", width: 120, sortable: true, renderer: Ext.util.Format.dateRenderer('m/d/Y'), dataIndex: 'lastChange'}
  *     ]
  *
  */

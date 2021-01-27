@@ -396,7 +396,7 @@
  *         "headers": [
  *             {"header": "Customer", "width": 250, "dataIndex": 'customer', "sortable": true},
  *             {"header": "Invoice Number", "width": 120, "dataIndex": 'invNo', "sortable": true},
- *             {"header": "Invoice Date", "width": 100, "dataIndex": 'date', "renderer": Ext.utils.Format.dateRenderer('M d, y'), "sortable": true},
+ *             {"header": "Invoice Date", "width": 100, "dataIndex": 'date', "renderer": Ext.util.Format.dateRenderer('M d, y'), "sortable": true},
  *             {"header": "Value", "width": 120, "dataIndex": 'value', "renderer": 'usMoney', "sortable": true}
  *         ]
  *     }

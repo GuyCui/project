@@ -324,13 +324,13 @@ Ext.define('Ext.grid.column.Column', {
      * appearance, etc.) before it is rendered. Example:
      *
      * **NOTE:** In previous releases, a string was treated as a method on
-     * `Ext.utils.Format` but that is now handled by the {@link #formatter} config.
+     * `Ext.util.Format` but that is now handled by the {@link #formatter} config.
      *
      * @param {Object} value The data value for the current cell
      *
      *     renderer: function(value){
      *         // evaluates `value` to append either `person' or `people`
-     *         return Ext.utils.Format.plural(value, 'person', 'people');
+     *         return Ext.util.Format.plural(value, 'person', 'people');
      *     }
      *
      * @param {Object} metaData A collection of metadata about the current cell; can be
@@ -575,7 +575,7 @@ Ext.define('Ext.grid.column.Column', {
      *
      *     editRenderer: function(value){
      *         // evaluates `value` to append either `person' or `people`
-     *         return Ext.utils.Format.plural(value, 'person', 'people');
+     *         return Ext.util.Format.plural(value, 'person', 'people');
      *     }
      *
      * @param {Object} metaData **Note:** The metadata param is passed to the
@@ -1023,7 +1023,7 @@ Ext.define('Ext.grid.column.Column', {
         //<debug>
         if (renderer in Ext.util.Format) {
             Ext.log.warn('Use "formatter" config instead of "renderer" to use ' +
-                         'Ext.utils.Format to format cell values');
+                         'Ext.util.Format to format cell values');
         }
         //</debug>
 
@@ -1072,7 +1072,7 @@ Ext.define('Ext.grid.column.Column', {
              * or `'date("Y-m-d")'` to format a Date.
              *
              * In previous releases the `renderer` config had limited abilities to use one
-             * of the `Ext.utils.Format` methods but `formatter` now replaces that usage and
+             * of the `Ext.util.Format` methods but `formatter` now replaces that usage and
              * can also handle formatting parameters.
              *
              * When the value begins with `"this."` (for example, `"this.foo(2)"`), the
@@ -2044,7 +2044,7 @@ Ext.define('Ext.grid.column.Column', {
             methods: {
                 bindRenderer: function (renderer) {
                     // This method restores the pre-5 meaning of "renderer" as a string:
-                    // a method in Ext.utils.Format. But at least we don't send all of
+                    // a method in Ext.util.Format. But at least we don't send all of
                     // the renderer arguments at the poor thing!
                     return function (value) {
                         return Ext.util.Format[renderer](value);

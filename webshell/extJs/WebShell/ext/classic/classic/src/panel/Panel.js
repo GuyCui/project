@@ -3677,7 +3677,7 @@ Ext.define('Ext.panel.Panel', {
             e.stopEvent();
             
             // ... and in case we have other listeners,
-            // stop the loop in Ext.utils.Event too
+            // stop the loop in Ext.util.Event too
             return false;
         }
         //<debug>

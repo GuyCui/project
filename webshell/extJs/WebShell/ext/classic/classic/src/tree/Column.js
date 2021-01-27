@@ -30,13 +30,13 @@ Ext.define('Ext.tree.Column', {
      * below for more information.
      * 
      * **NOTE:** In previous releases, a string was treated as a method on 
-     * `Ext.utils.Format` but that is now handled by the {@link #formatter} config.
+     * `Ext.util.Format` but that is now handled by the {@link #formatter} config.
      *
      * @param {Object} value The data value for the current cell
      * 
      *     renderer: function(value){
      *         // evaluates `value` to append either `person' or `people`
-     *         return Ext.utils.Format.plural(value, 'person', 'people');
+     *         return Ext.util.Format.plural(value, 'person', 'people');
      *     }
      * 
      * @param {Object} metaData A collection of metadata about the current cell; can be 

@@ -4,7 +4,7 @@
 Ext.application({
     extend: 'app.Application',
     //应用命名空间
-    name: 'WebSSH',
+    name: 'app',
     //引入数据源
     stores: ['NavigationTree'],
     //自动引入app目录下所以的类，不需要在其他地方再次引入

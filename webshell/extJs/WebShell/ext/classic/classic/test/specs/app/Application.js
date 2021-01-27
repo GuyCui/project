@@ -217,7 +217,7 @@ describe("Ext.app.Application", function() {
         expect(TestApplication.view.Viewport.create).toHaveBeenCalled();
     });
 
-    it("should init Ext.utils.History", function() {
+    it("should init Ext.util.History", function() {
         app = new TestApplication.Application();
 
         return expect(Ext.util.History.ready).toEqual(true);

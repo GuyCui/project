@@ -83,7 +83,7 @@ Ext.define('Ext.selection.Model', {
     /**
      * @cfg {Boolean} ordered
      * If this is set to `true`, the selected items will be tracked in an instance of
-     * {Ext.utils.Collection} instead of {Ext.utils.Bag} to maintain insertion order.
+     * {Ext.util.Collection} instead of {Ext.util.Bag} to maintain insertion order.
      * @private
      */
      ordered: false,

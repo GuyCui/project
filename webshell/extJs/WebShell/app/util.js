@@ -1,7 +1,7 @@
 //公用类
 //各种共用方法
 Ext.define('app.util', {
-    //别名，为了方便调用，这样通过 utils.方法名(参数) 就能直接使用
+    //别名，为了方便调用，这样通过 util.方法名(参数) 就能直接使用
     //如util.equals({a:1},{b:2});
     alternateClassName: 'util',
     statics: {

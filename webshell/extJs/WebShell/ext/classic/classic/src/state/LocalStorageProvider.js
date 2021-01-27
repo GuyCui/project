@@ -1,6 +1,6 @@
 /**
  * A Provider implementation which saves and retrieves state via the HTML5 localStorage API
- * or IE `userData` storage. For details see `Ext.utils.LocalStorage`.
+ * or IE `userData` storage. For details see `Ext.util.LocalStorage`.
  * 
  * If the browser does not support local storage, there will be no attempt to read the state.
  * Before creating this class, check {@link Ext.util.LocalStorage#supported}.

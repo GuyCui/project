@@ -146,7 +146,7 @@ Ext.define('Ext.field.DatePicker', {
         destroyPickerOnHide: false,
 
         /**
-         * @cfg {String} [dateFormat=Ext.utils.Format.defaultDateFormat] The format to be used when displaying the date in this field.
+         * @cfg {String} [dateFormat=Ext.util.Format.defaultDateFormat] The format to be used when displaying the date in this field.
          * Accepts any valid date format. You can view formats over in the {@link Ext.Date} documentation.
          */
         dateFormat: '',
