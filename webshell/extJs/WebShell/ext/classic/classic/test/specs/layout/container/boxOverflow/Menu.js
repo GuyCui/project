@@ -1,14 +1,16 @@
-describe('Ext.layout.container.boxOverflow.Menu', function () {
-    var toolbar;
+topSuite("Ext.layout.container.boxOverflow.Menu",
+    ['Ext.toolbar.Toolbar', 'Ext.Button', 'Ext.form.field.Text'],
+    function () {
+        var toolbar;
 
-    function createToolbar(cfg) {
-        toolbar = new Ext.toolbar.Toolbar(Ext.apply({
-            enableOverflow: true,
-            width: 1,
-            renderTo: Ext.getBody(),
-            items: [{
-                xtype: 'checkboxfield',
-                name: 'check1',
+        function createToolbar(cfg) {
+            toolbar = new Ext.toolbar.Toolbar(Ext.apply({
+                enableOverflow: true,
+                width: 1,
+                renderTo: Ext.getBody(),
+                items: [{
+                    xtype: 'checkboxfield',
+                    name: 'check1',
                 itemId: 'check1'
             }]
         }, cfg || {}));

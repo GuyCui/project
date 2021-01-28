@@ -1,14 +1,14 @@
-describe("Ext.Object", function(){
-    
-    describe("size", function(){
-       it("should return 0 when there are no properties", function(){
-           var o = {};
-           expect(Ext.Object.getSize(o)).toBe(0);
-       });
-       
-       it("should return the number of keys", function(){
-           var o = {
-               key1: true,
+topSuite("Ext.Object", function () {
+
+    describe("size", function () {
+        it("should return 0 when there are no properties", function () {
+            var o = {};
+            expect(Ext.Object.getSize(o)).toBe(0);
+        });
+
+        it("should return the number of keys", function () {
+            var o = {
+                key1: true,
                key2: true,
                key3: true,
                key4: true

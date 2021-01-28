@@ -27,7 +27,9 @@
  *
  *          items: [{
  *              title: 'Some Title',
- *              plugins: 'responsive',
+ *              plugins: {
+ *                  responsive: true
+ *              },
  *
  *              responsiveConfig: {
  *                  'width < 800': {
@@ -55,10 +57,12 @@
  *
  *      Ext.create('Ext.panel.Panel', {
  *          renderTo: document.body,
- *          plugins: 'responsive',
+ *          plugins: {
+ *              responsive: true
+ *          },
  *          ...
  *      });
- * 
+ *
  *  _Note:_ There is the exception of `Ext.container.Viewport` or other classes using `Ext.plugin.Viewport`.
  *  In those cases, the viewport plugin inherits from `Ext.plugin.Responsive`.
  *
@@ -307,8 +311,7 @@ Ext.define('Ext.mixin.Responsive', function (Responsive) { return {
                     id;
 
                 if (timer) {
-                    Responsive.timer = null;
-                    Ext.asapCancel(timer);
+                    Responsive.timer = Ext.unasap(timer);
                 }
 
                 Responsive.updateContext();

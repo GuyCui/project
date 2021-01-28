@@ -1,13 +1,16 @@
-describe("Ext.Function", function() {
-    
+/* global jasmine, Ext, expect, xit, xdescribe */
+
+topSuite("Ext.Function", function () {
     var _setTimeout,
         _clearTimeout,
         timeouts,
         timeoutIds,
         clearedTimeoutIds,
-        runAfterInvocation = function(spyedFunction, callback, invocationCount) {
+        runAfterInvocation = function (spyedFunction, callback, invocationCount) {
             invocationCount = invocationCount || 1;
-            waitsFor(function() { return spyedFunction.calls.length >= invocationCount; });
+            waitsFor(function () {
+                return spyedFunction.calls.length >= invocationCount;
+            });
             runs(callback);
         },
         mockTimeout = function() {
@@ -29,12 +32,15 @@ describe("Ext.Function", function() {
                 _clearTimeout.apply(this, arguments);
             };
         },
-        unmockTimeout = function() {
+        unmockTimeout = function () {
             timeouts = undefined;
             timeoutIds = undefined;
             clearedTimeoutIds = undefined;
             window.setTimeout = _setTimeout;
             window.clearTimeout = _clearTimeout;
+        },
+        fakeScope = {
+            foo: 'baz'
         };
 
     
@@ -78,7 +84,7 @@ describe("Ext.Function", function() {
                 expect(fn).toHaveBeenCalledWith('a', 'b');
             });
 
-            it("should use passed args if they are present", function() {
+            it("should use passed args if they are present", function () {
                 bind = Ext.Function.bind(fn, this);
 
                 bind('c', 'd');
@@ -86,7 +92,13 @@ describe("Ext.Function", function() {
                 expect(fn).toHaveBeenCalledWith('c', 'd');
             });
 
-            it("should append args", function() {
+            it("should not append args passed to the bound function by default", function () {
+                bind = Ext.Function.bind(fn, this, ['a', 'b']);
+                bind('c');
+                expect(fn).toHaveBeenCalledWith('a', 'b');
+            });
+
+            it("should append args", function () {
                 bind = Ext.Function.bind(fn, this, ['a', 'b'], true);
 
                 bind('c', 'd');
@@ -94,7 +106,7 @@ describe("Ext.Function", function() {
                 expect(fn).toHaveBeenCalledWith('c', 'd', 'a', 'b');
             });
 
-            it("should append args at the given index", function() {
+            it("should append args at the given index", function () {
                 bind = Ext.Function.bind(fn, this, ['a', 'b'], 0);
 
                 bind('c', 'd');
@@ -167,12 +179,26 @@ describe("Ext.Function", function() {
     });
     
     describe("clone", function() {
-        it("should clone the given function", function() {
-            var fn = jasmine.createSpy().andCallFake(function(arg) { return 'bar'; }),
+        it("should clone the given function", function () {
+            var fn = jasmine.createSpy().andCallFake(function (arg) {
+                    return 'bar';
+                }),
                 clonedFn = Ext.Function.clone(fn),
                 result = clonedFn('foo');
             expect(result).toBe('bar');
             expect(fn).toHaveBeenCalledWith('foo');
+        });
+
+        it("should clone own properies on the given function", function () {
+            var fn = function () {
+                },
+                clone;
+
+            fn.$prop = 'foo';
+
+            clone = Ext.Function.clone(fn);
+
+            expect(clone.$prop).toEqual('foo');
         });
     });
 
@@ -260,14 +286,14 @@ describe("Ext.Function", function() {
                     expect(interceptor()).toBe(false);
                 });
             });
-            
-            it("should return the value of the original function if false is not returned", function(){
-                interceptorFn = function(){
+
+            it("should return the value of the original function if false is not returned", function () {
+                interceptorFn = function () {
                     return;
                 };
-                 interceptor = Ext.Function.createInterceptor(interceptedFn, interceptorFn);
+                interceptor = Ext.Function.createInterceptor(interceptedFn, interceptorFn);
                 expect(interceptor()).toBe('Original');
-            })
+            });
         });
     });
     
@@ -288,8 +314,10 @@ describe("Ext.Function", function() {
            unmockTimeout();
        });
        it("should use the specified scope as 'this'", function() {
-           var scope = { x: 'foo' },
-               fn = jasmine.createSpy().andCallFake(function() { this.x = 'bar' }),
+           var scope = {x: 'foo'},
+               fn = jasmine.createSpy().andCallFake(function () {
+                   this.x = 'bar';
+               }),
                delayedFn = Ext.Function.createDelayed(fn, 2, scope);
            delayedFn();
            expect(fn).not.toHaveBeenCalled();
@@ -384,7 +412,10 @@ describe("Ext.Function", function() {
         });
 
         it("should return a timeout number", function() {
-            expect(typeof Ext.defer(function() {}, 10) === 'number').toBe(true);
+            var timer = Ext.defer(function () {
+            }, 10);
+            expect(typeof timer === 'number').toBe(true);
+            Ext.undefer(timer);
         });
     });
 
@@ -532,7 +563,7 @@ describe("Ext.Function", function() {
             var monologue = {
                     phrases: [],
                     addPhrase: function(phrase) {
-                        this.phrases.push(phrase)
+                        this.phrases.push(phrase);
                     }
                 },
                 addMeToo = jasmine.createSpy().andCallFake(function(phrase) {
@@ -551,7 +582,7 @@ describe("Ext.Function", function() {
             var monologue = {
                     phrases: [],
                     addPhrase: function(phrase) {
-                        this.phrases.push(phrase)
+                        this.phrases.push(phrase);
                     }
                 },
                 transcription = {
@@ -585,22 +616,43 @@ describe("Ext.Function", function() {
                 return called;
             }, 'the asap function to call the passed function');
         });
-        it('should not call the passed function if asapCancel called', function() {
+        it('should not call the passed function if unasap called', function () {
             var called = false,
                 timer;
 
-            timer = Ext.asap(function(){
+            timer = Ext.asap(function () {
                 called = true;
             });
-            Ext.asapCancel(timer);
+            Ext.unasap(timer);
 
             // We expect nothing to happen, so there's nothing to wait for.
             // Wait for the most pessmistic time to allow aany erroneous call to occur.
             waits(150);
 
-            runs(function() {
+            runs(function () {
                 expect(called).toBe(false);
             });
         });
     });
+
+    describe('interval', function () {
+        it('should call the function in the passed scope', function () {
+            var scope = {},
+                foundScope,
+                timerId;
+
+            timerId = Ext.interval(function () {
+                foundScope = this;
+            }, 1, scope);
+
+            waitsFor(function () {
+                return foundScope;
+            });
+
+            runs(function () {
+                Ext.uninterval(timerId);
+                expect(foundScope).toBe(scope);
+            });
+        });
+    })
 });

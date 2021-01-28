@@ -24,8 +24,8 @@ Ext.define('Ext.app.domain.Component', {
     dispatch: function(target, ev, args) {
         var controller = target.lookupController(false), // don't skip target
             domain, view;
-           
-         
+
+
         while (controller) {
             domain = controller.compDomain;
             if (domain) {
@@ -36,7 +36,7 @@ Ext.define('Ext.app.domain.Component', {
             view = controller.getView();
             controller = view ? view.lookupController(true) : null;
         }
-        return this.callParent(arguments);    
+        return this.callParent([target, ev, args]);
     },
 
     match: function(target, selector) {

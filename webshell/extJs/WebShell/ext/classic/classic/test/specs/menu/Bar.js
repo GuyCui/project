@@ -1,14 +1,18 @@
-describe("Ext.menu.Bar", function() {
-    var menu;
-    
-    function makeMenuBar(config) {
-        config = Ext.apply({
-            renderTo: Ext.getBody(),
-            width: 300,
-            items: [{
-                text: 'File',
-                menu: [
-                    { text: 'Open' }, '-', { text: 'Close', disabled: true }, { text: 'Save' }
+/* global Ext, expect */
+
+topSuite("Ext.menu.Bar",
+    ['Ext.Button', 'Ext.layout.container.boxOverflow.Menu'],
+    function () {
+        var menu;
+
+        function makeMenuBar(config) {
+            config = Ext.apply({
+                renderTo: Ext.getBody(),
+                width: 300,
+                items: [{
+                    text: 'File',
+                    menu: [
+                        {text: 'Open'}, '-', {text: 'Close', disabled: true}, {text: 'Save'}
                 ]
             }, {
                 text: 'Edit',

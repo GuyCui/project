@@ -1,15 +1,16 @@
-describe("Ext.layout.component.field.HtmlEditor", function() {
+topSuite("Ext.layout.component.field.HtmlEditor",
+    ['Ext.form.Panel', 'Ext.form.field.HtmlEditor'],
+    function () {
+        var htmlEditor;
 
-    var htmlEditor;
+        afterEach(function () {
+            htmlEditor = Ext.destroy(htmlEditor);
+        });
 
-    afterEach(function() {
-        htmlEditor = Ext.destroy(htmlEditor);
-    });
-
-    it("should layout form with shrinkwrap height that contains an auto height html editor with toolbar overflow trigger", function() {
-        // this spec exists mainly to ensure that the html editor publishes the right content height
-        // when its toolbar has an overflow trigger.
-        var form = Ext.widget({
+        it("should layout form with shrinkwrap height that contains an auto height html editor with toolbar overflow trigger", function () {
+            // this spec exists mainly to ensure that the html editor publishes the right content height
+            // when its toolbar has an overflow trigger.
+            var form = Ext.widget({
             renderTo: document.body,
             xtype: 'form',
             width: 200,

@@ -9,10 +9,6 @@ Ext.define('Ext.panel.Header', {
         'Ext.panel.Title',
         'Ext.panel.Tool'
     ],
-    
-    mixins: [
-        'Ext.util.FocusableContainer'
-    ],
 
     /**
      * @property {Boolean} isHeader
@@ -24,6 +20,7 @@ Ext.define('Ext.panel.Header', {
     indicateDrag: false,
     weight: -1,
     shrinkWrap: 3,
+    focusableContainer: true,
 
     // For performance reasons we give the following configs their default values on
     // the class body.  This prevents the updaters from running on initialization in the
@@ -32,7 +29,7 @@ Ext.define('Ext.panel.Header', {
     titleAlign: 'left',
     titlePosition: 0,
     titleRotation: 'default',
-    
+
     autoEl: {
         role: 'presentation'
     },
@@ -64,17 +61,17 @@ Ext.define('Ext.panel.Header', {
          * 
          *     // using Font Awesome
          *     glyph: 'xf015@FontAwesome'     // the "home" icon
-         * 
+         *
          *     // using Pictos
          *     glyph: 'H@Pictos'              // the "home" icon
-         * 
-         * Depending on the theme you're using, you may need include the font icon 
-         * packages in your application in order to use the icons included in the 
+         *
+         * Depending on the theme you're using, you may need include the font icon
+         * packages in your application in order to use the icons included in the
          * SDK.  For more information see:
-         * 
+         *
          *  - [Font Awesome icons](http://fortawesome.github.io/Font-Awesome/cheatsheet/)
-         *  - [Pictos icons](http://docs.sencha.com/extjs/6.0/core_concepts/font_ext.html)
-         *  - [Theming Guide](http://docs.sencha.com/extjs/6.0/core_concepts/theming.html)
+         *  - [Pictos icons](../guides/core_concepts/font_ext.html)
+         *  - [Theming Guide](../guides/core_concepts/theming.html)
          */
         glyph: null,
 
@@ -110,17 +107,17 @@ Ext.define('Ext.panel.Header', {
          * 
          *     // using Font Awesome
          *     iconCls: 'x-fa fa-home'
-         * 
+         *
          *     // using Pictos
          *     iconCls: 'pictos pictos-home'
-         * 
-         * Depending on the theme you're using, you may need include the font icon 
-         * packages in your application in order to use the icons included in the 
+         *
+         * Depending on the theme you're using, you may need include the font icon
+         * packages in your application in order to use the icons included in the
          * SDK.  For more information see:
-         * 
+         *
          *  - [Font Awesome icons](http://fortawesome.github.io/Font-Awesome/cheatsheet/)
-         *  - [Pictos icons](http://docs.sencha.com/extjs/6.0/core_concepts/font_ext.html)
-         *  - [Theming Guide](http://docs.sencha.com/extjs/6.0/core_concepts/theming.html)
+         *  - [Pictos icons](../guides/core_concepts/font_ext.html)
+         *  - [Theming Guide](../guides/core_concepts/theming.html)
          */
         iconCls: null,
 
@@ -394,7 +391,7 @@ Ext.define('Ext.panel.Header', {
             haveFocusableTool, i, len;
 
         if (me.isAccordionHeader) {
-            me.enableFocusableContainer = false;
+            me.focusableContainer = false;
             
             return;
         }
@@ -410,11 +407,10 @@ Ext.define('Ext.panel.Header', {
         }
         
         if (haveFocusableTool) {
-            if (!me.initialConfig.hasOwnProperty('enableFocusableContainer') ||
-                me.enableFocusableContainer) {
+            if (!me.initialConfig.hasOwnProperty('focusableContainer') || me.focusableContainer) {
                 me.ariaRole = 'toolbar';
-                me.enableFocusableContainer = true;
-                
+                me.focusableContainer = true;
+
                 if (me.rendered) {
                     me.ariaEl.dom.setAttribute('role', 'toolbar');
                     me.initFocusableContainer(true);
@@ -423,7 +419,7 @@ Ext.define('Ext.panel.Header', {
         }
         else {
             me.ariaRole = 'presentation';
-            me.enableFocusableContainer = false;
+            me.focusableContainer = false;
             
             if (me.rendered) {
                 me.ariaEl.dom.setAttribute('role', 'presentation');

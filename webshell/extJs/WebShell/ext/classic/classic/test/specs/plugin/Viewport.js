@@ -1,13 +1,16 @@
-describe("Ext.plugin.Viewport", function() {
-    var c;
+topSuite("Ext.plugin.Viewport",
+    ['Ext.container.Viewport', 'Ext.Panel', 'Ext.app.ViewModel',
+        'Ext.app.ViewController'],
+    function () {
+        var c;
 
-    function makeComponent(cfg, ComponentClass) {
-        var Cls = ComponentClass || Ext.Component;
-        c = new Cls(Ext.apply({
-            renderTo: Ext.getBody(),
-            plugins: 'viewport'
-        }, cfg));
-    }
+        function makeComponent(cfg, ComponentClass) {
+            var Cls = ComponentClass || Ext.Component;
+            c = new Cls(Ext.apply({
+                renderTo: Ext.getBody(),
+                plugins: 'viewport'
+            }, cfg));
+        }
 
     afterEach(function() {
         c = Ext.destroy(c);
@@ -226,12 +229,15 @@ describe("Ext.plugin.Viewport", function() {
                 it('should only fire one global scroll event per scroll', function() {
                     c.scrollTo(null, 500);
 
+                    // Read to force synchronous layout
+                    document.body.offsetHeight;
+
                     // Wait for potentially asynchronous scroll events to fire.
-                    waitsFor(function() {
+                    waitsFor(function () {
                         return viewportScrollCount === 1;
                     }, "scroll never fired");
 
-                    runs(function() {
+                    runs(function () {
                         expect(viewportScrollCount).toBe(1);
                     });
                 });
@@ -244,15 +250,17 @@ describe("Ext.plugin.Viewport", function() {
     describe("global DOM scroll viewport", function() {
         function makeSuite(name, cls) {
             describe("auto layout " + name, function() {
-                var viewportScrollCount = 0;
+                var viewportScrollCount = 0,
+                    incrementFn = function () {
+                        viewportScrollCount++;
+                    };
 
-                beforeEach(function() {
+                beforeEach(function () {
                     document.documentElement.style.height = '2000px';
                     document.documentElement.style.overflow = 'auto';
 
-                    Ext.on('scroll', function() {
-                        viewportScrollCount++;
-                    });
+                    Ext.on('scroll', incrementFn);
+
                     makeComponent({
                         scrollable: true,
                         items: {
@@ -265,6 +273,8 @@ describe("Ext.plugin.Viewport", function() {
 
                 afterEach(function() {
                     document.documentElement.style.height = document.documentElement.style.overflow = '';
+                    Ext.scroll.Scroller.viewport = Ext.destroy(Ext.scroll.Scroller.viewport);
+                    Ext.un('scroll', incrementFn);
                 });
                 
                 it('should only fire one global scroll event per scroll', function() {

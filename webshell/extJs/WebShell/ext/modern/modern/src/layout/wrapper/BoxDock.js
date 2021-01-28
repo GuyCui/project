@@ -7,12 +7,9 @@ Ext.define('Ext.layout.wrapper.BoxDock', {
         element: {
             className: Ext.baseCSSPrefix + 'dock'
         },
-        bodyElement: {
-            className: Ext.baseCSSPrefix + 'dock-body'
-        },
         innerWrapper: null,
-        sizeState: false,
-        container: null
+        container: null,
+        manageBorders: null
     },
 
     positionMap: {
@@ -22,7 +19,9 @@ Ext.define('Ext.layout.wrapper.BoxDock', {
         right: 'end'
     },
 
-    constructor: function(config) {
+    managedBordersCls: Ext.baseCSSPrefix + 'managed-borders',
+
+    constructor: function (config) {
         this.items = {
             start: [],
             end: []
@@ -74,7 +73,7 @@ Ext.define('Ext.layout.wrapper.BoxDock', {
 
         if (!referenceElement) {
             sideItems.push(item);
-            referenceElement = this.getBodyElement();
+            referenceElement = this.getInnerWrapper().getElement();
         }
 
         this.itemsCount++;
@@ -134,40 +133,30 @@ Ext.define('Ext.layout.wrapper.BoxDock', {
         element.addCls(Ext.baseCSSPrefix + 'dock-' + this.getDirection());
     },
 
-    applyBodyElement: function(bodyElement) {
-        return Ext.Element.create(bodyElement);
-    },
-
-    updateBodyElement: function(bodyElement) {
-        this.getElement().append(bodyElement);
-    },
-
     updateInnerWrapper: function(innerWrapper, oldInnerWrapper) {
-        var bodyElement = this.getBodyElement();
-
-        if (oldInnerWrapper && oldInnerWrapper.$outerWrapper === this) {
-            oldInnerWrapper.getElement().detach();
-            delete oldInnerWrapper.$outerWrapper;
+        if (oldInnerWrapper) {
+            innerWrapper.getElement().replace(oldInnerWrapper.getElement(), false);
+            oldInnerWrapper.$outerWrapper = null;
+        } else {
+            this.getElement().append(innerWrapper.getElement());
         }
 
+        innerWrapper.setManageBorders(this.getManageBorders());
+        innerWrapper.$outerWrapper = this;
+    },
+
+    updateManageBorders: function (manageBorders) {
+        var me = this,
+            innerWrapper = me.getInnerWrapper();
+
+        me.getElement().toggleCls(me.managedBordersCls, manageBorders);
+
         if (innerWrapper) {
-            innerWrapper.setSizeState(this.getSizeState());
-            innerWrapper.$outerWrapper = this;
-            bodyElement.append(innerWrapper.getElement());
+            innerWrapper.setManageBorders(manageBorders);
         }
     },
 
-    updateSizeState: function(state) {
-        var innerWrapper = this.getInnerWrapper();
-
-        this.getElement().setSizeState(state);
-
-        if (innerWrapper) {
-            innerWrapper.setSizeState(state);
-        }
-    },
-
-    destroy: function() {
+    destroy: function () {
         var me = this,
             innerWrapper = me.getInnerWrapper(),
             outerWrapper = me.$outerWrapper,
@@ -187,9 +176,7 @@ Ext.define('Ext.layout.wrapper.BoxDock', {
 
         delete me.$outerWrapper;
 
-        me.setInnerWrapper(null);
-
-        me.unlink(['_bodyElement', '_element']);
+        me.unlink(['_element']);
 
         me.callParent();
     }

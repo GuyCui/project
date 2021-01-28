@@ -1,14 +1,14 @@
-xdescribe("Ext.layout.component.field.Trigger", function(){
+xtopSuite("Ext.layout.component.field.Trigger", function () {
     var text, trigger, width, height;
-   
-    afterEach(function(){
+
+    afterEach(function () {
         Ext.destroy(text, trigger);
         text = trigger = width = null;
     });
-    
-    describe("shrink wrap", function(){
-       
-        describe("without label", function() {
+
+    describe("shrink wrap", function () {
+
+        describe("without label", function () {
         
             it("should have the same size as a text field with a single trigger", function(){
                 text = new Ext.form.field.Text({

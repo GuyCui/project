@@ -1,4 +1,4 @@
-describe("Ext.util.TSV", function() {
+topSuite("Ext.util.TSV", function () {
     var TSV = Ext.util.TSV;
 
     // The "hostile" string is a single cell that has all of the special characters in
@@ -8,7 +8,7 @@ describe("Ext.util.TSV", function() {
     // This is the encoded version of the above.
     var hostileEnc = '"foo ""bar""\t, \n\r\nbletch"';
 
-    describe("encode", function() {
+    describe("encode", function () {
         it("should encode valid data types to TSV representation", function() {
             // Set the reference date to be an absolute time value so that tests will
             // run in any time zone.

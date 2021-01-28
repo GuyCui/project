@@ -1,12 +1,12 @@
-describe("Ext.fx.Anim", function() {
+topSuite("Ext.fx.Anim", function () {
     var anim, target, animEndSpy;
 
-    beforeEach(function() {
+    beforeEach(function () {
         target = Ext.getBody().createChild({cls: 'fxtarget'});
         spyOn(Ext.fx.Anim.prototype, "end").andCallThrough();
     });
-    
-    afterEach(function() {
+
+    afterEach(function () {
         target.destroy();
     });
     

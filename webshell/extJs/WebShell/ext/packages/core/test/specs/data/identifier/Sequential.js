@@ -1,11 +1,11 @@
-describe("Ext.data.identifier.Sequential", function() {
+topSuite("Ext.data.identifier.Sequential", function () {
     var idgen;
-    
+
     function make(cfg) {
         idgen = new Ext.data.identifier.Sequential(cfg);
     }
-    
-    afterEach(function() {
+
+    afterEach(function () {
         idgen = null;
     });
     

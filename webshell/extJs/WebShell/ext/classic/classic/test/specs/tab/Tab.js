@@ -1,12 +1,12 @@
-describe("Ext.tab.Tab", function() {
+topSuite("Ext.tab.Tab", function () {
     var tab, card;
-    
+
     function createTab(config) {
         if (tab) {
             tab.destroy();
             tab = null;
         }
-        
+
         tab = new Ext.tab.Tab(Ext.apply({}, config));
         
         return tab;

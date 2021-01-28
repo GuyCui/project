@@ -1,13 +1,12 @@
-describe("Ext.data.validator.Email", function() {
-    
+topSuite("Ext.data.validator.Email", function () {
     var v;
-    
+
     function validate(value) {
         v = new Ext.data.validator.Email();
         return v.validate(value);
     }
-    
-    afterEach(function() {
+
+    afterEach(function () {
         v = null;
     });
     

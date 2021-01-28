@@ -1,13 +1,13 @@
-describe("Ext.data.ResultSet", function() {
+topSuite("Ext.data.ResultSet", ['Ext.data.Model'], function () {
     var resultset,
         ModelManager = Ext.data.ModelManager,
         ResultSet = Ext.data.ResultSet;
-    
-    beforeEach(function() {
+
+    beforeEach(function () {
         Ext.ClassManager.enableNamespaceParseCache = false;
     });
-    
-    afterEach(function(){
+
+    afterEach(function () {
         Ext.ClassManager.enableNamespaceParseCache = true; 
         Ext.data.Model.schema.clear();
         Ext.undefine('spec.User');

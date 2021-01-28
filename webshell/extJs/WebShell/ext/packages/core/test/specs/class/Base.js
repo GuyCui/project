@@ -1,12 +1,12 @@
-describe("Ext.Base", function() {
+topSuite("Ext.Base", function () {
     var cls;
-    
-    afterEach(function() {
+
+    afterEach(function () {
         cls = null;
     });
 
-    describe("deprecated", function() {
-        afterEach(function() {
+    describe("deprecated", function () {
+        afterEach(function () {
             delete Ext.versions.foo;
             delete Ext.compatVersions.foo;
         });
@@ -551,22 +551,27 @@ describe("Ext.Base", function() {
         });
         
         describe("cleanup", function() {
-            var oldFlag;
+            var oldClearProps, oldClearProto;
             
             beforeEach(function() {
-                oldFlag = Ext.Base.prototype.clearPropertiesOnDestroy;
+                oldClearProps = Ext.Base.prototype.clearPropertiesOnDestroy;
+                oldClearProto = Ext.Base.prototype.clearPrototypeOnDestroy;
+
                 Ext.Base.prototype.clearPropertiesOnDestroy = true;
-                
+                Ext.Base.prototype.clearPrototypeOnDestroy = false;
+
                 Class.prototype.$noClearOnDestroy = {
                     bar: true
                 };
-                
+
                 Class.prototype.qux = {};
-                Class.prototype.mymse = function() {};
+                Class.prototype.mymse = function () {
+                };
             });
             
             afterEach(function() {
-                Ext.Base.prototype.clearPropertiesOnDestroy = oldFlag;
+                Ext.Base.prototype.clearPropertiesOnDestroy = oldClearProps;
+                Ext.Base.prototype.clearPrototypeOnDestroy = oldClearProto;
             });
             
             describe("reaping", function() {

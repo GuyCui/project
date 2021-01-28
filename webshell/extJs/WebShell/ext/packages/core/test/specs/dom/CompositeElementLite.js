@@ -1,5 +1,5 @@
-describe("Ext.CompositeElementLite", function(){
-    
+topSuite("Ext.dom.CompositeElementLite", function () {
+
     var mainRoot, ce, makeCE,
         fooTotal = 6,
         barTotal = 5,

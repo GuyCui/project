@@ -24,17 +24,21 @@ $gauge-value-stroke-width: dynamic(1);
 ) {
     $ui-suffix: ui-suffix($ui);
 
-    .#{$prefix}gauge#{$ui-suffix} {
-        .#{$prefix}gauge-track {
-            fill: $track-fill;
-            fill-opacity: $track-fill-opacity;
-            stroke: $track-stroke;
-            stroke-opacity: $track-stroke-opacity;
-            stroke-width: $track-stroke-width;
-        }
+  .#{$prefix}gauge#{$ui-suffix} {
+    svg {
+      display: block;
+    }
 
-        .#{$prefix}gauge-value {
-            fill: $value-fill;
+    .#{$prefix}gauge-track {
+      fill: $track-fill;
+      fill-opacity: $track-fill-opacity;
+      stroke: $track-stroke;
+      stroke-opacity: $track-stroke-opacity;
+      stroke-width: $track-stroke-width;
+    }
+
+    .#{$prefix}gauge-value {
+      fill: $value-fill;
             fill-opacity: $value-fill-opacity;
             stroke: $value-stroke;
             stroke-opacity: $value-stroke-opacity;

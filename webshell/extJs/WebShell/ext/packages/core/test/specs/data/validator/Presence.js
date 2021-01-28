@@ -1,13 +1,12 @@
-describe("Ext.data.validator.Presence", function() {
-    
+topSuite("Ext.data.validator.Presence", function () {
     var v;
-    
+
     function validate(value, cfg) {
         v = new Ext.data.validator.Presence(cfg);
         return v.validate(value);
     }
-    
-    afterEach(function() {
+
+    afterEach(function () {
         v = null;
     });
     

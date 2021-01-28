@@ -1,7 +1,8 @@
-describe("Ext.Element.insertion", function() {
+// false in dependencies to avoid loading "Ext.dom.Element.insertion"
+topSuite("Ext.dom.Element.insertion", [false, 'Ext.dom.Element'], function () {
     var el, span, child1, child2, child3;
-    
-    beforeEach(function() {
+
+    beforeEach(function () {
         el = Ext.getBody().createChild({
             id: 'ExtElementHelper',
             children: [
@@ -383,12 +384,12 @@ describe("Ext.Element.insertion", function() {
 
             expect(Ext.isElement(node)).toBeTruthy();
         });
-        
-        it("should return an el", function() {
+
+        it("should return an el", function () {
             var node = child1.insertHtml('afterEnd', '<div></div>', true);
 
             expect(Ext.isElement(node)).toBeFalsy();
             node.destroy();
         });
     });
-}, "/src/dom/Element.insertion.js");
+});

@@ -1,13 +1,13 @@
-describe("Ext.data.proxy.LocalStorage", function() {
+topSuite("Ext.data.proxy.LocalStorage", ['Ext.data.ArrayStore'], function () {
     var proxy;
 
     if (Ext.supports.LocalStorage) {
-        beforeEach(function() {
+        beforeEach(function () {
             Ext.ClassManager.enableNamespaceParseCache = false;
             proxy = new Ext.data.proxy.LocalStorage({id: 1});
         });
-        
-        afterEach(function() {
+
+        afterEach(function () {
             Ext.ClassManager.enableNamespaceParseCache = true;
         });
         

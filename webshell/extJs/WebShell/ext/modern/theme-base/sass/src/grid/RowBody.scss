@@ -1,10 +1,10 @@
 .#{$prefix}rowbody {
-    @include st-box;
+  display: flex;
 
-    .#{$prefix}grid:not(.#{$prefix}has-rowexpander) & {
-        .#{$prefix}spacer-el {
-            display: none;
-        }
+  .#{$prefix}grid:not(.#{$prefix}has-rowexpander) & {
+    .#{$prefix}spacer-el {
+      display: none;
     }
+  }
 }
 

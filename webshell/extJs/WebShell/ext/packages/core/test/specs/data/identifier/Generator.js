@@ -1,9 +1,9 @@
-describe("Ext.data.identifier.Generator", function() {
-    
+topSuite("Ext.data.identifier.Generator", ['Ext.data.identifier.*'], function () {
+
     var Generator = Ext.data.identifier.Generator,
         idgen;
-    
-    afterEach(function() {
+
+    afterEach(function () {
         idgen = null;
         Generator.all = {
             uuid: Generator.all.uuid

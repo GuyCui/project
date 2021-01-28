@@ -1,8 +1,8 @@
-describe("Ext.form.field.Number", function() {
+topSuite("Ext.form.field.Number", ['Ext.app.ViewModel'], function () {
     var component, makeComponent;
-    
-    beforeEach(function() {
-        makeComponent = function(config) {
+
+    beforeEach(function () {
+        makeComponent = function (config) {
             config = config || {};
             Ext.applyIf(config, {
                 name: 'test'

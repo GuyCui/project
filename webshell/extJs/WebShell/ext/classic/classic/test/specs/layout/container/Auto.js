@@ -1,4 +1,4 @@
-describe("Ext.layout.container.Auto", function() {
+topSuite("Ext.layout.container.Auto", ['Ext.Panel'], function () {
     function createSuite(shrinkWrap) {
         var suiteName = 'Ext.layout.container.Auto';
 
@@ -6,7 +6,7 @@ describe("Ext.layout.container.Auto", function() {
             suiteName += ' (shrinkWrap:true)';
         }
 
-        describe(suiteName, function() {
+        describe(suiteName, function () {
             var longText = 'Lorem ipsum dolor sit amet',
                 shortText = 'Lorem ipsum',
                 longWord = 'supercalifragilisticexpialidocious',

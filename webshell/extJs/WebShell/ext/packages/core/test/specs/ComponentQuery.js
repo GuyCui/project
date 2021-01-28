@@ -1,6 +1,7 @@
-describe("Ext.ComponentQuery", function() {
+topSuite("Ext.ComponentQuery", ["Ext.Container"], function () {
     var cq,
         cm,
+        realComponentMgrAll,
         EA,
         result,
         root,
@@ -22,17 +23,17 @@ describe("Ext.ComponentQuery", function() {
                     setup(o.items[i], o);
                 }
             }
-            
             Ext.apply(o, {
-                getItemId: function() {
+                $iid: ++Ext.$nextIid,
+                getItemId: function () {
                     return this.itemId !== undefined ? this.itemId : this.id;
                 },
 
-                getId: function() {
+                getId: function () {
                     return this.id;
                 },
 
-                getRefItems: function(deep) {
+                getRefItems: function (deep) {
                     var items = this.items || [],
                         len = items.length,
                         i = 0,
@@ -96,12 +97,16 @@ describe("Ext.ComponentQuery", function() {
             
             expect(actual.id).toBe(expected.id);
         }
-    };
+    }
 
     beforeEach(function() {
         cq = Ext.ComponentQuery;
         cm = Ext.ComponentManager;
         EA = Ext.Array;
+        realComponentMgrAll = cm.all;
+
+        // The test uses a fake ComponentManager cache
+        cm.all = {};
 
         root = {
             id: 'root',
@@ -180,7 +185,7 @@ describe("Ext.ComponentQuery", function() {
     });
 
     afterEach(function() {
-        cm.all = {};
+        cm.all = realComponentMgrAll;
     });
     
     describe("parser", function() {
@@ -321,25 +326,32 @@ describe("Ext.ComponentQuery", function() {
             });
 
             describe("invalid matches", function() {
-                it("should not match if the item doesn't contain the child", function() {
+                it("should not match if the item doesn't contain the child", function () {
                     expect(cq.is(child3, '#child3', child5)).toBe(false);
                 });
 
-                it("should not match if the item is not a direct child", function() {
+                it("should not match if the item is not a direct child", function () {
                     expect(cq.is(child5, '> #child5', child3)).toBe(false);
                 });
             });
         });
     });
-    
-    describe("simple query by xtype", function() {
-        it("should select all six items of type G", function() {
+
+    describe("query with no selector", function () {
+        it("should return all components", function () {
+            var result = cq.query();
+            expect(result.length).toBe(13);
+        });
+    });
+
+    describe("simple query by xtype", function () {
+        it("should select all six items of type G", function () {
             result = cq.query('G', root);
             expect(result.length).toEqual(6);
             expect(result[2].id).toEqual(child6.id);
         });
-        
-        it("should allow escaped dots in xtype selector", function() {
+
+        it("should allow escaped dots in xtype selector", function () {
             result = cq.query('E\\.2-E\\.4', root);
             expect(result.length).toBe(1);
             expect(result[0].id).toBe(child12.id);
@@ -813,7 +825,7 @@ describe("Ext.ComponentQuery", function() {
 
         it('should only match candidates [@foo=bar] with ownProperty "foo" equal to "bar"', function() {
             expect(Ext.ComponentQuery.query('[@foo=bar]', candidates).length).toBe(1);
-            expect(Ext.ComponentQuery.query('[@foo=bar]', candidates)[0]).toBe(candidates[1])
+            expect(Ext.ComponentQuery.query('[@foo=bar]', candidates)[0]).toBe(candidates[1]);
             expect(Ext.ComponentQuery.is(candidates[0], '[@foo=bar]')).toBe(false);
             expect(Ext.ComponentQuery.is(candidates[1], '[@foo=bar]')).toBe(true);
         });
@@ -886,8 +898,8 @@ describe("Ext.ComponentQuery", function() {
         beforeEach(function () {
             c = new Ext.container.Container({
                 items: {
-                    xtype: 'button',
-                    text: 'Test',
+                    xtype: 'component',
+                    html: 'Test',
                     action: 'selectVendors'
                 },
                 renderTo: document.body
@@ -1078,7 +1090,8 @@ describe("Ext.ComponentQuery", function() {
             Ext.define('spec.Foo', {
                 extend: 'Ext.Component',
                 config: {
-                    bar: 1
+                    bar: 1,
+                    cqUnitTestConfigName: 1
                 },
                 baz: 2
             });
@@ -1114,36 +1127,40 @@ describe("Ext.ComponentQuery", function() {
 
         });
 
-        afterEach(function() {
+        afterEach(function () {
             Ext.undefine('spec.Foo');
             Ext.undefine('spec.Bar');
             Ext.undefine('spec.Bletch');
         });
-        it("should match instance config", function(){
+        it("should match instance config", function () {
             result = cq.query('[bar=1]');
             expect(result.length).toBe(1);
             expect(result[0]).toBe(foo);
         });
+        it("should match instance config presence", function () {
+            result = cq.query('[cqUnitTestConfigName]');
+            expect(result.length).toBe(1);
+            expect(result[0]).toBe(foo);
+        });
 
-        it("should match a property on the instance", function() {
+        it("should match a property on the instance", function () {
             result = cq.query('[baz=2]');
             expect(result.length).toBe(1);
             expect(result[0]).toBe(foo);
         });
 
-        it("should match an arbitrary property on the config object", function() {
+        it("should match an arbitrary property on the config object", function () {
             result = cq.query('[jaz=3]');
             expect(result.length).toBe(1);
             expect(result[0]).toBe(foo);
         });
 
-        it("should match instance config when there's a custom getter", function(){
+        it("should match instance config when there's a custom getter", function () {
             result = cq.query('[bar=customBarGetter]');
             expect(result.length).toBe(1);
             expect(result[0]).toBe(bletch);
         });
-
-});
+    });
     
     describe('querying non Ext classes', function() {
         it('should be able to query on raw objects', function() {

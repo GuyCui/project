@@ -596,38 +596,39 @@ Ext.define('Ext.data.schema.Schema', {
     /**
      * Adds a {@link Ext.data.Field#reference reference} field association for an entity
      * to this `schema`.
-     * 
+     *
      * This is the ideal method to override in a derived class if the standard, default
      * naming conventions need to be adjusted. In the override, apply whatever logic is
      * appropriate to determine the missing values and pass along the proper results to
      * this method in the `callParent`.
-     * 
+     *
      * @param {Ext.Class} entityType A class derived from `Ext.data.Model`.
-     * 
+     *
      * @param {Ext.data.field.Field} referenceField The `field` with the `reference` config.
-     * 
-     * @param {String} [association] The name of the association. If empty or null, this
+     *
+     * @param {Object} [descr] The `reference` descriptor from the `referenceField` if one
+     * was given in the field definition.
+     *
+     * @param {String} [descr.association] The name of the association. If empty or null, this
      * will be derived from `entityType`, `role`, `inverse` and
      * `referenceField.unique`.
-     * 
-     * @param {String} [role] The name of the relationship from `entityType` to the target
+     *
+     * @param {String} [descr.role] The name of the relationship from `entityType` to the target
      * `type`. If not specified, the default is the `referenceField.name` (minus any "Id"
      * suffix if present).
-     * 
-     * @param {String} [inverse] The name of the relationship from the target `type`
+     *
+     * @param {String} [descr.inverse] The name of the relationship from the target `type`
      * to the `entityType`. If not specified, this is derived from the
      * {@link Ext.data.Model#entityName entityName} of the `entityType`
      * ({@link Ext.util.Inflector#singularize singularized} or
      * {@link Ext.util.Inflector#pluralize pluralized} based on `referenceField.unique`).
-     * 
-     * @param {String} type The {@link Ext.data.Model#entityName entityName} of the target
-     * of the reference.
-     * 
-     * @param {Object} [descr] The `reference` descriptor from the `referenceField` if one
-     * was given in the field definition.
+     *
+     * @param {String} descr.type The {@link Ext.data.Model#entityName entityName} of the
+     * target of the reference.
      *
      * @param {Boolean} [unique=false] Indicates if the reference is one-to-one.
-     * 
+     * @param {Boolean} [dupeCheck] (private)
+     *
      * @protected
      */
     addReference: function (entityType, referenceField, descr, unique, dupeCheck) {
@@ -1270,7 +1271,7 @@ Ext.define('Ext.data.schema.Schema', {
             });
 
             if (!timer) {
-                me.timer = timer = Ext.Function.defer(me.processKeyChecks, me.getKeyCheckDelay(), me);
+                me.timer = timer = Ext.defer(me.processKeyChecks, me.getKeyCheckDelay(), me);
             }
         },
 

@@ -1,16 +1,19 @@
 /* global Ext, MockAjaxManager, expect, jasmine, spyOn, xit */
 
-describe('Ext.grid.plugin.Clipboard', function () {
-    var store, cellediting, clipboard, grid, view, navModel, record, column, field,
-        synchronousLoad = true,
-        proxyStoreLoad = Ext.data.ProxyStore.prototype.load,
-        loadStore = function() {
-            proxyStoreLoad.apply(this, arguments);
-            if (synchronousLoad) {
-                this.flushLoad.apply(this, arguments);
-            }
-            return this;
-        };
+topSuite("Ext.grid.plugin.Clipboard",
+    ['Ext.grid.Panel', 'Ext.grid.plugin.CellEditing', 'Ext.grid.plugin.Clipboard',
+        'Ext.grid.selection.SpreadsheetModel', 'Ext.form.field.Text'],
+    function () {
+        var store, cellediting, clipboard, grid, view, navModel, record, column, field,
+            synchronousLoad = true,
+            proxyStoreLoad = Ext.data.ProxyStore.prototype.load,
+            loadStore = function () {
+                proxyStoreLoad.apply(this, arguments);
+                if (synchronousLoad) {
+                    this.flushLoad.apply(this, arguments);
+                }
+                return this;
+            };
 
     function makeGrid(editorCfg, clipboardCfg, gridCfg, storeCfg, locked) {
         store = new Ext.data.Store(Ext.apply({
@@ -24,13 +27,14 @@ describe('Ext.grid.plugin.Clipboard', function () {
             autoDestroy: true
         }, storeCfg));
 
-        cellediting = new Ext.grid.plugin.CellEditing(editorCfg);
-        clipboard = new Ext.grid.plugin.Clipboard(clipboardCfg);
+        cellediting = new Ext.grid.plugin.CellEditing(Ext.merge({}, editorCfg));
+        clipboard = new Ext.grid.plugin.Clipboard(Ext.merge({}, clipboardCfg));
 
         grid = new Ext.grid.Panel(Ext.apply({
             columns: [
-                {header: 'Name',  dataIndex: 'name', editor: 'textfield', locked: locked},
-                {header: 'Email', dataIndex: 'email', flex:1,
+                {header: 'Name', dataIndex: 'name', editor: 'textfield', locked: locked},
+                {
+                    header: 'Email', dataIndex: 'email', flex: 1,
                     editor: {
                         xtype: 'textfield',
                         allowBlank: false
@@ -54,8 +58,14 @@ describe('Ext.grid.plugin.Clipboard', function () {
     function startEdit(recId, colId) {
         record = store.getAt(recId || 0);
         column = grid.columns[colId || 0];
+
+        // Skip non-editable columns
+        while (!column.getEditor()) {
+            column = column.nextSibling() || grid.columns[0];
+        }
         cellediting.startEdit(record, column);
         field = column.field;
+        waitsForFocus(field);
     }
 
     function clipboardAction(eventName) {
@@ -102,26 +112,25 @@ describe('Ext.grid.plugin.Clipboard', function () {
         });
 
         it("system clipboard should take precedence when actionableMode is true", function() {
-            var field;
-
             spyOn(clipboard, 'validateAction').andCallThrough();
 
-            startEdit(0,0);
-            field = cellediting.activeEditor.field;
-            field.selectText();
+            startEdit(0, 0);
 
-            clipboardAction("copy");
-            clipboardAction("cut");
-            clipboardAction("paste");
+            runs(function () {
+                field.selectText();
 
-            // here we are testing the validateAction method because it is the best
-            // way of testing that the clipboard plugin did not disturb the system's
-            // clipboard action.
-            expect(clipboard.validateAction.callCount).toBe(3);
-            for (var i=0; i<clipboard.validateAction.callCount; i++) {
-                expect(clipboard.validateAction.calls[i].result).toBe(false);
-            }
+                clipboardAction("copy");
+                clipboardAction("cut");
+                clipboardAction("paste");
+
+                // here we are testing the validateAction method because it is the best
+                // way of testing that the clipboard plugin did not disturb the system's
+                // clipboard action.
+                expect(clipboard.validateAction.callCount).toBe(3);
+                for (var i = 0; i < clipboard.validateAction.callCount; i++) {
+                    expect(clipboard.validateAction.calls[i].result).toBe(false);
+                }
+            });
         });
     });
-});
-
+    });

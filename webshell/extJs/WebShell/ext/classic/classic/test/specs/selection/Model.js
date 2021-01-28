@@ -1,7 +1,7 @@
-describe("Ext.selection.Model", function() {
-    var spy, store, selModel, defaultMode, fallbackMode = 'MULTI'; 
+topSuite("Ext.selection.Model", ['Ext.data.ArrayStore'], function () {
+    var spy, store, selModel, defaultMode, fallbackMode = 'MULTI';
 
-    beforeEach(function() {
+    beforeEach(function () {
         spy = jasmine.createSpy();
 
         Ext.define("spec.Model", {

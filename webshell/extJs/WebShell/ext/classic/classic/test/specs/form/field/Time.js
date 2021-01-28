@@ -1,8 +1,8 @@
-describe("Ext.form.field.Time", function() {
+topSuite("Ext.form.field.Time", function () {
     var component, makeComponent;
 
-    beforeEach(function() {
-        makeComponent = function(config) {
+    beforeEach(function () {
+        makeComponent = function (config) {
             config = config || {};
             Ext.applyIf(config, {
                 name: 'test',

@@ -261,7 +261,7 @@ Ext.define('Ext.direct.RemotingProvider', {
      * is about to be fired
      */
 
-    constructor: function(config) {
+    constructor: function (config) {
         var me = this;
 
         me.callParent([config]);
@@ -269,17 +269,24 @@ Ext.define('Ext.direct.RemotingProvider', {
         me.namespace = (Ext.isString(me.namespace)) ? Ext.ns(me.namespace) : me.namespace || Ext.global;
         me.callBuffer = [];
     },
-    
+
+    destroy: function () {
+        if (this.callTask) {
+            this.callTask.cancel();
+        }
+        this.callParent();
+    },
+
     /**
      * @inheritdoc
      */
-    connect: function() {
+    connect: function () {
         var me = this;
 
         //<debug>
         if (!me.url) {
             Ext.raise('Error initializing RemotingProvider "' + me.id +
-                            '", no url configured.');
+                '", no url configured.');
         }
         //</debug>
         
@@ -407,12 +414,13 @@ Ext.define('Ext.direct.RemotingProvider', {
 
         return handler;
     },
-    
+
     /**
      * Invoke a Direct function call
      *
      * @param {String} action The action being executed
      * @param {Object} method The method being executed
+     * @param {Object} args Transaction arguments
      *
      * @private
      */
@@ -466,15 +474,15 @@ Ext.define('Ext.direct.RemotingProvider', {
      *
      * @private
      */
-    configureTransaction: function(action, method, args) {
+    configureTransaction: function (action, method, args, isForm) {
         var data, cb, scope, options, params;
-        
+
         data = method.getCallData(args);
-        
+
         cb = data.callback;
         scope = data.scope;
         options = data.options;
-        
+
         //<debug>
         if (cb && !Ext.isFunction(cb)) {
             Ext.raise("Callback argument is not a function " +
@@ -485,7 +493,7 @@ Ext.define('Ext.direct.RemotingProvider', {
         
         // Callback might be unspecified for a notification
         // that does not expect any return value
-        cb = cb && scope ? Ext.Function.bind(cb, scope) : cb;
+        cb = cb && scope ? cb.bind(scope) : cb;
         
         params = Ext.apply({}, {
             provider: this,
@@ -651,14 +659,18 @@ Ext.define('Ext.direct.RemotingProvider', {
     onData: function(options, success, response) {
         var me = this,
             i, len, events, event, transaction, transactions;
-        
+
+        if (me.destroying || me.destroyed) {
+            return;
+        }
+
         // Success in this context means lack of communication failure,
         // i.e. that we have successfully connected to the server and
         // received a valid HTTP response. This does not imply that
         // the server returned valid JSON data, or that individual
         // function invocations were also successful.
         events = success && me.createEvents(response);
-        
+
         // Redefine success: if parsing failed, createEvents() will return
         // only one event object, and it will be a parsing error exception.
         success = events && events.length && !events[0].parsingError;

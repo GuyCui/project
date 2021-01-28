@@ -8,30 +8,42 @@ Ext.define('Ext.scroll.LockingScroller', {
     },
 
     scrollTo: function(x, y, animate) {
-        var lockedX;
+        var lockedX, lockedPromise, ret;
 
         if (Ext.isObject(x)) {
             lockedX = x.lockedX;
 
             if (lockedX) {
-                this.getLockedScroller().scrollTo(lockedX, null, animate);
+                lockedPromise = this.getLockedScroller().scrollTo(lockedX, null, animate);
             }
         }
 
-        this.callParent([x, y, animate]);
+        ret = this.callParent([x, y, animate]);
+        if (lockedPromise) {
+            ret = Ext.Promise.all([ret, lockedPromise]);
+        }
+
+        return ret;
     },
 
-    updateLockedScroller: function(lockedScroller) {
+    updateLockedScroller: function (lockedScroller) {
         lockedScroller.on('scroll', 'onLockedScroll', this);
         lockedScroller.setLockingScroller(this);
     },
 
-    updateNormalScroller: function(normalScroller) {
+    updateNormalScroller: function (normalScroller) {
         normalScroller.on('scroll', 'onNormalScroll', this);
         normalScroller.setLockingScroller(this);
     },
 
-    getPosition: function() {
+    updateTouchAction: function (touchAction, oldTouchAction) {
+        this.callParent([touchAction, oldTouchAction]);
+
+        this.getLockedScroller().setTouchAction(touchAction);
+        this.getNormalScroller().setTouchAction(touchAction);
+    },
+
+    getPosition: function () {
         var me = this,
             position = me.callParent();
 
@@ -56,12 +68,19 @@ Ext.define('Ext.scroll.LockingScroller', {
         },
 
         doScrollTo: function(x, y, animate) {
+            var ret,
+                normalPromise;
+
             if (x != null) {
-                this.getNormalScroller().scrollTo(x, null, animate);
+                normalPromise = this.getNormalScroller().scrollTo(x, null, animate);
                 x = null;
             }
 
-            this.callParent([x, y, animate]);
+            ret = this.callParent([x, y, animate]);
+            if (normalPromise) {
+                ret = Ext.Promise.all([ret, normalPromise]);
+            }
+            return ret;
         },
 
         onLockedScroll: function(lockedScroller, x, y) {

@@ -1,14 +1,13 @@
-describe("Ext.layout.component.field.FieldContainer", function() {
-
+topSuite("Ext.layout.component.field.FieldContainer", ['Ext.form.field.*'], function () {
     var fc;
 
-    afterEach(function() {
+    afterEach(function () {
         fc = Ext.destroy(fc);
     });
 
-    describe("fixed size", function() {
-        describe("padding", function() {
-            it("should account for horizontal padding supplied by the fieldBodyCls", function() {
+    describe("fixed size", function () {
+        describe("padding", function () {
+            it("should account for horizontal padding supplied by the fieldBodyCls", function () {
                 fc = new Ext.form.FieldContainer({
                     renderTo: Ext.getBody(),
                     hideLabel: true,

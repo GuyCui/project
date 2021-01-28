@@ -40,8 +40,9 @@
  *         ],
  *         selModel: 'rowmodel',
  *         plugins: {
- *             ptype: 'rowediting',
- *             clicksToEdit: 1
+ *             rowediting: {
+ *                 clicksToEdit: 1
+ *             }
  *         },
  *         height: 200,
  *         width: 400,
@@ -96,25 +97,25 @@ Ext.define('Ext.grid.plugin.RowEditing', {
      * in the row editor. Set to false to prevent the tooltip from showing.
      */
     errorSummary: true,
-    
-    //<locale>
+
     /**
      * @cfg {String} [formAriaLabel="'Editing row {0}'"]
      * The ARIA label template for screen readers to announce when row editing starts.
      * This label can be a {@link Ext.String#format} template, with the only parameter
      * being the row number. Note that row numbers start at base {@link #formAriaLabelRowBase}.
+     * @locale
      */
     formAriaLabel: 'Editing row {0}',
-    
+
     /**
      * @cfg {Number} [formAriaLabelRowBase=2]
      * Screen readers will announce grid column header as first row of the ARIA table,
      * so the first actual data row is #2 for screen reader users. If your grid has
      * more than one column header row, you might want to increase this number.
      * If the column header is not visible, the base will be decreased automatically.
+     * @locale
      */
     formAriaLabelRowBase: 2,
-    //</locale>
 
     constructor: function() {
         var me = this;
@@ -203,17 +204,17 @@ Ext.define('Ext.grid.plugin.RowEditing', {
     },
 
     /**
-     * This method is called when actionable mode is requested for a cell. 
-     * @param {Ext.grid.CellContext} position The position at which actionable mode was requested.
+     * This method is called when actionable mode is requested for a cell.
+     * @param {Ext.grid.CellContext} pos The position at which actionable mode was requested.
      * @return {Boolean} `false` Actionable mode is *not* entered for RowEditing.
      * @protected
      */
     activateCell: function(pos) {
         // Only activate editing if there are no readily activatable elements in the activate position.
         // We defer to those focusables. Editing may be started on other columns.
-        if (!pos.getCell().query('[tabIndex="-1"]').length) {
+        if (!pos.getCell(true).querySelector('[tabIndex="-1"]')) {
             this.startEdit(pos.record, pos.column);
-            return true ;
+            return true;
         }
     },
 
@@ -393,7 +394,7 @@ Ext.define('Ext.grid.plugin.RowEditing', {
     /**
      * @private
      */
-    onColumnAdd: function(ct, column) {
+    onColumnAdd: function (ct, column, pos) {
         if (column.isHeader) {
             var me = this,
                 editor;
@@ -404,7 +405,7 @@ Ext.define('Ext.grid.plugin.RowEditing', {
             // so do not use getEditor which instantiates the editor if not present.
             editor = me.editor;
             if (editor) {
-                editor.onColumnAdd(column);
+                editor.onColumnAdd(column, pos);
             }
         }
     },

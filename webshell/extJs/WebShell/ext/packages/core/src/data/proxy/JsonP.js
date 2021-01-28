@@ -136,7 +136,7 @@ Ext.define('Ext.data.proxy.JsonP', {
          */
         callbackKey : 'callback',
 
-        /**
+       /**
         * @cfg {String} [recordParam]
         * The HTTP parameter name to use when passing records to the server and the {@link #writer Json writer} is not configured
         * to {@link Ext.data.writer.Json#encode encode} records into a parameter.

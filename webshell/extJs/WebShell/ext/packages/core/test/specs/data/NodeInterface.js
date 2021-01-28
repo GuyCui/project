@@ -1,16 +1,18 @@
 /* global expect, Ext, jasmine, spyOn */
 
-describe('Ext.data.NodeInterface', function() {
-    var fakeScope = {};
+topSuite("Ext.data.NodeInterface",
+    ['Ext.data.TreeModel', 'Ext.data.TreeStore', 'Ext.data.Session'],
+    function () {
+        var fakeScope = {};
 
-    function spyOnEvent(object, eventName, fn) {
-        var obj = {
-            fn: fn || Ext.emptyFn
-        },
-        spy = spyOn(obj, "fn");
-        object.addListener(eventName, obj.fn);
-        return spy;
-    }
+        function spyOnEvent(object, eventName, fn) {
+            var obj = {
+                    fn: fn || Ext.emptyFn
+                },
+                spy = spyOn(obj, "fn");
+            object.addListener(eventName, obj.fn);
+            return spy;
+        }
 
     beforeEach(function() {
         Ext.define('spec.TreeNode', {
@@ -305,24 +307,45 @@ describe('Ext.data.NodeInterface', function() {
                spareNode.appendChild(leftChild);
                expect(spareNode.isExpandable()).toBe(true);
             });
-    
-            it("should have node expandable if has no children", function() {
+
+            it("should have node expandable if has no children", function () {
                 expect(spareNode.isExpandable()).toBe(true);
-            });               
-            it("should have node not expandable if it is a leaf node", function() {
+            });
+            it("should have node not expandable if it is a leaf node", function () {
                 spareNode.set('leaf', true);
                 expect(spareNode.isExpandable()).toBe(false);
-            });               
+            });
         });
 
-        describe("append", function(){
-            describe("appending children", function() {
-                
-                it("should fire beforeappend", function() {
+        describe("expand", function () {
+            var store;
+            it("should not add phantom children to an expanding empty node", function () {
+                store = new Ext.data.TreeStore({
+                    root: { // if 'data' is used here, the test won't pass
+                        name: 'Root',
+                        children: [
+                            {name: 'Child1'},
+                            {name: 'Child2'}
+                        ]
+                    }
+                });
+                var child2 = store.getRoot().childNodes[1];
+                child2.expand();
+                expect(child2.childNodes.length).toBe(0);
+            });
+            afterEach(function () {
+                Ext.destroy(store);
+            });
+        });
+
+        describe("append", function () {
+            describe("appending children", function () {
+
+                it("should fire beforeappend", function () {
                     spy = spyOnEvent(rootNode, "beforeappend").andCallThrough();
-        
+
                     rootNode.appendChild(leftChild);
-        
+
                     expect(spy).toHaveBeenCalledWith(rootNode, leftChild);
                 });
         
@@ -1529,4 +1552,57 @@ describe('Ext.data.NodeInterface', function() {
             Ext.undefine('spec.PersistentIndexTreeNode');
         });
     });
-});
+
+        describe('Setting depth on descendant nodes when branch node added', function () {
+            it('should cascade the new depth to all leaf nodes upon add', function () {
+                var root = new spec.TreeNode({
+                        text: 'l0'
+                    }),
+                    l1_0 = new spec.TreeNode({
+                        text: 'l1_0'
+                    }),
+                    l1_0_1 = new spec.TreeNode({
+                        text: 'l1_0'
+                    }),
+                    l1_1 = new spec.TreeNode({
+                        text: 'l1'
+                    }),
+                    branch = new spec.TreeNode({
+                        text: 'l2'
+                    }),
+                    l3 = new spec.TreeNode({
+                        text: 'l3'
+                    }),
+                    l4 = new spec.TreeNode({
+                        text: 'l4'
+                    });
+
+                // Create two detached branches
+                l1_0.appendChild(l1_0_1);
+                root.appendChild(l1_0);
+                root.appendChild(l1_1);
+                l3.appendChild(l4);
+                branch.appendChild(l3);
+
+                // Both branches will start at depth 0
+                expect(root.data.depth).toBe(0);
+                expect(l1_0.data.depth).toBe(1);
+                expect(l1_0_1.data.depth).toBe(2);
+                expect(l1_1.data.depth).toBe(1);
+                expect(branch.data.depth).toBe(0);
+                expect(l3.data.depth).toBe(1);
+                expect(l4.data.depth).toBe(2);
+
+                l1_1.appendChild(branch);
+
+                // After adding the branch, it and its descendants will have been redepthed.
+                expect(root.data.depth).toBe(0);
+                expect(l1_0.data.depth).toBe(1);
+                expect(l1_0_1.data.depth).toBe(2);
+                expect(l1_1.data.depth).toBe(1);
+                expect(branch.data.depth).toBe(2);
+                expect(l3.data.depth).toBe(3);
+                expect(l4.data.depth).toBe(4);
+            });
+        });
+    });

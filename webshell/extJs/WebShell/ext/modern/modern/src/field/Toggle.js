@@ -3,7 +3,7 @@
  *
  * ## Examples
  *
- *     @example miniphone preview
+ *     @example
  *     Ext.Viewport.add({
  *         xtype: 'togglefield',
  *         name: 'awesome',
@@ -13,7 +13,7 @@
  *
  * Having a default value of 'toggled':
  *
- *     @example miniphone preview
+ *     @example
  *     Ext.Viewport.add({
  *         xtype: 'togglefield',
  *         name: 'awesome',
@@ -24,7 +24,7 @@
  *
  * And using the {@link #value} {@link #toggle} method:
  *
- *     @example miniphone preview
+ *     @example
  *     Ext.Viewport.add([
  *         {
  *             xtype: 'togglefield',
@@ -51,12 +51,24 @@
  */
 Ext.define('Ext.field.Toggle', {
     extend: 'Ext.field.SingleSlider',
-    xtype : 'togglefield',
+    xtype: 'togglefield',
     alternateClassName: 'Ext.form.Toggle',
     requires: ['Ext.slider.Toggle'],
 
+    twoWayBindable: {
+        value: 1
+    },
+
+    /**
+     * @cfg
+     * @inheritdoc
+     */
+    publishes: {
+        value: 1
+    },
+
     config: {
-        component: {
+        slider: {
             xtype: 'toggleslider'
         },
 
@@ -81,6 +93,8 @@ Ext.define('Ext.field.Toggle', {
          */
         value: false
     },
+
+    bodyAlign: 'start',
 
     classCls: Ext.baseCSSPrefix + 'togglefield',
 
@@ -117,33 +131,29 @@ Ext.define('Ext.field.Toggle', {
     * @event dragend
     * @hide
     */
-   
-   initialize: function() {
-        this.callParent();
-        this.publishState('value', this.getValue());
-    },
 
     /**
      * @private
      */
-    updateActiveLabel: function(newActiveLabel, oldActiveLabel) {
-        this.getComponent().element.dom.setAttribute('data-activelabel', newActiveLabel);
+    updateActiveLabel: function (newActiveLabel, oldActiveLabel) {
+        this.getSlider().element.dom.setAttribute('data-activelabel', newActiveLabel);
     },
     /**
      * @private
      */
-    updateInactiveLabel: function(newInactiveLabel, oldInactiveLabel) {
-        this.getComponent().element.dom.setAttribute('data-inactivelabel', newInactiveLabel);
+    updateInactiveLabel: function (newInactiveLabel, oldInactiveLabel) {
+        this.getSlider().element.dom.setAttribute('data-inactivelabel', newInactiveLabel);
     },
 
-    applyValue: function(value) {
+    applyValue: function (value, oldValue) {
+        value = this.callParent([value, oldValue]);
         if (typeof value !== 'boolean') {
             value = value !== 0;
         }
         return value;
     },
 
-    updateValue: function(value, oldValue) {
+    updateValue: function (value, oldValue) {
         var me = this,
             active = me.getActiveLabel(),
             inactive = me.getInactiveLabel();
@@ -151,18 +161,21 @@ Ext.define('Ext.field.Toggle', {
         if (active || inactive) {
             me.setLabel(value ? active : inactive);
         }
+
         me.callParent([value, oldValue]);
     },
 
-    setComponentValue: function(value) {
-        this.getComponent().setValue(value ? 1 : 0);
+    setSliderValue: function (value) {
+        this.getSlider().setValue(value ? 1 : 0);
+        return !!value;
+
     },
 
     /**
      * Toggles the value of this toggle field.
      * @return {Object} this
      */
-    toggle: function() {
+    toggle: function () {
         // We call setValue directly so the change event can be fired
         this.setValue(!this.getValue());
         return this;

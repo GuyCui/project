@@ -1,8 +1,7 @@
-describe("Ext.layout.container.Center", function() {
-
+topSuite("Ext.layout.container.Center", ['Ext.Panel'], function () {
     var ct, item;
 
-    afterEach(function() {
+    afterEach(function () {
         item = ct = Ext.destroy(ct);
     });
 

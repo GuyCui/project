@@ -1,5 +1,4 @@
-describe("Ext.data.schema.Namer", function() {
-    
+topSuite("Ext.data.schema.Namer", ['Ext.data.ArrayStore'], function () {
     var Base, Company, Department, User, Group, Ticket, Comment,
         schema, associationNames, entityNames;
 
@@ -7,7 +6,7 @@ describe("Ext.data.schema.Namer", function() {
         schema = Ext.data.Model.schema;
         associationNames = [];
         entityNames = [];
-        
+
         schema.setNamespace('spec.data.namer');
         Base = Ext.define('spec.data.namer.Base', {
             extend: 'Ext.data.Model',

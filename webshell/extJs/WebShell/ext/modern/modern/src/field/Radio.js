@@ -39,28 +39,23 @@
  */
 Ext.define('Ext.field.Radio', {
     extend: 'Ext.field.Checkbox',
-    xtype: 'radiofield',
+    xtype: [
+        'radio',
+        'radiofield'
+    ],
     alternateClassName: 'Ext.form.Radio',
 
     isRadio: true,
 
-    config: {
-        /**
-         * @cfg
-         * @inheritdoc
-         */
-        component: {
-            xtype: 'radioinput'
-        }
-    },
+    inputType: 'radio',
 
     classCls: Ext.baseCSSPrefix + 'radiofield',
 
-    getValue: function() {
+    getValue: function () {
         return this._value === undefined ? null : this._value;
     },
 
-    setValue: function(value) {
+    setValue: function (value) {
         this._value = value;
         return this;
     },
@@ -81,23 +76,6 @@ Ext.define('Ext.field.Radio', {
         if (me.initialized && checked) {
             me.refreshGroupValues(me);
         }
-    },
-
-    /**
-     * @private
-     */
-    onMaskTap: function(component, e) {
-        var me = this,
-            dom = me.getComponent().inputElement.dom;
-
-        if (me.getDisabled()) {
-            return false;
-        }
-
-        me.setChecked(true);
-
-        //return false so the mask does not disappear
-        return false;
     },
 
     /**

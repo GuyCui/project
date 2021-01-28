@@ -52,8 +52,9 @@
  *         ],
  *         selModel: 'cellmodel',
  *         plugins: {
- *             ptype: 'cellediting',
- *             clicksToEdit: 1
+ *             cellediting: {
+ *                 clicksToEdit: 1
+ *             }
  *         },
  *         height: 200,
  *         width: 400,
@@ -360,14 +361,20 @@ Ext.define('Ext.grid.plugin.CellEditing', {
                 editor.render(cell);
             } else {
                 p = editor.el.dom.parentNode;
+
                 if (p !== cell.dom) {
                     // This can sometimes throw an error
                     // https://code.google.com/p/chromium/issues/detail?id=432392
                     try {
                         p.removeChild(editor.el.dom);
                     } catch (e) {
-                        
+
                     }
+
+                    if (editor.container && editor.container.dom !== cell.dom) {
+                        editor.container.collect();
+                    }
+
                     editor.container = cell;
                     cell.dom.appendChild(editor.el.dom, cell.dom.firstChild);
                 }
@@ -510,18 +517,21 @@ Ext.define('Ext.grid.plugin.CellEditing', {
         return this.activeColumn;
     },
 
-    setActiveRecord: function(record) {
+    setActiveRecord: function (record) {
         this.activeRecord = record;
     },
 
-    getActiveRecord: function() {
+    getActiveRecord: function () {
         return this.activeRecord;
     },
 
-    getEditor: function(record, column) {
+    getEditor: function (record, column) {
+        return this.getCachedEditor(column.getItemId(), record, column);
+    },
+
+    getCachedEditor: function (editorId, record, column) {
         var me = this,
             editors = me.editors,
-            editorId = column.getItemId(),
             editor = editors.getByKey(editorId);
 
         if (!editor) {
@@ -535,13 +545,14 @@ Ext.define('Ext.grid.plugin.CellEditing', {
                 // Apply the field's editorCfg to the CellEditor config.
                 // See Editor#createColumnField. A Column's editor config may
                 // be used to specify the CellEditor config if it contains a field property.
-                editor = new Ext.grid.CellEditor(Ext.apply({
+                editor = Ext.widget(Ext.apply({
+                    xtype: 'celleditor',
                     floating: true,
                     editorId: editorId,
                     field: editor
                 }, editor.editorCfg));
             }
-            
+
             // Add the Editor as a floating child of the grid
             // Prevent this field from being included in an Ext.form.Basic
             // collection, if the grid happens to be used inside a form
@@ -570,6 +581,8 @@ Ext.define('Ext.grid.plugin.CellEditing', {
 
         // Keep upward pointer correct for each use - editors are shared between locking sides
         editor.editingPlugin = me;
+        editor.collectContainerElement = true;
+
         return editor;
     },
 
@@ -597,10 +610,11 @@ Ext.define('Ext.grid.plugin.CellEditing', {
      * Gets the cell (td) for a particular record and column.
      * @param {Ext.data.Model} record
      * @param {Ext.grid.column.Column} column
+     * @param {Boolean} [returnElement=false] `true` to return an Ext.Element, else a raw `<td>` is returned.
      * @private
      */
-    getCell: function(record, column) {
-        return this.grid.getView().getCell(record, column);
+    getCell: function (record, column, returnElement) {
+        return this.grid.getView().getCell(record, column, returnElement);
     },
 
     onEditComplete: function(ed, value, startValue) {

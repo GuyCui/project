@@ -66,41 +66,66 @@ Ext.define('Ext.grid.RowContext', {
                 focusEl.blur();
             }
             widget.detachFromBody();
-            widget.hidden = true;
         }
     },
 
-    getWidget: function(ownerId, widgetCfg) {
+    getWidget: function (view, ownerId, widgetCfg) {
         var me = this,
             widgets = me.widgets || (me.widgets = {}),
+            ownerGrid = me.ownerGrid,
+            rowViewModel = ownerGrid.rowViewModel,
+            rowVM = me.viewModel,
             result;
 
         // Only spin up an attached ViewModel when we instantiate our first managed Widget
         // which uses binding.
-        if (widgetCfg.bind && !me.viewModel) {
-            me.viewModel = Ext.Factory.viewModel({
-                parent: me.ownerGrid.lookupViewModel(),
+        if ((widgetCfg.bind || rowViewModel) && !rowVM) {
+            if (typeof rowViewModel === 'string') {
+                rowViewModel = {
+                    type: rowViewModel
+                };
+            }
+
+            me.viewModel = rowVM = Ext.Factory.viewModel(Ext.merge({
+                parent: ownerGrid.getRowContextViewModelParent(),
                 data: {
                     record: me.record,
                     recordIndex: me.recordIndex
                 }
-            }, me.ownerGrid.rowViewModel);
+            }, rowViewModel));
         }
 
         if (!(result = widgets[ownerId])) {
             result = widgets[ownerId] = Ext.widget(Ext.apply({
-                viewModel: me.viewModel,
-                _rowContext: me
+                ownerCmp: view,
+                _rowContext: me,
+                // This will spin up a VM on the grid if we don't have one that
+                // will be shared across all instances. If we don't have a rowVM
+                // or a viewmodel on the created object, we don't  need it, but
+                // we can't really tell until we create an instance.
+                $vmParent: rowVM || ownerGrid.getRowContextViewModelParent(),
+                initInheritedState: me.initInheritedStateHook,
+                lookupViewModel: me.lookupViewModelHook
             }, widgetCfg));
+
+            result.$fromLocked = !!view.isLockedView;
 
             // Components initialize binding on render.
             // Widgets in finishRender which will not be called in this case.
             // That is only called when rendered by a layout.
             if (result.isWidget) {
                 result.initBindable();
+            } else {
+                // Components store an Element reference to their container element.
+                // For ordinary components that is not a problem since usually
+                // that element is also referenced by Container instance, and gets
+                // cleaned up when Container is destroyed. However for row widgets
+                // the container element is a cell; cells do not get Element instances
+                // and View is not going to clean them up.
+                // So we have to clean up explicitly when the widget is destroyed
+                // to avoid orphan Element instances in Ext.cache.
+                result.collectContainerElement = true;
             }
-        } else {
-            result.hidden = false;
         }
 
         return result;
@@ -117,7 +142,19 @@ Ext.define('Ext.grid.RowContext', {
         return result;
     },
 
-    destroy: function() {
+    handleWidgetViewChange: function (view, ownerId) {
+        var widget = this.widgets[ownerId];
+
+        if (widget) {
+            // In this particular case poking the ownerCmp doesn't really have any significance here
+            // since users will typically be interacting at the grid level. However, this is more
+            // for the sake of correctness. We don't need to do anything other than poke the reference.
+            widget.ownerCmp = view;
+            widget.$fromLocked = !!view.isLockedView;
+        }
+    },
+
+    destroy: function () {
         var me = this,
             widgets = me.widgets,
             widgetId,
@@ -128,9 +165,27 @@ Ext.define('Ext.grid.RowContext', {
             widget._rowContext = null;
             widget.destroy();
         }
-        
+
         Ext.destroy(me.viewModel);
-        
+
         me.callParent();
+    },
+
+    privates: {
+        initInheritedStateHook: function (inheritedState, inheritedStateInner) {
+            var vmParent = this.$vmParent;
+            this.self.prototype.initInheritedState.call(this, inheritedState, inheritedStateInner);
+            if (!inheritedState.hasOwnProperty('viewModel') && vmParent) {
+                inheritedState.viewModel = vmParent;
+            }
+        },
+
+        lookupViewModelHook: function (skipThis) {
+            var ret = skipThis ? null : this.getViewModel();
+            if (!ret) {
+                ret = this.$vmParent || null;
+            }
+            return ret;
+        }
     }
 });

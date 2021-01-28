@@ -13,14 +13,16 @@
  *               {id: 5, show: 'Star Wars: Christmas Special'}
  *           ]
  *        });
- *       
+ *
  *       Ext.create('Ext.grid.Panel', {
  *           renderTo: Ext.getBody(),
  *           title: 'Sci-Fi Television',
  *           height: 250,
  *           width: 250,
  *           store: shows,
- *           plugins: 'gridfilters',
+ *           plugins: {
+ *               gridfilters: true
+ *           },
  *           columns: [{
  *               dataIndex: 'id',
  *               text: 'ID',
@@ -75,13 +77,12 @@ Ext.define('Ext.grid.filters.filter.Number', {
         }
     },
 
-    //<locale>
     /**
      * @cfg {String} emptyText
      * The empty text to show for each field.
+     * @locale
      */
     emptyText: 'Enter Number...',
-    //</locale>
 
     itemDefaults: {
         xtype: 'numberfield',

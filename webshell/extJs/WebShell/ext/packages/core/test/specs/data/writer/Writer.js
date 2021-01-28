@@ -1,9 +1,9 @@
-describe("Ext.data.writer.Writer", function(){
+topSuite("Ext.data.writer.Writer", ['Ext.data.ArrayStore'], function () {
     var writer, buildWriter, Article, article, operation;
-    
-    beforeEach(function(){
+
+    beforeEach(function () {
         Ext.ClassManager.enableNamespaceParseCache = false;
-        buildWriter = function(cfg) {
+        buildWriter = function (cfg) {
             cfg = Ext.apply({
                 writeAllFields: true
             }, cfg);

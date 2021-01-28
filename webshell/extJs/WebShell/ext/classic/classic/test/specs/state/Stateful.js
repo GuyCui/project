@@ -1,12 +1,12 @@
-describe("Ext.state.Stateful", function(){
+topSuite("Ext.state.Stateful", ['Ext.Component'], function () {
     var origManager, makeComponent, comp,
         stateData = {};
 
-    beforeEach(function(){
+    beforeEach(function () {
         origManager = Ext.state.Manager;
 
         Ext.state.Manager = {
-            get: function(id){
+            get: function (id) {
                 return stateData[id];
             },
 

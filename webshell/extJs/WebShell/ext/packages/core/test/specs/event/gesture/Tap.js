@@ -1,8 +1,10 @@
-describe("Ext.event.gesture.Tap", function() {
+/* global expect, jasmine, Ext */
+
+topSuite("Ext.event.gesture.Tap", function () {
     var helper = Ext.testHelper,
         tapRecognizer = Ext.event.gesture.Tap.instance,
         moveDistance = tapRecognizer.getMoveDistance(),
-        targetEl, tapHandler, tapCancelHandler, e, recognizer;
+        targetEl, tapHandler, tapCancelHandler, e;
 
     function start(cfg) {
         helper.touchStart(targetEl, cfg);
@@ -87,16 +89,16 @@ describe("Ext.event.gesture.Tap", function() {
         });
     });
 
-    if (Ext.supports.Touch) {
-        it("should not fire tap if a second touch is initiated", function() {
-            runs(function() {
-                start({ id: 1, x: 10, y: 10 });
-                start({ id: 2, x: 30, y: 30 });
-                end({ id: 1, x: 10, y: 10 });
+    if (jasmine.supportsTouch) {
+        it("should not fire tap if a second touch is initiated", function () {
+            runs(function () {
+                start({id: 1, x: 10, y: 10});
+                start({id: 2, x: 30, y: 30});
+                end({id: 1, x: 10, y: 10});
             });
             waitsForAnimation();
-            runs(function() {
-                end({ id: 2, x: 30, y: 30 });
+            runs(function () {
+                end({id: 2, x: 30, y: 30});
             });
             waitsForAnimation();
             runs(function() {

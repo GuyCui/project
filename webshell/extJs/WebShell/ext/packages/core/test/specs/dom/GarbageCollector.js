@@ -1,12 +1,12 @@
-describe("Ext.dom.GarbageCollector", function() {
+topSuite("Ext.dom.GarbageCollector", function () {
     var skipGarbageCollection;
 
-    beforeEach(function() {
+    beforeEach(function () {
         skipGarbageCollection = Ext.dom.Element.prototype.skipGarbageCollection;
         Ext.dom.Element.prototype.skipGarbageCollection = false;
     });
 
-    afterEach(function() {
+    afterEach(function () {
         Ext.dom.Element.prototype.skipGarbageCollection = skipGarbageCollection;
     });
 

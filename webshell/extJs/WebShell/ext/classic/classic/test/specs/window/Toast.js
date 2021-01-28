@@ -1,11 +1,10 @@
-describe("Ext.window.Toast", function() {
+/* global jasmine, Ext, expect */
+
+topSuite("Ext.window.Toast", ['Ext.form.field.Text'], function () {
     var fireMouseEvent = jasmine.fireMouseEvent,
-        waitForFocus = jasmine.waitForFocus,
-        focusAndWait = jasmine.focusAndWait,
-        expectFocused = jasmine.expectFocused,
         win, win2, toast, field1, field2, field3,
         showSpy, destroySpy;
-    
+
     function makeToast(config) {
         toast = Ext.toast(Ext.apply({
             html: 'A toast to focus',
@@ -35,19 +34,22 @@ describe("Ext.window.Toast", function() {
     describe("creation", function() {
         describe("autoClose is true", function() {
             describe("closable is not defined", function() {
-                beforeEach(function() {
+                beforeEach(function () {
                     makeToast({
                         autoClose: true
                     });
                 });
-                
-                it("should force closable to false", function() {
+                afterEach(function () {
+                    Ext.destroy(toast);
+                });
+
+                it("should force closable to false", function () {
                     expect(toast.closable).toBe(false);
                 });
-                
-                it("should not render close tool", function() {
+
+                it("should not render close tool", function () {
                     var tool = toast.down('[type=close]');
-                    
+
                     expect(tool).toBeFalsy();
                 });
             });
@@ -199,25 +201,26 @@ describe("Ext.window.Toast", function() {
                     xtype: 'textfield',
                     id: 'field3'
                 }]
-            }).show();
-        
+            });
+
             field3 = win2.down('#field3');
-        
-            waitForFocus(field3);
-        
-            runs(function() {
+            win2.show();
+
+            waitForFocus(field3, 'field3 to focus for the first time');
+
+            runs(function () {
                 makeToast();
             });
-        
-            waitForSpy(showSpy, 'show toast', 1000);
-        
+
+            waitForSpy(showSpy, 'show toast', 1000, 'toast to show');
+
             expectFocused(field3, true);
-        
-            runs(function() {
+
+            runs(function () {
                 toast.close();
             });
-        
-            waitForSpy(destroySpy, 'close toast', 1000);
+
+            waitForSpy(destroySpy, 'close toast', 1000, 'toast to close');
         
             expectFocused(field3, true);
         });

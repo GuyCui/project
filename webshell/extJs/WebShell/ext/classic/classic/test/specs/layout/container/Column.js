@@ -1,14 +1,16 @@
-describe("Ext.layout.container.Column", function() {
-    describe('wrapping with uneven heights', function() {
-        // We must ensure that each row start clears to start of row.
-        // Tall items would block it as below.
-        // "Item 4" requires clear:left to begin at column zero.
-        // +------------------------------- +
-        // |+--------+ +--------+ +--------+|
-        // ||        | |        | |        ||
-        // || Item 1 | | Item 2 | | Item 3 ||
-        // ||        | +--------+ +--------+|
-        // ||        | +--------+           |
+topSuite("Ext.layout.container.Column",
+    ['Ext.Panel', 'Ext.Button', 'Ext.layout.container.Anchor'],
+    function () {
+        describe('wrapping with uneven heights', function () {
+            // We must ensure that each row start clears to start of row.
+            // Tall items would block it as below.
+            // "Item 4" requires clear:left to begin at column zero.
+            // +------------------------------- +
+            // |+--------+ +--------+ +--------+|
+            // ||        | |        | |        ||
+            // || Item 1 | | Item 2 | | Item 3 ||
+            // ||        | +--------+ +--------+|
+            // ||        | +--------+           |
         // |+--------+ |        |           |
         // |           | Item 4 |           |
         // |           |        |           |

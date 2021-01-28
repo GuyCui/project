@@ -31,7 +31,7 @@ Ext.define('app.view.main.Box', {
             xtype: 'component',
             reference: 'senchaLogo',
             cls: 'sencha-logo',
-            html: '<div class="main-logo"><img src="resources/images/company-logo.png">WebShell</div>',
+            html: '<div class="main-logo"><img src="resources/images/company-logo.png">WebSSH</div>',
             //宽度与导航菜单栏宽度相同
             width: 250
         },
@@ -54,17 +54,36 @@ Ext.define('app.view.main.Box', {
                 tooltip: '帮助'
             },
             {
+                //锁定按钮
+                iconCls: 'x-fa fa-lock',
+                ui: 'header',
+                tooltip: '锁定',
+                handler: 'onLock'
+            },
+            {
                 //退出登录按钮
                 iconCls: 'x-fa fa-sign-out',
                 ui: 'header',
                 tooltip: '退出登录',
-                handler: 'onClickButton'
+                handler: 'onLoginOut'
             },
             {
                 //相当于一个label
                 xtype: 'tbtext',
                 //动态绑定名称
-                bind: '{userData.userName}'
+                bind: '{userData.fullName}'
+            },
+            {
+                //图片
+                xtype: 'image',
+                cls: 'header-right-profile-image',
+                height: 35,
+                width: 35,
+                alt: '当前用户图像',
+                //动态绑定头像
+                bind: {
+                    src: '{userData.img}'
+                }
             }
         ]
     },

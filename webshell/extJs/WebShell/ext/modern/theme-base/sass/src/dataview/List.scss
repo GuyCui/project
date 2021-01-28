@@ -1,40 +1,38 @@
 .#{$prefix}list {
-    overflow: hidden;
+  overflow: hidden;
 
-    .#{$prefix}list-inner {
-        width: 100% !important;
-    }
+  .#{$prefix}list-body-el {
+    width: 100% !important;
+    display: flex;
+    flex-direction: column; // vbox
+  }
 
-    .#{$prefix}empty-text {
-        text-align: center;
-        pointer-events: none;
-        @include st-box();
-        @include st-box-orient(vertical);
-        @include st-box-pack(center);
-    }
+  .#{$prefix}list-outer-ct {
+    flex: 1 1 auto;
+    position: relative;
+    width: 100%;
 
-    .#{$prefix}scrolldock {
-        position: absolute !important;
-        left: 0;
-        top: 0;
-        width: 100%;
-    }
+    // We set this in order to lower it and its sub-tree below any positioned
+    // items that we might add to the List.
+    z-index: 0;
+  }
 
-    &.#{$prefix}infinite {
-        .#{$prefix}listitem,
-        .#{$prefix}itemheader {
-            width: 100%;
-            position: absolute;
-            left: 0;
-            top: 0;
-        }
-    }
+  .#{$prefix}list-inner-ct {
+    // need this so that items w/width:100% size to this el's width
+    position: relative;
+    min-width: 100%;
+  }
+}
+
+.#{$prefix}list-inner-ct.#{$prefix}infinite > * {
+  position: absolute;
+  width: 100%;
 }
 
 .#{$prefix}list.#{$prefix}inline .#{$prefix}listitem {
-    display: inline-block;
+  display: inline-block;
 }
 
 .#{$prefix}list.#{$prefix}nowrap .#{$prefix}listitem {
-    white-space: nowrap;
+  white-space: nowrap;
 }

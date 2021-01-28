@@ -18,14 +18,14 @@
  *
  *      Ext.toast('Data saved');
  *
- * This will result in a toast message, which displays in the default location of bottom right in your viewport.
+ * This will result in a toast message, which displays in the default location at the top of your viewport.
  *
- * You may expand upon this simple example with the following parameters: 
+ * You may expand upon this simple example with the following parameters:
  *
  *      Ext.toast(message, title, align, iconCls);
  *
- * For example, the following toast will appear top-middle in your viewport.  It will display 
- * the 'Data Saved' message with a title of 'Title'  
+ * For example, the following toast will appear top-middle in your viewport.  It will display
+ * the 'Data Saved' message with a title of 'Title'
  *
  *      Ext.toast('Data Saved', 'Title', 't')
  *
@@ -44,28 +44,63 @@
  * Lorentsen.
  */
 Ext.define('Ext.window.Toast', {
-    extend: 'Ext.window.Window',
+        extend: 'Ext.window.Window',
 
-    xtype: 'toast',
-    
-    isToast: true,
+        xtype: 'toast',
 
-    cls: Ext.baseCSSPrefix + 'toast',
+        isToast: true,
 
-    bodyPadding: 10,
-    autoClose: true,
-    plain: false,
-    draggable: false,
-    resizable: false,
-    shadow: false,
-    focus: Ext.emptyFn,
+        /**
+         * @cfg cls
+         * @inheritdoc
+         */
+        cls: Ext.baseCSSPrefix + 'toast',
 
-    /**
-     * @cfg {String/Ext.Component} [anchor]
-     * The component or the `id` of the component to which the `toast` will be anchored.
-     * The default behavior is to anchor a `toast` to the document body (no component).
-     */
-    anchor: null,
+        /**
+         * @cfg bodyPadding
+         * @inheritdoc
+         */
+        bodyPadding: 10,
+
+        /**
+         * @cfg {Boolean} autoClose
+         * This config ensures that the Toast is closed automatically after a certain amount of time. If this is set to
+         * `false`, closing the Toast will have to be handled some other way (e.g., Setting `closable: true`).
+         */
+        autoClose: true,
+
+        /**
+         * @cfg plain
+         * @inheritdoc
+         */
+        plain: false,
+
+        /**
+         * @cfg draggable
+         * @inheritdoc
+         */
+        draggable: false,
+
+        /**
+         * @cfg resizable
+         * @inheritdoc
+         */
+        resizable: false,
+
+        /**
+         * @cfg shadow
+         * @inheritdoc
+         */
+        shadow: false,
+
+        focus: Ext.emptyFn,
+
+        /**
+         * @cfg {String/Ext.Component} [anchor]
+         * The component or the `id` of the component to which the `toast` will be anchored.
+         * The default behavior is to anchor a `toast` to the document body (no component).
+         */
+        anchor: null,
 
     /**
      * @cfg {Boolean} [useXAxis]
@@ -94,58 +129,120 @@ Ext.define('Ext.window.Toast', {
      */
     align: 't',
 
-    alwaysOnTop: true,
+        /**
+         * @cfg alwaysOnTop
+         * @inheritdoc
+         */
+        alwaysOnTop: true,
 
-    /**
-     * @cfg {String} [anchorAlign]
-     * This string is a full specification of how to position the toast with respect to
-     * its `anchor`. This is set to a reasonable value based on `align` but the `align`
-     * also sets defaults for various other properties. This config controls only the
-     * final position of the toast.
-     */
-    
-    /**
-     * @cfg {Boolean} [animate=true]
-     * Set this to `false` to make toasts appear and disappear without animation.
-     * This is helpful with applications' unit and integration testing.
-     */
+        /**
+         * @cfg {String} [anchorAlign]
+         * This string is a full specification of how to position the toast with respect to
+         * its `anchor`. This is set to a reasonable value based on `align` but the `align`
+         * also sets defaults for various other properties. This config controls only the
+         * final position of the toast.
+         */
 
-    // Pixels between each notification
-    spacing: 6,
+        /**
+         * @cfg {Boolean} [animate=true]
+         * Set this to `false` to make toasts appear and disappear without animation.
+         * This is helpful with applications' unit and integration testing.
+         */
 
-    //TODO There should be a way to control from and to positions for the introduction.
-    //TODO The align/anchorAlign configs don't actually work as expected.
+        // Pixels between each notification
+        /**
+         * @cfg {Number} spacing
+         * The number of pixels between each Toast notification.
+         */
+        spacing: 6,
 
-    // Pixels from the anchor's borders to start the first notification
-    paddingX: 30,
-    paddingY: 10,
+        //TODO There should be a way to control from and to positions for the introduction.
+        //TODO The align/anchorAlign configs don't actually work as expected.
 
-    slideInAnimation: 'easeIn',
-    slideBackAnimation: 'bounceOut',
-    slideInDuration: 500,
-    slideBackDuration: 500,
-    hideDuration: 500,
-    autoCloseDelay: 3000,
-    
-    /**
-     * @cfg {Boolean} [stickOnClick]
-     * This config will prevent the Toast from closing when you click on it. If this is set to `true`,
-     * closing the Toast will have to be handled some other way (e.g., Setting `closable: true`).
-     */
-    stickOnClick: false,
-    stickWhileHover: true,
-    closeOnMouseDown: false,
-    closable: false,
-    focusable: false,
+        // Pixels from the anchor's borders to start the first notification
+        paddingX: 30,
+        paddingY: 10,
 
-    // Private. Do not override!
-    isHiding: false,
-    isFading: false,
-    destroyAfterHide: false,
-    closeOnMouseOut: false,
+        /**
+         * @cfg {String} slideInAnimation
+         * The animation used for the Toast to slide in.
+         */
+        slideInAnimation: 'easeIn',
 
-    // Caching coordinates to be able to align to final position of siblings being animated
-    xPos: 0,
+        /**
+         * @cfg {String} slideBackAnimation
+         * The animation used for the Toast to slide back.
+         */
+        slideBackAnimation: 'bounceOut',
+
+        /**
+         * @cfg {Number} slideInDuration
+         * The number of milliseconds it takes for a Toast to slide in.
+         */
+        slideInDuration: 500,
+
+        /**
+         * @cfg {Number} slideBackDuration
+         * The number of milliseconds it takes for a Toast to slide back.
+         */
+        slideBackDuration: 500,
+
+        /**
+         * @cfg {Number}
+         * The number of milliseconds it takes for a Toast to hide.
+         */
+        hideDuration: 500,
+
+        /**
+         * @cfg {Number}
+         * The number of milliseconds a Toast waits before automatically closing.
+         */
+        autoCloseDelay: 3000,
+
+        /**
+         * @cfg {Boolean} [stickOnClick]
+         * This config will prevent the Toast from closing when you click on it. If this is set to `true`,
+         * closing the Toast will have to be handled some other way (e.g., Setting `closable: true`).
+         */
+        stickOnClick: false,
+
+        /**
+         * @cfg {Boolean} [stickWhileHover]
+         * This config will prevent the Toast from closing while you're hovered over it.
+         */
+        stickWhileHover: true,
+
+        /**
+         * @cfg {Boolean} [closeOnMouseDown]
+         * This config will prevent the Toast from closing when a user produces a mousedown event.
+         */
+        closeOnMouseDown: false,
+
+        /**
+         * @cfg closable
+         * @inheritdoc
+         */
+        closable: false,
+
+        /**
+         * @cfg minHeight
+         * @inheritdoc
+         */
+        minHeight: 1,
+
+        /**
+         * @inheritdoc
+         */
+        focusable: false,
+
+        // Private. Do not override!
+        isHiding: false,
+        isFading: false,
+        destroyAfterHide: false,
+        closeOnMouseOut: false,
+
+        // Caching coordinates to be able to align to final position of siblings being animated
+        xPos: 0,
     yPos: 0,
 
     constructor: function(config) {

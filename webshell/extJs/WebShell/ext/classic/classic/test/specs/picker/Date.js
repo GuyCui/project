@@ -1,16 +1,16 @@
 // date picker has 42 cells
 
-describe("Ext.picker.Date", function() {
+topSuite("Ext.picker.Date", ['Ext.form.field.Date'], function () {
     var component, makeComponent, makeRange;
-    
-    beforeEach(function() {
-        makeComponent = function(config) {
+
+    beforeEach(function () {
+        makeComponent = function (config) {
             component = new Ext.picker.Date(Ext.apply({
                 renderTo: Ext.getBody()
             }, config));
         };
-        
-        makeRange = function(min, max) {
+
+        makeRange = function (min, max) {
             var out = [],
                 i = min;
             for(; i <= max; ++i) {
@@ -43,17 +43,73 @@ describe("Ext.picker.Date", function() {
             expect(component.getWidth()).toBe(197);
         });
 
-        it("should be able to be configured as disabled", function() {
-            expect(function() {
+        it("should be able to be configured as disabled", function () {
+            expect(function () {
                 makeComponent({
                     disabled: true
                 });
             }).not.toThrow();
         });
 
+        describe("defaultValue", function () {
+            it("should default to the current date", function () {
+                makeComponent();
+
+                expect(component.getValue()).toEqual(Ext.Date.clearTime(new Date()));
+            });
+
+            it("should allow for the user to set a defaultValue", function () {
+                makeComponent({
+                    defaultValue: new Date(2017, 5, 31)
+                });
+
+                expect(component.getValue()).toEqual(new Date(2017, 5, 31));
+            });
+
+            it("should not be used if a value is set", function () {
+                makeComponent({
+                    defaultValue: new Date(2017, 5, 31),
+                    value: new Date(2017, 6, 1)
+                });
+
+                expect(component.getValue()).toEqual(new Date(2017, 6, 1));
+            });
+        });
+
+        describe("startDay", function () {
+            var weekStart;
+
+            beforeEach(function () {
+                weekStart = Ext.Date.firstDayOfWeek;
+                Ext.Date.firstDayOfWeek = 1;
+            });
+
+            afterEach(function () {
+                Ext.Date.firstDayOfWeek = weekStart;
+            });
+
+            it("should default to Ext.Date.firstDayOfWeek", function () {
+                makeComponent();
+
+                var th = component.eventEl.down('th', true);
+
+                expect(th.firstChild.innerHTML).toBe('M');
+            });
+
+            it("should take config option", function () {
+                makeComponent({
+                    startDay: 2
+                });
+
+                var th = component.eventEl.down('th', true);
+
+                expect(th.firstChild.innerHTML).toBe('T');
+            });
+        });
+
         // https://sencha.jira.com/browse/EXTJS-15718
         describe("when rendered within a td element", function () {
-            function setupTable () {
+            function setupTable() {
                 Ext.DomHelper.append(Ext.getBody(), {
                     tag: 'table',
                     id: 'ownerTable',
@@ -72,6 +128,7 @@ describe("Ext.picker.Date", function() {
 
             afterEach(function () {
                 component = Ext.destroy(component);
+                Ext.get('nestedDiv').destroy();
                 Ext.get('ownerTable').destroy();
             });
 
@@ -83,11 +140,11 @@ describe("Ext.picker.Date", function() {
                     renderTo: Ext.get('nestedDiv')
                 });
 
-                node = component.el.down('.x-datepicker-column-header');
+                node = component.el.down('.x-datepicker-column-header', true);
                 // should have 42 text nodes (6 weeks x 7 days)
                 expect(component.textNodes.length).toBe(42);
                 // check first and last node in first row
-                expect(node.first().getHtml()).toBe('S');
+                expect(node.firstChild.innerHTML).toBe('S');
             });
 
             it("should select the correct item", function () {
@@ -186,15 +243,24 @@ describe("Ext.picker.Date", function() {
                     expect(cells.item(i).dom.className).not.toEqual(component.disabledCellCls);
                 }
             });
-            
-            it("should update the class/title if required when changing the active 'page'", function(){
+
+            it("should update the class/title if required when changing the active 'page'", function () {
                 makeComponent({
                     value: new Date(2007, 4, 3), // 3rd May 2007
                     maxDate: new Date(2007, 5, 15) // 15th Jun 2007
                 });
-                
+
                 component.showNextMonth();
                 expect(isDisabled(makeRange(20, 41), component.maxText)).toBeTruthy();
+            });
+
+            it("should set the value to the max date if its greater than max date", function () {
+                makeComponent({
+                    value: new Date(2007, 4, 3),
+                    maxDate: new Date(2007, 3, 3)
+                });
+
+                expect(component.getValue()).toEqual(component.maxDate);
             });
         });  
         
@@ -246,15 +312,24 @@ describe("Ext.picker.Date", function() {
                     expect(cells.item(i).dom.className).not.toEqual(component.disabledCellCls);
                 }
             });
-            
-            it("should update the class/title if required when changing the active 'page'", function(){
+
+            it("should update the class/title if required when changing the active 'page'", function () {
                 makeComponent({
                     minDate: new Date(2007, 4, 3), // 3rd May 2017
                     value: new Date(2007, 5, 15) // 15th Jun 2007
                 });
-                
+
                 component.showPrevMonth();
                 expect(isDisabled(makeRange(0, 3), component.minText)).toBeTruthy();
+            });
+
+            it("should set the value to the min date if its less than min date", function () {
+                makeComponent({
+                    value: new Date(2007, 2, 3),
+                    minDate: new Date(2007, 3, 3)
+                });
+
+                expect(component.getValue()).toEqual(component.minDate);
             });
         });
         
@@ -378,12 +453,12 @@ describe("Ext.picker.Date", function() {
                     expectEnabled();
                 });
 
-                it("should be disabled if the picker is disabled", function() {
+                it("should be disabled if the picker is disabled", function () {
                     makeComponent({
                         disabled: true
                     });
                     expectDisabled();
-                })
+                });
             });
 
             describe("setting min/max after configuring", function() {

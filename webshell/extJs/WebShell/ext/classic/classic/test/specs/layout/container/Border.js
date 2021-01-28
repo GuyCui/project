@@ -11,17 +11,19 @@
 // TODO: mini
 // TODO: placeholder vs header collapse
 
-describe('Ext.layout.container.Border', function() {
-    // Assertions based on placeholders are tricky as the default placeholder size could change without that
-    // necessarily counting as a failure. To handle this we capture that size in these 'constants'.
-    var HORIZONTAL_PLACEHOLDER_HEIGHT = 28;
-    var VERTICAL_PLACEHOLDER_WIDTH = 28;
+topSuite("Ext.layout.container.Border",
+    ['Ext.container.Viewport', 'Ext.Panel', 'Ext.Button', 'Ext.layout.*'],
+    function () {
+        // Assertions based on placeholders are tricky as the default placeholder size could change without that
+        // necessarily counting as a failure. To handle this we capture that size in these 'constants'.
+        var HORIZONTAL_PLACEHOLDER_HEIGHT = 28;
+        var VERTICAL_PLACEHOLDER_WIDTH = 28;
 
-    var ct;
+        var ct;
 
-    function createBorderLayout(items, cfg) {
-        ct = Ext.create('Ext.container.Container', Ext.apply({}, {
-            defaultType: 'component',
+        function createBorderLayout(items, cfg) {
+            ct = Ext.create('Ext.container.Container', Ext.apply({}, {
+                defaultType: 'component',
             height: 200,
             items: items,
             layout: 'border',

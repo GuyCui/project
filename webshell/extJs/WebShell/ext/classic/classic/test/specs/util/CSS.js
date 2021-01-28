@@ -1,13 +1,14 @@
-describe('Ext.util.CSS', function() {
+topSuite("Ext.util.CSS", 'Ext.dom.Element', function () {
     var div;
 
-    beforeEach(function() {
+    beforeEach(function () {
         div = Ext.getBody().createChild({
             tag: 'div',
             style: 'height:100px;width:100px'
         });
         div.dom.className = 'ext-css-test';
     });
+
     afterEach(function() {
         div.destroy();
     });

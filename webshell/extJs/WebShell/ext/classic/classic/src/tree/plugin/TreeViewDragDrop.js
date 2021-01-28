@@ -48,7 +48,7 @@
  *             }]
  *         }
  *     });
- *     
+ *
  *     Ext.create('Ext.tree.Panel', {
  *         title: 'Simple Tree',
  *         width: 200,
@@ -58,8 +58,9 @@
  *         renderTo: document.body,
  *         viewConfig: {
  *             plugins: {
- *                 ptype: 'treeviewdragdrop',
- *                 dragText: 'Drag and drop to reorganize'
+ *                 treeviewdragdrop: {
+ *                     dragText: 'Drag and drop to reorganize'
+ *                 }
  *             }
  *         }
  *     });
@@ -196,21 +197,20 @@ Ext.define('Ext.tree.plugin.TreeViewDragDrop', {
      * See {@link #copy} to enable the copying of all dragged records.
      */
 
-    //<locale>
     /**
-     * @cfg
+     * @cfg {String} dragText
      * The text to show while dragging.
      *
      * Two placeholders can be used in the text:
      *
      * - `{0}` The number of selected items.
      * - `{1}` 's' when more than 1 items (only useful for English).
-     * 
-     * **NOTE:** The node's {@link Ext.tree.Panel#cfg-displayField text} will be shown 
+     *
+     * **NOTE:** The node's {@link Ext.tree.Panel#cfg-displayField text} will be shown
      * when a single node is dragged unless `dragText` is a simple text string.
+     * @locale
      */
-    dragText : '{0} selected node{1}',
-    //</locale>
+    dragText: '{0} selected node{1}',
 
     /**
      * @cfg {Boolean} allowParentInserts

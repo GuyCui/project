@@ -1,13 +1,13 @@
-describe("Ext.Array", function() {
+topSuite("Ext.Array", function () {
     var array;
 
-    describe("indexOf", function() {
-        describe("without from argument", function() {
-            beforeEach(function() {
+    describe("indexOf", function () {
+        describe("without from argument", function () {
+            beforeEach(function () {
                 array = [1, 2, 3, 4, 5, 6];
             });
 
-            afterEach(function(){
+            afterEach(function () {
                 array = null;
             });
 

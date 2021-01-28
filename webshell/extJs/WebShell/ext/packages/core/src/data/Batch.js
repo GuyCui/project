@@ -195,21 +195,21 @@ Ext.define('Ext.data.Batch', {
      * operation encountered an exception, or if execution was paused. Use this method to start
      * the batch for the first time or to restart a paused batch by skipping the current
      * unsuccessful operation.
-     * 
+     *
      * To retry processing the current operation before continuing to the rest of the batch (e.g.
      * because you explicitly handled the operation's exception), call {@link #retry} instead.
-     * 
+     *
      * Note that if the batch is already running any call to start will be ignored.
-     * 
+     * @param {Number} [index] (private)
      * @return {Ext.data.Batch} this
      */
-    start: function(/* private */ index) {
+    start: function (index) {
         var me = this;
-        
+
         if (!me.operations.length || me.running) {
             return me;
         }
-        
+
         me.exceptions.length = 0;
         me.exception = false;
         me.running = true;

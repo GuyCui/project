@@ -1,3 +1,6 @@
+/**
+ *
+ */
 Ext.define('Ext.ux.form.SearchField', {
     extend: 'Ext.form.field.Text',
 
@@ -33,7 +36,7 @@ Ext.define('Ext.ux.form.SearchField', {
                 me.onSearchClick();
             }
         });
-        
+
         if (!store || !store.isStore) {
             store = me.store = Ext.data.StoreManager.lookup(store);
         }

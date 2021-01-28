@@ -1,10 +1,10 @@
-describe("Ext.data.Batch", function() {
+topSuite("Ext.data.Batch", ['Ext.data.operation.*', 'Ext.data.Request'], function () {
     var batch, op1, op2, op3, ops;
-    
+
     function makeOperation(type, cfg) {
         type = Ext.String.capitalize(type || 'create');
         var o = new Ext.data.operation[type](cfg);
-        o.doExecute = function() {
+        o.doExecute = function () {
             return new Ext.data.Request();
         };
         return o;

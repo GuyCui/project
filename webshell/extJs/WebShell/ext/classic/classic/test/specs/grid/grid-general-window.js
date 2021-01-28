@@ -1,16 +1,18 @@
 /* global Ext, expect, spyOn, jasmine, xit, MockAjaxManager */
 
-describe("grid-general-window", function() {
-    var grid, store,
-        synchronousLoad = true,
-        proxyStoreLoad = Ext.data.ProxyStore.prototype.load,
-        loadStore = function() {
-            proxyStoreLoad.apply(this, arguments);
-            if (synchronousLoad) {
-                this.flushLoad.apply(this, arguments);
-            }
-            return this;
-        };
+topSuite("grid-general-window",
+    [false, 'Ext.grid.Panel', 'Ext.data.ArrayStore', 'Ext.window.Window'],
+    function () {
+        var grid, store,
+            synchronousLoad = true,
+            proxyStoreLoad = Ext.data.ProxyStore.prototype.load,
+            loadStore = function () {
+                proxyStoreLoad.apply(this, arguments);
+                if (synchronousLoad) {
+                    this.flushLoad.apply(this, arguments);
+                }
+                return this;
+            };
 
     beforeEach(function() {
         // Override so that we can control asynchronous loading

@@ -166,10 +166,7 @@ Ext.define('Ext.grid.header.DropZone', {
     onNodeOver: function(node, dragZone, e, data) {
         var me = this,
             from = data.header,
-            doPosition,
-            to,
-            fromPanel,
-            toPanel;
+            doPosition, fromPanel, to, toPanel;
 
         if (data.header.el.dom === node) {
             doPosition = false;
@@ -181,7 +178,7 @@ Ext.define('Ext.grid.header.DropZone', {
             doPosition = (from.ownerCt === to.ownerCt);
 
             // If from different containers, and they are not sealed, then continue checking
-            if (!doPosition && (!from.ownerCt.sealed && !to.ownerCt.sealed)) {
+            if (!doPosition && (!from.ownerCt.isSealed() && !to.ownerCt.isSealed())) {
 
                 doPosition = true;
                 fromPanel = from.up('tablepanel');
@@ -190,7 +187,7 @@ Ext.define('Ext.grid.header.DropZone', {
                     data.crossPanel = true;
 
                     // If it's a lock operation, check that it's allowable.
-                    data.isLock   = toPanel.isLocked && !fromPanel.isLocked;
+                    data.isLock = toPanel.isLocked && !fromPanel.isLocked;
                     data.isUnlock = !toPanel.isLocked && fromPanel.isLocked;
                     if ((data.isUnlock && from.lockable === false) || (data.isLock && !from.isLockable())) {
                         doPosition = false;

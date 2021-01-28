@@ -1,12 +1,12 @@
-describe("Ext.form.field.Radio", function() {
+topSuite("Ext.form.field.Radio", function () {
     var component, radios;
-    
+
     function makeComponent(config) {
         config = Ext.apply({
             name: 'test',
             renderTo: Ext.getBody()
         }, config);
-        
+
         return component = new Ext.form.field.Radio(config);
     }
     

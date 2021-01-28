@@ -1,14 +1,14 @@
-describe("Ext.data.writer.Xml", function(){
+topSuite("Ext.data.writer.Xml", ['Ext.data.ArrayStore'], function () {
     var writer, buildWriter, makeOperation, buildRecords, Article, simpleData = {
-        id: 1,
-        title: 'Article 1',
-        body: 'content1'
-    }, recContent = '<record><id>1</id><title>Article 1</title><body>content1</body></record>',
-       simpleXml = '<xmlData>' + recContent + '</xmlData>';
-    
-    beforeEach(function(){
-        Ext.ClassManager.enableNamespaceParseCache = false; 
-        buildWriter = function(cfg){
+            id: 1,
+            title: 'Article 1',
+            body: 'content1'
+        }, recContent = '<record><id>1</id><title>Article 1</title><body>content1</body></record>',
+        simpleXml = '<xmlData>' + recContent + '</xmlData>';
+
+    beforeEach(function () {
+        Ext.ClassManager.enableNamespaceParseCache = false;
+        buildWriter = function (cfg) {
             cfg = Ext.apply({
                 writeAllFields: true
             }, cfg);

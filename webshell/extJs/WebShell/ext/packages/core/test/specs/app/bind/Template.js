@@ -1,9 +1,9 @@
-describe('Ext.app.bind.Template', function () {
+topSuite("Ext.app.bind.Template", function () {
     var BindTemplate;
 
-    function getNumFragments (tpl) {
+    function getNumFragments(tpl) {
         var count = 0;
-        for (var i = tpl.buffer.length; i-- > 0; ) {
+        for (var i = tpl.buffer.length; i-- > 0;) {
             if (tpl.buffer[i]) {
                 ++count;
             }

@@ -50,19 +50,19 @@ Ext.define('Ext.form.field.TextArea', {
     //     </textarea>
     //
     fieldSubTpl: [
-        '<textarea id="{id}" data-ref="inputEl" {inputAttrTpl}',
-            '<tpl if="name"> name="{name}"</tpl>',
-            '<tpl if="placeholder"> placeholder="{placeholder}"</tpl>',
-            '<tpl if="maxLength !== undefined"> maxlength="{maxLength}"</tpl>',
-            '<tpl if="readOnly"> readonly="readonly"</tpl>',
-            '<tpl if="disabled"> disabled="disabled"</tpl>',
-            '<tpl if="tabIdx != null"> tabindex="{tabIdx}"</tpl>',
-            ' class="{fieldCls} {typeCls} {typeCls}-{ui} {inputCls}" ',
-            '<tpl if="fieldStyle"> style="{fieldStyle}"</tpl>',
-            '<tpl foreach="ariaElAttributes"> {$}="{.}"</tpl>',
-            '<tpl foreach="inputElAriaAttributes"> {$}="{.}"</tpl>',
-            ' autocomplete="off">\n',
-            '<tpl if="value">{[Ext.util.Format.htmlEncode(values.value)]}</tpl>',
+        '<textarea id="{id}" data-ref="inputEl" rows="1" {inputAttrTpl}',
+        '<tpl if="name"> name="{name}"</tpl>',
+        '<tpl if="placeholder"> placeholder="{placeholder}"</tpl>',
+        '<tpl if="maxLength !== undefined"> maxlength="{maxLength}"</tpl>',
+        '<tpl if="readOnly"> readonly="readonly"</tpl>',
+        '<tpl if="disabled"> disabled="disabled"</tpl>',
+        '<tpl if="tabIdx != null"> tabindex="{tabIdx}"</tpl>',
+        ' class="{fieldCls} {typeCls} {typeCls}-{ui} {inputCls} {fixCls}" ',
+        '<tpl if="fieldStyle"> style="{fieldStyle}"</tpl>',
+        '<tpl foreach="ariaElAttributes"> {$}="{.}"</tpl>',
+        '<tpl foreach="inputElAriaAttributes"> {$}="{.}"</tpl>',
+        ' autocomplete="off">\n',
+        '<tpl if="value">{[Ext.util.Format.htmlEncode(values.value)]}</tpl>',
         '</textarea>',
         {
             disableFormats: true
@@ -133,7 +133,7 @@ Ext.define('Ext.form.field.TextArea', {
 
         if (me.grow) {
             if (me.preventScrollbars) {
-                ret.fieldStyle = (fieldStyle||'') + ';overflow:hidden;height:' + me.growMin + 'px';
+                ret.fieldStyle = (fieldStyle || '') + ';overflow:hidden;';
             }
         }
 
@@ -208,12 +208,7 @@ Ext.define('Ext.form.field.TextArea', {
         if (e.isSpecialKey() && (me.enterIsSpecial || (key !== e.ENTER || e.hasModifier()))) {
             me.fireEvent('specialkey', me, e);
         }
-        
-        // Enter key must not bubble up where it can trigger defaultButton action
-        if (key === e.ENTER) {
-            e.stopPropagation();
-        }
-        
+
         if (me.needsMaxCheck && key !== e.BACKSPACE && key !== e.DELETE && !e.isNavKeyPress() && !me.isCutCopyPasteSelectAll(e, key)) {
             value = me.getValue();
             if (value.length >= me.maxLength) {
@@ -236,7 +231,7 @@ Ext.define('Ext.form.field.TextArea', {
      */
     autoSize: function() {
         var me = this,
-            inputEl, height, curWidth, value;
+            inputEl, hideScroller, height, curWidth, value;
 
         if (me.grow && me.rendered && me.getSizeModel().height.auto) {
             inputEl = me.inputEl;
@@ -256,7 +251,9 @@ Ext.define('Ext.form.field.TextArea', {
                 me.inputWrap.getBorderWidth('tb') + me.triggerWrap.getBorderWidth('tb');
 
             height = Math.min(Math.max(height, me.growMin), me.growMax);
+            hideScroller = me.preventScrollbars || !me.growMax || height < me.growMax;
 
+            inputEl.setStyle('overflow-y', hideScroller ? 'hidden' : 'auto');
             me.bodyEl.setHeight(height);
 
             me.updateLayout();

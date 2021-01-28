@@ -62,10 +62,20 @@
 }
 
 .#{$prefix}box-menu-body-horizontal {
-    float: left;
+  float: left;
 }
 
 .#{$prefix}box-menu-after {
-    position: relative;
-    float: left;
+  position: relative;
+  float: left;
+}
+
+// Best effort to not scroll scroll indicators.
+.#{$prefix}box-scroller-body-vertical,
+.#{$prefix}box-scroller-body-horizontal {
+  -ms-overflow-style: none;
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
 }

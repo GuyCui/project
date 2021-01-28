@@ -4,18 +4,23 @@
 // to a point where the view is refreshed so we need to bump up its z-index. See EXTJS-15608.
 .#{$prefix}grid-view,
 .#{$prefix}tree-view {
-    z-index: 1;
+  z-index: 1;
+}
+
+// So that we can easily ascertain the default theme grid row height once per app run.
+.#{$prefix}theme-row-height-el {
+  height: $grid-row-height;
 }
 
 .#{$prefix}grid-body {
-    background: $grid-body-background-color;
-    border-width: $grid-body-border-width;
-    border-style: $grid-body-border-style;
-    border-color: $grid-body-border-color;
+  background: $grid-body-background-color;
+  border-width: $grid-body-border-width;
+  border-style: $grid-body-border-style;
+  border-color: $grid-body-border-color;
 }
 
 .#{$prefix}grid-empty {
-    padding: $grid-empty-padding;
+  padding: $grid-empty-padding;
     color: $grid-empty-color;
     background-color: $grid-empty-background-color;
     font: $grid-empty-font-weight $grid-empty-font-size $grid-empty-font-family;
@@ -40,37 +45,39 @@
 // IE does not support outline-offset property, so we have to
 // use pseudo element to show the focused cell border
 .#{$prefix}grid-item-focused {
-    // This is to remove the default outline in FF and IE
-    outline: 0;
-    
-    .#{$prefix}grid-cell-inner {
-        // Inner grid cell element has position: relative (a rule below),
-        // so setting z-index: 1 will elevate it just above default position
-        z-index: 1;
-    }
-    
+  // This is to remove the default outline in FF and IE
+  outline: 0;
+
+  .#{$prefix}grid-cell-inner {
+    // Inner grid cell element has position: relative (a rule below),
+    // so setting z-index: 1 will elevate it just above default position
+    z-index: 1;
+  }
+
+  .#{$prefix}keyboard-mode & {
     // Pseudo-el is positioned *below* the inner grid cell content
     // but its border will shine through
     .#{$prefix}grid-cell-inner:before {
-        content: "";
-        position: absolute;
-        z-index: -1;
-        top: $grid-row-cell-focus-border-inset;
-        right: $grid-row-cell-focus-border-inset;
-        bottom: $grid-row-cell-focus-border-inset;
-        left: $grid-row-cell-focus-border-inset;
-        pointer-events: none;
+      content: "";
+      position: absolute;
+      z-index: -1;
+      top: $grid-row-cell-focus-border-inset;
+      right: $grid-row-cell-focus-border-inset;
+      bottom: $grid-row-cell-focus-border-inset;
+      left: $grid-row-cell-focus-border-inset;
+      pointer-events: none;
 
-        border: $grid-row-cell-focus-border-width $grid-row-cell-focus-border-style $grid-row-cell-focus-border-color;
+      border: $grid-row-cell-focus-border-width $grid-row-cell-focus-border-style $grid-row-cell-focus-border-color;
     }
-    
+
     @if not is-null($grid-row-cell-focus-color) {
-        color: $grid-row-cell-focus-color;
+      color: $grid-row-cell-focus-color;
     }
-    
+
     @if not is-null($grid-row-cell-focus-background-color) {
-        background-color: $grid-row-cell-focus-background-color;
+      background-color: $grid-row-cell-focus-background-color;
     }
+  }
 }
 
 .#{$prefix}grid-item-selected {

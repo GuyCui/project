@@ -1,17 +1,21 @@
 /* global Ext, jasmine, expect, describe, spyOn, xdescribe */
 
-describe("Ext.form.field.Picker", function() {
-    var component, makeComponent;
+topSuite("Ext.form.field.Picker",
+    ['Ext.grid.Panel', 'Ext.grid.plugin.CellEditing', 'Ext.data.TreeStore',
+        'Ext.tree.Panel', 'Ext.button.Button', 'Ext.window.Window'],
+    function () {
+        var itNotIE8 = Ext.isIE8 ? xit : it,
+            component, makeComponent;
 
-    beforeEach(function() {
-        makeComponent = function(config) {
-            config = config || {};
-            Ext.applyIf(config, {
-                ariaRole: 'foo',
-                name: 'test',
-                width: 300,
-                hideEmptyLabel: false,
-                // simple implementation
+        beforeEach(function () {
+            makeComponent = function (config) {
+                config = config || {};
+                Ext.applyIf(config, {
+                    ariaRole: 'foo',
+                    name: 'test',
+                    width: 300,
+                    hideEmptyLabel: false,
+                    // simple implementation
                 createPicker: function() {
                     return new Ext.Component({
                         id: this.id + '-picker',
@@ -239,39 +243,45 @@ describe("Ext.form.field.Picker", function() {
                 clickTrigger();
                 expect(component.expand).not.toHaveBeenCalled();
             });
-    
-            it("should do nothing if the field is disabled", function() {
+
+            it("should do nothing if the field is disabled", function () {
                 component.setDisabled(true);
                 spyOn(component, 'expand');
                 clickTrigger();
                 expect(component.expand).not.toHaveBeenCalled();
             });
-            
-            it("should focus the input when field is not focused", function() {
-                clickTrigger();
-                
-                expectFocused(component);
-            });
-            
-            it("should focus the input when picker is focused before collapsing", function() {
-                var picker = component.getPicker();
-                
-                runs(function() {
-                    component.expand();
-                    picker.el.dom.setAttribute('tabIndex', '-1');
-                    picker.el.focus();
-                });
-                
-                waitForFocus(picker);
-                
-                runs(function() {
+
+            // Touching the trigger should not focus
+            if (!jasmine.supportsTouch) {
+                it("should focus the input when field is not focused", function () {
                     clickTrigger();
+
+                    expectFocused(component);
                 });
-                
-                runs(function() {
-                    expectFocused(component, true);
+            }
+
+            // Touching the trigger should not focus
+            if (!jasmine.supportsTouch) {
+                itNotIE8("should focus the input when picker is focused before collapsing", function () {
+                    var picker = component.getPicker();
+
+                    runs(function () {
+                        component.expand();
+                        picker.el.dom.setAttribute('tabIndex', '-1');
+                        picker.el.focus();
+                    });
+
+                    waitForFocus(picker);
+
+                    runs(function () {
+                        clickTrigger();
+                    });
+
+                    runs(function () {
+                        expectFocused(component, true);
+                    });
                 });
-            });
+            }
         });
         
         describe("multiple triggers", function() {
@@ -296,25 +306,28 @@ describe("Ext.form.field.Picker", function() {
             });
             
             describe("when picker is expanded and focused", function() {
-                beforeEach(function() {
+                beforeEach(function () {
                     component.expand();
                     picker.el.focus();
 
                     waitForFocus(picker);
                 });
-                
-                it("should focus the input when clicking picker trigger", function() {
-                    clickTrigger();
-                    
-                    runs(function() {
-                        expectFocused(component, true);
+
+                // Touching the trigger should not focus
+                if (!jasmine.supportsTouch) {
+                    itNotIE8("should focus the input when clicking picker trigger", function () {
+                        clickTrigger();
+
+                        runs(function () {
+                            expectFocused(component, true);
+                        });
                     });
-                });
-                
-                it("should not focus the input when clicking clear trigger", function() {
+                }
+
+                it("should not focus the input when clicking clear trigger", function () {
                     clickTrigger('clear');
-                    
-                    runs(function() {
+
+                    runs(function () {
                         expectFocused(picker, true);
                     });
                 });
@@ -341,9 +354,9 @@ describe("Ext.form.field.Picker", function() {
         });
 
         it("should collapse the picker when the escape key is pressed", function() {
-            spyOn(component, component.keyMap.ESC.handler).andCallThrough();
+            spyOn(component, component.keyMap.ESC[0].handler).andCallThrough();
             fireKey(27);
-            expect(component[component.keyMap.ESC.handler]).toHaveBeenCalled();
+            expect(component[component.keyMap.ESC[0].handler]).toHaveBeenCalled();
         });
     });
 
@@ -408,6 +421,7 @@ describe("Ext.form.field.Picker", function() {
             jasmine.fireMouseEvent(component.picker.el.dom, 'mousedown');
             expect(component.hasFocus).toBe(true);
             expect(Ext.Element.getActiveElement()).toBe(component.inputEl.dom);
+            jasmine.fireMouseEvent(component.picker.el.dom, 'mouseup');
         });
     });
     

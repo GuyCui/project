@@ -1,13 +1,13 @@
-describe("Ext.form.field.TextArea", function() {
+topSuite("Ext.form.field.TextArea", ['Ext.Container', 'Ext.layout.container.Fit'], function () {
     var component, makeComponent;
-    
-    beforeEach(function() {
-        makeComponent = function(config) {
+
+    beforeEach(function () {
+        makeComponent = function (config) {
             config = config || {};
             Ext.applyIf(config, {
                 name: 'test'
             });
-            
+
             if (component) {
                 component.destroy();
             }
@@ -192,7 +192,7 @@ describe("Ext.form.field.TextArea", function() {
             for (i = 0; i < n; ++i) {
                 out.push('a');
             }
-            return out.join('\n')
+            return out.join('\n');
         }
 
         describe("with an auto height", function() {
@@ -217,12 +217,28 @@ describe("Ext.form.field.TextArea", function() {
                 expect(component.getHeight()).toBeLessThan(500);
                 expect(component.getHeight()).toBeGreaterThan(40);
             });
-            
-            it("should set the initial textarea height to growMin", function() {
+
+            it("should set the initial textarea height to growMin", function () {
                 expect(component.getHeight()).toBe(40);
             });
 
-            it("should increase the height of the input as the value becomes taller", function() {
+            it("should autogrow and hide scrollbars when preventScrollbars is true", function () {
+                component.destroy();
+
+                makeComponent({
+                    grow: true,
+                    growMin: 40,
+                    growMax: 500,
+                    renderTo: Ext.getBody(),
+                    preventScrollbars: true,
+                    value: makeLines(10)
+                });
+
+                expect(component.inputEl.getHeight()).toBeGreaterThan(150);
+                expect(component.inputEl.getStyle('overflow-y')).toBe('hidden');
+            });
+
+            it("should increase the height of the input as the value becomes taller", function () {
                 component.setValue(makeLines(4));
                 var height1 = component.getHeight();
                 component.setValue(makeLines(5));
@@ -230,7 +246,7 @@ describe("Ext.form.field.TextArea", function() {
                 expect(height2).toBeGreaterThan(height1);
             });
 
-            it("should decrease the height of the input as the value becomes shorter", function() {
+            it("should decrease the height of the input as the value becomes shorter", function () {
                 component.setValue('A\nB\nC\nD\nE');
                 var height1 = component.inputEl.getHeight();
                 component.setValue('A\nB\nC\nD');
@@ -1306,25 +1322,5 @@ describe("Ext.form.field.TextArea", function() {
         makeLayoutSuite(2, true); // shrinkWrap height, autoFitErrors
         makeLayoutSuite(3, false); // shrinkWrap both
         makeLayoutSuite(3, true); // shrinkWrap both, autoFitErrors
-    });
-    
-    describe("keyboard interaction", function() {
-        it("should stop event propagation on Enter key", function() {
-            makeComponent();
-            
-            var spy = spyOn(component, 'fireKey').andCallThrough();
-            
-            component.render(Ext.getBody());
-            
-            pressKey(component, 'enter');
-            
-            waitForSpy(spy);
-            
-            runs(function() {
-                var args = spy.mostRecentCall.args;
-                
-                expect(args[0].stopped).toBe(true);
-            });
-        });
     });
 });

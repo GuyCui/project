@@ -2,7 +2,7 @@
  * @class Global_CSS
  */
 
-require('font-icon');
+@import 'font-icon.js';
 
 /**
  * Applies a font icon to an element.
@@ -90,19 +90,25 @@ require('font-icon');
  * and grid grouping headers.
  *
  * @private
- * @deprecated
+ * @deprecated 6.5.0 This mixin is deprecated.
  */
-@mixin font-icon($glyph, $pseudo: true, $line-height: 1, $color: null, $style-pseudo: false) {
-    $args: parseFontIconArgs($glyph);
+@mixin font-icon(
+  $glyph,
+  $pseudo: true,
+  $line-height: 1,
+  $color: null,
+  $style-pseudo: false
+) {
+  $args: parseFontIconArgs($glyph);
 
-    $char: nth($args, 1);
-    $font-size: nth($args, 2);
-    $font-family: nth($args, 3);
-    @if $font-family == null {
-        $font-family: $font-icon-font-family;
-    }
-    $angle: nth($args, 4);
-    $rotation: null;
+  $char: nth($args, 1);
+  $font-size: nth($args, 2);
+  $font-family: nth($args, 3);
+  @if $font-family == null {
+    $font-family: $font-icon-font-family;
+  }
+  $angle: nth($args, 4);
+  $rotation: null;
     $rotation-origin: 50% 50%;
     $ie-rotation: null;
 

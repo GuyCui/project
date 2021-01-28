@@ -115,21 +115,26 @@ Ext.define('Ext.container.Viewport', {
      * @private
      */
 
-    /**
-     * @cfg {Number} width
-     * Sets itself to viewport height.
-     * @private
-     */
-    
-    ariaRole: 'application',
-    
-    privates: {
-        updateResponsiveState: function () {
-            // By providing this method we are in sync with the layout suspend/resume as
-            // well as other changes to configs that need to happen during this pulse of
-            // size change.
+        /**
+         * @cfg {Number} width
+         * Sets itself to viewport height.
+         * @private
+         */
 
-            // Since we are not using the Viewport plugin beyond applying its methods on
+        /**
+         * @cfg scrollable
+         * @hide
+         */
+
+        ariaRole: 'application',
+
+        privates: {
+            updateResponsiveState: function () {
+                // By providing this method we are in sync with the layout suspend/resume as
+                // well as other changes to configs that need to happen during this pulse of
+                // size change.
+
+                // Since we are not using the Viewport plugin beyond applying its methods on
             // to our prototype, we need to be Responsive ourselves and call this here:
             this.handleViewportResize();
 

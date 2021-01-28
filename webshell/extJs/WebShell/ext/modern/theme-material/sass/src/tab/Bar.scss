@@ -1,9 +1,9 @@
 // Used to allow badges to escape from tabbars
-.#{$prefix}tabbar-inner {
-    overflow: visible;
-    padding: 0;
+.#{$prefix}tabbar-body-el {
+  overflow: visible;
+  padding: 0;
 
-    .x-big & {
-        padding: 0;
-    }
+  .x-big & {
+    padding: 0;
+  }
 }

@@ -50,7 +50,7 @@ Ext.define('Ext.data.StoreManager', {
      * store initialized with a {@link Ext.data.Store#storeId} will be auto-registered.
      * @param {Ext.data.Store...} stores Any number of Store instances
      */
-    register : function() {
+    register: function () {
         for (var i = 0, s; (s = arguments[i]); i++) {
             this.add(s);
         }
@@ -60,7 +60,7 @@ Ext.define('Ext.data.StoreManager', {
      * Unregisters one or more Stores with the StoreManager
      * @param {String/Object...} stores Any number of Store instances or ID-s
      */
-    unregister : function() {
+    unregister: function () {
         for (var i = 0, s; (s = arguments[i]); i++) {
             this.remove(this.lookup(s));
         }
@@ -73,34 +73,43 @@ Ext.define('Ext.data.StoreManager', {
      * is no type specified on the config.
      * @return {Ext.data.Store}
      */
-    lookup : function(store, defaultType) {
+    lookup: function (store, defaultType) {
         // handle the case when we are given an array or an array of arrays.
         if (Ext.isArray(store)) {
-            var fields = ['field1'], 
-                expand = !Ext.isArray(store[0]),
+            var first = store[0],
                 data = store,
-                i,
-                len;
-                
-            if (expand) {
-                data = [];
-                for (i = 0, len = store.length; i < len; ++i) {
-                    data.push([store[i]]);
-                }
+                arrays, fields, i, len;
+
+            if (Ext.isObject(first)) {
+                // store: [ { foo: 42, ... }, { foo: 427, ... }, ... ]
+                store = {data: data};
             } else {
-                for (i = 2, len = store[0].length; i <= len; ++i) {
-                    fields.push('field' + i);
+                arrays = Ext.isArray(first);
+                fields = ['field1'];
+
+                if (arrays) {
+                    // store: [ [1,2], [3,4], ... ]
+                    for (i = 2, len = first.length; i <= len; ++i) {
+                        fields.push('field' + i);
+                    }
+                } else {
+                    // store: [ 1,2,3, ... ]
+                    data = [];
+                    for (i = 0, len = store.length; i < len; ++i) {
+                        data.push([store[i]]);
+                    }
                 }
+
+                return new Ext.data.ArrayStore({
+                    data: data,
+                    fields: fields,
+                    autoDestroy: true,
+                    autoCreated: true,
+                    expanded: !arrays
+                });
             }
-            return new Ext.data.ArrayStore({
-                data  : data,
-                fields: fields,
-                autoDestroy: true,
-                autoCreated: true,
-                expanded: expand
-            });
         }
-        
+
         if (Ext.isString(store)) {
             // store id
             return this.get(store);
@@ -111,23 +120,37 @@ Ext.define('Ext.data.StoreManager', {
     },
 
     // getKey implementation for MixedCollection
-    getKey : function(o) {
-         return o.storeId;
+    getKey: function (o) {
+        return o.storeId;
     },
     
     addEmptyStore: function() {
         // A dummy empty store with a fieldless Model defined in it.
         // Just for binding to Views which are instantiated with no Store defined.
         // They will be able to run and render fine, and be bound to a generated Store later.
-        var emptyStore = Ext.regStore('ext-empty-store', { proxy: 'memory', useModelWarning: false });
+        var emptyStore = this.$emptyStore,
+            destoryable = {
+                destroy: Ext.emptyFn
+            };
 
-        emptyStore.isEmptyStore = true;
+        if (!emptyStore) {
+            emptyStore = this.$emptyStore =
+                Ext.regStore('ext-empty-store', {proxy: 'memory', useModelWarning: false});
 
-        //<debug>
-        emptyStore.add = emptyStore.remove = emptyStore.insert = emptyStore.loadData = function () {
-            Ext.raise('Cannot modify ext-empty-store');
-        };
-        //</debug>
+            emptyStore.isEmptyStore = true;
+
+            emptyStore.on = emptyStore.addListener = function () {
+                return destoryable;
+            };
+            emptyStore.un = emptyStore.removeListener = Ext.emptyFn;
+
+            //<debug>
+            emptyStore.add = emptyStore.remove = emptyStore.insert = emptyStore.destroy =
+                emptyStore.loadData = function () {
+                    Ext.raise('Cannot modify ext-empty-store');
+                };
+            //</debug>
+        }
         
         this.add(emptyStore);
     },
@@ -151,21 +174,23 @@ Ext.define('Ext.data.StoreManager', {
      *         ... other config
      *     });
      *
-     * @param {String} id The id to set on the new store
-     * @param {Object} config The store config
+     * @param {String/Object} id The id to set on the new store, or the `config` object
+     * that contains the `storeId` property.
+     * @param {Object} config The store config if the first parameter (`id`) is just the
+     * id.
      * @member Ext
      * @method regStore
      */
-    Ext.regStore = function(name, config) {
+    Ext.regStore = function (id, config) {
         var store;
 
-        if (Ext.isObject(name)) {
-            config = name;
+        if (Ext.isObject(id)) {
+            config = id;
         } else {
-            if (Ext.data.StoreManager.containsKey(name)) {
-                return Ext.data.StoreManager.lookup(name);
+            if (Ext.data.StoreManager.containsKey(id)) {
+                return Ext.data.StoreManager.lookup(id);
             }
-            config.storeId = name;
+            config.storeId = id;
         }
 
         if (config instanceof Ext.data.Store) {

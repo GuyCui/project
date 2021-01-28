@@ -1,11 +1,12 @@
-describe("Ext.Element.traversal", function() {
+// false in dependencies to avoid loading "Ext.dom.Element.scroll"
+topSuite("Ext.dom.Element.traversal", [false, 'Ext.dom.Element'], function () {
     var el, input, child1, child2, child3, child4, child4_1, child4_1_1;
-    
-    beforeEach(function() {
+
+    beforeEach(function () {
         el = Ext.getBody().createChild({
-            id      : 'ExtElementHelper',
-            cls     : 'wrapper',
-            style   : 'position:absolute;',
+            id: 'ExtElementHelper',
+            cls: 'wrapper',
+            style: 'position:absolute;',
             children: [
                 {id: 'child1', style: 'position:absolute;'},
                 {id: 'child2', style: 'position:absolute;'},
@@ -338,14 +339,14 @@ describe("Ext.Element.traversal", function() {
             expect(Ext.fly(child1).contains(child4_1_1)).toBe(false);
             expect(Ext.fly(child2).contains(child4_1_1)).toBe(false);
         });
-        it('should return true for parents', function(){
+        it('should return true for parents', function () {
             expect(Ext.fly(child4_1).contains(child4_1_1)).toBe(true);
         });
-        it('should return true for grandparents', function(){
+        it('should return true for grandparents', function () {
             expect(Ext.fly(child4).contains(child4_1_1)).toBe(true);
         });
-        it('should return true for self', function(){
+        it('should return true for self', function () {
             expect(Ext.fly(child4_1_1).contains(child4_1_1)).toBe(true);
         });
     });
-}, "/src/dom/Element.traversal.js");
+});

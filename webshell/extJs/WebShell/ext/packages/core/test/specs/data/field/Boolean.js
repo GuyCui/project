@@ -1,11 +1,11 @@
-describe("Ext.data.field.Boolean", function() {
+topSuite("Ext.data.field.Boolean", function () {
 
     var field;
 
     function make(cfg) {
         field = new Ext.data.field.Boolean(cfg);
     }
-    
+
     function c(value) {
         return field.convert(value);
     }

@@ -1,14 +1,10 @@
 /* global Ext, jasmine, expect */
 
-describe("Ext.mixin.Keyboard", function() {
+topSuite("Ext.mixin.Keyboard", 'Ext.Component', function () {
+    // more specs in Ext.Widget
     var Event = Ext.event.Event,
-        createSpy = jasmine.createSpy,
-        focusAndWait = jasmine.focusAndWait,
-        waitAWhile = jasmine.waitAWhile,
-        pressArrowKey = jasmine.pressArrowKey,
-        fireKeyEvent = jasmine.fireKeyEvent,
         c, focusEl;
-    
+
     function stdComponent(config) {
         return Ext.apply({
             xtype: 'component',
@@ -72,9 +68,9 @@ describe("Ext.mixin.Keyboard", function() {
                 expect(c.hasOwnProperty('keyMap')).toBe(false);
                 expect(ChildClass.prototype.hasOwnProperty('keyMap')).toBe(true);
 
-                expect(Ext.Array.sort(Ext.Object.getKeys(km))).toEqual(['ENTER','ESC']);
-                expect(km.ENTER.handler).toBe('onKeyEnter');
-                expect(km.ESC.handler).toBe('onEsc');
+                expect(Ext.Array.sort(Ext.Object.getKeys(km))).toEqual(['ENTER', 'ESC']);
+                expect(km.ENTER[0].handler).toBe('onKeyEnter');
+                expect(km.ESC[0].handler).toBe('onEsc');
 
                 expect(c._keyMapListenCount).toBe(0);
                 c.render(Ext.getBody());
@@ -102,16 +98,24 @@ describe("Ext.mixin.Keyboard", function() {
                 var km3 = c.getKeyMap();
                 expect(c.hasOwnProperty('keyMap')).toBe(true); // has its own now
                 expect(km !== km3).toBe(true);
-                expect(km.ESC !== km3.ESC).toBe(true); // no sharing!
-                expect(Ext.Array.sort(Ext.Object.getKeys(km3))).toEqual(['ENTER','ESC']);
+
+                var km3keys = Ext.Object.getKeys(km3);
+                Ext.Array.remove(km3keys, '$owner');
+                Ext.Array.sort(km3keys);
+                expect(km3keys).toEqual(['ENTER', 'ESC']);
 
                 c.destroy();
 
                 c = new ChildClass2();
                 var km4 = c.getKeyMap();
-                expect(Ext.Array.sort(Ext.Object.getKeys(km4))).toEqual(['ENTER','HOME']);
+                expect(Ext.Array.sort(Ext.Object.getKeys(km4))).toEqual(['ENTER', 'HOME']);
                 expect(c.hasOwnProperty('keyMap')).toBe(false); // on prototype
                 expect(ChildClass2.prototype.hasOwnProperty('keyMap')).toBe(true);
+
+                // the tests in Ext.Widget for keyMap are more thorough on
+                // instance configs to manage keyMap and ensuring things
+                // don't get shared into the prototype keyMap... it actually
+                // calls the handlers :)
             });
 
             it("should allow nulling keyMap config", function() {
@@ -136,7 +140,7 @@ describe("Ext.mixin.Keyboard", function() {
 
                 c = new ParentClass();
                 var km = c.getKeyMap();
-                expect(km.ENTER.handler).toBe('onKeyEnter');
+                expect(km.ENTER[0].handler).toBe('onKeyEnter');
                 expect(Ext.Object.getKeys(km)).toEqual(['ENTER']);
                 expect(c.hasOwnProperty('keyMap')).toBe(false);
                 expect(ParentClass.prototype.hasOwnProperty('keyMap')).toBe(true);
@@ -190,18 +194,26 @@ describe("Ext.mixin.Keyboard", function() {
                 c.setKeyMap({ UP: Ext.emptyFn });
                 
                 expect(Ext.log.warn).not.toHaveBeenCalled();
-                
+
                 var handlers = c.getKeyMap();
-                
-                expect(handlers.UP.handler).toBe(Ext.emptyFn);
+
+                expect(handlers.UP[0].handler).toBe(Ext.emptyFn);
             });
-            
-            it("should accept binding as fn name", function() {
-                c.setKeyMap({ DOWN: 'onKeyDefault' });
-                
+
+            it("should accept binding as fn name", function () {
+                c.setKeyMap({DOWN: 'onKeyDefault'});
+
                 var handlers = c.getKeyMap();
-                
-                expect(handlers.DOWN.handler).toBe('onKeyDefault');
+
+                expect(handlers.DOWN[0].handler).toBe('onKeyDefault');
+            });
+
+            it("should accept binding as fn name with a _ in the key name", function () {
+                c.setKeyMap({PAGE_UP: 'onKeyPageUp'});
+
+                var handlers = c.getKeyMap();
+
+                expect(handlers.PAGE_UP[0].handler).toBe('onKeyPageUp');
             });
 
             it('should accept single characters for keys', function () {
@@ -210,10 +222,10 @@ describe("Ext.mixin.Keyboard", function() {
                 });
 
                 var cc = '+'.charCodeAt(0),
-                    entry = c.findKeyMapEntry(new Ext.event.Event({
+                    entry = c.findKeyMapEntries(new Ext.event.Event({
                         type: 'keypress',
                         charCode: cc
-                    }));
+                    }))[0];
 
                 expect(entry.charCode).toBe(cc);
                 expect(entry.handler).toBe('onPlus');
@@ -225,11 +237,11 @@ describe("Ext.mixin.Keyboard", function() {
                 });
 
                 var cc = '+'.charCodeAt(0),
-                    entry = c.findKeyMapEntry(new Ext.event.Event({
+                    entry = c.findKeyMapEntries(new Ext.event.Event({
                         type: 'keypress',
                         charCode: cc,
                         ctrlKey: true
-                    }));
+                    }))[0];
 
                 expect(entry.charCode).toBe(cc);
                 expect(entry.handler).toBe('onCtrlPlus');
@@ -240,10 +252,10 @@ describe("Ext.mixin.Keyboard", function() {
                     '#65': 'onKey65'
                 });
 
-                var entry = c.findKeyMapEntry(new Ext.event.Event({
-                        type: 'keypress',
-                        charCode: 65
-                    }));
+                var entry = c.findKeyMapEntries(new Ext.event.Event({
+                    type: 'keypress',
+                    charCode: 65
+                }))[0];
 
                 expect(entry.charCode).toBe(65);
                 expect(entry.keyCode).toBe(undefined);
@@ -255,10 +267,10 @@ describe("Ext.mixin.Keyboard", function() {
                     65: 'onKey65'
                 });
 
-                var entry = c.findKeyMapEntry(new Ext.event.Event({
-                        type: 'keydown',
-                        keyCode: 65
-                    }));
+                var entry = c.findKeyMapEntries(new Ext.event.Event({
+                    type: 'keydown',
+                    keyCode: 65
+                }))[0];
 
                 expect(entry.charCode).toBe(undefined);
                 expect(entry.keyCode).toBe(65);
@@ -270,11 +282,11 @@ describe("Ext.mixin.Keyboard", function() {
                     'Ctrl+#65': 'onCtrlKey65'
                 });
 
-                var entry = c.findKeyMapEntry(new Ext.event.Event({
-                        type: 'keypress',
-                        charCode: 65,
-                        ctrlKey: true
-                    }));
+                var entry = c.findKeyMapEntries(new Ext.event.Event({
+                    type: 'keypress',
+                    charCode: 65,
+                    ctrlKey: true
+                }))[0];
 
                 expect(entry.charCode).toBe(65);
                 expect(entry.keyCode).toBe(undefined);
@@ -287,12 +299,12 @@ describe("Ext.mixin.Keyboard", function() {
                     'Alt+Meta+65': 'onAltMetaKey65'
                 });
 
-                var entry = c.findKeyMapEntry(new Ext.event.Event({
+                var entry = c.findKeyMapEntries(new Ext.event.Event({
                     type: 'keydown',
                     keyCode: 65,
                     altKey: true,
                     metaKey: true
-                }));
+                }))[0];
 
                 expect(entry.charCode).toBe(undefined);
                 expect(entry.keyCode).toBe(65);
@@ -364,15 +376,15 @@ describe("Ext.mixin.Keyboard", function() {
         var leftSpy, rightSpy;
         
         beforeEach(function() {
-            leftSpy = createSpy('left');
-            rightSpy = createSpy('right');
-            
+            leftSpy = jasmine.createSpy('left');
+            rightSpy = jasmine.createSpy('right');
+
             makeComponent({
                 keyMap: {
                     LEFT: 'onKeyLeft',
                     RIGHT: 'onKeyRight'
                 },
-                
+
                 onKeyLeft: leftSpy,
                 onKeyRight: rightSpy,
                 
@@ -402,7 +414,7 @@ describe("Ext.mixin.Keyboard", function() {
         describe("invoking", function() {
             describe("matching a handler", function() {
                 it("should invoke the handler", function() {
-                    pressArrowKey(c, 'left');
+                    pressKey(c, 'left');
                 
                     runs(function() {
                         expect(leftSpy).toHaveBeenCalled();
@@ -413,7 +425,7 @@ describe("Ext.mixin.Keyboard", function() {
                     focusAndWait(c);
                 
                     runs(function() {
-                        fireKeyEvent(c.getFocusEl(), 'keydown', Event.RIGHT);
+                        jasmine.fireKeyEvent(c.getFocusEl(), 'keydown', Event.RIGHT);
                     });
                 
                     waitAWhile();
@@ -433,7 +445,7 @@ describe("Ext.mixin.Keyboard", function() {
                 });
                 
                 it("should not invoke the handler", function() {
-                    pressArrowKey(c, 'left');
+                    pressKey(c, 'left');
                     
                     waitForSpy(leftSpy);
                 });
@@ -445,7 +457,7 @@ describe("Ext.mixin.Keyboard", function() {
                     
                     runs(function() {
                         expect(function() {
-                            fireKeyEvent(c.getFocusEl(), 'keydown', Event.UP);
+                            jasmine.fireKeyEvent(c.getFocusEl(), 'keydown', Event.UP);
                         }).not.toThrow();
                     });
                 });

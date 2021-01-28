@@ -1,14 +1,14 @@
-describe("Ext.Date", function() {
+topSuite("Ext.Date", function () {
     describe('Elapsed time between dates', function () {
         var dateValue = 0,
             increment = 3,
             OriginalDate = Date,
             originalNow = Ext.Date.now,
-            PredictableDate = function() {
+            PredictableDate = function () {
                 return {
-                    getTime: function() {
+                    getTime: function () {
                     },
-                    valueOf: function() {
+                    valueOf: function () {
                         return PredictableDate.now();
                     }
                 };

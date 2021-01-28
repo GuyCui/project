@@ -1,14 +1,14 @@
-describe("Ext.picker.Color", function() {
+topSuite("Ext.picker.Color", function () {
     var colorPicker,
-        createPicker = function(config) {
+        createPicker = function (config) {
             colorPicker = new Ext.picker.Color(Ext.apply({
                 renderTo: Ext.getBody()
             }, config));
         };
 
-    beforeEach(function() {
+    beforeEach(function () {
         this.addMatchers({
-            toHaveSelected: function(color) {
+            toHaveSelected: function (color) {
                 var el = this.actual.el.down('a.color-' + color, true);
                 return Ext.fly(el).hasCls(colorPicker.selectedCls);
             }

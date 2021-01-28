@@ -1,14 +1,16 @@
-describe("Ext.form.FieldSet", function() {
-    var component;
-    
-    function makeComponent(config, preventRender) {
-        config = config || {};
-        Ext.apply(config, {
-            renderTo: preventRender ? undefined : Ext.getBody(),
-            name: 'test'
-        });
-        component = new Ext.form.FieldSet(config);
-    }
+topSuite("Ext.form.FieldSet",
+    ['Ext.window.Window', 'Ext.form.Panel', 'Ext.form.field.Text', 'Ext.data.Session'],
+    function () {
+        var component;
+
+        function makeComponent(config, preventRender) {
+            config = config || {};
+            Ext.apply(config, {
+                renderTo: preventRender ? undefined : Ext.getBody(),
+                name: 'test'
+            });
+            component = new Ext.form.FieldSet(config);
+        }
 
     afterEach(function() {
         if (component) {
@@ -165,8 +167,8 @@ describe("Ext.form.FieldSet", function() {
 
             var w = 180 + legend.getEl().getPadding('lr');
 
-            expect(legend.getWidth()).toBe(w);
-            expect(fs.getWidth()).toBe(w + fs.getEl().getPadding('lr') + fs.getEl().getBorderWidth('lr'));
+            expect(legend.getWidth()).toBeApprox(w, 1);
+            expect(fs.getWidth()).toBeApprox(w + fs.getEl().getPadding('lr') + fs.getEl().getBorderWidth('lr'), 1);
             ct.destroy();
         });
     });

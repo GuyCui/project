@@ -1,15 +1,14 @@
-describe("Ext.data.validator.Exclusion", function() {
-    
+topSuite("Ext.data.validator.Exclusion", function () {
     var v;
-    
+
     function validate(value, list) {
         v = new Ext.data.validator.Exclusion({
             list: list
         });
         return v.validate(value);
     }
-    
-    afterEach(function() {
+
+    afterEach(function () {
         v = null;
     });
     

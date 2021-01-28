@@ -1,14 +1,14 @@
-describe("Ext.app.domain.Controller", function() {
+topSuite("Ext.app.domain.Controller", ['Ext.app.Application'], function () {
     var ctrlFoo, ctrlBar, ctrlTest, handlerFoo, handlerBar;
-    
-    beforeEach(function() {
+
+    beforeEach(function () {
         Ext.define('spec.AliasController', {
             extend: 'Ext.app.Controller',
             alias: 'controller.test',
             'namespace': 'spec'
         });
-        
-        ctrlFoo = new Ext.app.Controller({ id: 'foo' });
+
+        ctrlFoo = new Ext.app.Controller({id: 'foo'});
         ctrlBar = new Ext.app.Controller({ id: 'bar' });
         ctrlTest = new spec.AliasController();
         

@@ -1,9 +1,9 @@
-describe("Ext.event.gesture.LongPress", function() {
+topSuite("Ext.event.gesture.LongPress", function () {
     var helper = Ext.testHelper,
         recognizer = Ext.event.gesture.LongPress.instance,
         originalMinDuration = recognizer.getMinDuration(),
         moveDistance = recognizer.getMoveDistance(),
-        minDuration = 60,
+        minDuration = 100,
         targetEl, longpressHandler, tapholdHandler, longpressEvent, tapholdEvent;
 
     function start(cfg) {
@@ -59,12 +59,12 @@ describe("Ext.event.gesture.LongPress", function() {
     });
 
     it("should not fire longpress and taphold when the hold duration is shorter than minDuration", function() {
-        runs(function() {
-            start({ id: 1, x: 10, y: 10 });
+        runs(function () {
+            start({id: 1, x: 10, y: 10});
         });
-        waits(minDuration - 30);
-        runs(function() {
-            end({ id: 1, x: 10, y: 10 });
+        waits(minDuration / 2);
+        runs(function () {
+            end({id: 1, x: 10, y: 10});
             expect(longpressHandler).not.toHaveBeenCalled();
             expect(tapholdHandler).not.toHaveBeenCalled();
         });
@@ -99,16 +99,16 @@ describe("Ext.event.gesture.LongPress", function() {
         waitsForAnimation();
     });
 
-    if (Ext.supports.Touch) {
-        it("should not fire longpress and taphold if a second touch is initiated", function() {
-            runs(function() {
-                start({ id: 1, x: 10, y: 10 });
-                start({ id: 2, x: 20, y: 20 });
+    if (jasmine.supportsTouch) {
+        it("should not fire longpress and taphold if a second touch is initiated", function () {
+            runs(function () {
+                start({id: 1, x: 10, y: 10});
+                start({id: 2, x: 30, y: 30});
             });
             waits(minDuration + 30);
-            runs(function() {
-                end({ id: 1, x: 10, y: 10 });
-                end({ id: 2, x: 20, y: 20 });
+            runs(function () {
+                end({id: 1, x: 10, y: 10});
+                end({id: 2, x: 20, y: 20});
                 expect(longpressHandler).not.toHaveBeenCalled();
                 expect(tapholdHandler).not.toHaveBeenCalled();
             });

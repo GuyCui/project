@@ -1,17 +1,9 @@
-describe("Ext.form.field.VTypes", function() {
+topSuite("Ext.form.field.VTypes", function () {
     var VTYPES = Ext.form.field.VTypes;
 
-    beforeEach(function() {
+    describe('Ext.form.field.VTypes.url()', function () {
 
-    });
-
-    afterEach(function() {
-
-    });
-
-    describe('Ext.form.field.VTypes.url()', function() {
-
-        it("should return TRUE for properly formatted URLs", function() {
+        it("should return TRUE for properly formatted URLs", function () {
 
             //missing WWW
             expect(VTYPES.url('http://sencha.com')).toEqual(true);

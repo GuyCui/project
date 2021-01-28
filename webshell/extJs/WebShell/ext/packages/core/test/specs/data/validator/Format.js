@@ -1,15 +1,14 @@
-describe("Ext.data.validator.Format", function() {
-    
+topSuite("Ext.data.validator.Format", function () {
     var v;
-    
+
     function validate(value, matcher) {
         v = new Ext.data.validator.Format({
             matcher: matcher
         });
         return v.validate(value);
     }
-    
-    afterEach(function() {
+
+    afterEach(function () {
         v = null;
     });
     

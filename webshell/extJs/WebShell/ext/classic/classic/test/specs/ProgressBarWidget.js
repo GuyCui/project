@@ -1,5 +1,4 @@
-describe("Ext.ProgressBarWidget", function() {
-
+topSuite("Ext.ProgressBarWidget", function () {
     var c;
 
     function makeProgress(config) {
@@ -9,7 +8,7 @@ describe("Ext.ProgressBarWidget", function() {
         }, config));
     }
 
-    afterEach(function() {
+    afterEach(function () {
         c = Ext.destroy(c);
     });
 

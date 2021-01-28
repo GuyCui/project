@@ -1,14 +1,14 @@
-xdescribe("Ext.grid.filters.filter.DateTime", function () {
+xtopSuite("Ext.grid.filters.filter.DateTime", function () {
     var viewReady = false,
         grid, plugin, store;
 
     function createGrid(pluginCfg, gridCfg, storeCfg) {
         store = new Ext.data.Store(Ext.apply({
-            fields:['name', 'email', 'phone', { name: 'dob', type: 'date'}],
+            fields: ['name', 'email', 'phone', {name: 'dob', type: 'date'}],
             data: [
-                { 'name': 'evan',  'email':'evan@example.com',  'phone':'555-111-1224', 'dob': '12/12/1992 01:00' },
-                { 'name': 'nige',  'email':'nige@example.com',  'phone':'555-222-1234', 'dob': '12/12/1992 02:00' },
-                { 'name': 'phil', 'email':'phil@example.com', 'phone':'555-222-1244', 'dob': '12/12/1992 03:15' },
+                {'name': 'evan', 'email': 'evan@example.com', 'phone': '555-111-1224', 'dob': '12/12/1992 01:00'},
+                {'name': 'nige', 'email': 'nige@example.com', 'phone': '555-222-1234', 'dob': '12/12/1992 02:00'},
+                {'name': 'phil', 'email': 'phil@example.com', 'phone': '555-222-1244', 'dob': '12/12/1992 03:15'},
                 { 'name': 'don', 'email':'don@example.com', 'phone':'555-222-1254', 'dob': '12/12/1992 04:30' },
                 { 'name': 'alex', 'email':'alex@example.com', 'phone':'555-222-1254', 'dob': '12/12/1992 13:00' },
                 { 'name': 'ben', 'email':'ben@example.com', 'phone':'555-222-1264', 'dob': '12/12/1992 22:45' }

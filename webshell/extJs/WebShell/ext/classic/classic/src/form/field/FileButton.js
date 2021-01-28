@@ -93,7 +93,8 @@ Ext.define('Ext.form.field.FileButton', {
             keydown: me.handlePrompt,
             change: me.fireChange,
             focus: me.onFileFocus,
-            blur: me.onFileBlur
+            blur: me.onFileBlur,
+            destroyable: true
         };
         
         if (me.useTabGuards) {
@@ -116,20 +117,40 @@ Ext.define('Ext.form.field.FileButton', {
             me.beforeInputGuard = me.el.createChild(cfg, me.fileInputEl);
             me.afterInputGuard = me.el.createChild(cfg);
             me.afterInputGuard.insertAfter(me.fileInputEl);
-            
+
             me.beforeInputGuard.on('focus', me.onInputGuardFocus, me);
             me.afterInputGuard.on('focus', me.onInputGuardFocus, me);
 
             listeners.keydown = me.onFileInputKeydown;
         }
-        
-        me.fileInputEl.on(listeners);
+
+        me.fileInputElListeners = me.fileInputEl.on(listeners);
     },
-    
-    fireChange: function(e) {
+
+    doDestroy: function () {
+        var me = this;
+
+        if (me.fileInputElListeners) {
+            me.fileInputElListeners.destroy();
+        }
+
+        if (me.beforeInputGuard) {
+            me.beforeInputGuard.destroy();
+            me.beforeInputGuard = null;
+        }
+
+        if (me.afterInputGuard) {
+            me.afterInputGuard.destroy();
+            me.afterInputGuard = null;
+        }
+
+        me.callParent();
+    },
+
+    fireChange: function (e) {
         this.fireEvent('change', this, e, this.fileInputEl.dom.value);
     },
-    
+
     /**
      * @private
      * Creates the file input element. It is inserted into the trigger button component, made
@@ -242,9 +263,9 @@ Ext.define('Ext.form.field.FileButton', {
                 
                 // In IE focus events are asynchronous so we can't enable focus event
                 // in the same event loop.
-                setTimeout(function() {
+                Ext.defer(function () {
                     focusTo.resumeEvent('focus');
-                }, 0);
+                }, 1);
             }
         } else if (key === e.ENTER || key === e.SPACE) {
             this.handlePrompt(e);

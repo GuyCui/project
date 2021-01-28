@@ -1,10 +1,10 @@
-describe("Ext.util.Inflector", function() {
+topSuite("Ext.util.Inflector", function () {
     var Inflector = Ext.util.Inflector;
 
     //set of irregular words taken from http://www.english-zone.com/spelling/plurals.html
     var testWords = {
-        bus : 'buses',
-        word : 'words',
+        bus: 'buses',
+        word: 'words',
         tomato: 'tomatoes',
         potato: 'potatoes',
         person: 'people',

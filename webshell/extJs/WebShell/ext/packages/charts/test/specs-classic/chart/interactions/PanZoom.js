@@ -1,14 +1,17 @@
-describe('Ext.chart.interactions.PanZoom', function () {
+topSuite("Ext.chart.interactions.PanZoom",
+    ['Ext.Panel', 'Ext.toolbar.Toolbar', 'Ext.chart.*', 'Ext.data.ArrayStore',
+        'Ext.Button'],
+    function () {
 
-    describe('modeToggleButton', function () {
-        it('should have its value set based on the value of zoomOnPanGesture config', function () {
-            var panel, toolbar, isAfterRender;
+        describe('modeToggleButton', function () {
+            it('should have its value set based on the value of zoomOnPanGesture config', function () {
+                var panel, toolbar, isAfterRender;
 
-            runs(function () {
-                toolbar = Ext.create({
-                    xtype: 'toolbar',
-                    renderTo: document.body,
-                    width: 400,
+                runs(function () {
+                    toolbar = Ext.create({
+                        xtype: 'toolbar',
+                        renderTo: document.body,
+                        width: 400,
                     height: 50
                 });
                 panel = Ext.create({

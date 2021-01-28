@@ -1,8 +1,8 @@
-describe("Ext.direct.Event", function() {
+topSuite("Ext.direct.Event", ['Ext.direct.*'], function () {
     var event;
-    
-    describe("Event", function() {
-        beforeEach(function() {
+
+    describe("Event", function () {
+        beforeEach(function () {
             event = new Ext.direct.Event({
                 name: 'foo',
                 data: {

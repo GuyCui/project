@@ -1,8 +1,8 @@
-describe("Ext.menu.CheckItem", function(){
+topSuite("Ext.menu.CheckItem", ['Ext.app.ViewModel', 'Ext.app.ViewController'], function () {
     var menu, c;
 
-    function makeItem(cfg) {
-        menu = Ext.widget({
+    function makeItem(cfg, menuCfg) {
+        menu = Ext.widget(Ext.apply({
             xtype: 'menu',
             renderTo: document.body,
             items: [
@@ -11,27 +11,26 @@ describe("Ext.menu.CheckItem", function(){
                     text: 'foo'
                 }, cfg)
             ]
-        });
+        }, menuCfg));
         c = menu.items.getAt(0);
     }
 
-    afterEach(function(){
-        Ext.destroy(menu);
-        c = null;
+    afterEach(function () {
+        menu = c = Ext.destroy(menu);
     });
 
     function clickIt(event) {
         jasmine.fireMouseEvent(c, event || 'click');
     }
 
-    describe("initial config", function() {
-        describe("normal", function() {
-            beforeEach(function() {
+    describe("initial config", function () {
+        describe("normal", function () {
+            beforeEach(function () {
                 makeItem();
             });
-            
-            it("should have the checked property as false by default", function(){
-                expect(c.checked).toBe(false);    
+
+            it("should have the checked property as false by default", function () {
+                expect(c.checked).toBe(false);
             });
             
             describe("rendered", function() {
@@ -121,24 +120,42 @@ describe("Ext.menu.CheckItem", function(){
             it("should have aria-owns", function() {
                 expect(c).toHaveAttr('aria-owns', c.menu.id);
             });
-            
-            it("should have aria-checked", function() {
+
+            it("should have aria-checked", function () {
                 expect(c).toHaveAttr('aria-checked', 'mixed');
             });
-            
-            it("should have aria-label", function() {
+
+            it("should have aria-label", function () {
                 expect(c).toHaveAttr('aria-label', 'foo submenu');
             });
         });
     });
-    
-    describe("setChecked", function() {
-        
-        it("should set the checked state on the component", function(){
+
+    describe("default checked state", function () {
+        it("should have the uncheckedCls when not checked", function () {
+            makeItem();
+            menu.show();
+            expect(c.el).toHaveCls(c.uncheckedCls);
+            expect(c.el).not.toHaveCls(c.checkedCls);
+        });
+
+        it("should have the checkedCls when checked", function () {
+            makeItem({
+                checked: true
+            });
+            menu.show();
+            expect(c.el).not.toHaveCls(c.uncheckedCls);
+            expect(c.el).toHaveCls(c.checkedCls);
+        });
+    });
+
+    describe("setChecked", function () {
+
+        it("should set the checked state on the component", function () {
             makeItem();
             c.setChecked(true);
             expect(c.checked).toBe(true);
-            
+
             c.setChecked(false);
             expect(c.checked).toBe(false);
         });
@@ -153,23 +170,23 @@ describe("Ext.menu.CheckItem", function(){
             it("should set aria-checked attribute", function() {
                 expect(c).toHaveAttr('aria-checked', 'true');
             });
-        
-            it("should reset aria-checked attribute", function() {
+
+            it("should reset aria-checked attribute", function () {
                 c.setChecked(false);
-                
+
                 expect(c).toHaveAttr('aria-checked', 'false');
             });
         });
-        
-        describe("element classes", function(){
-            it("should add the checkedCls and remove uncheckedCls when checking", function(){
+
+        describe("element classes", function () {
+            it("should add the checkedCls and remove uncheckedCls when checking", function () {
                 makeItem();
                 c.setChecked(true);
                 expect(c.el.hasCls(c.checkedCls)).toBe(true);
                 expect(c.el.hasCls(c.uncheckedCls)).toBe(false);
-            });  
-            
-            it("should add the uncheckedCls and remove checkedCls when unchecking", function(){
+            });
+
+            it("should add the uncheckedCls and remove checkedCls when unchecking", function () {
                 makeItem({
                     checked: true
                 });
@@ -184,7 +201,7 @@ describe("Ext.menu.CheckItem", function(){
                 it("should not fire any events setting checked: false when not checked", function() {
                     var called = false;
                     makeItem();
-                    c.on('beforecheckchange', function(){
+                    c.on('beforecheckchange', function () {
                         called = true;
                     });
                     c.setChecked(false);
@@ -196,75 +213,63 @@ describe("Ext.menu.CheckItem", function(){
                     makeItem({
                         checked: true
                     });
-                    c.on('beforecheckchange', function(){
+                    c.on('beforecheckchange', function () {
                         called = true;
                     });
                     c.setChecked(true);
                     expect(called).toBe(false);
-                });    
-            }); 
-            
-            describe("supressEvents", function(){
-                it("should not fire beforecheckchange", function(){
+                });
+            });
+
+            describe("supressEvents", function () {
+                it("should not fire beforecheckchange", function () {
                     var called = false;
                     makeItem();
-                    c.on('beforecheckchange', function(){
+                    c.on('beforecheckchange', function () {
                         called = true;
                     });
                     c.setChecked(true, true);
-                    expect(called).toBe(false);   
-                });  
-                
-                it("should not fire checkchange", function(){
+                    expect(called).toBe(false);
+                });
+
+                it("should not fire checkchange", function () {
                     var called = false;
                     makeItem();
-                    c.on('checkchange', function(){
+                    c.on('checkchange', function () {
                         called = true;
                     });
                     c.setChecked(true, true);
-                    expect(called).toBe(false);   
-                }); 
-                
-                it("should not trigger a checkHandler", function(){
+                    expect(called).toBe(false);
+                });
+
+                it("should not trigger a checkHandler", function () {
                     var called = false;
                     makeItem({
-                        checkHandler: function(){
+                        checkHandler: function () {
                             called = true;
                         }
                     });
                     c.setChecked(true, true);
-                    expect(called).toBe(false);  
-                })
+                    expect(called).toBe(false);
+                });
             });
-            
-            describe("veto", function(){
-                it("should not trigger a change if beforecheckchange returns false", function(){
+
+            describe("veto", function () {
+                it("should not trigger a change if beforecheckchange returns false", function () {
                     makeItem();
-                    c.on('beforecheckchange', function(){
+                    c.on('beforecheckchange', function () {
                         return false;
                     });
                     c.setChecked(true);
                     expect(c.checked).toBe(false);
-                })
+                });
             });
-            
-            describe("params", function(){
-                it("should fire beforecheckchange with the item and the new checked state", function(){
+
+            describe("params", function () {
+                it("should fire beforecheckchange with the item and the new checked state", function () {
                     var comp, state;
                     makeItem();
-                    c.on('beforecheckchange', function(arg1, arg2){
-                        comp = arg1;
-                        state = arg2;
-                    });
-                    c.setChecked(true);
-                    expect(comp).toBe(c);
-                    expect(state).toBe(true);
-                });  
-                
-                it("should fire checkchange with the item and the new checked state", function(){
-                    var comp, state;
-                    makeItem();
-                    c.on('checkchange', function(arg1, arg2){
+                    c.on('beforecheckchange', function (arg1, arg2) {
                         comp = arg1;
                         state = arg2;
                     });
@@ -272,11 +277,23 @@ describe("Ext.menu.CheckItem", function(){
                     expect(comp).toBe(c);
                     expect(state).toBe(true);
                 });
-                
-                it("should trigger checkHandler with the item and the new checked state", function(){
+
+                it("should fire checkchange with the item and the new checked state", function () {
+                    var comp, state;
+                    makeItem();
+                    c.on('checkchange', function (arg1, arg2) {
+                        comp = arg1;
+                        state = arg2;
+                    });
+                    c.setChecked(true);
+                    expect(comp).toBe(c);
+                    expect(state).toBe(true);
+                });
+
+                it("should trigger checkHandler with the item and the new checked state", function () {
                     var comp, state;
                     makeItem({
-                        checkHandler: function(arg1, arg2){
+                        checkHandler: function (arg1, arg2) {
                             comp = arg1;
                             state = arg2;
                         }
@@ -285,26 +302,26 @@ describe("Ext.menu.CheckItem", function(){
                     expect(comp).toBe(c);
                     expect(state).toBe(true);
                 });
-                
-                describe("checkHandler scope", function(){
-                    it("should default the scope to the component", function(){
+
+                describe("checkHandler scope", function () {
+                    it("should default the scope to the component", function () {
                         var scope;
                         makeItem({
-                            checkHandler: function(){
+                            checkHandler: function () {
                                 scope = this;
                             }
                         });
                         c.setChecked(true);
                         expect(scope).toBe(c);
                     });
-                    
-                    it("should use a passed scope", function(){
-                        var o = {}, 
+
+                    it("should use a passed scope", function () {
+                        var o = {},
                             scope;
-                            
+
                         makeItem({
                             scope: o,
-                            checkHandler: function(){
+                            checkHandler: function () {
                                 scope = this;
                             }
                         });
@@ -312,13 +329,13 @@ describe("Ext.menu.CheckItem", function(){
                         expect(scope).toBe(o);
                     });
 
-                    it("should be able to resolve to a ViewController", function(){
+                    it("should be able to resolve to a ViewController", function () {
                         makeItem({
                             checkHandler: 'doFoo'
                         });
 
                         var ctrl = new Ext.app.ViewController({
-                            doFoo: function(){
+                            doFoo: function () {
                                 return true;
                             }
                         });
@@ -340,11 +357,48 @@ describe("Ext.menu.CheckItem", function(){
         });
     });
 
-    describe("handler", function(){
-        it("should default the scope to the component", function(){
+    describe("binding", function () {
+        it("should have an initial bind to the checked state", function () {
+            makeItem({
+                bind: '{isChecked}'
+            }, {
+                viewModel: {
+                    data: {
+                        isChecked: true
+                    }
+                }
+            });
+            menu.getViewModel().notify();
+            expect(c.checked).toBe(true);
+            expect(c.el).toHaveCls(c.checkedCls);
+            expect(c.el).not.toHaveCls(c.uncheckedCls);
+        });
+
+        it("should publish changes in checked state", function () {
+            makeItem({
+                bind: '{isChecked}'
+            }, {
+                viewModel: {
+                    data: {
+                        isChecked: false
+                    }
+                }
+            });
+            var vm = menu.getViewModel();
+            clickIt();
+            vm.notify();
+            expect(vm.get('isChecked')).toBe(true);
+            clickIt();
+            vm.notify();
+            expect(vm.get('isChecked')).toBe(false);
+        });
+    });
+
+    describe("handler", function () {
+        it("should default the scope to the component", function () {
             var scope;
             makeItem({
-                handler: function(){
+                handler: function () {
                     scope = this;
                 }
             });
@@ -352,13 +406,13 @@ describe("Ext.menu.CheckItem", function(){
             expect(scope).toBe(c);
         });
 
-        it("should use a passed scope", function(){
+        it("should use a passed scope", function () {
             var o = {},
                 scope;
 
             makeItem({
                 scope: o,
-                handler: function(){
+                handler: function () {
                     scope = this;
                 }
             });
@@ -366,13 +420,13 @@ describe("Ext.menu.CheckItem", function(){
             expect(scope).toBe(o);
         });
 
-        it("should be able to resolve to a ViewController", function(){
+        it("should be able to resolve to a ViewController", function () {
             makeItem({
                 handler: 'doFoo'
             });
 
             var ctrl = new Ext.app.ViewController({
-                doFoo: function(){
+                doFoo: function () {
                     return true;
                 }
             });

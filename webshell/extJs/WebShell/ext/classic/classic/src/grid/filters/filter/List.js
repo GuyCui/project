@@ -23,14 +23,16 @@
  *             {id: 5, show: 'Star Wars: Christmas Special', rating: 5}
  *         ]
  *     });
- *   
+ *
  *     Ext.create('Ext.grid.Panel', {
  *         renderTo: Ext.getBody(),
  *         title: 'Sci-Fi Television',
  *         height: 250,
  *         width: 350,
  *         store: shows,
- *         plugins: 'gridfilters',
+ *         plugins: {
+ *             gridfilters: true
+ *         },
  *         columns: [{
  *             dataIndex: 'id',
  *             text: 'ID',
@@ -168,13 +170,12 @@ Ext.define('Ext.grid.filters.filter.List', {
      */
     labelIndex: null,
 
-    //<locale>
     /**
-     * @cfg {String} [loadingText="Loading..."]
+     * @cfg {String} [loadingText]
      * The text that is displayed while the configured store is loading.
+     * @locale
      */
     loadingText: 'Loading...',
-    //</locale>
 
     /**
      * @cfg {Boolean} loadOnShow
@@ -511,7 +512,13 @@ Ext.define('Ext.grid.filters.filter.List', {
     getFilterConfig: function (config, key) {
         // List filter needs to have its value set immediately or else could will fail when filtering since its
         // _value would be undefined.
-        config.value = config.value || [];
+        var value = config.value;
+        if (Ext.isEmpty(value)) {
+            value = [];
+        } else if (!Ext.isArray(value)) {
+            value = [value];
+        }
+        config.value = value;
         return this.callParent([config, key]);
     },
 

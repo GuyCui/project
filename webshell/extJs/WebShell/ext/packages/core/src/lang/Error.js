@@ -265,14 +265,14 @@ Ext.raise = function () {
  * to the status bar so that users don't miss it.
  */
 //<debug>
-(function () {
-    if (typeof window === 'undefined') {
+(function (skipNotify) {
+    if (skipNotify || typeof window === 'undefined') {
         return; // build system or some such environment...
     }
 
     var last = 0,
         // This method is called to notify the user of the current error status.
-        notify = function() {
+        notify = function () {
             var cnt = Ext.log && Ext.log.counters,
                 n = cnt && (cnt.error + cnt.warn + cnt.info + cnt.log),
                 msg;
@@ -297,8 +297,12 @@ Ext.raise = function () {
             }
         };
 
+    // Allow unit tests to skip this when checking for dangling timers
+    notify.$skipTimerCheck = true;
+
     // window.onerror sounds ideal but it prevents the built-in error dialog from doing
-    // its (better) thing.
+    // its (better) thing. We deliberately use setInterval() here instead of going with
+    // Ext.interval() to keep it basic and simple.
     setInterval(notify, 1000);
-}());
+}(!!window.__UNIT_TESTING__));
 //</debug>

@@ -1,9 +1,8 @@
-describe("Ext.data.schema.OneToOne", function() {
-    
+topSuite("Ext.data.schema.OneToOne", ['Ext.data.ArrayStore', 'Ext.data.Session'], function () {
     var schema, User, Address, userRole, addressRole, assoc,
-        userCalled = false, 
+        userCalled = false,
         addressCalled = false;
-    
+
     function defineUser(refCfg) {
         User = Ext.define('spec.User', {
             extend: 'Ext.data.Model',

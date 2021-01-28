@@ -1,9 +1,9 @@
-describe("Ext.app.Util", function() {
-    it("has namespaces property", function() {
+topSuite("Ext.app.Util", function () {
+    it("has namespaces property", function () {
         expect(Ext.app.namespaces).toBeDefined();
     });
 
-    it("adds single namespace to known list", function() {
+    it("adds single namespace to known list", function () {
         Ext.app.addNamespaces('Foo');
 
         expect(Ext.app.namespaces['Foo']).toBeTruthy();

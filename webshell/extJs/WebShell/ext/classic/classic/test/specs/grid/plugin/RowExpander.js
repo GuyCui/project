@@ -1,17 +1,18 @@
-/* global Ext, expect, jasmine */
+/* global Ext, expect, jasmine, xit */
 
-describe('Ext.grid.plugin.RowExpander', function () {
-    var dummyData = [
-            ['3m Co',71.72,0.02,0.03,'9/1 12:00am', 'Manufacturing'],
-            ['Alcoa Inc',29.01,0.42,1.47,'9/1 12:00am', 'Manufacturing'],
-            ['Altria Group Inc',83.81,0.28,0.34,'9/1 12:00am', 'Manufacturing'],
-            ['American Express Company',52.55,0.01,0.02,'9/1 12:00am', 'Finance'],
-            ['American International Group, Inc.',64.13,0.31,0.49,'9/1 12:00am', 'Services'],
-            ['AT&T Inc.',31.61,-0.48,-1.54,'9/1 12:00am', 'Services'],
-            ['Boeing Co.',75.43,0.53,0.71,'9/1 12:00am', 'Manufacturing'],
-            ['Caterpillar Inc.',67.27,0.92,1.39,'9/1 12:00am', 'Services'],
-            ['Citigroup, Inc.',49.37,0.02,0.04,'9/1 12:00am', 'Finance'],
-            ['E.I. du Pont de Nemours and Company',40.48,0.51,1.28,'9/1 12:00am', 'Manufacturing'],
+topSuite("Ext.grid.plugin.RowExpander", ['Ext.grid.Panel'], function () {
+    var itNotIE8 = Ext.isIE8 ? xit : it,
+        dummyData = [
+            ['3m Co', 71.72, 0.02, 0.03, '9/1 12:00am', 'Manufacturing'],
+            ['Alcoa Inc', 29.01, 0.42, 1.47, '9/1 12:00am', 'Manufacturing'],
+            ['Altria Group Inc', 83.81, 0.28, 0.34, '9/1 12:00am', 'Manufacturing'],
+            ['American Express Company', 52.55, 0.01, 0.02, '9/1 12:00am', 'Finance'],
+            ['American International Group, Inc.', 64.13, 0.31, 0.49, '9/1 12:00am', 'Services'],
+            ['AT&T Inc.', 31.61, -0.48, -1.54, '9/1 12:00am', 'Services'],
+            ['Boeing Co.', 75.43, 0.53, 0.71, '9/1 12:00am', 'Manufacturing'],
+            ['Caterpillar Inc.', 67.27, 0.92, 1.39, '9/1 12:00am', 'Services'],
+            ['Citigroup, Inc.', 49.37, 0.02, 0.04, '9/1 12:00am', 'Finance'],
+            ['E.I. du Pont de Nemours and Company', 40.48, 0.51, 1.28, '9/1 12:00am', 'Manufacturing'],
             ['Exxon Mobil Corp',68.1,-0.43,-0.64,'9/1 12:00am', 'Manufacturing'],
             ['General Electric Company',34.14,-0.08,-0.23,'9/1 12:00am', 'Manufacturing'],
             ['General Motors Corporation',30.27,1.09,3.74,'9/1 12:00am', 'Automotive'],
@@ -124,7 +125,7 @@ describe('Ext.grid.plugin.RowExpander', function () {
  
     function getRowBodyTr (index, locked) {
         view = locked ? expander.lockedView : expander.view;
-        return view.all.item(index).down('.' + Ext.baseCSSPrefix + 'grid-rowbody-tr');
+        return Ext.fly(view.all.item(index).down('.' + Ext.baseCSSPrefix + 'grid-rowbody-tr', true));
     }
 
     afterEach(function () {
@@ -149,9 +150,11 @@ describe('Ext.grid.plugin.RowExpander', function () {
     it("should not expand in response to mousedown", function() {
         makeGrid();
 
-        jasmine.fireMouseEvent(grid.view.el.query('.x-grid-row-expander')[0], 'mousedown');
+        jasmine.fireMouseEvent(grid.view.el.dom.querySelector('.x-grid-row-expander'), 'mousedown');
 
         expect(getRowBodyTr(0).isVisible()).toBe(false);
+
+        jasmine.fireMouseEvent(grid.view.el.dom.querySelector('.x-grid-row-expander'), 'mouseup');
     });
 
     it("should expand on click", function() {
@@ -159,7 +162,7 @@ describe('Ext.grid.plugin.RowExpander', function () {
         var yRange = scroller.getSize().y,
             layoutCounter = grid.view.componentLayoutCounter;
 
-        jasmine.fireMouseEvent(grid.view.el.query('.x-grid-row-expander')[0], 'click');
+        jasmine.fireMouseEvent(grid.view.el.dom.querySelector('.x-grid-row-expander'), 'click');
 
         expect(getRowBodyTr(0).isVisible()).toBe(true);
 
@@ -181,7 +184,7 @@ describe('Ext.grid.plugin.RowExpander', function () {
         var yRange = scroller.getSize().y,
             layoutCounter = grid.normalGrid.view.componentLayoutCounter;
 
-        jasmine.fireMouseEvent(grid.view.el.query('.x-grid-row-expander')[0], 'click');
+        jasmine.fireMouseEvent(grid.view.el.dom.querySelector('.x-grid-row-expander'), 'click');
 
         expect(getRowBodyTr(0).isVisible()).toBe(true);
 
@@ -200,7 +203,7 @@ describe('Ext.grid.plugin.RowExpander', function () {
         expander.toggleRow(0, store.getAt(0));
         var layoutCounter = grid.view.componentLayoutCounter;
 
-        jasmine.fireMouseEvent(grid.view.el.query('.x-grid-row-expander')[0], 'click');
+        jasmine.fireMouseEvent(grid.view.el.dom.querySelector('.x-grid-row-expander'), 'click');
 
         expect(getRowBodyTr(0).isVisible()).toBe(false);
 
@@ -310,13 +313,15 @@ describe('Ext.grid.plugin.RowExpander', function () {
         });
 
         it("should not expand in response to mousedown", function() {
-            jasmine.fireMouseEvent(grid.lockedGrid.view.el.query('.x-grid-row-expander')[0], 'mousedown');
+            jasmine.fireMouseEvent(grid.lockedGrid.view.el.dom.querySelector('.x-grid-row-expander'), 'mousedown');
 
             expect(getRowBodyTr(0, true).isVisible()).toBe(false);
+
+            jasmine.fireMouseEvent(grid.lockedGrid.view.el.dom.querySelector('.x-grid-row-expander'), 'mouseup');
         });
 
         it("should expand on click", function() {
-            jasmine.fireMouseEvent(grid.lockedGrid.view.el.query('.x-grid-row-expander')[0], 'click');
+            jasmine.fireMouseEvent(grid.lockedGrid.view.el.dom.querySelector('.x-grid-row-expander'), 'click');
 
             expect(getRowBodyTr(0, true).isVisible()).toBe(true);
             
@@ -328,7 +333,7 @@ describe('Ext.grid.plugin.RowExpander', function () {
             expander.toggleRow(0, store.getAt(0));
 
             // click to collapse
-            jasmine.fireMouseEvent(grid.lockedGrid.view.el.query('.x-grid-row-expander')[0], 'click');
+            jasmine.fireMouseEvent(grid.lockedGrid.view.el.dom.querySelector('.x-grid-row-expander'), 'click');
 
             // The rowbody row of item 0 should not be visible
             expect(getRowBodyTr(0, true).isVisible()).toBe(false);
@@ -437,14 +442,14 @@ describe('Ext.grid.plugin.RowExpander', function () {
                 });
 
                 // Get the expander elements to click on
-                var expanders = grid.view.el.query('.x-grid-row-expander'),
+                var expander = grid.view.el.dom.querySelector('.x-grid-row-expander'),
                     lockedView = grid.lockedGrid.view,
                     normalView = grid.normalGrid.view,
                     item0CollapsedHeight = lockedView.all.item(0, true).offsetHeight,
                     item0ExpandedHeight;
 
                 // Expand first row
-                jasmine.fireMouseEvent(expanders[0], 'click');
+                jasmine.fireMouseEvent(expander, 'click');
 
                 item0ExpandedHeight = lockedView.all.item(0, true).offsetHeight;
 
@@ -537,7 +542,7 @@ describe('Ext.grid.plugin.RowExpander', function () {
 
         runs(function() {
             // Get the expander elements to click on
-            var expanders = view.el.query('.x-grid-row-expander'),
+            var expanders = view.el.dom.querySelectorAll('.x-grid-row-expander'),
                 scroller = view.getScrollable(),
                 scrollHeight = scroller.getSize().y;
 
@@ -605,13 +610,13 @@ describe('Ext.grid.plugin.RowExpander', function () {
     });
 
     describe('mousedown in large expansion row', function() {
-        it('should not scroll', function() {
+        itNotIE8('should not scroll', function () {
             grid = new Ext.grid.Panel({
                 renderTo: Ext.getBody(),
                 width: 500,
                 height: 300,
                 viewConfig: {
-                    enableTextSelection : true
+                    enableTextSelection: true
                 },
                 columns: [{
                     text: 'Foo',
@@ -626,7 +631,7 @@ describe('Ext.grid.plugin.RowExpander', function () {
                     fields: ['foo'],
                     data: [{
                         foo : 'Expand this row, scroll down and select text near bottom',
-                        bar : [
+                        bar: [
                             '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nulla est, ornare vitae convallis id, vestibulum at mauris. Etiam eget sem molestie, finibus augue quis, accumsan nisi. Sed sit amet varius est. Cras non massa sapien. Morbi hendrerit lectus neque, in semper urna pellentesque sed. Phasellus vitae est ultricies, faucibus ipsum id, maximus tellus. Sed leo urna, suscipit ut maximus eget, sagittis fermentum justo. Cras sed tellus in enim finibus varius. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Quisque gravida nisl lacus, at luctus lectus elementum in. Sed facilisis tristique lacus, a tincidunt nunc maximus sit amet. Aliquam convallis sed mauris et elementum. Etiam tincidunt, risus id suscipit varius, tortor est molestie neque, non viverra est odio laoreet neque. Proin mollis tristique leo nec rutrum. Nulla enim dui, rutrum ac maximus sit amet, porttitor eget nisl.</p>',
                             '<p>Curabitur ac pulvinar turpis. Nullam sit amet ipsum leo. Maecenas augue arcu, bibendum at venenatis ut, tempus at justo. Ut ornare leo accumsan massa venenatis accumsan. Nam consequat posuere mauris, vel placerat lorem elementum non. Sed nec turpis a diam pretium facilisis. Integer ornare luctus augue, a aliquam ante gravida quis. Praesent eget mi eu turpis sagittis viverra. Nam at posuere nisi. Praesent maximus libero ac facilisis laoreet. Proin varius dui sed erat elementum varius. Pellentesque sapien tellus, maximus vel porta a, congue ut dolor. Proin molestie dignissim nisl nec efficitur.</p>',
                             '<p>Ut luctus aliquet sapien, vel sollicitudin neque iaculis et. Vestibulum in viverra nibh. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Donec nisl ipsum, congue aliquam interdum et, blandit non odio. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Pellentesque a lacus id odio mattis efficitur ac et metus. Maecenas ut varius magna, nec rutrum nisl. Curabitur ut faucibus sapien.</p>',
@@ -636,29 +641,46 @@ describe('Ext.grid.plugin.RowExpander', function () {
                     }]
                 }
             });
+            var scrollable = grid.getView().getScrollable(),
+                scrollEndSpy = spyOnEvent(scrollable, 'scrollend');
 
             // Expand the expander
-            jasmine.fireMouseEvent(grid.view.el.query('.x-grid-row-expander')[0], 'click');
-            
+            jasmine.fireMouseEvent(grid.view.el.dom.querySelector('.x-grid-row-expander'), 'click');
+
             grid.view.scrollTo(0, 100);
 
             // We must wait until the Scroller knows about the scroll position
             // at which point it fires a scrollend event
-            waitsForEvent(grid.getView().getScrollable(), 'scrollend', 'Grid scrollend');
+            waitsForSpy(scrollEndSpy, 'Grid scrollend');
 
             runs(function() {
                 // Must give a valid x coordinate, so that it can be matched below a column so that the navigation model
                 // can determin the closet column to navigate to.
-                jasmine.fireMouseEvent(grid.view.all.item(0).down(Ext.grid.feature.RowBody.prototype.innerSelector), 'mousedown', 100);
+                jasmine.fireMouseEvent(grid.view.all.item(0).down(Ext.grid.feature.RowBody.prototype.innerSelector, true), 'mousedown', 100);
             });
 
             // Nothing detectable should happen. Scroll position should remain stable
             waits(100);
 
-            runs(function() {
+            runs(function () {
                 // Scroll position should be stable.
                 expect(grid.view.getScrollY()).toBe(100);
+                jasmine.fireMouseEvent(grid.view.all.item(0).down(Ext.grid.feature.RowBody.prototype.innerSelector, true), 'mouseup', 100);
             });
-       });
+        });
+    });
+
+    describe("reconfigure", function () {
+        it("should not throw an exception when reconfiguring while not rendered", function () {
+            makeGrid({
+                renderTo: null
+            });
+
+            expect(function () {
+                grid.reconfigure(null, [{
+                    dataIndex: 'company'
+                }]);
+            }).not.toThrow();
+        });
     });
 });

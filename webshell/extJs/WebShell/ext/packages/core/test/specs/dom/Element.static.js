@@ -1,10 +1,13 @@
-describe("Ext.Element.static", function() {
+/* global Ext, expect, xit */
+
+// false in dependencies to avoid loading "Ext.dom.Element.static"
+topSuite("Ext.dom.Element.static", [false, 'Ext.dom.Element'], function () {
     var el, input, child1, child2, child3;
-    
-    beforeEach(function() {
+
+    beforeEach(function () {
         el = Ext.getBody().createChild({
-            id      : 'ExtElementHelper',
-            style   : 'position:absolute;',
+            id: 'ExtElementHelper',
+            style: 'position:absolute;',
             children: [
                 {id: 'child1', style: 'position:absolute;'},
                 {id: 'child2', style: 'position:absolute;'},
@@ -173,15 +176,15 @@ describe("Ext.Element.static", function() {
             expect(Ext.Element.fromPoint(-550000, -550000)).toBeNull();
         });
     });
-    
+
     // Not sure how to test Ext.Element in an iframe given the current infrastructure
-    describe("top object identifiers", function() {
-        it("should assign incremental id to window", function() {
+    describe("top object identifiers", function () {
+        it("should assign incremental id to window", function () {
             expect(window.id).toBe('ext-window-1');
         });
-        
-        it("should assign incremental id to document", function() {
+
+        it("should assign incremental id to document", function () {
             expect(document.id).toBe('ext-document-1');
         });
     });
-}, "/src/dom/Element.static.js");
+});

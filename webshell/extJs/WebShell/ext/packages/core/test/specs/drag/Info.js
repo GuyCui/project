@@ -1,4 +1,6 @@
-describe("Ext.drag.Info", function() {
+/* global expect, jasmine, Ext */
+
+topSuite("Ext.drag.Info", ['Ext.drag.*', 'Ext.dom.Element'], function () {
     var helper = Ext.testHelper,
         touchId = 0,
         cursorTrack, source, target,
@@ -337,13 +339,13 @@ describe("Ext.drag.Info", function() {
             var spy = jasmine.createSpy();
 
             makeDragEl();
-            var child = dragEl.createChild({
+            var child = Ext.fly(dragEl.createChild({
                 width: '20px',
                 height: '20px',
                 left: '40px',
                 top: '40px',
                 position: 'absolute'
-            });
+            }, null, true));
             makeSource();
             source.on('dragmove', spy);
             var center = getCenter(child);
@@ -357,23 +359,23 @@ describe("Ext.drag.Info", function() {
     });
 
     describe("data", function() {
-        var spy;
+        var dropSpy;
 
         beforeEach(function() {
-            spy = jasmine.createSpy();
+            dropSpy = jasmine.createSpy();
             makeTarget();
-            target.on('drop', spy);
+            target.on('drop', dropSpy);
         });
 
         afterEach(function() {
-            spy = null;
+            dropSpy = null;
         });
 
         function expectPromiseValue(key, v) {
             var promiseSpy = jasmine.createSpy();
 
             runs(function() {
-                var info = spy.mostRecentCall.args[1];
+                var info = dropSpy.mostRecentCall.args[1];
                 info.getData(key).then(promiseSpy);
             });
             waitsFor(function() {
@@ -396,7 +398,9 @@ describe("Ext.drag.Info", function() {
 
             startDrag();
             moveBy(10, 10);
-            runs(function() {
+            endDrag();
+
+            runs(function () {
                 expect(describeSpy.callCount).toBe(1);
                 expect(describeSpy.mostRecentCall.args[0]).toBe(dragSpy.mostRecentCall.args[1]);
             });
@@ -422,15 +426,15 @@ describe("Ext.drag.Info", function() {
         describe("getData", function() {
             it("should throw an exception if accessed before the drop is complete", function() {
                 makeSource({
-                    describe: function(info) {
+                    describe: function (info) {
                         info.setData('foo', 1);
                     }
                 });
-                source.on('dragmove', spy);
+                source.on('dragmove', dropSpy);
                 startDrag(50, 50);
                 moveBy(50, 50);
                 runs(function() {
-                    var info = spy.mostRecentCall.args[1];
+                    var info = dropSpy.mostRecentCall.args[1];
                     expect(function() {
                         info.getData('foo');
                     }).toThrow();
@@ -440,7 +444,7 @@ describe("Ext.drag.Info", function() {
 
             it("should return a promise with an empty string if the type doesn't exist", function() {
                 makeSource({
-                    describe: function(info) {
+                    describe: function (info) {
                         info.setData('foo', 1);
                     }
                 });
@@ -448,13 +452,18 @@ describe("Ext.drag.Info", function() {
                 startDrag();
                 moveBy(50, 50);
                 endDrag();
-                expectPromiseValue('bar', '');
+
+                waitsForSpy(dropSpy);
+
+                runs(function () {
+                    expectPromiseValue('bar', '');
+                });
             });
 
             describe("with static data", function() {
                 it("should wrap the data in a promise", function() {
                     makeSource({
-                        describe: function(info) {
+                        describe: function (info) {
                             info.setData('foo', 1);
                         }
                     });
@@ -462,12 +471,17 @@ describe("Ext.drag.Info", function() {
                     startDrag();
                     moveBy(50, 50);
                     endDrag();
-                    expectPromiseValue('foo', 1);
+
+                    waitsForSpy(dropSpy);
+
+                    runs(function () {
+                        expectPromiseValue('foo', 1);
+                    });
                 });
 
                 it("should be able to retrieve data from multiple types", function() {
                     makeSource({
-                        describe: function(info) {
+                        describe: function (info) {
                             info.setData('foo', 1);
                             info.setData('bar', 2);
                         }
@@ -476,15 +490,20 @@ describe("Ext.drag.Info", function() {
                     startDrag();
                     moveBy(50, 50);
                     endDrag();
-                    expectPromiseValue('foo', 1);
-                    expectPromiseValue('bar', 2);
+
+                    waitsForSpy(dropSpy);
+
+                    runs(function () {
+                        expectPromiseValue('foo', 1);
+                        expectPromiseValue('bar', 2);
+                    });
                 });
 
                 it("should return complex data", function() {
                     var o = [{}, {}, {}];
 
                     makeSource({
-                        describe: function(info) {
+                        describe: function (info) {
                             info.setData('foo', o);
                         }
                     });
@@ -492,7 +511,12 @@ describe("Ext.drag.Info", function() {
                     startDrag();
                     moveBy(50, 50);
                     endDrag();
-                    expectPromiseValue('foo', o);
+
+                    waitsForSpy(dropSpy);
+
+                    runs(function () {
+                        expectPromiseValue('foo', o);
+                    });
                 });
             });
 
@@ -501,7 +525,7 @@ describe("Ext.drag.Info", function() {
                     var dataSpy = jasmine.createSpy();
 
                     makeSource({
-                        describe: function(info) {
+                        describe: function (info) {
                             info.setData('foo', dataSpy);
                         }
                     });
@@ -509,13 +533,16 @@ describe("Ext.drag.Info", function() {
                     startDrag();
                     moveBy(50, 50);
                     endDrag();
-                    runs(function() {
-                        var info = spy.mostRecentCall.args[1];
+
+                    waitsForSpy(dropSpy);
+
+                    runs(function () {
+                        var info = dropSpy.mostRecentCall.args[1];
                         info.getData('foo');
                         expect(dataSpy.callCount).toBe(1);
                         expect(dataSpy.mostRecentCall.object).toBe(source);
                         // The info from the drop spy
-                        expect(dataSpy.mostRecentCall.args[0]).toBe(spy.mostRecentCall.args[1]); 
+                        expect(dataSpy.mostRecentCall.args[0]).toBe(dropSpy.mostRecentCall.args[1]);
                     });
                 });
 
@@ -523,7 +550,7 @@ describe("Ext.drag.Info", function() {
                     var dataSpy = jasmine.createSpy();
 
                     makeSource({
-                        describe: function(info) {
+                        describe: function (info) {
                             info.setData('foo', dataSpy);
                         }
                     });
@@ -531,8 +558,11 @@ describe("Ext.drag.Info", function() {
                     startDrag();
                     moveBy(50, 50);
                     endDrag();
-                    runs(function() {
-                        var info = spy.mostRecentCall.args[1];
+
+                    waitsForSpy(dropSpy);
+
+                    runs(function () {
+                        var info = dropSpy.mostRecentCall.args[1];
                         info.getData('foo');
                         info.getData('foo');
                         info.getData('foo');
@@ -543,8 +573,8 @@ describe("Ext.drag.Info", function() {
 
                 it("should execute a function and wrap the result in a promise", function() {
                     makeSource({
-                        describe: function(info) {
-                            info.setData('foo', function() {
+                        describe: function (info) {
+                            info.setData('foo', function () {
                                 return 2;
                             });
                         }
@@ -553,7 +583,12 @@ describe("Ext.drag.Info", function() {
                     startDrag();
                     moveBy(50, 50);
                     endDrag();
-                    expectPromiseValue('foo', 2);
+
+                    waitsForSpy(dropSpy);
+
+                    runs(function () {
+                        expectPromiseValue('foo', 2);
+                    });
                 });
 
                 it("should be able to retrieve data from multiple types", function() {
@@ -562,7 +597,7 @@ describe("Ext.drag.Info", function() {
                             info.setData('foo', function() {
                                 return 1;
                             });
-                            info.setData('bar', function() {
+                            info.setData('bar', function () {
                                 return 2;
                             });
                         }
@@ -571,16 +606,21 @@ describe("Ext.drag.Info", function() {
                     startDrag();
                     moveBy(50, 50);
                     endDrag();
-                    expectPromiseValue('foo', 1);
-                    expectPromiseValue('bar', 2);
+
+                    waitsForSpy(dropSpy);
+
+                    runs(function () {
+                        expectPromiseValue('foo', 1);
+                        expectPromiseValue('bar', 2);
+                    });
                 });
 
                 it("should return complex data", function() {
                     var o = [{}, {}, {}];
 
                     makeSource({
-                        describe: function(info) {
-                            info.setData('foo', function() {
+                        describe: function (info) {
+                            info.setData('foo', function () {
                                 return o;
                             });
                         }
@@ -589,7 +629,12 @@ describe("Ext.drag.Info", function() {
                     startDrag();
                     moveBy(50, 50);
                     endDrag();
-                    expectPromiseValue('foo', o);
+
+                    waitsForSpy(dropSpy);
+
+                    runs(function () {
+                        expectPromiseValue('foo', o);
+                    });
                 });
             });
         });
@@ -615,7 +660,7 @@ describe("Ext.drag.Info", function() {
 
             it("should clear the data value", function() {
                 makeSource({
-                    describe: function(info) {
+                    describe: function (info) {
                         info.setData('type1', 'foo');
                         info.clearData('type1');
                     }
@@ -624,7 +669,12 @@ describe("Ext.drag.Info", function() {
                 startDrag();
                 moveBy(50, 50);
                 endDrag();
-                expectPromiseValue('type1', '');
+
+                waitsForSpy(dropSpy);
+
+                runs(function () {
+                    expectPromiseValue('type1', '');
+                });
             });
         });
     });
@@ -839,7 +889,7 @@ describe("Ext.drag.Info", function() {
                     moveBy(-20, -20);
                     runsExpectProxy([50, 50], [65, 65], [15, 15]);
                     endDrag();
-                })
+                });
             });
         });
 

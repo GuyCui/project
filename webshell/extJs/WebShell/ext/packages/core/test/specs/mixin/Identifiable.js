@@ -1,14 +1,14 @@
-describe("Ext.mixin.Identifiable", function() {
+topSuite("Ext.mixin.Identifiable", function () {
     var TestClass;
 
-    beforeEach(function() {
+    beforeEach(function () {
         TestClass = new Ext.Class({
             mixins: [Ext.mixin.Identifiable]
         });
     });
 
-    describe("getId()", function() {
-        it("should return a unique id and cache it", function() {
+    describe("getId()", function () {
+        it("should return a unique id and cache it", function () {
             var foo = new TestClass(),
                 id1 = foo.getId(),
                 id2 = foo.getId();

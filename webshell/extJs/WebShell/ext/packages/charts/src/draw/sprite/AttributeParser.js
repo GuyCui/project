@@ -15,12 +15,12 @@ Ext.define('Ext.draw.sprite.AttributeParser', {
         'Ext.draw.gradient.GradientDefinition'
     ],
 
-    "default": Ext.identityFn,
-    
+    'default': Ext.identityFn,
+
     string: function (n) {
         return String(n);
     },
-    
+
     number: function (n) {
         // Numbers as strings will be converted to numbers,
         // null will be converted to 0.

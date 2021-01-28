@@ -232,17 +232,21 @@
  *
  * @member Global_CSS
  */
-@mixin background-gradient($bg-color, $type: $base-gradient, $direction: top) {
-    background-image: none;
-    background-color: $bg-color;
+@mixin background-gradient(
+  $bg-color,
+  $type: $base-gradient,
+  $direction: top
+) {
+  background-image: none;
+  background-color: $bg-color;
 
-    @if not is-null($base-gradient) and $bg-color != transparent {
-        $gradient: null;
+  @if not is-null($base-gradient) and $bg-color != transparent {
+    $gradient: null;
 
-        //color_stops
-        @if type-of($type) == "list" {
-            $gradient: linear-gradient($direction, $type);
-        }
+    //color_stops
+    @if type-of($type) == "list" {
+      $gradient: linear-gradient($direction, $type);
+    }
 
         //default gradients
         @else if $type == bevel {

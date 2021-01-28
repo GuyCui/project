@@ -1,16 +1,17 @@
 /* global expect, Ext, jasmine, spyOn */
 
-describe("Ext.panel.Tool", function() {
-    var tool, el;
-    
+topSuite("Ext.panel.Tool", function () {
+    var describeNotTouch = jasmine.supportsTouch ? xdescribe : describe,
+        tool, el;
+
     function makeTool(cfg) {
         cfg = Ext.apply({
             renderTo: Ext.getBody()
         }, cfg);
-        
+
         tool = new Ext.panel.Tool(cfg);
         el = tool.el;
-        
+
         return tool;
     }
     
@@ -132,16 +133,16 @@ describe("Ext.panel.Tool", function() {
         });
         
         describe("pointer", function() {
-            describe("mouseover", function() {
-                beforeEach(function() {
+            describeNotTouch("mouseover", function () {
+                beforeEach(function () {
                     jasmine.fireMouseEvent(el, 'mouseover', 1, 1);
                 });
-                
-                it("should add toolOverCls on over", function() {
+
+                it("should add toolOverCls on over", function () {
                     expect(el.hasCls(tool.toolOverCls)).toBe(true);
                 });
-                
-                it("should remove toolOverCls on out", function() {
+
+                it("should remove toolOverCls on out", function () {
                     jasmine.fireMouseEvent(el, 'mouseout', 1, 1);
                     
                     expect(el.hasCls(tool.toolOveCls)).toBe(false);
@@ -149,15 +150,19 @@ describe("Ext.panel.Tool", function() {
             });
             
             describe("mousedown", function() {
-                beforeEach(function() {
+                beforeEach(function () {
                     jasmine.fireMouseEvent(el, 'mousedown', 1, 1);
                 });
-                
-                it("should add toolPressedCls", function() {
+
+                afterEach(function () {
+                    jasmine.fireMouseEvent(el, 'mouseup', 1, 1);
+                });
+
+                it("should add toolPressedCls", function () {
                     expect(el.hasCls(tool.toolPressedCls)).toBe(true);
                 });
-                
-                it("should prevent focusing the tool", function() {
+
+                it("should prevent focusing the tool", function () {
                     expect(tool.hasFocus).toBe(false);
                 });
             });

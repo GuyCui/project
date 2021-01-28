@@ -1,14 +1,14 @@
-describe("Ext.app.EventBus", function() {
+topSuite("Ext.app.EventBus", function () {
     var eventbus = Ext.app.EventBus;
-    
-    it("should be a singleton", function() {
+
+    it("should be a singleton", function () {
         expect(Ext.app.EventBus.isInstance).toBeTruthy();
     });
-    
-    describe("register/unregister", function() {
+
+    describe("register/unregister", function () {
         var cmpDomain = Ext.app.domain.Component,
             ctrlDomain = Ext.app.domain.Controller,
-            ctrl = new Ext.app.Controller({ id: 'ctrl' }),
+            ctrl = new Ext.app.Controller({id: 'ctrl'}),
             handler = jasmine.createSpy('handler');
         
         it("should register controllers with control()", function() {

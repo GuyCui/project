@@ -1,6 +1,6 @@
-describe("Ext.picker.Month", function() {
+topSuite("Ext.picker.Month", function () {
     var component, makeComponent;
-    
+
     function getByElementsByClassName(dom, className) {
         var elements, length, result, i, el, testRe;
         if (document.getElementsByClassName) {

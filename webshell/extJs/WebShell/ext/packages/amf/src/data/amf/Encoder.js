@@ -47,7 +47,7 @@
  *   values will be written out as anonymous objects.
  *
  * For more information on working with AMF data please refer to the
- * [AMF Guide](#/guide/amf).
+ * [AMF Guide](../guides/backend_connectors/amf.html).
  */
 Ext.define('Ext.data.amf.Encoder', {
 
@@ -946,44 +946,44 @@ Ext.define('Ext.data.amf.Encoder', {
      * @return {Array} byte array containing the encoded number
      * @private
      */
-    encodeDouble: function(v) {
+    encodeDouble: function (num) {
         var ebits = 11, fbits = 52; // double
         var bias = (1 << (ebits - 1)) - 1,
             s, e, f, ln,
             i, bits, str, data = [];
 
         // Precalculated values
-        var K_INFINITY=[127,240,0,0,0,0,0,0],
-            K_NINFINITY=[255,240,0,0,0,0,0,0],
-            K_NAN=[255,248,0,0,0,0,0,0];
+        var K_INFINITY = [127, 240, 0, 0, 0, 0, 0, 0],
+            K_NINFINITY = [255, 240, 0, 0, 0, 0, 0, 0],
+            K_NAN = [255, 248, 0, 0, 0, 0, 0, 0];
 
 
         // Compute sign, exponent, fraction
-        if (isNaN(v)) {
+        if (isNaN(num)) {
             data = K_NAN;
-        } else if (v === Infinity) {
+        } else if (num === Infinity) {
             data = K_INFINITY;
-        } else if (v == -Infinity) {
+        } else if (num == -Infinity) {
             data = K_NINFINITY;
         } else {
             // not a special case, so encode
-            if (v === 0) {
-                e = 0; f = 0; s = (1 / v === -Infinity) ? 1 : 0;
-            }
-            else {
-                s = v < 0;
-                v = Math.abs(v);
+            if (num === 0) {
+                e = 0;
+                f = 0;
+                s = (1 / num === -Infinity) ? 1 : 0;
+            } else {
+                s = num < 0;
+                num = Math.abs(num);
 
-                if (v >= Math.pow(2, 1 - bias)) {
+                if (num >= Math.pow(2, 1 - bias)) {
                     // Normalized
-                    ln = Math.min(Math.floor(Math.log(v) / Math.LN2), bias);
+                    ln = Math.min(Math.floor(Math.log(num) / Math.LN2), bias);
                     e = ln + bias;
-                    f = Math.round(v * Math.pow(2, fbits - ln) - Math.pow(2, fbits));
-                }
-                else {
+                    f = Math.round(num * Math.pow(2, fbits - ln) - Math.pow(2, fbits));
+                } else {
                     // Denormalized
                     e = 0;
-                    f = Math.round(v / Math.pow(2, 1 - bias - fbits));
+                    f = Math.round(num / Math.pow(2, 1 - bias - fbits));
                 }
             }
 

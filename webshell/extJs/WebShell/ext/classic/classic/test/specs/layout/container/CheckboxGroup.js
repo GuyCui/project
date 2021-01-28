@@ -1,14 +1,16 @@
-describe("Ext.layout.container.CheckboxGroup", function() {
-    var checkboxGroup;
-    
-    function makeGroup(config) {
-        config = Ext.apply({
-            renderTo: Ext.getBody(),
-            width: 300,
-            height: 300,
-            items: [
-                { id: 'cb0', boxLabel: 'cb0' },
-                { id: 'cb1', boxLabel: 'cb1' },
+topSuite("Ext.layout.container.CheckboxGroup",
+    ['Ext.form.CheckboxGroup', 'Ext.form.field.Checkbox'],
+    function () {
+        var checkboxGroup;
+
+        function makeGroup(config) {
+            config = Ext.apply({
+                renderTo: Ext.getBody(),
+                width: 300,
+                height: 300,
+                items: [
+                    {id: 'cb0', boxLabel: 'cb0'},
+                    {id: 'cb1', boxLabel: 'cb1'},
                 { id: 'cb2', boxLabel: 'cb2' },
                 { id: 'cb3', boxLabel: 'cb3' },
                 { id: 'cb4', boxLabel: 'cb4' },

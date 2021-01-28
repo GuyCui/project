@@ -1,12 +1,12 @@
-describe("Ext.direct.PollingProvider", function() {
+topSuite("Ext.direct.PollingProvider", ['Ext.direct.*'], function () {
     var provider, remotingProvider;
-    
+
     function createProvider(config) {
-        config = Ext.apply({}, config , {
+        config = Ext.apply({}, config, {
             url: '/foo',
-            baseParams: { foo: 'bar' }
+            baseParams: {foo: 'bar'}
         });
-        
+
         provider = new Ext.direct.PollingProvider(config);
     }
     

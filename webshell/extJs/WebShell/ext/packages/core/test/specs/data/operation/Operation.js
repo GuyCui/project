@@ -1,14 +1,14 @@
-describe("Ext.data.operation.Operation", function() {
-    
+topSuite("Ext.data.operation.Operation", ['Ext.data.ArrayStore'], function () {
+
     var op;
-    
+
     function makeOperation(cfg) {
         // Create an instance of the abstract class, since it can still
         // operate as long as we don't execute it.
         op = new Ext.data.operation.Operation(cfg);
     }
-    
-    afterEach(function() {
+
+    afterEach(function () {
         op = null;
     });
     

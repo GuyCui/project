@@ -5,13 +5,13 @@
 .x-form-fieldset {
     margin: $fieldset-margin;
 
-    .x-form-fieldset-inner {
-        @include border($fieldset-border-width, $fieldset-border-style, $fieldset-border-color);
-        background: $field-background-color;
-        padding: $fieldset-padding;
-        @if $enable-border-radius {
-            @include border-radius($fieldset-border-radius);
-        }
+    .x-form-fieldset-body-el {
+      @include border($fieldset-border-width, $fieldset-border-style, $fieldset-border-color);
+      background: $field-background-color;
+      padding: $fieldset-padding;
+      @if $enable-border-radius {
+        @include border-radius($fieldset-border-radius);
+      }
     }
 
     .x-field {

@@ -1,4 +1,4 @@
-describe("Ext.form.RadioGroup", function() {
+topSuite("Ext.form.RadioGroup", ['Ext.app.ViewModel'], function () {
     var group;
 
     function makeGroup(items, cfg) {
@@ -8,7 +8,7 @@ describe("Ext.form.RadioGroup", function() {
         }, cfg));
     }
 
-    afterEach(function() {
+    afterEach(function () {
         Ext.destroy(group);
         group = null;
     });

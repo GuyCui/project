@@ -52,13 +52,15 @@ $ext-font-path: get-resource-path('fonts');
 	content: "\e61d";
 }
 .ext-equals-vertical:before {
-	content: "\e612";
+  content: "\e612";
 }
-.ext-collapse:before {
-	content: "\e600";
+
+.ext-expand:before {
+  content: "\e600";
 }
+
 .ext-columns:before {
-	content: "\e601";
+  content: "\e601";
 }
 .ext-dirty:before {
 	content: "\e602";
@@ -69,14 +71,17 @@ $ext-font-path: get-resource-path('fonts');
 .ext-edit-html:before {
 	content: "\e604";
 }
+
 .ext-equals:before {
-	content: "\e605";
+  content: "\e605";
 }
-.ext-expand:before {
-	content: "\e606";
+
+.ext-collapse:before {
+  content: "\e606";
 }
+
 .ext-group-by:before {
-	content: "\e607";
+  content: "\e607";
 }
 .ext-minimize:before {
 	content: "\e608";

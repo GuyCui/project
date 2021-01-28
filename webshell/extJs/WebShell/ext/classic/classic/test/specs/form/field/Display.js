@@ -1,19 +1,17 @@
-describe("Ext.form.field.Display", function() {
+topSuite("Ext.form.field.Display", ['Ext.app.ViewController'], function () {
     var component;
 
-    function makeComponent (config) {
+    function makeComponent(config) {
         config = Ext.apply({
             name: 'fieldname',
             renderTo: Ext.getBody()
         }, config);
-        
-        return component = new Ext.form.field.Display(config);
-    };
+
+        component = new Ext.form.field.Display(config);
+    }
 
     afterEach(function() {
-        Ext.destroy(component);
-        
-        component = null;
+        component = Ext.destroy(component);
     });
 
     it("should be registered as xtype 'displayfield'", function() {
@@ -112,11 +110,11 @@ describe("Ext.form.field.Display", function() {
                 expect(component.getValue()).toBe(arr);
             });
 
-            it("should keep an object value", function() {
+            it("should keep an object value", function () {
                 var o = {};
                 makeComponent({value: o});
                 expect(component.getValue()).toBe(o);
-            })
+            });
 
             it("should keep a numeric value", function() {
                 makeComponent({value: 50});
@@ -305,16 +303,35 @@ describe("Ext.form.field.Display", function() {
             expect(arg1).toBe('foo');
             expect(arg2).toBe(component);
         });
-        
-        it("should pass an empty string to the renderer if the value is undefined", function() {
+
+        it("should pass an empty string to the renderer if the value is undefined", function () {
             var arg1;
             makeComponent({
                 value: undefined,
-                renderer: function(a) {
+                renderer: function (a) {
                     arg1 = a;
                 }
-            });    
+            });
             expect(arg1).toBe('');
+        });
+
+        it("should be able to resolve to a controller", function () {
+            var controller = new Ext.app.ViewController();
+            controller.doIt = function () {
+                return 'ok';
+            };
+
+            var ct = new Ext.container.Container({
+                controller: controller,
+                renderTo: Ext.getBody(),
+                items: {
+                    xtype: 'displayfield',
+                    renderer: 'doIt'
+                }
+            });
+
+            expect(ct.items.first().inputEl.dom).hasHTML('ok');
+            ct.destroy();
         });
     });
 

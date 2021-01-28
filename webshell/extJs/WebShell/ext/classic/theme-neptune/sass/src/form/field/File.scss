@@ -5,7 +5,11 @@
 }
 
 .#{$prefix}form-file-wrap .#{$prefix}form-trigger-wrap .#{$prefix}form-text {
-    border: $form-field-border-width solid;
-    border-color: $form-field-border-color;
-    height: $form-field-height;
+  border: $form-field-border-width solid;
+  border-color: $form-field-border-color;
+  height: $form-field-height;
+
+  &.#{$prefix}form-invalid-field {
+    border-color: $form-text-field-invalid-border-color;
+  }
 }

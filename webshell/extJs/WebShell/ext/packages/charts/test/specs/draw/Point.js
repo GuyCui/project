@@ -1,8 +1,8 @@
-describe('Ext.draw.Point', function () {
+topSuite("Ext.draw.Point", function () {
     var proto = Ext.draw.Point.prototype,
         precision = 12; // first 12 decimal points should match
 
-    it('should be isPoint', function() {
+    it('should be isPoint', function () {
         expect(proto.isPoint).toBeTruthy();
     });
 

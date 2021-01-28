@@ -90,10 +90,10 @@ Ext.define('Ext.fx.Queue', {
 
         if (!queue) {
             me.fxQueue[targetId] = fxQueue[targetId] = [];
-            
+
             // GarbageCollector will need to clean up Elements since they aren't currently observable
             if (target.type !== 'element') {
-                target.target.on('destroy', function() {
+                target.target.on('destroy', function () {
                     fxQueue[targetId] = null;
                     delete fxQueue[targetId];
                 });
@@ -104,8 +104,16 @@ Ext.define('Ext.fx.Queue', {
 
     /**
      * @private
+     * Clears the fx queue of any pending animations
      */
-    queueFx: function(anim) {
+    clearFxQueue: function () {
+        Ext.Object.clear(this.fxQueue);
+    },
+
+    /**
+     * @private
+     */
+    queueFx: function (anim) {
         var me = this,
             target = anim.target,
             targetId = target.getId(),

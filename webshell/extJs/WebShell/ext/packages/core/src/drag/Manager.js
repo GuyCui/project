@@ -8,6 +8,10 @@
 Ext.define('Ext.drag.Manager', {
     singleton: true,
 
+    uses: [
+        'Ext.mixin.Inheritable'
+    ],
+
     /**
      * @property {String} dragCls
      * A class added to the body while a drag is active.

@@ -97,7 +97,7 @@ Ext.define('ux.app.ViewController', {
         if (form.isValid()) {
             Ext.Msg.confirm('提示', mes,
             function (btn) {
-                if (btn === 'yes') {
+                if (btn == 'yes') {
                     values = form.getValues();
                     util.ajaxP(url, values).then(function () {
                         me.winSuccess();
@@ -192,10 +192,10 @@ Ext.define('ux.app.ViewController', {
     onDelete: function (url, param, message) {
         Ext.MessageBox.confirm('删除确认', message,
         function (btnText) {
-            if (btnText === 'yes') {
+            if (btnText == 'yes') {
                 var grid = this.getView(),
-                rec = grid.getSelectionModel().getSelection()[0],
-                values = {};
+                    rec = grid.getSelectionModel().getSelection()[0],
+                    values = {};
                 values[param] = rec.get(param);
                 if (rec) {
                     util.ajax(url, values).then(function () {
@@ -227,5 +227,5 @@ Ext.define('ux.app.ViewController', {
     //重置grid的搜索条件
     resetToolbar: function (item) {
         util.resetView(item.up('toolbar'));
-    },
+    }
 });

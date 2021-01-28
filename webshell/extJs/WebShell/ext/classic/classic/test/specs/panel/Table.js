@@ -1,14 +1,16 @@
-describe("Ext.panel.Table", function () {
+topSuite("Ext.panel.Table", ['Ext.grid.Panel'], function () {
     var createGrid = function (storeCfg, gridCfg) {
-        store = Ext.create('Ext.data.Store', Ext.apply({
-            storeId:'simpsonsStore',
-            fields:['name', 'email', 'phone'],
-            data:{'items':[
-                { 'name': 'Lisa',  "email":"lisa@simpsons.com",  "phone":"555-111-1224"  },
-                { 'name': 'Bart',  "email":"bart@simpsons.com",  "phone":"555-222-1234"  },
-                { 'name': 'Homer', "email":"homer@simpsons.com", "phone":"555-222-1244"  },
-                { 'name': 'Marge', "email":"marge@simpsons.com", "phone":"555-222-1254"  }
-            ]},
+            store = Ext.create('Ext.data.Store', Ext.apply({
+                storeId: 'simpsonsStore',
+                fields: ['name', 'email', 'phone'],
+                data: {
+                    'items': [
+                        {'name': 'Lisa', "email": "lisa@simpsons.com", "phone": "555-111-1224"},
+                        {'name': 'Bart', "email": "bart@simpsons.com", "phone": "555-222-1234"},
+                        {'name': 'Homer', "email": "homer@simpsons.com", "phone": "555-222-1244"},
+                        {'name': 'Marge', "email": "marge@simpsons.com", "phone": "555-222-1254"}
+                    ]
+                },
             proxy: {
                 type: 'memory',
                 reader: {
@@ -22,19 +24,18 @@ describe("Ext.panel.Table", function () {
             title: 'Simpsons',
             store: store,
             columns: [
-                { header: 'Name',  dataIndex: 'name', width: 100 },
-                { header: 'Email', dataIndex: 'email', flex: 1 },
-                { header: 'Phone', dataIndex: 'phone', flex: 1, hidden: true }
+                {header: 'Name', dataIndex: 'name', width: 100},
+                {header: 'Email', dataIndex: 'email', flex: 1},
+                {header: 'Phone', dataIndex: 'phone', flex: 1, hidden: true}
             ],
             height: 200,
             width: 400
         }, gridCfg));
-    },
-    store, grid;
+        },
+        store, grid;
 
-    afterEach(function(){
-        Ext.destroy(grid);
-        grid = null;
+    afterEach(function () {
+        grid = store = Ext.destroy(store, grid);
     });
 
     describe('forceFit', function () {

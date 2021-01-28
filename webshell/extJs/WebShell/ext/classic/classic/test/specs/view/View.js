@@ -1,16 +1,18 @@
 /* global Ext, MockAjaxManager, expect, jasmine */
 
-describe("Ext.view.View", function() {
-    var view, store, TestModel, navModel,
-        synchronousLoad = true,
-        proxyStoreLoad = Ext.data.ProxyStore.prototype.load,
-        loadStore = function() {
-            proxyStoreLoad.apply(this, arguments);
-            if (synchronousLoad) {
-                this.flushLoad.apply(this, arguments);
-            }
-            return this;
-        };
+topSuite("Ext.view.View",
+    ['Ext.data.ArrayStore', 'Ext.selection.RowModel', 'Ext.app.ViewModel'],
+    function () {
+        var view, store, TestModel, navModel,
+            synchronousLoad = true,
+            proxyStoreLoad = Ext.data.ProxyStore.prototype.load,
+            loadStore = function () {
+                proxyStoreLoad.apply(this, arguments);
+                if (synchronousLoad) {
+                    this.flushLoad.apply(this, arguments);
+                }
+                return this;
+            };
     
     TestModel = Ext.define(null, {
         extend : 'Ext.data.Model',
@@ -441,24 +443,37 @@ describe("Ext.view.View", function() {
             });
         });
 
-        describe("getRecord", function() {
-            it("should accept a DOM element", function() {
+        describe("getRecord/getRecords", function () {
+            it("should accept a DOM element", function () {
                 createSimpleView();
                 var node = view.getNode(3);
                 expect(view.getRecord(node)).toBe(store.getAt(3));
             });
 
-            it("should accept an Ext.dom.Element", function() {
+            it("should accept an Ext.dom.Element", function () {
                 createSimpleView();
                 var node = Ext.get(view.getNode(1));
                 expect(view.getRecord(node)).toBe(store.getAt(1));
+                node.destroy();
             });
 
-            it("should return null if no item could be found", function() {
+            it("should return null if no item could be found", function () {
                 createSimpleView();
                 var el = Ext.getBody().createChild();
                 expect(view.getRecord(el)).toBeNull();
                 el.destroy();
+            });
+
+            it("should return an array of records when using getRecords", function () {
+                createSimpleView();
+                var nodes = view.getNodes(0, 2),
+                    records = view.getRecords(nodes),
+                    i;
+
+                expect(records.length).toBe(3);
+                for (i = 0; i < records.length; i++) {
+                    expect(records[i]).toBe(store.getAt(i));
+                }
             });
         });
 
@@ -2543,6 +2558,8 @@ describe("Ext.view.View", function() {
             // Navigation conditions must be restored after the refresh.
             expect(view.el.query('.' + navModel.focusCls).length).toBe(1);
             expect(itemAfterRefresh.hasCls(navModel.focusCls)).toBe(true);
+
+            itemBeforeRefresh.destroy();
         });
     });
 

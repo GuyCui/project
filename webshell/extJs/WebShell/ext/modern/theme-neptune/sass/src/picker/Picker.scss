@@ -8,9 +8,9 @@
     }
 }
 
-.#{$prefix}picker-inner {
-    background-color: $picker-background-color;
-    overflow: hidden;
+.#{$prefix}picker-body-el {
+  background-color: $picker-background-color;
+  overflow: hidden;
 }
 
 .#{$prefix}picker-mask {

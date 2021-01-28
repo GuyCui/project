@@ -1,13 +1,15 @@
-describe("Ext.direct.Manager", function() {
+/* global Ext, jasmine, expect, spyOn, provider */
+
+topSuite("Ext.direct.Manager", ['Ext.direct.*'], function () {
     var Manager = Ext.direct.Manager,
         provider, handler;
 
-    beforeEach(function() {
-        provider = new Ext.direct.Provider({ id: 'foo' });
-        handler  = jasmine.createSpy('event handler');
+    beforeEach(function () {
+        provider = new Ext.direct.Provider({id: 'foo'});
+        handler = jasmine.createSpy('event handler');
     });
-    
-    afterEach(function() {
+
+    afterEach(function () {
         Manager.providers.clear();
         Manager.transactions.clear();
         Manager.clearListeners();
@@ -340,13 +342,17 @@ describe("Ext.direct.Manager", function() {
                 providerload: successSpy,
                 providerloaderror: failureSpy
             });
-            
+
             successSpy = failureSpy = callbackSpy = callbackScope = null;
 
             Ext.undefine('test.Provider');
             Manager.providerClasses.test = provider = null;
-            test = undefined;
-            
+            try {
+                delete Ext.global.test;
+            } catch (e) {
+                Ext.global.test = undefined;
+            }
+
             delete Ext.REMOTING_API;
         });
         
@@ -609,19 +615,40 @@ describe("Ext.direct.Manager", function() {
                 });
                 
                 describe("failure", function() {
-                    var error = [
-                            'blerg',
-                            Ext.isIE8    ? "TypeError: 'nonexistent' is undefined" :
-                            Ext.isIE     ? "ReferenceError: 'nonexistent' is undefined" :
-                            Ext.isSafari ? "ReferenceError: Can't find variable: nonexistent" :
-                                           "ReferenceError: nonexistent is not defined"
-                        ];
-                    
-                    beforeEach(function() {
+                    var message,
+                        error;
+
+                    try {
+                        (function () {
+                            var a = nonexistent;
+                        })();
+                    } catch (e) {
+                        // Grab first line of stack trace to ascertain displayed message
+                        message = e.stack.split(/\r|\n|\r\n/)[0];
+
+                        // If stack doesn't contain error, the fallback will work.
+                        if (message.indexOf('Error:') === -1) {
+                            message = null;
+                        }
+                    }
+
+                    // If would could not access the real message from the Error object,
+                    // fall back to hoping we know what the browser *really* is
+                    // (We test in emulation modes) and what the browser does.
+                    if (!message) {
+                        message = Ext.isIE8 ? "TypeError: 'nonexistent' is undefined" :
+                            Ext.isIE || Ext.isEdge ? "ReferenceError: 'nonexistent' is undefined" :
+                                Ext.isSafari ? "ReferenceError: Can't find variable: nonexistent" :
+                                    "ReferenceError: nonexistent is not defined"
+                    }
+
+                    error = ['blerg', message];
+
+                    beforeEach(function () {
                         Manager.onApiLoadSuccess({
                             url: 'blerg',
                             varName: 'nonexistent.variable.name',
-                            config: { type: 'test' },
+                            config: {type: 'test'},
                             callback: callbackSpy,
                             scope: callbackScope
                         });

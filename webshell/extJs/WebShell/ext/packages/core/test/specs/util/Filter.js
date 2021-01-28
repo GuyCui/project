@@ -1,14 +1,14 @@
-describe("Ext.util.Filter", function () {
+topSuite("Ext.util.Filter", function () {
     var filter;
 
-    describe("construction", function() {
-        var createFilter = function(config) {
-            return function() {
+    describe("construction", function () {
+        var createFilter = function (config) {
+            return function () {
                 new Ext.util.Filter(config);
             };
         };
 
-        it("should accept a property and value", function() {
+        it("should accept a property and value", function () {
             expect(createFilter({property: 'test', value: 'a'})).not.toThrow();
         });
 

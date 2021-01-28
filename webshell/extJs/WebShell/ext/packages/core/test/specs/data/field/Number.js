@@ -1,11 +1,11 @@
-describe("Ext.data.field.Number", function() {
+topSuite("Ext.data.field.Number", function () {
 
     var field;
-    
+
     function make(cfg) {
         field = new Ext.data.field.Number(cfg);
     }
-    
+
     function c(v) {
         return field.convert(v);
     }

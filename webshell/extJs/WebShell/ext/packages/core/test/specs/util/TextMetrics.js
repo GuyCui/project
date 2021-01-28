@@ -1,16 +1,24 @@
-describe("Ext.util.TextMetrics", function(){
-    
+topSuite("Ext.util.TextMetrics", function () {
     var defaultText = 'The quick brown fox jumps over the lazy dog',
-        el, tm, makeTm, staticTm, makeEl;
-    
-    beforeEach(function(){
-        makeEl = function(style, value) {
+        el, tm, makeTm, staticTm, makeEl, w, hasTahoma;
+
+    // One the the tests relies on the Tahoma font.
+    // Disable it on platforms where that's not available.
+    el = Ext.getBody().createChild();
+    el.dom.innerHTML = 'MMMMM';
+    w = el.dom.clientWidth;
+    el.dom.style.fontFamily = 'Tahoma';
+    hasTahoma = el.dom.style.clientWidth > w;
+    el.destroy();
+
+    beforeEach(function () {
+        makeEl = function (style, value) {
             return Ext.getBody().createChild({
                 style: style + ':' + value
-            });    
+            });
         };
-        
-        makeTm = function(style, value, fixedWidth, text){
+
+        makeTm = function (style, value, fixedWidth, text) {
             Ext.destroy(tm);
             el = makeEl(style, value);
             tm = new Ext.util.TextMetrics(el, fixedWidth);
@@ -63,44 +71,46 @@ describe("Ext.util.TextMetrics", function(){
                 beforeEach(function(){
                     baseLine = staticTm('font-weight', 'normal').width;
                 });
-                
-                it("should affect instance sizing", function(){
+
+                it("should affect instance sizing", function () {
                     var w = makeTm('font-weight', 'bold').width;
                     expect(w).toBeGreaterThan(baseLine);
                 });
-                
-                it("should affect static sizing", function(){
+
+                it("should affect static sizing", function () {
                     var w = staticTm('font-weight', 'bold').width;
                     expect(w).toBeGreaterThan(baseLine);
                 });
             });
-            
-            describe("font family", function(){
-                var baseLine;
-                beforeEach(function(){
-                    baseLine = staticTm('font-family', 'Arial').width;
+
+            if (hasTahoma) {
+                describe("font family", function () {
+                    var baseLine;
+                    beforeEach(function () {
+                        baseLine = staticTm('font-family', 'Arial').width;
+                    });
+
+                    // Tahoma should be wider
+                    it("should affect instance sizing", function () {
+                        var w = makeTm('font-family', 'Tahoma').width;
+                        expect(w).toBeGreaterThan(baseLine);
+                    });
+
+                    it("should affect static sizing", function () {
+                        var w = staticTm('font-family', 'Tahoma').width;
+                        expect(w).toBeGreaterThan(baseLine);
+                    });
                 });
-                
-                // Tahoma should be wider
-                it("should affect instance sizing", function(){
-                    var w = makeTm('font-family', 'Tahoma').width;
-                    expect(w).toBeGreaterThan(baseLine);
-                });
-                
-                it("should affect static sizing", function(){
-                    var w = staticTm('font-family', 'Tahoma').width;
-                    expect(w).toBeGreaterThan(baseLine);
-                });
-            });
-            
+            }
+
             // The spec fails in safari 5.x for some reason, leave it out
             // for now until we can get something more definite in.
-            xdescribe("text transform", function(){
+            xdescribe("text transform", function () {
                 var baseLine;
-                beforeEach(function(){
+                beforeEach(function () {
                     baseLine = staticTm('text-transform', 'lowercase').width;
                 });
-                
+
                 // Tahoma should be wider
                 it("should affect instance sizing", function(){
                     var w = makeTm('text-transform', 'uppercase').width;

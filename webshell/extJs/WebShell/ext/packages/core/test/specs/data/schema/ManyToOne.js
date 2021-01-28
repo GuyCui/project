@@ -1,7 +1,7 @@
-describe("Ext.data.schema.ManyToOne", function() {
-    
+topSuite("Ext.data.schema.ManyToOne", ['Ext.data.ArrayStore', 'Ext.data.Session'], function () {
+
     var schema, Post, Thread, threadRole, postRole,
-        threadCalled = false, 
+        threadCalled = false,
         postCalled = false;
 
     function definePost(refCfg) {
@@ -419,8 +419,31 @@ describe("Ext.data.schema.ManyToOne", function() {
             Ext.undefine('spec.Node');
         });
 
-        describe("complete", function() {
-            it("should mark the store complete if there are records", function() {
+        it("should load data if the store is referenced before the owning model is loaded", function () {
+            definePost();
+            var thread = new Thread({
+                    id: 1
+                }),
+                posts = thread.posts();
+
+            expect(posts.getCount()).toBe(0);
+
+            thread.load();
+            complete({
+                id: 1,
+                posts: [{
+                    id: 101
+                }, {
+                    id: 102
+                }]
+            });
+            expect(posts.getCount()).toBe(2);
+            expect(posts.getAt(0).id).toBe(101);
+            expect(posts.getAt(1).id).toBe(102);
+        });
+
+        describe("complete", function () {
+            it("should mark the store complete if there are records", function () {
                 definePost();
                 var store = new Ext.data.Store({
                     model: Thread

@@ -1,14 +1,14 @@
-describe("Ext.util.LocalStorage", function() {
+topSuite("Ext.util.LocalStorage", function () {
     var store;
 
-    function createStore () {
-        return new Ext.util.LocalStorage({ id: 'one', flushDelay: 0 });
+    function createStore() {
+        return new Ext.util.LocalStorage({id: 'one', flushDelay: 0});
     }
 
     beforeEach(function () {
         store = createStore();
     });
-    afterEach(function() {
+    afterEach(function () {
         store.clear();
         store.destroy();
         store = null;

@@ -1,12 +1,11 @@
-describe("AbstractManager", function(){
-    
+topSuite("Ext.AbstractManager", ["Ext.util.Filter"], function () {
     var manager;
-    
-    beforeEach(function(){
+
+    beforeEach(function () {
         manager = new Ext.AbstractManager();
     });
-    
-    afterEach(function(){
+
+    afterEach(function () {
         manager = null;
     });
     

@@ -1,4 +1,4 @@
-describe("Ext.form.action.Submit", function() {
+topSuite("Ext.form.action.Submit", ['Ext.form.Basic', 'Ext.form.field.*'], function () {
     var action;
 
     function createAction(config) {
@@ -7,7 +7,9 @@ describe("Ext.form.action.Submit", function() {
             config.form = {};
         }
         Ext.applyIf(config.form, {
-            isValid: function() { return true; },
+            isValid: function () {
+                return true;
+            },
             afterAction: Ext.emptyFn,
             getValues: Ext.emptyFn,
             hasUpload: function() { return false; },

@@ -4,5 +4,5 @@ Ext.define('app.view.Home', {
     extend: 'Ext.container.Container',
     xtype: 'home',
     padding: 10,
-    html: '首页',
+    html: '首页'
 });

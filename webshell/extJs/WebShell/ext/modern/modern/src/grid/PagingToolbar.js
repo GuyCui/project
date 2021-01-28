@@ -55,9 +55,9 @@ Ext.define('Ext.grid.PagingToolbar', {
         }
     },
 
-    defaultButtonUI: 'flat',
+    inheritUi: true,
 
-    initialize: function() {
+    initialize: function () {
         var me = this;
 
         me.callParent();

@@ -3,29 +3,29 @@
  */
 
 .x-mask {
-    min-width: 8.5em;
+  min-width: 8.5em;
 
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    height: 100%;
-    z-index: 10;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height: 100%;
+  z-index: 10;
 
-    @include st-box;
-    @include st-box-align(center);
-    @include st-box-pack(center);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-    background: rgba(0,0,0,.3) center center no-repeat;
+  background: rgba(0, 0, 0, .3) center center no-repeat;
 
-    &.x-mask-gray {
-        background-color: rgba(0, 0, 0, 0.5);
-    }
+  &.x-mask-gray {
+    background-color: rgba(0, 0, 0, 0.5);
+  }
 
-    &.x-mask-transparent {
-        background-color: transparent;
-    }
+  &.x-mask-transparent {
+    background-color: transparent;
+  }
 
     .x-mask-inner {
         position: relative;
@@ -38,13 +38,13 @@
     }
 
     .x-loading-spinner-outer {
-        @include st-box;
-        @include st-box-orient(vertical);
-        @include st-box-align(center);
-        @include st-box-pack(center);
-        width: 100%;
-        min-width: 8em;
-        height: 8em;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      min-width: 8em;
+      height: 8em;
     }
 
     &.x-indicator-hidden {
@@ -62,12 +62,12 @@
     }
 
     .x-mask-message {
-        position: absolute;
-        bottom: 5px;
-        color: #333;
-        left: 0;
-        right: 0;
-        @include st-box-flex(0);
+      position: absolute;
+      bottom: 5px;
+      color: #333;
+      left: 0;
+      right: 0;
+      flex: 0 0;
     }
 
     &.x-has-message {

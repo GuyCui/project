@@ -1,12 +1,12 @@
-describe("Ext.data.proxy.Proxy", function() {
+topSuite("Ext.data.proxy.Proxy", ['Ext.data.ArrayStore'], function () {
     var proxy,
         Proxy = Ext.data.proxy.Proxy,
-        AlienModelName   = 'spec.Alien',
-        AlienModelConfig =  {
+        AlienModelName = 'spec.Alien',
+        AlienModelConfig = {
             extend: 'Ext.data.Model',
             fields: [
-                {name: 'name',  type: 'string'},
-                {name: 'age',   type: 'int'},
+                {name: 'name', type: 'string'},
+                {name: 'age', type: 'int'},
                 {name: 'planet', type: 'string'}
             ]
         },

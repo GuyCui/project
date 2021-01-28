@@ -90,7 +90,23 @@ Ext.define('Ext.form.field.Checkbox', {
     extend: 'Ext.form.field.Base',
     alias: ['widget.checkboxfield', 'widget.checkbox'],
     alternateClassName: 'Ext.form.Checkbox',
-    requires: ['Ext.XTemplate', 'Ext.form.CheckboxManager' ],
+    requires: ['Ext.XTemplate', 'Ext.form.CheckboxManager'],
+
+    /**
+     * @cfg {Boolean/String/Number} modelValue
+     * The value to use for {@link #getModelData} when checked.
+     *
+     * @since 6.2.1
+     */
+    modelValue: true,
+
+    /**
+     * @cfg {Boolean/String/Number} modelValueUnchecked
+     * The value to use for {@link #getModelData} when unchecked.
+     *
+     * @since 6.2.1
+     */
+    modelValueUnchecked: false,
 
     // inputEl should always retain the same size, never stretch
     stretchInputElFixed: false,
@@ -111,27 +127,27 @@ Ext.define('Ext.form.field.Checkbox', {
         '<div id="{cmpId}-innerWrapEl" data-ref="innerWrapEl" role="presentation"',
             ' class="{wrapInnerCls}">',
             '<tpl if="labelAlignedBefore">',
-                '{beforeBoxLabelTpl}',
-                '<label id="{cmpId}-boxLabelEl" data-ref="boxLabelEl" {boxLabelAttrTpl} class="{boxLabelCls} ',
-                        '{boxLabelCls}-{ui} {boxLabelCls}-{boxLabelAlign} {noBoxLabelCls} {childElCls}" for="{id}">',
-                    '{beforeBoxLabelTextTpl}',
-                    '{boxLabel}',
-                    '{afterBoxLabelTextTpl}',
-                '</label>',
-                '{afterBoxLabelTpl}',
-            '</tpl>',
-            '<span id="{cmpId}-displayEl" data-ref="displayEl" role="presentation" class="{fieldCls} {typeCls} ',
-                '{typeCls}-{ui} {inputCls} {inputCls}-{ui} {childElCls} {afterLabelCls}">',
-                '<input type="{inputType}" id="{id}" name="{inputName}" data-ref="inputEl" {inputAttrTpl}',
-                    '<tpl if="tabIdx != null"> tabindex="{tabIdx}"</tpl>',
-                    '<tpl if="disabled"> disabled="disabled"</tpl>',
-                    '<tpl if="checked"> checked="checked"</tpl>',
-                    '<tpl if="fieldStyle"> style="{fieldStyle}"</tpl>',
-                    ' class="{checkboxCls}" autocomplete="off" hidefocus="true" ',
-                    '<tpl foreach="ariaElAttributes"> {$}="{.}"</tpl>',
-                    '<tpl foreach="inputElAriaAttributes"> {$}="{.}"</tpl>',
-                    '/>',
-            '</span>',
+        '{beforeBoxLabelTpl}',
+        '<label id="{cmpId}-boxLabelEl" data-ref="boxLabelEl" {boxLabelAttrTpl} class="{boxLabelCls} ',
+        '{boxLabelCls}-{ui} {boxLabelCls}-{boxLabelAlign} {noBoxLabelCls} {childElCls}" for="{id}">',
+        '{beforeBoxLabelTextTpl}',
+        '{boxLabel}',
+        '{afterBoxLabelTextTpl}',
+        '</label>',
+        '{afterBoxLabelTpl}',
+        '</tpl>',
+        '<span id="{cmpId}-displayEl" data-ref="displayEl" role="presentation" class="{fieldCls} {typeCls} ',
+        '{typeCls}-{ui} {inputCls} {inputCls}-{ui} {fixCls} {childElCls} {afterLabelCls}">',
+        '<input type="{inputType}" id="{id}" name="{inputName}" data-ref="inputEl" {inputAttrTpl}',
+        '<tpl if="tabIdx != null"> tabindex="{tabIdx}"</tpl>',
+        '<tpl if="disabled"> disabled="disabled"</tpl>',
+        '<tpl if="checked"> checked="checked"</tpl>',
+        '<tpl if="fieldStyle"> style="{fieldStyle}"</tpl>',
+        ' class="{checkboxCls}" autocomplete="off" hidefocus="true" ',
+        '<tpl foreach="ariaElAttributes"> {$}="{.}"</tpl>',
+        '<tpl foreach="inputElAriaAttributes"> {$}="{.}"</tpl>',
+        '/>',
+        '</span>',
             '<tpl if="!labelAlignedBefore">',
                 '{beforeBoxLabelTpl}',
                 '<label id="{cmpId}-boxLabelEl" data-ref="boxLabelEl" {boxLabelAttrTpl} class="{boxLabelCls} ',
@@ -139,9 +155,9 @@ Ext.define('Ext.form.field.Checkbox', {
                     '{beforeBoxLabelTextTpl}',
                     '{boxLabel}',
                     '{afterBoxLabelTextTpl}',
-                '</label>',
-                '{afterBoxLabelTpl}',
-            '</tpl>',
+        '</label>',
+        '{afterBoxLabelTpl}',
+        '</tpl>',
         '</div>',
         {
             disableFormats: true,
@@ -149,6 +165,10 @@ Ext.define('Ext.form.field.Checkbox', {
         }
     ],
 
+    /**
+     * @cfg
+     * @inheritdoc
+     */
     publishes: {
         checked: 1
     },
@@ -356,9 +376,11 @@ Ext.define('Ext.form.field.Checkbox', {
     },
 
     getModelData: function() {
-        var o = this.callParent(arguments);
+        var me = this,
+            o = me.callParent(arguments);
+
         if (o) {
-            o[this.getName()] = this.getSubmitValue();
+            o[me.getName()] = me.checked ? me.modelValue : me.modelValueUnchecked;
         }
         return o;
     },
@@ -444,18 +466,20 @@ Ext.define('Ext.form.field.Checkbox', {
             me.updateLayout();
         }
     },
-    
+
     /**
-     * @private Handle mousedown events on bodyEl. See explanations in initEvents().
+     * @private
+     * Handle mousedown events on bodyEl. See explanations in initEvents().
      */
     onBodyElMousedown: function(e) {
         if (e.target !== this.inputEl.dom) {
             e.preventDefault();
         }
     },
-    
+
     /**
-     * @private Handle mousedown events on boxLabelEl and inputEl.
+     * @private
+     * Handle mousedown events on boxLabelEl and inputEl.
      * See explanations in initEvents().
      */
     onBoxLabelOrInputMousedown: function(e) {

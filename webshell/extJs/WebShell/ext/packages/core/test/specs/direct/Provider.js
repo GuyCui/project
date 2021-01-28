@@ -1,12 +1,12 @@
-describe("Ext.direct.Provider", function() {
+topSuite("Ext.direct.Provider", ['Ext.direct.*'], function () {
     var ajaxSpy, provider, connectSpy, disconnectSpy;
-    
+
     function makeProvider(config) {
         provider = new Ext.direct.Provider(config);
-        
+
         return provider;
     }
-    
+
     function makeRequest(config) {
         var abortSpy = jasmine.createSpy('abort');
         

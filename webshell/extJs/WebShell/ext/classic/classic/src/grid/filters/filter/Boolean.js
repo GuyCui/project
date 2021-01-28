@@ -20,14 +20,16 @@
  *             {id: 5, show: 'Star Wars: Christmas Special', visible: false}
  *         ]
  *     });
- *   
+ *
  *     Ext.create('Ext.grid.Panel', {
  *         renderTo: Ext.getBody(),
  *         title: 'Sci-Fi Television',
  *         height: 250,
  *         width: 375,
  *         store: shows,
- *         plugins: 'gridfilters',
+ *         plugins: {
+ *             gridfilters: true
+ *         },
  *         columns: [{
  *             dataIndex: 'id',
  *             text: 'ID',
@@ -42,12 +44,12 @@
  *             width: 125,
  *             filter: {
  *                 type: 'boolean',
- *                 value: 'true',
+ *                 value: true,
  *                 yesText: 'True',
  *                 noText: 'False'
  *             }
  *         }]
- *     });  
+ *     });
  */
 Ext.define('Ext.grid.filters.filter.Boolean', {
     extend: 'Ext.grid.filters.filter.SingleFilter',
@@ -63,23 +65,36 @@ Ext.define('Ext.grid.filters.filter.Boolean', {
      */
     defaultValue: false,
 
-    //<locale>
     /**
-     * @cfg {String} yesText
-     * Defaults to 'Yes'.
+     * @cfg {String} [yesText]
+     * The text to display for `true`.
+     * @locale
      */
     yesText: 'Yes',
-    //</locale>
 
-    //<locale>
     /**
-     * @cfg {String} noText
-     * Defaults to 'No'.
+     * @cfg {String} [noText]
+     * The text to display for `false`.
+     * @locale
      */
     noText: 'No',
-    //</locale>
 
     updateBuffer: 0,
+
+    constructor: function (config) {
+        var me = this,
+            filterValue;
+
+        me.callParent([config]);
+
+        if (me.filter) {
+            filterValue = me.filter.getValue();
+
+            if (Ext.isEmpty(filterValue, true) && me.defaultValue !== null) {
+                me.filter.setValue(!!me.defaultValue);
+            }
+        }
+    },
 
     /**
      * @private
@@ -107,7 +122,7 @@ Ext.define('Ext.grid.filters.filter.Boolean', {
             text: me.noText,
             filterKey: 0,
             group: gId,
-            checked: !me.defaultValue,
+            checked: !me.defaultValue && me.defaultValue !== null,
             hideOnClick: false,
             listeners: listeners
         }, itemDefaults)]);

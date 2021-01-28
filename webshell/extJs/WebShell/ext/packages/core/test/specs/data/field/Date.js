@@ -1,12 +1,12 @@
-describe("Ext.data.field.Date", function() {
-    
+topSuite("Ext.data.field.Date", function () {
+
     var field;
-    
+
     function make(cfg) {
         field = new Ext.data.field.Date(cfg);
     }
-    
-    afterEach(function() {
+
+    afterEach(function () {
         field = null;
     });
     

@@ -1,11 +1,11 @@
-describe("Ext.data.proxy.Client", function() {
+topSuite("Ext.data.proxy.Client", ['Ext.data.ArrayStore'], function () {
     var proxy;
 
-    beforeEach(function() {
+    beforeEach(function () {
         proxy = new Ext.data.proxy.Client();
     });
 
-    it("should extend Ext.data.proxy.Proxy", function() {
+    it("should extend Ext.data.proxy.Proxy", function () {
         expect(proxy.superclass).toEqual(Ext.data.proxy.Proxy.prototype);
     });
 

@@ -1,11 +1,11 @@
-describe('Ext.layout.container.Absolute', function() {
+topSuite("Ext.layout.container.Absolute", 'Ext.Container', function () {
     var ct;
 
-    afterEach(function() {
+    afterEach(function () {
         ct = Ext.destroy(ct);
     });
 
-    it("should layout an item with anchor that was initially hidden", function() {
+    it("should layout an item with anchor that was initially hidden", function () {
         ct = new Ext.container.Container({
             renderTo: Ext.getBody(),
             width: 400,

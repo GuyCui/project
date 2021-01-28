@@ -1,6 +1,6 @@
-/* global Ext, spyOn, expect, MockAjaxManager, jasmine */
+/* global Ext, spyOn, expect, MockAjaxManager, jasmine, spyOnEvent */
 
-describe("Ext.data.TreeStore", function() {
+topSuite("Ext.data.TreeStore", function () {
     var store,
         root,
         loadStore,
@@ -25,15 +25,6 @@ describe("Ext.data.TreeStore", function() {
                 {name: 'duration', type: 'string'}
             ]
         });
-
-    function spyOnEvent(object, eventName, fn) {
-        var obj = {
-            fn: fn || Ext.emptyFn
-        },
-        spy = spyOn(obj, "fn");
-        object.addListener(eventName, obj.fn);
-        return spy;
-    }
 
     function expandify(nodes) {
         if (Ext.isNumber(nodes[0])) {
@@ -336,7 +327,7 @@ describe("Ext.data.TreeStore", function() {
                 expect(store.getProxy().getReader().getModel()).toBe(store.getModel());
             });
 
-            it("should extend Ext.data.Model", function() {
+            it("should extend Ext.data.Model", function () {
                 store = new Ext.data.TreeStore({
                     fields: ['id', 'height', 'width']
                 });
@@ -345,7 +336,41 @@ describe("Ext.data.TreeStore", function() {
         });
     });
 
-    describe("sorting", function() {
+    describe("grouping", function () {
+        it("should always be ungroupable", function () {
+            store = new Ext.data.TreeStore({
+                model: NodeModel,
+                root: {
+                    expanded: true,
+                    children: [{
+                        id: 'l1',
+                        leaf: true,
+                        age: 20
+                    }, {
+                        id: 'f1',
+                        age: 30
+                    }, {
+                        id: 'l2',
+                        leaf: true,
+                        age: 20
+                    }, {
+                        id: 'f2',
+                        age: 30
+                    }]
+                }
+            });
+            expect(function () {
+                store.setGrouper('age');
+            }).toThrow();
+            expect(store.getGrouper()).toBeNull();
+            store.setGroupField('age');
+            expect(store.getGroupField()).toBe('');
+            store.setGroupDir('DESC');
+            expect(store.getGroupDir()).toBeNull();
+        });
+    });
+
+    describe("sorting", function () {
         function expectStoreOrder(ids) {
             var len = ids.length,
                 i;
@@ -2174,29 +2199,29 @@ describe("Ext.data.TreeStore", function() {
     describe('moving root node between trees', function() {
         it('should move root and all descendants from source tree into destination tree', function() {
             store = new Ext.data.TreeStore({
-                    root: {
-                        expanded: true, 
-                        children: [{
-                            text: "Test",
-                            leaf: true,
-                            id: 'testId'
-                        }]
+                root: {
+                    expanded: true,
+                    children: [{
+                        text: "Test",
+                        leaf: true,
+                        id: 'testId'
+                    }]
+                },
+                listeners: {
+                    rootchange: function (newRoot, oldRoot) {
+                        oldStoreRootChangeArgs = [newRoot, oldRoot];
                     },
-                    listeners: {
-                        rootchange: function(newRoot, oldRoot) {
-                            oldStoreRootChangeArgs = [newRoot, oldRoot];
-                        },
-                        refresh: function() {
-                            storeRefreshed++;
-                        },
-                        add: function() {
-                            added++;
-                        },
-                        remove: function() {
-                            removed++;
-                        }
+                    refresh: function () {
+                        storeRefreshed++;
+                    },
+                    add: function () {
+                        added++;
+                    },
+                    remove: function () {
+                        removed++;
                     }
-                });
+                }
+            });
 
             var rootNode = store.getRootNode(),
                 childNode = rootNode.firstChild,
@@ -4935,8 +4960,8 @@ describe("Ext.data.TreeStore", function() {
     });
     
     describe('datachanged event', function() {
-        it('should only fire once when filling a parent node with all descendants expanded', function() {
-            var dataChangeCount = 0;
+        it('should not fire events while constructing', function () {
+            var spy = jasmine.createSpy();
 
             store = new Ext.data.TreeStore({
                 model: NodeModel,
@@ -4956,12 +4981,14 @@ describe("Ext.data.TreeStore", function() {
                     }]
                 },
                 listeners: {
-                    datachanged: function() {
-                        dataChangeCount++;
-                    }
+                    add: spy,
+                    remove: spy,
+                    datachanged: spy,
+                    rootchange: spy,
+                    refresh: spy
                 }
             });
-            expect(dataChangeCount).toBe(1);
+            expect(spy).not.toHaveBeenCalled();
         });
     });
 

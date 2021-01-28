@@ -1,8 +1,8 @@
-describe("Ext.slider.Thumb", function() {
+topSuite("Ext.slider.Thumb", ['Ext.slider.Single'], function () {
     var slider, thumb, createSlider, createThumb;
-    
-    beforeEach(function() {
-        createSlider = function(config) {
+
+    beforeEach(function () {
+        createSlider = function (config) {
             slider = new Ext.slider.Multi(Ext.apply({
                 renderTo: Ext.getBody(),
                 name: "test",
@@ -147,15 +147,20 @@ describe("Ext.slider.Thumb", function() {
                         });
                         
                         describe("if slider disabled", function() {
-                            beforeEach(function() {
+                            beforeEach(function () {
                                 slider.disable();
                                 var xy = slider.innerEl.getXY();
                                 jasmine.fireMouseEvent(slider.el, 'mousedown', xy[0] + 10, xy[1] + 10);
                             });
 
-                            it("should not change the thumb value", function() {
+                            afterEach(function () {
+                                var xy = slider.innerEl.getXY();
+                                jasmine.fireMouseEvent(slider.el, 'mouseup', xy[0] + 10, xy[1] + 10);
+                            });
+
+                            it("should not change the thumb value", function () {
                                 expect(thumb0.value).toEqual(0);
-                            });                        
+                            });
                         });
                     });                    
                 });
@@ -250,15 +255,20 @@ describe("Ext.slider.Thumb", function() {
                         });
                         
                         describe("if slider disabled", function() {
-                            beforeEach(function() {
+                            beforeEach(function () {
                                 slider.disable();
                                 var xy = slider.innerEl.getXY();
                                 jasmine.fireMouseEvent(slider.el, 'mousedown', xy[0] + 10, xy[1] - 10);
                             });
 
-                            it("should not change the thumb value", function() {
+                            afterEach(function () {
+                                var xy = slider.innerEl.getXY();
+                                jasmine.fireMouseEvent(slider.el, 'mouseup', xy[0] + 10, xy[1] - 10);
+                            });
+
+                            it("should not change the thumb value", function () {
                                 expect(thumb0.value).toEqual(0);
-                            });                        
+                            });
                         });
                     });
                 });

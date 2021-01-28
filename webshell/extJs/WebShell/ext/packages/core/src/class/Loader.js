@@ -94,19 +94,19 @@
  *      });
  *
  * This form of creation can be useful if the type to create (`window` in the above) is
- * not known statically. Internally, `{@link Ext#create}` may need to *synchronously*
+ * not known statically. Internally, `{@link Ext#method!create}` may need to *synchronously*
  * load the desired class and its requirements. Doing this will generate a warning in
  * the console:
- * 
+ *
  *      [Ext.Loader] Synchronously loading 'Ext.window.Window'...
  *
  * If you see these in your debug console, you should add the indicated class(es) to the
  * appropriate `requires` array (as above) or make an `{@link Ext#require}` call.
- * 
- * 
- * **Note** Using `{@link Ext#create}` has some performance overhead and is best reserved
+ *
+ *
+ * **Note** Using `{@link Ext#method!create}` has some performance overhead and is best reserved
  * for cases where the target class is not known until run-time.
- * 
+ *
  * @class Ext.Loader
  * @singleton
  */
@@ -320,6 +320,7 @@ Ext.Loader = (new function() {  // jshint ignore:line
         },
 
         /**
+         * @method setConfig
          * Set the configuration for the loader. This should be called right after ext-(debug).js
          * is included in the page, and before Ext.onReady. i.e:
          *
@@ -407,7 +408,6 @@ Ext.Loader = (new function() {  // jshint ignore:line
          * of the path, then delegates to Ext.Loader#addClassPathMappings
          * @param pathConfig
          */
-
         addBaseUrlClassPathMappings: function(pathConfig) {
             for (var name in pathConfig) {
                 pathConfig[name] = Boot.baseUrl + pathConfig[name];
@@ -594,17 +594,25 @@ Ext.Loader = (new function() {  // jshint ignore:line
                 return callback.apply(this, classes);
             };
         },
-        
-        onLoadFailure: function () {
+
+        onLoadFailure: function (request) {
             var options = this,
-                onError = options.onError;
+                entries = request.entries || [],
+                onError = options.onError, error, entry, i;
 
             Loader.hasFileLoadError = true;
             --Loader.scriptsLoading;
 
             if (onError) {
-                //TODO: need an adapter to convert to v4 onError signatures
-                onError.call(options.userScope, options);
+                for (i = 0; i < entries.length; i++) {
+                    entry = entries[i];
+                    if (entry.error) {
+                        error = new Error('Failed to load: ' + entry.url);
+                        break;
+                    }
+                }
+                error = error || new Error('Failed to load');
+                onError.call(options.userScope, options, error, request);
             }
             //<debug>
             else {

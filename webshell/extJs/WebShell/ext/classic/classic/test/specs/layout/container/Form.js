@@ -1,9 +1,9 @@
-describe('Ext.layout.container.Form', function() {
+topSuite('Ext.layout.container.Form', ['Ext.form.Panel', 'Ext.form.field.Text'], function () {
 
     // TODO: form layout specs
-    xdescribe('child items manipulation', function() {
+    xdescribe('child items manipulation', function () {
 
-        it('should convert child items tables to tbody nodes', function() {
+        it('should convert child items tables to tbody nodes', function () {
             var panel = Ext.create('Ext.form.Panel', {
                     layout: 'form',
                     renderTo: Ext.getBody(),
@@ -54,5 +54,4 @@ describe('Ext.layout.container.Form', function() {
         expect(panel.getWidth()).toBe(267);
         panel.destroy();
     });
-
 });

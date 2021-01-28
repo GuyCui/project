@@ -1,15 +1,15 @@
 // toolbar inputs inside a panel header
-.#{$prefix}panel-header {
-    .#{$prefix}field {
-        background-color: transparent;
-        border-bottom-color: $reverse-disabled-color;
+.#{$prefix}panelheader {
+  .#{$prefix}field {
+    background-color: transparent;
+    border-bottom-color: $reverse-disabled-color;
 
-        .#{$prefix}label-el {
-            color: $accent-color;
-        }
+    .#{$prefix}label-el {
+      color: $accent-color;
+    }
 
-        &.#{$prefix}focused {
-            border-bottom-color: $accent-color;
+    &.#{$prefix}focused {
+      border-bottom-color: $accent-color;
         }
     }
 

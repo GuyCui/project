@@ -1,11 +1,11 @@
-describe("Ext.direct.Transaction", function() {
+topSuite("Ext.direct.Transaction", ['Ext.direct.*'], function () {
     var transaction, provider;
-    
-    beforeEach(function() {
+
+    beforeEach(function () {
         provider = {
             queueTransaction: jasmine.createSpy('provider.queueTransaction')
         };
-        
+
         transaction = new Ext.direct.Transaction({
             provider: provider
         });

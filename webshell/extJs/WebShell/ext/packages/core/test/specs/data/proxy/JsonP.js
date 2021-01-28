@@ -1,11 +1,11 @@
-describe("Ext.data.proxy.JsonP", function() {
-   var proxy;
+topSuite("Ext.data.proxy.JsonP", ['Ext.data.ArrayStore'], function () {
+    var proxy;
 
-    beforeEach(function(){
+    beforeEach(function () {
         proxy = new Ext.data.proxy.JsonP({noCache: false});
     });
-    
-    afterEach(function() {
+
+    afterEach(function () {
         Ext.data.Model.schema.clear();
     });
 

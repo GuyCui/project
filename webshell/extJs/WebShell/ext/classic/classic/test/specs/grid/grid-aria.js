@@ -1,14 +1,17 @@
-describe("grid-aria", function() {
-    var stdStore = {
-            type: 'array',
-            fields: ['field1', 'field2', 'field3', 'field4', 'field5'],
-            data: [
-                ['foo', 'bar', 'baz', 'qux', 'fred'],
-                ['frob', 'throbbe', 'bonzo', 'mymse', 'xyzzy']
-            ]
-        },
-        stdColumns = [{
-            dataIndex: 'field1',
+topSuite("grid-aria",
+    [false, 'Ext.grid.Panel', 'Ext.grid.plugin.CellEditing', 'Ext.grid.plugin.RowEditing',
+        'Ext.grid.selection.SpreadsheetModel'],
+    function () {
+        var stdStore = {
+                type: 'array',
+                fields: ['field1', 'field2', 'field3', 'field4', 'field5'],
+                data: [
+                    ['foo', 'bar', 'baz', 'qux', 'fred'],
+                    ['frob', 'throbbe', 'bonzo', 'mymse', 'xyzzy']
+                ]
+            },
+            stdColumns = [{
+                dataIndex: 'field1',
             text: 'field 1'
         }, {
             dataIndex: 'field2',
@@ -126,7 +129,7 @@ describe("grid-aria", function() {
             
             it("should have no role on the cell inner div", function() {
                 var cell = view.getCell(0, col),
-                    innerDiv = cell.dom.firstChild;
+                    innerDiv = cell.firstChild;
                 
                 expect(innerDiv).not.toHaveAttr('role');
             });
@@ -178,7 +181,7 @@ describe("grid-aria", function() {
             
             it("should have no role on the cell inner div", function() {
                 var cell = view.getCell(0, col),
-                    innerDiv = cell.dom.firstChild;
+                    innerDiv = cell.firstChild;
                 
                 expect(innerDiv).not.toHaveAttr('role');
             });

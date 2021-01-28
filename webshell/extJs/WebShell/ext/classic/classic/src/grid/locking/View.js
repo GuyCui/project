@@ -14,7 +14,7 @@ Ext.define('Ext.grid.locking.View', {
     mixins: [
         'Ext.util.Observable',
         'Ext.util.StoreHolder',
-        'Ext.util.Focusable'
+        'Ext.mixin.Focusable'
     ],
 
     /**
@@ -204,7 +204,7 @@ Ext.define('Ext.grid.locking.View', {
     },
 
     getEl: function(column){
-        return this.getViewForColumn(column).getEl();
+        return column.getView().getEl();
     },
 
     getCellSelector: function() {
@@ -213,20 +213,6 @@ Ext.define('Ext.grid.locking.View', {
 
     getItemSelector: function () {
         return this.normalView.getItemSelector();
-    },
-
-    getViewForColumn: function(column) {
-        var view = this.lockedView,
-            inLocked;
-
-        view.headerCt.cascade(function(col){
-            if (col === column) {
-                inLocked = true;
-                return false;
-            }
-        });
-
-        return inLocked ? view : this.normalView;
     },
 
     onItemMouseEnter: function(view, record){
@@ -289,7 +275,7 @@ Ext.define('Ext.grid.locking.View', {
      * @param {Ext.data.Store} store The store to bind to this view
      * @since 3.4.0
      */
-    onBindStore : function(store, initial, propName) {
+    onBindStore: function (store) {
         var me = this,
             lockedView = me.lockedView,
             normalView = me.normalView;
@@ -349,6 +335,7 @@ Ext.define('Ext.grid.locking.View', {
     onDataRefresh: function() {
         Ext.suspendLayouts();
         this.relayFn('onDataRefresh', arguments);
+        this.ownerGrid.view.refreshView();
         Ext.resumeLayouts(true);
     },
 
@@ -373,6 +360,7 @@ Ext.define('Ext.grid.locking.View', {
     /**
      * Toggles ARIA actionable mode on/off
      * @param {Boolean} enabled
+     * @param {Ext.grid.CellContext} position
      * @return {Boolean} Returns `false` if the request failed.
      * @private
      */
@@ -408,7 +396,7 @@ Ext.define('Ext.grid.locking.View', {
                 return false;
             }
         } else {
-            this.relayFn('setActionableMode', [false]);
+            this.relayFn('setActionableMode', [false, position]);
         }
     },
 
@@ -469,24 +457,24 @@ Ext.define('Ext.grid.locking.View', {
         Ext.resumeLayouts(true);
     },
 
-    getNode: function(nodeInfo) {
+    getNode: function (nodeInfo) {
         // default to the normal view
         return this.normalView.getNode(nodeInfo);
     },
 
-    getRow: function(nodeInfo) {
+    getRow: function (nodeInfo) {
         // default to the normal view
         return this.normalView.getRow(nodeInfo);
     },
 
-    getCell: function(record, column) {
-        var view = this.getViewForColumn(column),
-            row = view.getRow(record);
-            
-        return Ext.fly(row).down(column.getCellSelector());
+    getCell: function (record, column, returnElement) {
+        var row = column.getView().getRow(record),
+            cell = row.querySelector(column.getCellSelector());
+
+        return returnElement ? Ext.get(cell) : cell;
     },
 
-    indexOf: function(record) {
+    indexOf: function (record) {
         var result = this.lockedView.indexOf(record);
         if (!result) {
             result = this.normalView.indexOf(record);
@@ -513,21 +501,26 @@ Ext.define('Ext.grid.locking.View', {
         view.focusRow(row);
     },
 
-    focusCell: function(position) {
+    focusCell: function (position) {
         position.view.focusCell(position);
     },
 
-    onRowFocus: function() {
+    onRowFocus: function () {
         this.relayFn('onRowFocus', arguments);
     },
 
-    isVisible: function(deep) {
+    cancelFocusTask: function () {
+        this.lockedView.cancelFocusTask();
+        this.normalView.cancelFocusTask();
+    },
+
+    isVisible: function (deep) {
         return this.ownerGrid.isVisible(deep);
     },
 
     // Old API. Used by tests now to test coercion of navigation from hidden column to closest visible.
     // Position.column includes all columns including hidden ones.
-    getCellInclusive: function(pos, returnDom) {
+    getCellInclusive: function (pos, returnDom) {
         var col = pos.column,
             lockedSize = this.lockedGrid.getColumnManager().getColumns().length;
             
@@ -634,9 +627,8 @@ Ext.define('Ext.grid.locking.View', {
 
         // Unbind from the dataSource we bound to in constructor
         me.bindStore(null, false, 'dataSource');
-        
-        Ext.destroy(me.selModel, me.navigationModel, me.loadMask,
-                    me.lockedViewEventRelayers, me.normalViewEventRelayers);
+
+        Ext.destroy(me.selModel, me.navigationModel, me.loadMask);
         
         me.lockedView.lockingPartner = me.normalView.lockingPartner = null;
         

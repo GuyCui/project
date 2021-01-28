@@ -1,9 +1,9 @@
-describe("Ext.app.domain.Direct", function() {
+topSuite("Ext.app.domain.Direct", ['Ext.direct.*'], function () {
     var ctrl, provFoo, provBar, handlerFoo, handlerBar;
-    
-    beforeEach(function() {
+
+    beforeEach(function () {
         spyOn(Ext.Ajax, 'request').andReturn();
-        
+
         provFoo = new Ext.direct.RemotingProvider({
             id: 'foo',
             url: '/foo'

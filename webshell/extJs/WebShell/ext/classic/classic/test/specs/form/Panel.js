@@ -1,4 +1,4 @@
-describe("Ext.form.Panel", function() {
+topSuite("Ext.form.Panel", function () {
     var panel;
 
     function createPanel(config) {
@@ -6,7 +6,7 @@ describe("Ext.form.Panel", function() {
         panel = new Ext.form.Panel(config);
     }
 
-    afterEach(function() {
+    afterEach(function () {
         panel = Ext.destroy(panel);
     });
 

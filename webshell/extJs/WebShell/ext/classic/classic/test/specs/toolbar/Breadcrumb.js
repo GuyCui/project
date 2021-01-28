@@ -1,11 +1,11 @@
-describe('Ext.toolbar.Breadcrumb', function() {
+topSuite("Ext.toolbar.Breadcrumb", ['Ext.app.ViewModel'], function () {
     var store, breadcrumbBar, treeData;
 
     function createBreadcrumbBar(config) {
         // ARIA warnings and errors are expected
         spyOn(Ext.log, 'warn');
         spyOn(Ext.log, 'error');
-        
+
         breadcrumbBar = Ext.widget(Ext.apply({
             xtype: 'breadcrumb',
             renderTo: Ext.getBody(),

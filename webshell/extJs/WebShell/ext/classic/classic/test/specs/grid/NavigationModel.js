@@ -1,17 +1,19 @@
 /* global Ext, jasmine, expect */
 
-describe('Ext.grid.NavigationModel', function() {
-    
-    // Expect that a row and column are focused.
-    // Column index is overall across a locked pair.
-    function expectPosition(rowIdx, colIdx) {
-        var column = grid.getVisibleColumnManager().getColumns()[colIdx];
+topSuite('Ext.grid.NavigationModel',
+    ['Ext.grid.Panel', 'Ext.grid.column.Widget', 'Ext.form.field.Number',
+        'Ext.Button'],
+    function () {
+        // Expect that a row and column are focused.
+        // Column index is overall across a locked pair.
+        function expectPosition(rowIdx, colIdx) {
+            var column = grid.getVisibleColumnManager().getColumns()[colIdx];
 
-        expect(grid.getNavigationModel().getPosition().isEqual(new Ext.grid.CellContext(column.getView()).setPosition(rowIdx, column))).toBe(true);
-    }
+            expect(grid.getNavigationModel().getPosition().isEqual(new Ext.grid.CellContext(column.getView()).setPosition(rowIdx, column))).toBe(true);
+        }
 
-    function findCell(rowIdx, cellIdx) {
-        return grid.getView().getCellInclusive({
+        function findCell(rowIdx, cellIdx) {
+            return grid.getView().getCellInclusive({
             row: rowIdx,
             column: cellIdx
         }, true);
@@ -23,26 +25,27 @@ describe('Ext.grid.NavigationModel', function() {
         jasmine.fireMouseEvent(target, type, x, y, button);
     }
 
-    function triggerCellKeyEvent(rowIdx, cellIdx, type, key) {
-        var target = findCell(rowIdx, cellIdx);
-        jasmine.fireKeyEvent(target, type, key);
-    }
+        function triggerCellKeyEvent(rowIdx, cellIdx, type, key) {
+            var target = findCell(rowIdx, cellIdx);
+            jasmine.fireKeyEvent(target, type, key);
+        }
 
-    var GridModel = Ext.define(null, {
-        extend: 'Ext.data.Model',
-        fields: [
-            'field1',
-            'field2',
-            'field3',
-            'field4',
-            'field5',
-            'field6',
-            'field7',
-            'field8',
-            'field9',
-            'field10'
-        ]
-    }), view, colRef;
+        var describeNotTouch = jasmine.supportsTouch ? xdescribe : describe,
+            GridModel = Ext.define(null, {
+                extend: 'Ext.data.Model',
+                fields: [
+                    'field1',
+                    'field2',
+                    'field3',
+                    'field4',
+                    'field5',
+                    'field6',
+                    'field7',
+                    'field8',
+                    'field9',
+                    'field10'
+                ]
+            });
 
     function makeStore(data) {
         store = new Ext.data.Store({
@@ -155,13 +158,13 @@ describe('Ext.grid.NavigationModel', function() {
                 jasmine.fireKeyEvent(colRef[4].el, 'keydown', Ext.event.Event.SPACE);
 
                 // View's element Region MUST contain the focused cell.
-                expect(view.getEl().getRegion().contains(view.getCellByPosition(navModel.lastFocused).getRegion())).toBe(true);
+                expect(view.getEl().getRegion().contains(Ext.fly(view.getCellByPosition(navModel.lastFocused, true)).getRegion())).toBe(true);
 
                 // Sort descending
                 jasmine.fireKeyEvent(colRef[4].el, 'keydown', Ext.event.Event.SPACE);
 
                 // View's element Region MUST still contain the focused cell.
-                expect(view.getEl().getRegion().contains(view.getCellByPosition(navModel.lastFocused).getRegion())).toBe(true);
+                expect(view.getEl().getRegion().contains(Ext.fly(view.getCellByPosition(navModel.lastFocused, true)).getRegion())).toBe(true);
             });
         });
     });
@@ -265,170 +268,316 @@ describe('Ext.grid.NavigationModel', function() {
         makeRemovalSuite(false);
         makeRemovalSuite(true);
     });
-    
-    describe('navigation in a locking grid', function() {
-        it('should wrap and navigate from side to side seamlessly', function() {
-            makeGrid(4, 100, null, null, true);
 
-            navModel.setPosition(new Ext.grid.CellContext(grid.lockedGrid.view).setPosition(0, 0));
-            expectPosition(0, 0);
-            
-            jasmine.fireKeyEvent(navModel.cell, 'keydown', Ext.event.Event.RIGHT);
-            expectPosition(0, 1);
-            
-            jasmine.fireKeyEvent(navModel.cell, 'keydown', Ext.event.Event.RIGHT);
-            expectPosition(0, 2);
-            
-            jasmine.fireKeyEvent(navModel.cell, 'keydown', Ext.event.Event.RIGHT);
-            expectPosition(0, 3);
-            
-            jasmine.fireKeyEvent(navModel.cell, 'keydown', Ext.event.Event.RIGHT);
-            expectPosition(1, 0);
-            
-            jasmine.fireKeyEvent(navModel.cell, 'keydown', Ext.event.Event.RIGHT);
-            expectPosition(1, 1);
-            
-            jasmine.fireKeyEvent(navModel.cell, 'keydown', Ext.event.Event.RIGHT);
-            expectPosition(1, 2);
-            
-            jasmine.fireKeyEvent(navModel.cell, 'keydown', Ext.event.Event.RIGHT);
-            expectPosition(1, 3);
-            
-            jasmine.fireKeyEvent(navModel.cell, 'keydown', Ext.event.Event.RIGHT);
-            expectPosition(2, 0);
-            
-            jasmine.fireKeyEvent(navModel.cell, 'keydown', Ext.event.Event.RIGHT);
-            expectPosition(2, 1);
-            
-            jasmine.fireKeyEvent(navModel.cell, 'keydown', Ext.event.Event.RIGHT);
-            expectPosition(2, 2);
-            
-            jasmine.fireKeyEvent(navModel.cell, 'keydown', Ext.event.Event.RIGHT);
-            expectPosition(2, 3);
+        describe("navigation with keys", function () {
+            var E = Ext.event.Event;
 
-            // Now do left arrow until we get back to 0, 0
-            jasmine.fireKeyEvent(navModel.cell, 'keydown', Ext.event.Event.LEFT);
-            expectPosition(2, 2);
-            
-            jasmine.fireKeyEvent(navModel.cell, 'keydown', Ext.event.Event.LEFT);
-            expectPosition(2, 1);
-            
-            jasmine.fireKeyEvent(navModel.cell, 'keydown', Ext.event.Event.LEFT);
-            expectPosition(2, 0);
-            
-            jasmine.fireKeyEvent(navModel.cell, 'keydown', Ext.event.Event.LEFT);
-            expectPosition(1, 3);
+            function fireCellKey(key) {
+                jasmine.fireKeyEvent(navModel.cell, 'keydown', key);
+            }
 
-            jasmine.fireKeyEvent(navModel.cell, 'keydown', Ext.event.Event.LEFT);
-            expectPosition(1, 2);
-            
-            jasmine.fireKeyEvent(navModel.cell, 'keydown', Ext.event.Event.LEFT);
-            expectPosition(1, 1);
-            
-            jasmine.fireKeyEvent(navModel.cell, 'keydown', Ext.event.Event.LEFT);
-            expectPosition(1, 0);
-            
-            jasmine.fireKeyEvent(navModel.cell, 'keydown', Ext.event.Event.LEFT);
-            expectPosition(0, 3);
+            describe('navigation in a locking grid', function () {
 
-            jasmine.fireKeyEvent(navModel.cell, 'keydown', Ext.event.Event.LEFT);
-            expectPosition(0, 2);
-            
-            jasmine.fireKeyEvent(navModel.cell, 'keydown', Ext.event.Event.LEFT);
-            expectPosition(0, 1);
-            
-            jasmine.fireKeyEvent(navModel.cell, 'keydown', Ext.event.Event.LEFT);
-            expectPosition(0, 0);
-        });
+                it('should wrap and navigate from side to side seamlessly', function () {
+                    makeGrid(4, 100, null, null, true);
+
+                    navModel.setPosition(new Ext.grid.CellContext(grid.lockedGrid.view).setPosition(0, 0));
+                    expectPosition(0, 0);
+
+                    fireCellKey(E.RIGHT);
+                    expectPosition(0, 1);
+
+                    fireCellKey(E.RIGHT);
+                    expectPosition(0, 2);
+
+                    fireCellKey(E.RIGHT);
+                    expectPosition(0, 3);
+
+                    fireCellKey(E.RIGHT);
+                    expectPosition(1, 0);
+
+                    fireCellKey(E.RIGHT);
+                    expectPosition(1, 1);
+
+                    fireCellKey(E.RIGHT);
+                    expectPosition(1, 2);
+
+                    fireCellKey(E.RIGHT);
+                    expectPosition(1, 3);
+
+                    fireCellKey(E.RIGHT);
+                    expectPosition(2, 0);
+
+                    fireCellKey(E.RIGHT);
+                    expectPosition(2, 1);
+
+                    fireCellKey(E.RIGHT);
+                    expectPosition(2, 2);
+
+                    fireCellKey(E.RIGHT);
+                    expectPosition(2, 3);
+
+                    // Now do left arrow until we get back to 0, 0
+                    fireCellKey(E.LEFT);
+                    expectPosition(2, 2);
+
+                    fireCellKey(E.LEFT);
+                    expectPosition(2, 1);
+
+                    fireCellKey(E.LEFT);
+                    expectPosition(2, 0);
+
+                    fireCellKey(E.LEFT);
+                    expectPosition(1, 3);
+
+                    fireCellKey(E.LEFT);
+                    expectPosition(1, 2);
+
+                    fireCellKey(E.LEFT);
+                    expectPosition(1, 1);
+
+                    fireCellKey(E.LEFT);
+                    expectPosition(1, 0);
+
+                    fireCellKey(E.LEFT);
+                    expectPosition(0, 3);
+
+                    fireCellKey(E.LEFT);
+                    expectPosition(0, 2);
+
+                    fireCellKey(E.LEFT);
+                    expectPosition(0, 1);
+
+                    fireCellKey(E.LEFT);
+                    expectPosition(0, 0);
+                });
+
+                describe("cellFocusable", function () {
+                    describe("final boundary when switching view", function () {
+                        it("should not navigate when crossing to the unlocked side", function () {
+                            makeGrid([{
+                                dataIndex: 'field1',
+                                locked: true
+                            }, {
+                                dataIndex: 'field2',
+                                cellFocusable: false
+                            }]);
+
+                            navModel.setPosition(new Ext.grid.CellContext(grid.lockedGrid.view).setPosition(0, 0));
+
+                            fireCellKey(E.RIGHT);
+                            expectPosition(0, 0);
+                        });
+
+                        it("should not navigate when crossing to the locked side", function () {
+                            makeGrid([{
+                                dataIndex: 'field1',
+                                locked: true,
+                                cellFocusable: false
+                            }, {
+                                dataIndex: 'field2'
+                            }]);
+
+                            navModel.setPosition(new Ext.grid.CellContext(grid.normalGrid.view).setPosition(0, 0));
+
+                            fireCellKey(E.LEFT);
+                            expectPosition(0, 1);
+                        });
+                    });
+
+                    describe("boundary when switching view", function () {
+                        it("should navigate to the next available column in the unlocked view", function () {
+                            makeGrid([{
+                                dataIndex: 'field1',
+                                locked: true
+                            }, {
+                                dataIndex: 'field2',
+                                cellFocusable: false
+                            }, {
+                                dataIndex: 'field3'
+                            }]);
+
+                            navModel.setPosition(new Ext.grid.CellContext(grid.lockedGrid.view).setPosition(0, 0));
+
+                            fireCellKey(E.RIGHT);
+                            expectPosition(0, 2);
+                        });
+
+                        it("should navigate to the next available column in the locked view", function () {
+                            makeGrid([{
+                                dataIndex: 'field1',
+                                locked: true
+                            }, {
+                                dataIndex: 'field2',
+                                locked: true,
+                                cellFocusable: false
+                            }, {
+                                dataIndex: 'field3'
+                            }]);
+
+                            navModel.setPosition(new Ext.grid.CellContext(grid.normalGrid.view).setPosition(0, 0));
+
+                            fireCellKey(E.LEFT);
+                            expectPosition(0, 0);
+                        });
+                    });
+                });
+            });
+
+            describe('navigation in a non-locking grid', function () {
+                it('should wrap and navigate correctly', function () {
+                    makeGrid(4, 100);
+
+                    navModel.setPosition(new Ext.grid.CellContext(grid.view).setPosition(0, 0));
+                    expectPosition(0, 0);
+
+                    fireCellKey(E.RIGHT);
+                    expectPosition(0, 1);
+
+                    fireCellKey(E.RIGHT);
+                    expectPosition(0, 2);
+
+                    fireCellKey(E.RIGHT);
+                    expectPosition(0, 3);
+
+                    fireCellKey(E.RIGHT);
+                    expectPosition(1, 0);
+
+                    fireCellKey(E.RIGHT);
+                    expectPosition(1, 1);
+
+                    fireCellKey(E.RIGHT);
+                    expectPosition(1, 2);
+
+                    fireCellKey(E.RIGHT);
+                    expectPosition(1, 3);
+
+                    fireCellKey(E.RIGHT);
+                    expectPosition(2, 0);
+
+                    fireCellKey(E.RIGHT);
+                    expectPosition(2, 1);
+
+                    fireCellKey(E.RIGHT);
+                    expectPosition(2, 2);
+
+                    fireCellKey(E.RIGHT);
+                    expectPosition(2, 3);
+
+                    // Now do left arrow until we get back to 0, 0
+                    fireCellKey(E.LEFT);
+                    expectPosition(2, 2);
+
+                    fireCellKey(E.LEFT);
+                    expectPosition(2, 1);
+
+                    fireCellKey(E.LEFT);
+                    expectPosition(2, 0);
+
+                    fireCellKey(E.LEFT);
+                    expectPosition(1, 3);
+
+                    fireCellKey(E.LEFT);
+                    expectPosition(1, 2);
+
+                    fireCellKey(E.LEFT);
+                    expectPosition(1, 1);
+
+                    fireCellKey(E.LEFT);
+                    expectPosition(1, 0);
+
+                    fireCellKey(E.LEFT);
+                    expectPosition(0, 3);
+
+                    fireCellKey(E.LEFT);
+                    expectPosition(0, 2);
+
+                    fireCellKey(E.LEFT);
+                    expectPosition(0, 1);
+
+                    fireCellKey(E.LEFT);
+                    expectPosition(0, 0);
+                });
+
+                describe("cellFocusable", function () {
+                    describe("final boundary moving", function () {
+                        it("should not navigate when going forward", function () {
+                            makeGrid([{
+                                dataIndex: 'field1'
+                            }, {
+                                dataIndex: 'field2',
+                                cellFocusable: false
+                            }]);
+
+                            navModel.setPosition(new Ext.grid.CellContext(grid.view).setPosition(0, 0));
+
+                            fireCellKey(E.RIGHT);
+                            expectPosition(0, 0);
+                        });
+
+                        it("should not navigate when going backward", function () {
+                            makeGrid([{
+                                dataIndex: 'field1',
+                                cellFocusable: false
+                            }, {
+                                dataIndex: 'field2'
+                            }]);
+
+                            navModel.setPosition(new Ext.grid.CellContext(grid.view).setPosition(0, 1));
+
+                            fireCellKey(E.LEFT);
+                            expectPosition(0, 1);
+                        });
+                    });
+
+                    describe("boundary skipping", function () {
+                        it("should navigate to the next available column when moving right", function () {
+                            makeGrid([{
+                                dataIndex: 'field1'
+                            }, {
+                                dataIndex: 'field2',
+                                cellFocusable: false
+                            }, {
+                                dataIndex: 'field3'
+                            }]);
+
+                            navModel.setPosition(new Ext.grid.CellContext(grid.view).setPosition(0, 0));
+
+                            fireCellKey(E.RIGHT);
+                            expectPosition(0, 2);
+                        });
+
+                        it("should navigate to the next available column when moving left", function () {
+                            makeGrid([{
+                                dataIndex: 'field1'
+                            }, {
+                                dataIndex: 'field2',
+                                cellFocusable: false
+                            }, {
+                                dataIndex: 'field3'
+                            }]);
+
+                            navModel.setPosition(new Ext.grid.CellContext(grid.view).setPosition(0, 2));
+
+                            fireCellKey(E.LEFT);
+                            expectPosition(0, 0);
+                        });
+                    });
+                });
+            });
     });
-    
-    describe('navigation in a non-locking grid', function() {
-        it('should wrap and navigate correctly', function() {
-            makeGrid(4, 100);
 
-            navModel.setPosition(new Ext.grid.CellContext(grid.view).setPosition(0, 0));
-            expectPosition(0, 0);
-            
-            jasmine.fireKeyEvent(navModel.cell, 'keydown', Ext.event.Event.RIGHT);
-            expectPosition(0, 1);
-            
-            jasmine.fireKeyEvent(navModel.cell, 'keydown', Ext.event.Event.RIGHT);
-            expectPosition(0, 2);
-            
-            jasmine.fireKeyEvent(navModel.cell, 'keydown', Ext.event.Event.RIGHT);
-            expectPosition(0, 3);
-            
-            jasmine.fireKeyEvent(navModel.cell, 'keydown', Ext.event.Event.RIGHT);
-            expectPosition(1, 0);
-            
-            jasmine.fireKeyEvent(navModel.cell, 'keydown', Ext.event.Event.RIGHT);
-            expectPosition(1, 1);
-            
-            jasmine.fireKeyEvent(navModel.cell, 'keydown', Ext.event.Event.RIGHT);
-            expectPosition(1, 2);
-            
-            jasmine.fireKeyEvent(navModel.cell, 'keydown', Ext.event.Event.RIGHT);
-            expectPosition(1, 3);
-            
-            jasmine.fireKeyEvent(navModel.cell, 'keydown', Ext.event.Event.RIGHT);
-            expectPosition(2, 0);
-            
-            jasmine.fireKeyEvent(navModel.cell, 'keydown', Ext.event.Event.RIGHT);
-            expectPosition(2, 1);
-            
-            jasmine.fireKeyEvent(navModel.cell, 'keydown', Ext.event.Event.RIGHT);
-            expectPosition(2, 2);
-            
-            jasmine.fireKeyEvent(navModel.cell, 'keydown', Ext.event.Event.RIGHT);
-            expectPosition(2, 3);
-
-            // Now do left arrow until we get back to 0, 0
-            jasmine.fireKeyEvent(navModel.cell, 'keydown', Ext.event.Event.LEFT);
-            expectPosition(2, 2);
-            
-            jasmine.fireKeyEvent(navModel.cell, 'keydown', Ext.event.Event.LEFT);
-            expectPosition(2, 1);
-            
-            jasmine.fireKeyEvent(navModel.cell, 'keydown', Ext.event.Event.LEFT);
-            expectPosition(2, 0);
-            
-            jasmine.fireKeyEvent(navModel.cell, 'keydown', Ext.event.Event.LEFT);
-            expectPosition(1, 3);
-
-            jasmine.fireKeyEvent(navModel.cell, 'keydown', Ext.event.Event.LEFT);
-            expectPosition(1, 2);
-            
-            jasmine.fireKeyEvent(navModel.cell, 'keydown', Ext.event.Event.LEFT);
-            expectPosition(1, 1);
-            
-            jasmine.fireKeyEvent(navModel.cell, 'keydown', Ext.event.Event.LEFT);
-            expectPosition(1, 0);
-            
-            jasmine.fireKeyEvent(navModel.cell, 'keydown', Ext.event.Event.LEFT);
-            expectPosition(0, 3);
-
-            jasmine.fireKeyEvent(navModel.cell, 'keydown', Ext.event.Event.LEFT);
-            expectPosition(0, 2);
-            
-            jasmine.fireKeyEvent(navModel.cell, 'keydown', Ext.event.Event.LEFT);
-            expectPosition(0, 1);
-            
-            jasmine.fireKeyEvent(navModel.cell, 'keydown', Ext.event.Event.LEFT);
-            expectPosition(0, 0);
-        });
-    });
-
-    describe('With widget column', function() {
-        var People = Ext.define(null, {
-                extend: 'Ext.data.Model',
-                idProperty: 'peopleId',
-                fields: [
-                    {name: 'name', type: 'string'},
-                    {name: 'age', type: 'int'},
-                    {name: 'location', type: 'string'}
-                ]
-            }),
-            store,
+        describeNotTouch('With widget column', function () {
+            var People = Ext.define(null, {
+                    extend: 'Ext.data.Model',
+                    idProperty: 'peopleId',
+                    fields: [
+                        {name: 'name', type: 'string'},
+                        {name: 'age', type: 'int'},
+                        {name: 'location', type: 'string'}
+                    ]
+                }),
+                store,
             grid,
             navModel,
             widgetColumn,

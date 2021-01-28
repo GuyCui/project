@@ -28,7 +28,7 @@
  *                 xtype:'actioncolumn',
  *                 width:50,
  *                 items: [{
- *                     icon: 'extjs-build/examples/shared/icons/fam/cog_edit.png',  // Use a URL in the icon config
+ *                     iconCls: 'x-fa fa-cog',
  *                     tooltip: 'Edit',
  *                     handler: function(grid, rowIndex, colIndex) {
  *                         var rec = grid.getStore().getAt(rowIndex);
@@ -91,8 +91,8 @@ Ext.define('Ext.grid.column.Action', {
      */
     /**
      * @cfg {Object} scope
-     * The scope (`this` reference) in which the `{@link #handler}`, 
-     * `{@link #getClass}`, `{@link #cfg-isDisabled}` and `{@link #getTip}` functions 
+     * The scope (`this` reference) in which the `{@link #handler}`,
+     * `{@link #getClass}`, `{@link #cfg-isActionDisabled}` and `{@link #getTip}` functions
      * are executed.
      * Defaults to this Column.
      */
@@ -107,7 +107,7 @@ Ext.define('Ext.grid.column.Action', {
      * @cfg {Boolean} disabled
      * If true, the action will not respond to click events, and will be displayed semi-opaque.
      *
-     * This Column may also be disabled on a row by row basis by configuring a {@link #cfg-isDisabled} method.
+     * This Column may also be disabled on a row by row basis by configuring a {@link #cfg-isActionDisabled} method.
      */
     /**
      * @cfg {Boolean} [stopSelection=true]
@@ -120,7 +120,7 @@ Ext.define('Ext.grid.column.Action', {
     /**
      * @cfg {Function} getClass
      * A function which returns the CSS class to apply to the icon image.
-     * 
+     *
      * For information on using the icons provided in the SDK see {@link #iconCls}.
      * @cfg {Object} getClass.v The value of the column's configured field (if any).
      * @cfg {Object} getClass.metadata An object in which you may set the following attributes:
@@ -131,23 +131,36 @@ Ext.define('Ext.grid.column.Action', {
      * @cfg {Number} getClass.rowIndex The row index.
      * @cfg {Number} getClass.colIndex The column index.
      * @cfg {Ext.data.Store} getClass.store The Store which is providing the data Model.
+     *
+     * @controllable
      */
-    
+
     /**
-     * @cfg {Function} isDisabled A function which determines whether the action item for any row is disabled and returns `true` or `false`.
-     * @cfg {Ext.view.Table} isDisabled.view The owning TableView.
-     * @cfg {Number} isDisabled.rowIndex The row index.
-     * @cfg {Number} isDisabled.colIndex The column index.
-     * @cfg {Object} isDisabled.item The clicked item (or this Column if multiple {@link #cfg-items} were not configured).
-     * @cfg {Ext.data.Model} isDisabled.record The Record underlying the row.
+     * @cfg {Function} isDisabled A function which determines whether the action item for any row
+     * is disabled and returns `true` or `false`.
+     *
+     * @deprecated 6.5.0 Use {@link #isActionDisabled} instead. Will be removed in 7.0.
+     *
+     * @controllable
      */
-    
+
+    /**
+     * @cfg {Function} isActionDisabled A function which determines whether the action item for any row is disabled and returns `true` or `false`.
+     * @cfg {Ext.view.Table} isActionDisabled.view The owning TableView.
+     * @cfg {Number} isActionDisabled.rowIndex The row index.
+     * @cfg {Number} isActionDisabled.colIndex The column index.
+     * @cfg {Object} isActionDisabled.item The clicked item (or this Column if multiple {@link #cfg-items} were not configured).
+     * @cfg {Ext.data.Model} isActionDisabled.record The Record underlying the row.
+     *
+     * @controllable
+     */
+
     /**
      * @cfg {Function} getTip A function which returns the tooltip string for any row.
-     * 
-     * *Note*: Outside of an Ext.application() use of this config requires 
+     *
+     * *Note*: Outside of an Ext.application() use of this config requires
      * {@link Ext.tip.QuickTipManager#init} to be called.
-     * 
+     *
      *     Ext.tip.QuickTipManager.init();
      *     
      *     Ext.create('Ext.data.Store', {
@@ -207,16 +220,18 @@ Ext.define('Ext.grid.column.Action', {
      *     // * see https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes
      *     // be aware that setting cell attributes may override the cell layout
      *     // provided by the framework
-     * 
+     *
      * @param {String} metadata.tdStyle An inline style for the table cell
-     * 
+     *
      *     metadata.tdStyle = "background-color:red;";
-     * 
+     *
      * @param {Ext.data.Model} record The Record providing the data.
      * @param {Number} rowIndex The row index.
      * @param {Number} colIndex The column index.
      * @param {Ext.data.Store} store The Store which is providing the data Model.
      * @return {String} tip The tip text
+     *
+     * @controllable
      */
     
     /**
@@ -256,12 +271,17 @@ Ext.define('Ext.grid.column.Action', {
      * @cfg {Ext.data.Model} items.handler.record The Record underlying the clicked row.
      * @cfg {HTMLElement} items.row The table row clicked upon.
      *
-     * @cfg {Function} items.isDisabled A function which determines whether the action item for any row is disabled and returns `true` or `false`.
-     * @cfg {Ext.view.Table} items.isDisabled.view The owning TableView.
-     * @cfg {Number} items.isDisabled.rowIndex The row index.
-     * @cfg {Number} items.isDisabled.colIndex The column index.
-     * @cfg {Object} items.isDisabled.item The clicked item (or this Column if multiple {@link #cfg-items} were not configured).
-     * @cfg {Ext.data.Model} items.isDisabled.record The Record underlying the row.
+     * @cfg {Function} items.isDisabled A function which determines whether the action item
+     * for any row is disabled and returns `true` or `false`. **This item property is deprecated**.
+     * Use `isActionDisabled` instead.
+     *
+     * @cfg {Function} items.isActionDisabled A function which determines whether the action item
+     * for any row is disabled and returns `true` or `false`.
+     * @cfg {Ext.view.Table} items.isActionDisabled.view The owning TableView.
+     * @cfg {Number} items.isActionDisabled.rowIndex The row index.
+     * @cfg {Number} items.isActionDisabled.colIndex The column index.
+     * @cfg {Object} items.isActionDisabled.item The clicked item (or this Column if multiple {@link #cfg-items} were not configured).
+     * @cfg {Ext.data.Model} items.isActionDisabled.record The Record underlying the row.
      *
      * @cfg {Function} items.getTip A function which returns the tooltip string for any row.
      * @cfg {Object} items.getTip.v The value of the column's configured field (if any).
@@ -274,8 +294,9 @@ Ext.define('Ext.grid.column.Action', {
      * @cfg {Number} items.getTip.colIndex The column index.
      * @cfg {Ext.data.Store} items.getTip.store The Store which is providing the data Model.
      *
-     * @cfg {Object} items.scope The scope (`this` reference) in which the `handler`, `getClass`, `isDisabled` and `getTip` functions
-     * are executed. Fallback defaults are this Column's configured scope, then this Column.
+     * @cfg {Object} items.scope The scope (`this` reference) in which the `handler`, `getClass`,
+     * `isActionDisabled` and `getTip` functions are executed. Fallback defaults are this Column's
+     * configured scope, then this Column.
      *
      * @cfg {String} items.tooltip A tooltip message to be displayed on hover.
      * {@link Ext.tip.QuickTipManager#init Ext.tip.QuickTipManager} must have been initialized.
@@ -284,7 +305,7 @@ Ext.define('Ext.grid.column.Action', {
      *
      * @cfg {Boolean} items.disabled If true, the action will not respond to click events, and will be displayed semi-opaque.
      *
-     * This item may also be disabled on a row by row basis by configuring an `isDisabled` method.
+     * This item may also be disabled on a row by row basis by configuring an `isActionDisabled` method.
      */
     /**
      * @property {Array} items
@@ -344,6 +365,20 @@ Ext.define('Ext.grid.column.Action', {
         cfg.items = null;
         me.callParent([cfg]);
 
+        // isDisabled property conflicts with isDisabled predicate method on Component.
+        // We provide backward compatibility but strongly discourage using `isDisabled`
+        // as a property.
+        //TODO Remove in 7.0
+        if (me.hasOwnProperty('isDisabled')) {
+            //<debug>
+            Ext.log.warn('[Ext.grid.column.Action] The isDisabled config is deprecated. ' +
+                'Use isActionDisabled to avoid conflict with Ext.Component#isDisabled().');
+            //</debug>
+
+            me.isActionDisabled = me.isDisabled;
+            delete me.isDisabled;
+        }
+
         // Items is an array property of ActionColumns
         me.items = items;
 
@@ -352,6 +387,18 @@ Ext.define('Ext.grid.column.Action', {
             if (item.substr && item[0] === '@') {
                 item = me.getAction(item.substr(1));
             }
+
+            //TODO Remove in 7.0
+            if (item.hasOwnProperty('isDisabled')) {
+                //<debug>
+                Ext.log.warn('[Ext.grid.column.Action] The isDisabled config is deprecated. ' +
+                    'Use isActionDisabled to avoid conflict with Ext.Component#isDisabled().');
+                //</debug>
+
+                item.isActionDisabled = item.isDisabled;
+                delete item.isDisabled;
+            }
+
             if (item.isAction) {
                 items[i] = item.initialConfig;
 
@@ -398,8 +445,8 @@ Ext.define('Ext.grid.column.Action', {
             icon = item.icon;
             glyph = item.glyph;
 
-            disabled = item.disabled || (item.isDisabled ? Ext.callback(item.isDisabled, item.scope || me.origScope, [view, rowIdx, colIdx, item, record], 0, me) : false);
-            tooltip  = item.tooltip  || (item.getTip     ? Ext.callback(item.getTip, item.scope || me.origScope, arguments, 0, me) : null);
+            disabled = item.disabled || (item.isActionDisabled ? Ext.callback(item.isActionDisabled, item.scope || me.origScope, [view, rowIdx, colIdx, item, record], 0, me) : false);
+            tooltip = item.tooltip || (item.getTip ? Ext.callback(item.getTip, item.scope || me.origScope, arguments, 0, me) : null);
             altText  =                   item.getAltText ? Ext.callback(item.getAltText, item.scope || me.origScope, arguments, 0, me) : item.altText || me.altText;
 
             // Only process the item action setup once.
@@ -501,7 +548,8 @@ Ext.define('Ext.grid.column.Action', {
             match,
             item,
             disabled,
-            cellFly = Ext.fly(cell);
+            cellFly = Ext.fly(cell),
+            oldActiveEl;
 
         // Flag event to tell SelectionModel not to process it.
         e.stopSelection = !key && me.stopSelection;
@@ -521,32 +569,30 @@ Ext.define('Ext.grid.column.Action', {
         // NOTE: The statement below tests the truthiness of an assignment.
         if (target && (match = target.className.match(me.actionIdRe))) {
             item = me.items[parseInt(match[1], 10)];
-            disabled = item.disabled || (item.isDisabled ?
-                Ext.callback(item.isDisabled, item.scope || me.origScope,
+            disabled = item.disabled || (item.isActionDisabled ?
+                Ext.callback(item.isActionDisabled, item.scope || me.origScope,
                     [view, recordIndex, cellIndex, item, record], 0, me) : false);
 
             if (item && !disabled) {
                 // Do not allow focus to follow from this mousedown unless the grid is already in actionable mode
                 if (type === 'mousedown' && !me.getView().actionableMode) {
                     e.preventDefault();
-                }
-
-                else if (type === 'click' || (key === e.ENTER || key === e.SPACE)) {
+                } else if (type === 'click' || (key === e.ENTER || key === e.SPACE)) {
+                    oldActiveEl = Ext.Element.getActiveElement();
                     Ext.callback(item.handler || me.handler, item.scope || me.origScope, [view, recordIndex, cellIndex, item, e, record, row], undefined, me);
 
                     // Handler could possibly destroy the grid, so check we're still available.
-                    // 
-                    // If the handler moved focus outside of the view, do not allow this event to propagate
-                    // to cause any navigation.
                     if (view.destroyed) {
                         return false;
                     } else {
                         // If the record was deleted by the handler, refresh
                         // the position based upon coordinates.
-                        if (!e.position.getNode()) {
+                        if (!e.position.getNode(true)) {
                             e.position.refresh();
                         }
-                        if (!view.el.contains(Ext.Element.getActiveElement())) {
+                        // If the handler moved focus, do not allow this event to propagate
+                        // to cause any navigation.
+                        if (Ext.Element.getActiveElement() !== oldActiveEl) {
                             return false;
                         }
                     }
@@ -557,24 +603,29 @@ Ext.define('Ext.grid.column.Action', {
         return me.callParent(arguments);
     },
 
-    cascade: function(fn, scope) {
-        fn.call(scope||this, this);
+    cascade: function (fn, scope) {
+        fn.call(scope || this, this);
     },
 
     // Private override because this cannot function as a Container, and it has an items property which is an Array, NOT a MixedCollection.
-    getRefItems: function() {
+    getRefItems: function () {
         return [];
     },
 
+    contains: function () {
+        // Same as above
+        return false;
+    },
+
     privates: {
-        getFocusables: function() {
+        getFocusables: function () {
             // Override is here to prevent the default behaviour which tries to access
             // this.items.items, which will be null.
             return [];
         },
 
         // Overriden method to always return a bitwise value that will result in a call to this column's updater.
-        shouldUpdateCell: function() {
+        shouldUpdateCell: function () {
             return 2;
         }
     }

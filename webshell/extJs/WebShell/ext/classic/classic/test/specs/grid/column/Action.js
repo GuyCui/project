@@ -1,35 +1,37 @@
 /* global Ext, jasmine, expect, spyOn */
 
-describe("Ext.grid.column.Action", function(){
-    var store, grid, view, actionColumn,
-        synchronousLoad = true,
-        proxyStoreLoad = Ext.data.ProxyStore.prototype.load,
-        loadStore = function() {
-            proxyStoreLoad.apply(this, arguments);
-            if (synchronousLoad) {
-                this.flushLoad.apply(this, arguments);
-            }
-            return this;
-        };
+topSuite("Ext.grid.column.Action",
+    ['Ext.grid.Panel', 'Ext.window.MessageBox'],
+    function () {
+        var store, grid, view, actionColumn,
+            synchronousLoad = true,
+            proxyStoreLoad = Ext.data.ProxyStore.prototype.load,
+            loadStore = function () {
+                proxyStoreLoad.apply(this, arguments);
+                if (synchronousLoad) {
+                    this.flushLoad.apply(this, arguments);
+                }
+                return this;
+            };
     
     function getCell(rowIdx, colIdx) {
         return grid.getView().getCellInclusive({
             row: rowIdx,
             column: colIdx
-        });
+        }, true);
     }
     
     function getActionItem(rowIdx, colIdx, itemIdx) {
         var cell = getCell(rowIdx || 0, colIdx || 1);
-        
-        var items = cell.select('.' + Ext.grid.column.Action.prototype.actionIconCls);
-        
-        return items.item(itemIdx || 0);
+
+        var items = cell.querySelectorAll('.' + Ext.grid.column.Action.prototype.actionIconCls);
+
+        return items[itemIdx || 0];
     }
     
     function triggerAction(type, row, colIdx) {
         var cell = getCell(row || 0, colIdx || 1);
-        jasmine.fireMouseEvent(cell.down('.' + Ext.grid.column.Action.prototype.actionIconCls, true), type || 'click');
+        jasmine.fireMouseEvent(cell.querySelector('.' + Ext.grid.column.Action.prototype.actionIconCls), type || 'click');
         return cell;
     }
 
@@ -55,7 +57,7 @@ describe("Ext.grid.column.Action", function(){
                 renderer: Ext.emptyFn,
                 items: [{
                     handler: actionHandler|| Ext.emptyFn,
-                    isDisabled: Ext.emptyFn
+                    isActionDisabled: Ext.emptyFn
                 }]
             }],
             renderTo: Ext.getBody()
@@ -97,10 +99,10 @@ describe("Ext.grid.column.Action", function(){
                     renderer: Ext.emptyFn,
                     items: [{
                         handler: handlerSpy,
-                        isDisabled: Ext.emptyFn
+                        isActionDisabled: Ext.emptyFn
                     }, {
                         handler: Ext.emptyFn,
-                        isDisabled: Ext.emptyFn
+                        isActionDisabled: Ext.emptyFn
                     }]
                 }]
             });
@@ -111,7 +113,7 @@ describe("Ext.grid.column.Action", function(){
             cellEl = grid.getView().getCell(0, 1);
             
             // This is a bit hacky but so is Action column :(
-            actionItemEl = cellEl.down('[role=button]', true);
+            actionItemEl = cellEl.querySelector('[role=button]');
         });
         
         afterEach(function() {
@@ -125,10 +127,12 @@ describe("Ext.grid.column.Action", function(){
         it('should refocus the action item upon focus reversion when action item focuses outwards', function() {
             // Navigate and enter actionable mode
             pressKey(cellEl, 'enter');
-            
-            waitForSpy(actionableSpy);
-            
-            runs(function() {
+
+            waitsFor(function () {
+                return actionableSpy.callCount === 1 && view.cellFocused;
+            }, 'actionable mode to start');
+
+            runs(function () {
                 // Check that worked
                 expect(grid.actionableMode).toBe(true);
                 expect(Ext.Element.getActiveElement()).toBe(actionItemEl);
@@ -136,17 +140,17 @@ describe("Ext.grid.column.Action", function(){
 
             // Activate the item.
             pressKey(actionItemEl, 'space');
-            
-            waitForSpy(handlerSpy);
+
+            waitForSpy(handlerSpy, 'action handler to be called');
             
             runs(function() {
                 expect(msgBox).toBeDefined();
             });
 
             // MsgBox window must contains focus
-            waitsFor(function() {
+            waitsFor(function () {
                 return msgBox.isVisible() === true && msgBox.containsFocus;
-            });
+            }, 'message box to show and focus');
 
             runs(function () {
                 expect(Ext.getCmp(msgBox.id)).toBe(msgBox);
@@ -158,9 +162,9 @@ describe("Ext.grid.column.Action", function(){
             waitAWhile();
 
             // Should revert focus back into grid in same mode that it left.
-            waitsFor(function() {
+            waitsFor(function () {
                 return grid.actionableMode;
-            });
+            }, 'grid to return to actionable mode');
             
             runs(function() {
                 // SHould revert focus back into grid in same mode that it left.
@@ -168,13 +172,9 @@ describe("Ext.grid.column.Action", function(){
             });
 
             // Focus should have reverted back to the action item
-            waitsFor(function() {
+            waitsFor(function () {
                 return Ext.Element.getActiveElement() === actionItemEl;
-            });
-            
-            runs(function() {
-                expect(document.activeElement).toBe(actionItemEl);
-            });
+            }, 'focus to return to the action item');
         });
     });
 
@@ -211,6 +211,7 @@ describe("Ext.grid.column.Action", function(){
         it('should not process mousedown events', function () {
             triggerAction('mousedown');
             expect(handled).toBe(false);
+            triggerAction('mouseup');
         });
     });
 
@@ -286,6 +287,8 @@ describe("Ext.grid.column.Action", function(){
         });
 
         it("should select the row & focus the cell when clicking the action with stopSelection: false", function() {
+            var isTouch;
+
             makeGrid({
                 columns: [{}, {
                     xtype: 'actioncolumn',
@@ -293,16 +296,25 @@ describe("Ext.grid.column.Action", function(){
                     dataIndex: 'actionCls',
                     header: 'Action',
                     items: [{
-                        handler: Ext.emptyFn
+                        handler: function (view, recordIndex, cellIndex, item, e, record, row) {
+                            isTouch = e.pointerType === 'touch';
+                        }
                     }]
                 }]
             });
 
             triggerAction();
             expect(grid.getSelectionModel().isSelected(store.first())).toBe(true);
+
             var pos = grid.view.actionPosition;
-            expect(pos.record).toBe(store.first());
-            expect(pos.column).toBe(grid.down('actioncolumn'));
+
+            // Touch events do not cause actionable mode
+            if (isTouch) {
+                expect(pos).not.toBeDefined();
+            } else {
+                expect(pos.record).toBe(store.first());
+                expect(pos.column).toBe(grid.down('actioncolumn'));
+            }
         });
     });
     
@@ -395,10 +407,10 @@ describe("Ext.grid.column.Action", function(){
                     }]
                 });
 
-                var view   = grid.getView(),
-                    rowEl  = view.getNode(0),
-                    img    = Ext.get(rowEl).down('.x-action-col-icon'),
-                    imgCls = img.hasCls('x-item-disabled');
+                var view = grid.getView(),
+                    rowEl = view.getNode(0),
+                    img = rowEl.querySelector('.x-action-col-icon'),
+                    imgCls = Ext.fly(img).hasCls('x-item-disabled');
 
                 triggerAction();
                 expect(spy1).not.toHaveBeenCalled();
@@ -414,10 +426,10 @@ describe("Ext.grid.column.Action", function(){
                     }]
                 });
 
-                var view   = grid.getView(),
-                    rowEl  = view.getNode(0),
-                    img    = Ext.get(rowEl).down('.x-action-col-icon'),
-                    imgCls = img.hasCls('x-item-disabled');
+                var view = grid.getView(),
+                    rowEl = view.getNode(0),
+                    img = rowEl.querySelector('.x-action-col-icon'),
+                    imgCls = Ext.fly(img).hasCls('x-item-disabled');
 
                 col.enableAction(0);
                 triggerAction();
@@ -432,9 +444,9 @@ describe("Ext.grid.column.Action", function(){
                     }]
                 });
 
-                var view   = grid.getView(),
-                    rowEl  = view.getNode(0),
-                    img    = Ext.get(rowEl).down('.x-action-col-icon');
+                var view = grid.getView(),
+                    rowEl = view.getNode(0),
+                    img = Ext.fly(rowEl.querySelector('.x-action-col-icon'));
 
                 expect(img.hasCls('x-item-disabled')).toBe(false);
                 col.disableAction(0);
@@ -701,16 +713,16 @@ describe("Ext.grid.column.Action", function(){
                 runTest('defaultRenderer');
             });
 
-            describe('isDisabled on items', function () {
-                it('should call isDisabled', function () {
+            describe('isActionDisabled on items', function () {
+                it('should call isActionDisabled', function () {
                     var item;
 
                     makeGrid();
                     item = actionColumn.items[0];
-                    spyOn(item, 'isDisabled').andCallThrough();
+                    spyOn(item, 'isActionDisabled').andCallThrough();
                     store.getAt(0).set('text', 'Kilgore Trout');
 
-                    expect(item.isDisabled.callCount).toBe(1);
+                    expect(item.isActionDisabled.callCount).toBe(1);
                 });
             });
         });
@@ -942,21 +954,31 @@ describe("Ext.grid.column.Action", function(){
                         items: [{
                             ariaRole: null
                         }, {
-                            ariaRole: '',
+                            ariaRole: ''
                         }, {
                             ariaRole: 'throbbe'
                         }]
                     }]
                 });
-                
+
                 var item0 = getActionItem(0, 1, 0),
                     item1 = getActionItem(0, 1, 1),
                     item2 = getActionItem(0, 1, 2);
-                
+
                 expect(item0).toHaveAttr('role', 'presentation');
                 expect(item1).toHaveAttr('role', 'presentation');
                 expect(item2).toHaveAttr('role', 'throbbe');
             });
         });
     });
-});
+
+        it("should not fail when using contains()", function () {
+            makeGrid({
+                columns: [{
+                    xtype: 'actioncolumn',
+                    dataIndex: 'actionCls'
+                }]
+            });
+            expect(actionColumn.contains(grid)).toBe(false);
+        });
+    });

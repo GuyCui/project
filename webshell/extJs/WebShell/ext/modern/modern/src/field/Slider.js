@@ -59,10 +59,15 @@
  * event listener.
  */
 Ext.define('Ext.field.Slider', {
-    extend  : 'Ext.field.Field',
-    xtype   : 'sliderfield',
+    extend: 'Ext.field.Field',
+    xtype: 'sliderfield',
     requires: ['Ext.slider.Slider'],
     alternateClassName: 'Ext.form.Slider',
+
+    mixins: [
+        'Ext.mixin.ConfigProxy',
+        'Ext.field.BoxLabelable'
+    ],
 
     /**
      * @event change
@@ -112,8 +117,12 @@ Ext.define('Ext.field.Slider', {
     */
 
     config: {
-        component: {
-            xtype: 'slider'
+        /**
+         * @private
+         */
+        slider: {
+            xtype: 'slider',
+            inheritUi: true
         },
 
         /**
@@ -147,28 +156,28 @@ Ext.define('Ext.field.Slider', {
     classCls: Ext.baseCSSPrefix + 'sliderfield',
 
     proxyConfig: {
+        slider: [
+            /**
+             * @cfg increment
+             * @inheritdoc Ext.slider.Slider#increment
+             */
+            'increment',
 
-        /**
-         * @inheritdoc Ext.slider.Slider#increment
-         * @cfg {Number} increment
-         * @accessor
-         */
-        increment : 1,
+            /**
+             * @cfg minValue
+             * @inheritdoc Ext.slider.Slider#minValue
+             */
+            'minValue',
 
-        /**
-         * @inheritdoc Ext.slider.Slider#minValue
-         * @cfg {Number} minValue
-         * @accessor
-         */
-        minValue: 0,
-
-        /**
-         * @inheritdoc Ext.slider.Slider#maxValue
-         * @cfg {Number} maxValue
-         * @accessor
-         */
-        maxValue: 100
+            /**
+             * @cfg maxValue
+             * @inheritdoc Ext.slider.Slider#maxValue
+             */
+            'maxValue'
+        ]
     },
+
+    bodyAlign: 'stretch',
 
     defaultBindProperty: 'value',
     twoWayBindable: {
@@ -198,7 +207,7 @@ Ext.define('Ext.field.Slider', {
     initialize: function() {
         this.callParent();
 
-        this.getComponent().on({
+        this.getSlider().on({
             scope: this,
 
             change: 'onSliderChange',
@@ -208,18 +217,35 @@ Ext.define('Ext.field.Slider', {
         });
     },
 
-    /**
-     * @private
-     */
-    updateComponent: function(component, oldComponent) {
-        this.callParent([component, oldComponent]);
-
-        component.setMinValue(this.getMinValue());
-        component.setMaxValue(this.getMaxValue());
+    getBodyTemplate: function () {
+        return this.mixins.boxLabelable.getBodyTemplate.call(this);
     },
 
-    applyValue: function(value, oldValue) {
-        value = value || 0;
+    applySlider: function (slider) {
+        if (slider && !slider.isInstance) {
+            slider = this.mergeProxiedConfigs('slider', slider);
+            slider.$initParent = this;
+            slider = Ext.create(slider);
+            delete slider.$initParent;
+        }
+
+        this.boxElement.appendChild(slider.el);
+
+        slider.ownerCmp = this;
+
+        return slider;
+    },
+
+    updateSlider: function (slider) {
+        slider.doInheritUi();
+    },
+
+    getValue: function () {
+        return this._value;
+    },
+
+    applyValue: function (value, oldValue) {
+        value = this.callParent([value, oldValue]) || 0;
         // If we are currently dragging, don't allow the binding
         // to push a value over the top of what the user is doing.
         if (this.dragging && this.isSyncing('value')) {
@@ -235,27 +261,25 @@ Ext.define('Ext.field.Slider', {
         return value;
     },
 
-    updateValue: function(value, oldValue) {
-        var me = this;
+    updateValue: function (value, oldValue) {
+        if (!this.dragging) {
+            value = this.setSliderValue(value);
+        }
 
-        if (!me.dragging) {
-            me.setComponentValue(value);
-        }
-        if (me.initialized) {
-            me.fireEvent('change', me, value, oldValue);
-        }
+        this.callParent([value, oldValue]);
     },
 
-    setComponentValue: function(value) {
-        this.getComponent().setValue(value);
+    setSliderValue: function (value) {
+        // Get the value back out after setting
+        return this.getSlider().setValue(value).getValue();
     },
 
-    onSliderChange: function(slider, thumb, newValue, oldValue) {
+    onSliderChange: function (slider, thumb, newValue, oldValue) {
         this.setValue(slider.getValue());
         this.fireEvent('dragchange', this, slider, thumb, newValue, oldValue);
     },
 
-    onSliderDragStart: function(slider, thumb, startValue, e) {
+    onSliderDragStart: function (slider, thumb, startValue, e) {
         this.dragging = true;
         this.fireEvent('dragstart', this, slider, thumb, startValue, e);
     },
@@ -297,22 +321,40 @@ Ext.define('Ext.field.Slider', {
         this.setValue(initialValue);
     },
 
-    updateReadOnly: function(newValue) {
-        this.getComponent().setReadOnly(newValue);
+    updateReadOnly: function (newValue) {
+        this.getSlider().setReadOnly(newValue);
     },
 
-    isDirty : function () {
-        if (this.getDisabled()) {
-            return false;
-        }
-
-        return this.getValue() !== this.originalValue;
-    },
-
-    updateMultipleState: function() {
+    updateMultipleState: function () {
         var value = this.getValue();
         if (value && value.length > 1) {
             this.addCls(Ext.baseCSSPrefix + 'slider-multiple');
         }
+    },
+
+    updateDisabled: function (disabled, oldDisabled) {
+        this.callParent([disabled, oldDisabled]);
+
+        this.getSlider().setDisabled(disabled);
+    },
+
+    doDestroy: function () {
+        this.getSlider().destroy();
+        this.callParent();
+    },
+
+    getRefItems: function (deep) {
+        var refItems = [],
+            slider = this.getSlider();
+
+        if (slider) {
+            refItems.push(slider);
+
+            if (deep && slider.getRefItems) {
+                refItems.push.apply(refItems, slider.getRefItems(deep));
+            }
+        }
+
+        return refItems;
     }
 });

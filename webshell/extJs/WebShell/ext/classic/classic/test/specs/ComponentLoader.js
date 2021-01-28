@@ -1,10 +1,11 @@
-describe("Ext.ComponentLoader", function(){
-    var getAjaxOptions, loadAndComplete, loadAndFail, mockComplete, makeLoader, makeContainer, makeComponent, loader, comp;
+topSuite("Ext.ComponentLoader", 'Ext.Container', function () {
+    var getAjaxOptions, loadAndComplete, loadAndFail, mockComplete, makeLoader, makeContainer, makeComponent, loader,
+        comp;
 
-    beforeEach(function(){
+    beforeEach(function () {
         // add global variable in whitelist
         MockAjaxManager.addMethods();
-        makeComponent = function(cfg){
+        makeComponent = function (cfg) {
             cfg = cfg || {};
             comp = new Ext.Component(cfg);
         };

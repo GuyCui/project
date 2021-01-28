@@ -1,14 +1,14 @@
-describe("Ext.data.reader.Array", function() {
+topSuite("Ext.data.reader.Array", ['Ext.data.Model'], function () {
     var reader, data, records;
 
-    beforeEach(function() {
+    beforeEach(function () {
         Ext.ClassManager.enableNamespaceParseCache = false;
         Ext.define('spec.SomeModel', {
             extend: 'Ext.data.Model',
             fields: [
-               {name: 'floater', type: 'float'},
-               {name: 'id'},
-               {name: 'totalProp', type: 'integer'},
+                {name: 'floater', type: 'float'},
+                {name: 'id'},
+                {name: 'totalProp', type: 'integer'},
                {name: 'bool', type: 'boolean'},
                {name: 'msg'}
             ]

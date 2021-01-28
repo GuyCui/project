@@ -1,14 +1,14 @@
-describe("Ext.layout.container.Dashboard", function() {
+topSuite("Ext.layout.container.Dashboard", ['Ext.Panel'], function () {
     var panel;
 
-    function makeItem (itemConfig) {
+    function makeItem(itemConfig) {
         return Ext.apply({
             xtype: 'component',
             style: 'margin: 4px;'
         }, itemConfig);
     }
 
-    function makePanel (parentConfig, childConfig) {
+    function makePanel(parentConfig, childConfig) {
         var items = [];
 
         if (!Ext.isArray(childConfig)) {

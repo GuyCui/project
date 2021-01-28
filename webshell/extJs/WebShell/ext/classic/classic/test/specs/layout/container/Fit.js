@@ -1,8 +1,7 @@
-describe('Ext.layout.container.Fit', function(){
-
+topSuite("Ext.layout.container.Fit", ['Ext.Panel'], function () {
     var ct;
 
-    afterEach(function(){
+    afterEach(function () {
         Ext.destroy(ct);
         ct = null;
     });
@@ -25,199 +24,199 @@ describe('Ext.layout.container.Fit', function(){
     }
 
     describe('should handle minWidth and/or minHeight', function () {
-        it('should stretch the configured size child', function(){
+        it('should stretch the configured size child', function () {
             makeCt({
-                    width: undefined,
-                    height: undefined,
-                    floating: true,
-                    minWidth: 100,
-                    minHeight: 100,
-                    //style: 'border: 1px solid red',
-                    items: {
-                        xtype: 'component',
-                        width: 50,
+                width: undefined,
+                height: undefined,
+                floating: true,
+                minWidth: 100,
+                minHeight: 100,
+                //style: 'border: 1px solid red',
+                items: {
+                    xtype: 'component',
+                    width: 50,
                         height: 50
                     }
                 });
 
             expect(ct).toHaveLayout({
-                el: { w: 100, h: 100 },
+                el: {w: 100, h: 100},
                 items: {
-                    0: { el: { xywh: '0 0 100 100' } }
+                    0: {el: {xywh: '0 0 100 100'}}
                 }
             });
         });
     });
 
-    describe('Fixed dimensions', function(){
-        it('should size the child item to the parent', function(){
+    describe('Fixed dimensions', function () {
+        it('should size the child item to the parent', function () {
             makeCt({
-                    items: {}
-                });
+                items: {}
+            });
 
             expect(ct).toHaveLayout({
-                el: { w: 100, h: 100 },
+                el: {w: 100, h: 100},
                 items: {
-                    0: { el: { xywh: '0 0 100 100' } }
+                    0: {el: {xywh: '0 0 100 100'}}
                 }
             });
         });
 
-        it('should account for padding on the owner', function(){
+        it('should account for padding on the owner', function () {
             makeCt({
-                    padding: 10,
-                    items: {}
-                });
+                padding: 10,
+                items: {}
+            });
 
             expect(ct).toHaveLayout({
-                el: { w: 100, h: 100 },
+                el: {w: 100, h: 100},
                 items: {
-                    0: { el: { xywh: '10 10 80 80' } }
+                    0: {el: {xywh: '10 10 80 80'}}
                 }
             });
         });
 
-        it('should account for top padding on the owner', function(){
+        it('should account for top padding on the owner', function () {
             makeCt({
-                    padding: '10 0 0 0',
-                    items: {}
-                });
+                padding: '10 0 0 0',
+                items: {}
+            });
 
             expect(ct).toHaveLayout({
-                el: { w: 100, h: 100 },
+                el: {w: 100, h: 100},
                 items: {
-                    0: { el: { xywh: '0 10 100 90' } }
+                    0: {el: {xywh: '0 10 100 90'}}
                 }
             });
         });
 
-        it('should account for right padding on the owner', function(){
+        it('should account for right padding on the owner', function () {
             makeCt({
-                    padding: '0 10 0 0',
-                    items: {}
-                });
+                padding: '0 10 0 0',
+                items: {}
+            });
 
             expect(ct).toHaveLayout({
-                el: { w: 100, h: 100 },
+                el: {w: 100, h: 100},
                 items: {
-                    0: { el: { xywh: '0 0 90 100' } }
+                    0: {el: {xywh: '0 0 90 100'}}
                 }
             });
         });
 
-        it('should account for bottom padding on the owner', function(){
+        it('should account for bottom padding on the owner', function () {
             makeCt({
-                    padding: '0 0 10 0',
-                    items: {}
-                });
+                padding: '0 0 10 0',
+                items: {}
+            });
 
             expect(ct).toHaveLayout({
-                el: { w: 100, h: 100 },
+                el: {w: 100, h: 100},
                 items: {
-                    0: { el: { xywh: '0 0 100 90' } }
+                    0: {el: {xywh: '0 0 100 90'}}
                 }
             });
         });
 
-        it('should account for left padding on the owner', function(){
+        it('should account for left padding on the owner', function () {
             makeCt({
-                    padding: '0 0 0 10',
-                    items: {}
-                });
+                padding: '0 0 0 10',
+                items: {}
+            });
 
             expect(ct).toHaveLayout({
-                el: { w: 100, h: 100 },
+                el: {w: 100, h: 100},
                 items: {
-                    0: { el: { xywh: '10 0 90 100' } }
+                    0: {el: {xywh: '10 0 90 100'}}
                 }
             });
         });
 
-        it('should account for margin on the child', function(){
+        it('should account for margin on the child', function () {
             makeCt({
-                    items: {
-                        margin: 10
-                    }
-                });
+                items: {
+                    margin: 10
+                }
+            });
 
             expect(ct).toHaveLayout({
-                el: { w: 100, h: 100 },
+                el: {w: 100, h: 100},
                 items: {
-                    0: { el: { xywh: '10 10 80 80' } }
+                    0: {el: {xywh: '10 10 80 80'}}
                 }
             });
         });
 
-        it('should account for a top margin on the child', function(){
+        it('should account for a top margin on the child', function () {
             makeCt({
-                    items: {
-                        margin: '10 0 0 0'
-                    }
-                });
+                items: {
+                    margin: '10 0 0 0'
+                }
+            });
 
             expect(ct).toHaveLayout({
-                el: { w: 100, h: 100 },
+                el: {w: 100, h: 100},
                 items: {
-                    0: { el: { xywh: '0 10 100 90' } }
+                    0: {el: {xywh: '0 10 100 90'}}
                 }
             });
         });
 
-        it('should account for a right margin on the child', function(){
+        it('should account for a right margin on the child', function () {
             makeCt({
-                    items: {
-                        margin: '0 10 0 0'
-                    }
-                });
+                items: {
+                    margin: '0 10 0 0'
+                }
+            });
 
             expect(ct).toHaveLayout({
-                el: { w: 100, h: 100 },
+                el: {w: 100, h: 100},
                 items: {
-                    0: { el: { xywh: '0 0 90 100' } }
+                    0: {el: {xywh: '0 0 90 100'}}
                 }
             });
         });
 
-        it('should account for a bottom margin on the child', function(){
+        it('should account for a bottom margin on the child', function () {
             makeCt({
-                    items: {
-                        margin: '0 0 10'
-                    }
-                });
+                items: {
+                    margin: '0 0 10'
+                }
+            });
 
             expect(ct).toHaveLayout({
-                el: { w: 100, h: 100 },
+                el: {w: 100, h: 100},
                 items: {
-                    0: { el: { xywh: '0 0 100 90' } }
+                    0: {el: {xywh: '0 0 100 90'}}
                 }
             });
         });
 
-        it('should account for a left margin on the child', function(){
+        it('should account for a left margin on the child', function () {
             makeCt({
-                    items: {
-                        margin: '0 0 0 10'
-                    }
-                });
+                items: {
+                    margin: '0 0 0 10'
+                }
+            });
 
             expect(ct).toHaveLayout({
-                el: { w: 100, h: 100 },
+                el: {w: 100, h: 100},
                 items: {
-                    0: { el: { xywh: '10 0 90 100' } }
+                    0: {el: {xywh: '10 0 90 100'}}
                 }
             });
         });
 
-        it('should account for both padding & margin', function(){
+        it('should account for both padding & margin', function () {
             makeCt({
-                    padding: 10,
-                    items: {
-                        margin: 10
-                    }
-                });
+                padding: 10,
+                items: {
+                    margin: 10
+                }
+            });
 
             expect(ct).toHaveLayout({
-                el: { w: 100, h: 100 },
+                el: {w: 100, h: 100},
                 items: {
                     0: { el: { xywh: '20 20 60 60' } }
                 }
@@ -242,31 +241,31 @@ describe('Ext.layout.container.Fit', function(){
             });
         });
 
-        it('should support margin and a style margin', function(){
+        it('should support margin and a style margin', function () {
             makeCt({
-                    items: {
-                        style: {margin: '10px'}, // Will be ignored
-                        margin: 15
-                    }
-                });
+                items: {
+                    style: {margin: '10px'}, // Will be ignored
+                    margin: 15
+                }
+            });
 
             expect(ct).toHaveLayout({
-                el: { w: 100, h: 100 },
+                el: {w: 100, h: 100},
                 items: {
                     0: { el: { xywh: '15 15 70 70' } }
                 }
             });
         });
 
-        it('should support multiple items', function(){
+        it('should support multiple items', function () {
             makeCt({
-                    style: 'position: relative',
-                    items: [{}, {
-                        // TODO: this is currently required but perhaps shouldn't be
-                        style: {position: 'absolute'},
-                        itemId: 'second'
-                    }]
-                });
+                style: 'position: relative',
+                items: [{}, {
+                    // TODO: this is currently required but perhaps shouldn't be
+                    style: {position: 'absolute'},
+                    itemId: 'second'
+                }]
+            });
 
             expect(ct).toHaveLayout({
                 el: { w: 100, h: 100 },
@@ -277,17 +276,17 @@ describe('Ext.layout.container.Fit', function(){
             });
         });
 
-        it('should support multiple items with margin & padding', function(){
+        it('should support multiple items with margin & padding', function () {
             makeCt({
-                    style: 'position: relative',
-                    padding: 10,
-                    items: [{
-                        margin: true // 5
-                    }, {
-                        // TODO: this is currently required but perhaps shouldn't be
-                        style: {position: 'absolute'},
-                        itemId: 'second',
-                        margin: 20
+                style: 'position: relative',
+                padding: 10,
+                items: [{
+                    margin: true // 5
+                }, {
+                    // TODO: this is currently required but perhaps shouldn't be
+                    style: {position: 'absolute'},
+                    itemId: 'second',
+                    margin: 20
                     }]
                 });
 
@@ -301,51 +300,51 @@ describe('Ext.layout.container.Fit', function(){
             });
         });
 
-        it('should prioritize fitting the child over a configured size', function(){
+        it('should prioritize fitting the child over a configured size', function () {
             makeCt({
-                    items: {
-                        height: 50, // should be ignored
-                        margin: 10,
-                        width: 50 // should be ignored
-                    }
-                });
+                items: {
+                    height: 50, // should be ignored
+                    margin: 10,
+                    width: 50 // should be ignored
+                }
+            });
 
             expect(ct).toHaveLayout({
-                el: { w: 100, h: 100 },
+                el: {w: 100, h: 100},
                 items: {
-                    0: { el: { xywh: '10 10 80 80' } }
+                    0: {el: {xywh: '10 10 80 80'}}
                 }
             });
         });
     });
 
-    describe('Shrink-wrapping', function(){
-        it('should force the parent to the child size', function(){
+    describe('Shrink-wrapping', function () {
+        it('should force the parent to the child size', function () {
             makeCt({
-                    floating: true, // avoid stretching to full body width
-                    items: {
-                        width: 100,
-                        height: 100
-                    }
-                });
+                floating: true, // avoid stretching to full body width
+                items: {
+                    width: 100,
+                    height: 100
+                }
+            });
 
             expect(ct).toHaveLayout({
-                el: { w: 100, h: 100 },
+                el: {w: 100, h: 100},
                 items: {
                     0: { el: { xywh: '0 0 100 100' } }
                 }
             });
         });
 
-        it('should take into account owner padding', function(){
+        it('should take into account owner padding', function () {
             makeCt({
-                    floating: true, // avoid stretching to full body width
-                    padding: 10,
-                    items: {
-                        width: 80,
-                        height: 80
-                    }
-                });
+                floating: true, // avoid stretching to full body width
+                padding: 10,
+                items: {
+                    width: 80,
+                    height: 80
+                }
+            });
 
             expect(ct).toHaveLayout({
                 el: { w: 100, h: 100 },
@@ -355,15 +354,15 @@ describe('Ext.layout.container.Fit', function(){
             });
         });
 
-        it('should take into account child margin', function(){
+        it('should take into account child margin', function () {
             makeCt({
-                    floating: true, // avoid stretching to full body width
-                    items: {
-                        margin: 10,
-                        width: 80,
-                        height: 80
-                    }
-                });
+                floating: true, // avoid stretching to full body width
+                items: {
+                    margin: 10,
+                    width: 80,
+                    height: 80
+                }
+            });
 
             expect(ct).toHaveLayout({
                 el: { w: 100, h: 100 },
@@ -373,16 +372,16 @@ describe('Ext.layout.container.Fit', function(){
             });
         });
 
-        it('should account for both padding/margin', function(){
+        it('should account for both padding/margin', function () {
             makeCt({
-                    floating: true, // avoid stretching to full body width
-                    padding: 10,
-                    items: {
-                        margin: 10,
-                        width: 60,
-                        height: 60
-                    }
-                });
+                floating: true, // avoid stretching to full body width
+                padding: 10,
+                items: {
+                    margin: 10,
+                    width: 60,
+                    height: 60
+                }
+            });
 
             expect(ct).toHaveLayout({
                 el: { w: 100, h: 100 },
@@ -392,16 +391,16 @@ describe('Ext.layout.container.Fit', function(){
             });
         });
 
-        it('should account for left padding & a top margin', function(){
+        it('should account for left padding & a top margin', function () {
             makeCt({
-                    floating: true, // avoid stretching to full body width
-                    padding: '0 0 0 10',
-                    items: {
-                        margin: '10 0 0',
-                        width: 90,
-                        height: 90
-                    }
-                });
+                floating: true, // avoid stretching to full body width
+                padding: '0 0 0 10',
+                items: {
+                    margin: '10 0 0',
+                    width: 90,
+                    height: 90
+                }
+            });
 
             expect(ct).toHaveLayout({
                 el: { w: 100, h: 100 },

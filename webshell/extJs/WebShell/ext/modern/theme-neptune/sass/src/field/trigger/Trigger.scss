@@ -19,18 +19,21 @@
 );
 
 .#{$prefix}trigger.#{$prefix}grouped {
-    @include st-box;
-    @include st-box-orient($trigger-grouped-align);
+  display: flex;
 
-    @mixin vertical-trigger() {
-        @include st-box-direction(reverse, column);
+  @if $trigger-grouped-align == vertical {
+    flex-direction: column;
+  }
 
-        .#{$prefix}trigger {
-            @include st-box;
-            @include st-box-orient(vertical);
-            @include st-box-pack(center);
-        }
+  @mixin vertical-trigger() {
+    flex-direction: column-reverse;
+
+    .#{$prefix}trigger {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
+  }
 
     @if $trigger-grouped-align == vertical {
         @include vertical-trigger();
@@ -38,13 +41,33 @@
 
     @if $enable-big {
         .x-big & {
-            @include st-box-orient($trigger-grouped-align-big);
-
+          @if $trigger-grouped-align != $trigger-grouped-align-big {
             @if $trigger-grouped-align-big == vertical {
-                @include vertical-trigger();
+              flex-direction: column;
             } @else {
-                @include st-box-direction(normal, row);
+              flex-direction: row;
             }
+          }
+
+          @if $trigger-grouped-align-big == vertical {
+            @include vertical-trigger();
+          } @else {
+            flex-direction: row;
+          }
         }
     }
+}
+
+@if $enable-default-uis {
+  @if $trigger-alt-ui {
+    @include trigger-ui(map-merge((ui: 'alt'), $trigger-alt-ui) . . .);
+  }
+
+  @if $trigger-faded-ui {
+    @include trigger-ui(map-merge((ui: 'faded'), $trigger-faded-ui) . . .);
+  }
+
+  @if $trigger-solo-ui {
+    @include trigger-ui(map-merge((ui: 'solo'), $trigger-solo-ui) . . .);
+  }
 }

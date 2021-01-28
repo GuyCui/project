@@ -1,13 +1,13 @@
-describe("Ext.data.identifier.Uuid", function() {
-    
+topSuite("Ext.data.identifier.Uuid", function () {
+
     var Generator = Ext.data.identifier.Generator,
         idgen;
-    
+
     function make(cfg) {
         idgen = new Ext.data.identifier.Uuid(cfg);
     }
-    
-    afterEach(function() {
+
+    afterEach(function () {
         idgen = null;
         // Purposefully NOT clearing the cache here, since the global
         // uuid gets created.

@@ -230,6 +230,7 @@ Ext.env.OS.prototype = {
     // A couple compatible flavors:
     Ext['is' + osName] = true; // e.g., Ext.isWindows
     Ext.isMac = is.Mac = is.MacOS;
+    Ext.isApple = Ext.isMac || Ext.isiOS;
 
     var search = window.location.search.match(/deviceType=(Tablet|Phone)/),
         nativeDeviceType = window.deviceType;
@@ -246,15 +247,14 @@ Ext.env.OS.prototype = {
         deviceType = 'Tablet';
     }
     else {
-        if (!osEnv.is.Android && !osEnv.is.iOS && !osEnv.is.WindowsPhone && /Windows|Linux|MacOS/.test(osName)) {
+        if (!osEnv.is.Android && !osEnv.is.iOS && !osEnv.is.WindowsPhone && /Windows|Linux|MacOS|ChromeOS/.test(osName)) {
             deviceType = 'Desktop';
 
             // always set it to false when you are on a desktop not using Ripple Emulation
             Ext.browser.is.WebView = !!Ext.browser.is.Ripple;
-        }
-        else if (osEnv.is.iPad || osEnv.is.RIMTablet || osEnv.is.Android3 ||
-                 Ext.browser.is.Silk ||
-                (osEnv.is.Android && userAgent.search(/mobile/i) === -1)) {
+        } else if (osEnv.is.iPad || osEnv.is.RIMTablet || osEnv.is.Android3 ||
+            Ext.browser.is.Silk ||
+            (osEnv.is.Android && userAgent.search(/mobile/i) === -1)) {
             deviceType = 'Tablet';
         }
         else {

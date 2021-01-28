@@ -1,10 +1,10 @@
 /* global Ext, expect, jasmine */
 
-describe("Ext.view.AbstractView", function(){
+topSuite("Ext.view.AbstractView", ['Ext.data.ArrayStore'], function () {
     var store, view,
         synchronousLoad = true,
         proxyStoreLoad = Ext.data.ProxyStore.prototype.load,
-        loadStore = function() {
+        loadStore = function () {
             proxyStoreLoad.apply(this, arguments);
             if (synchronousLoad) {
                 this.flushLoad.apply(this, arguments);
@@ -99,15 +99,15 @@ describe("Ext.view.AbstractView", function(){
         });
     });
 
-    describe("Initial layout call", function(){
+    describe("Initial layout call", function () {
 
         // The shrinkwrap layout caused by that will be coalesced into the initial render layout
-        it("should lay out once", function() {
+        it("should lay out once", function () {
             var contextRun = Ext.layout.Context.prototype.run,
                 v,
                 layoutCount = 0;
 
-            Ext.layout.Context.prototype.run = Ext.Function.createInterceptor(contextRun, function() {
+            Ext.layout.Context.prototype.run = Ext.Function.createInterceptor(contextRun, function () {
                 layoutCount++;
             });
 
@@ -126,7 +126,7 @@ describe("Ext.view.AbstractView", function(){
             
             // Wait. There MUST NOT be a further, deferred layout call!
             waits(100);
-            runs(function() {
+            runs(function () {
                 expect(layoutCount).toEqual(1);
                 Ext.layout.Context.prototype.run = contextRun;
                 v.destroy();
@@ -134,12 +134,12 @@ describe("Ext.view.AbstractView", function(){
         });
 
     });
-    
-    describe("events", function(){
-        it("should fire itemadd when adding an item to an empty view", function(){
+
+    describe("events", function () {
+        it("should fire itemadd when adding an item to an empty view", function () {
             var itemAddSpy = jasmine.createSpy(),
                 newRec;
-            
+
             view = new Ext.view.AbstractView({
                 itemTpl: '{field}',
                 store: store,
@@ -155,13 +155,13 @@ describe("Ext.view.AbstractView", function(){
             expect(Ext.Array.slice(itemAddSpy.mostRecentCall.args, 0, 4)).toEqual([[newRec], store.getCount() - 1, [view.getNode(newRec)], view]);
         });
 
-        it("should fire itemremove when removing an item from the view", function(){
+        it("should fire itemremove when removing an item from the view", function () {
             var itemRemoveSpy = jasmine.createSpy(),
                 newRec = store.add({
                     field: 'a'
                 })[0],
                 item0;
-            
+
             view = new Ext.view.AbstractView({
                 itemTpl: '{field}',
                 store: store,
@@ -176,15 +176,15 @@ describe("Ext.view.AbstractView", function(){
             expect(Ext.Array.slice(itemRemoveSpy.mostRecentCall.args, 0, 4)).toEqual([[], 0, [item0], view]);
         });
 
-        it("should fire focuschange when changing focus in a view", function(){
+        it("should fire focuschange when changing focus in a view", function () {
             var focuschangeFired = false;
-            
+
             var c = new Ext.view.AbstractView({
                 itemTpl: '{field}',
                 store: store,
                 renderTo: Ext.getBody(),
                 listeners: {
-                    focuschange: function() {
+                    focuschange: function () {
                         focuschangeFired = true;
                     }
                 }

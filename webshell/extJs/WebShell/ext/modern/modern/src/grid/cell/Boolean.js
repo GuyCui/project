@@ -9,30 +9,35 @@ Ext.define('Ext.grid.cell.Boolean', {
     extend: 'Ext.grid.cell.Text',
     xtype: 'booleancell',
 
+    isBooleanCell: true,
+
     config: {
         /**
          * @cfg {String} falseText
          * The string to display when the value is falsey (but not undefined).
+         * @locale
          */
         falseText: 'False',
 
         /**
          * @cfg {String} trueText
          * The string to display when the value is not falsey.
+         * @locale
          */
         trueText: 'True',
 
         /**
          * @cfg {String} undefinedText
          * The string to display when the column value is `undefined`.
+         * @locale
          */
-        undefinedText: ''
+        undefinedText: '\xA0'
     },
 
     updateColumn: function (column, oldColumn) {
         this.callParent([column, oldColumn]);
 
-        if (column) {
+        if (column && column.isBooleanColumn) {
             var text = column.getFalseText();
 
             if (text !== null) {
@@ -70,20 +75,17 @@ Ext.define('Ext.grid.cell.Boolean', {
         }
     },
 
-    writeValue: function () {
-        var me = this,
-            value = me.getValue();
+    formatValue: function (value) {
+        var me = this;
 
         if (value === undefined) {
             value = me.getUndefinedText();
-        }
-        else if (!value || value === 'false') {
+        } else if (!value || value === 'false') {
             value = me.getFalseText();
-        }
-        else {
+        } else {
             value = me.getTrueText();
         }
 
-        me.setRawValue(value);
+        return value;
     }
 });

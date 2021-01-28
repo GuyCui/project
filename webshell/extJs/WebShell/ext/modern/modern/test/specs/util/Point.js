@@ -1,9 +1,9 @@
-describe("Ext.util.Point", function() {
+topSuite("Ext.util.Point", function () {
     var Point = Ext.util.Point,
         point;
 
-    describe("constructor()", function() {
-        it("should instantiate with x=0 and y=0 if not provided", function() {
+    describe("constructor()", function () {
+        it("should instantiate with x=0 and y=0 if not provided", function () {
             point = new Point();
             expect(point.x).toBe(0);
             expect(point.y).toBe(0);

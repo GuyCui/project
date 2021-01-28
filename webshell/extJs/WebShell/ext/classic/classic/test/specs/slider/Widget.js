@@ -1,11 +1,11 @@
-describe("Ext.slider.Widget", function() {
+topSuite("Ext.slider.Widget", ['Ext.Panel', 'Ext.app.ViewModel'], function () {
     var panel, slider, viewModel, data;
 
     afterEach(function () {
         panel = slider = viewModel = data = Ext.destroy(panel, slider, viewModel);
     });
 
-    function notify () {
+    function notify() {
         viewModel.getScheduler().notify();
     }
 

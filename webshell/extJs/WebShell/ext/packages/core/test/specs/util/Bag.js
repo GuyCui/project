@@ -1,13 +1,13 @@
-describe("Ext.util.Bag", function() {
+topSuite("Ext.util.Bag", function () {
 
     var bag, a, b, c, d;
 
-    function makeBag() {    
+    function makeBag() {
         return new Ext.util.Bag();
     }
 
-    beforeEach(function() {
-        bag = makeBag();        
+    beforeEach(function () {
+        bag = makeBag();
         a = {id: 'a'};
         b = {id: 'b'};
         c = {id: 'c'};

@@ -1,14 +1,14 @@
-describe("Ext.Template", function() {
+topSuite("Ext.Template", ["Ext.dom.Element"], function () {
 
-    describe("instantiation", function() {
+    describe("instantiation", function () {
         var tpl;
 
-        it("it should extend Ext.Base", function() {
+        it("it should extend Ext.Base", function () {
             tpl = new Ext.Template("");
             expect(tpl.superclass).toEqual(Ext.Base.prototype);
         });
 
-        describe("configuration options", function() {
+        describe("configuration options", function () {
             it("should disableFormats by default", function() {
                 tpl = new Ext.Template("");
                 expect(tpl.disableFormats).toBe(false);

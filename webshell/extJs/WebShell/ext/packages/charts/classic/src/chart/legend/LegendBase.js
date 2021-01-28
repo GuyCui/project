@@ -11,17 +11,26 @@ Ext.define('Ext.chart.legend.LegendBase', {
                     '<tpl for=".">',
                         '<div class="', Ext.baseCSSPrefix, 'legend-item">',
                             '<span ',
-                                'class="', Ext.baseCSSPrefix, 'legend-item-marker {[ values.disabled ? Ext.baseCSSPrefix + \'legend-item-inactive\' : \'\' ]}" ',
-                                'style="background:{mark};">',
-                            '</span>{name}',
-                        '</div>',
-                    '</tpl>',
-                '</div>',
+            'class="', Ext.baseCSSPrefix, 'legend-item-marker {[ values.disabled ? Ext.baseCSSPrefix + \'legend-item-inactive\' : \'\' ]}" ',
+            'style="background:{mark};">',
+            '</span>{name}',
+            '</div>',
+            '</tpl>',
+            '</div>',
             '</div>'
         ],
         nodeContainerSelector: 'div.' + Ext.baseCSSPrefix + 'legend-inner', // element that contains rows (see AbstractView)
         itemSelector: 'div.' + Ext.baseCSSPrefix + 'legend-item',           // row element (see AbstractView)
+        /**
+         * @cfg {String} docked
+         * The dock position of this component in its container. Can be `left`, `top`, `right` or `bottom`.
+         */
         docked: 'bottom'
+
+        /**
+         * @cfg dock
+         * @hide
+         */
     },
 
     setDocked: function (docked) {

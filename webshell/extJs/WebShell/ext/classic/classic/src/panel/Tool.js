@@ -247,28 +247,37 @@ Ext.define('Ext.panel.Tool', {
      * Specify as false to allow click event to propagate.
      */
     stopEvent: true,
-    
+
     ariaRole: 'button',
     focusable: true,
     tabIndex: 0,
-    
+
     keyMap: {
         scope: 'this',
         SPACE: 'onClick',
         ENTER: 'onClick'
     },
 
+    /**
+     * @cfg {Boolean} cacheHeight
+     * Set to `false` to use a custom tool height and not the cached tool height.
+     */
     cacheHeight: true,
+
+    /**
+     * @cfg {Boolean} cacheWidth
+     * Set to `false` to use a custom tool width and not the cached tool width.
+     */
     cacheWidth: true,
 
     //<debug>
     _toolTypes: {
-        close:1,
-        collapse:1,
-        down:1,
-        expand:1,
-        gear:1,
-        help:1,
+        close: 1,
+        collapse: 1,
+        down: 1,
+        expand: 1,
+        gear: 1,
+        help: 1,
         left:1,
         maximize:1,
         minimize:1,
@@ -446,7 +455,7 @@ Ext.define('Ext.panel.Tool', {
 
     /**
      * Sets the icon class. Allows the icon to be changed.
-     * @param {String} type The new icon class. See the {@link #type} config.
+     * @param {String} iconCls The new icon class. See the {@link #type} config.
      * @return {Ext.panel.Tool} this
      */
     setIconCls: function(iconCls) {

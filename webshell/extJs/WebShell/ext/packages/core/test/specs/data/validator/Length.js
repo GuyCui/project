@@ -1,7 +1,6 @@
-describe("Ext.data.validator.Length", function() {
-    
+topSuite("Ext.data.validator.Length", function () {
     var v;
-    
+
     function validate(value, min, max) {
         v = new Ext.data.validator.Length({
             min: min,

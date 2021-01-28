@@ -80,14 +80,22 @@ Ext.define('Ext.GlobalEvents', {
      * 
      * This includes DOM event handlers, Ajax (including JSONP) event handlers,
      * and {@link Ext.util.TaskRunner TaskRunners}
-     * 
+     *
      * When called at the tail of a DOM event, the event object is passed as the
      * sole parameter.
-     * 
+     *
      * This can be useful for performing cleanup, or update tasks which need to
      * happen only after all code in an event handler has been run, but which
      * should not be executed in a timer due to the intervening browser
      * reflow/repaint which would take place.
+     */
+
+    /**
+     * @event onlinechange
+     * Fires when the online status of the page changes. See {@link Ext#method-isOnline}
+     * @param {Boolean} online `true` if in an online state.
+     *
+     * @since 6.2.1
      */
 
     /**
@@ -99,8 +107,9 @@ Ext.define('Ext.GlobalEvents', {
     /**
      * @event resize
      * Fires when the browser window is resized.  To avoid running resize handlers
-     * too often resulting in sluggish window resizing, resize events use a buffer
-     * of 100 milliseconds.
+     * too often resulting in sluggish window resizing, the resize event uses a buffer
+     * of 100 milliseconds in the Classic toolkit, and fires on animation frame
+     * in the Modern toolkit.
      * @param {Number} width The new width
      * @param {Number} height The new height
      */
@@ -120,7 +129,7 @@ Ext.define('Ext.GlobalEvents', {
      * @private
      * @since 5.1.0
      */
-    
+
     /**
      * @event mousedown
      * A mousedown listener on the document that is immune to stopPropagation()
@@ -128,6 +137,17 @@ Ext.define('Ext.GlobalEvents', {
      * document regardless of whether some other handler tried to stop it.  An
      * example where this is useful is a menu that needs to be hidden whenever
      * there is a mousedown event on the document.
+     * @param {Ext.event.Event} e The event object
+     */
+
+    /**
+     * @event mouseup
+     * A mouseup listener on the document that is immune to stopPropagation()
+     * used in cases where we need to know if a mouseup event occurred on the
+     * document regardless of whether some other handler tried to stop it.  An
+     * example where this is useful is a component which enters a "pressed" state
+     * upon mousedown, and needs to exit that state even if the mouse exits
+     * before being released.
      * @param {Ext.event.Event} e The event object
      */
 
@@ -146,41 +166,120 @@ Ext.define('Ext.GlobalEvents', {
         unload: 1
     },
 
-    constructor: function() {
+    // @private
+    windowListeners: {
+        resize: {
+            fn: 'fireResize'
+        }
+    },
+
+    constructor: function () {
         var me = this;
 
         me.callParent();
 
-        Ext.onInternalReady(function() {
+        Ext.onInternalReady(function () {
             // using a closure here instead of attaching the event directly to the
             // attachListeners method gives us a chance to override the method
             me.attachListeners();
         });
     },
 
-    attachListeners: function() {
-        Ext.get(window).on('resize', this.fireResize, this, {
-            buffer: this.resizeBuffer
+    setPressedComponent: function (component, e) {
+        var pressedComponent = this.pressedComponent;
+
+        if (pressedComponent && pressedComponent.onRelease) {
+            pressedComponent.onRelease(e);
+        }
+        this.pressedComponent = component;
+    },
+
+    attachListeners: function () {
+        var me = this,
+            win = Ext.getWin(),
+            winListeners = me.windowListeners;
+
+        me.onlineState = Ext.isOnline();
+
+        // Capture width/height to compare later in fireResize
+        me.curHeight = Ext.Element.getViewportHeight();
+        me.curWidth = Ext.Element.getViewportWidth();
+
+        win.on({
+            scope: me,
+            online: 'handleOnlineChange',
+            offline: 'handleOnlineChange'
         });
-        Ext.getDoc().on('mousedown', this.fireMouseDown, this);
+
+        // This function is not entirely harmless but since it is not directly related
+        // to any component, element, or other destructible entity and effectively cannot
+        // be cleaned up, we have to pretend it's OK for this timer to go unnoticed.
+        //<debug>
+        me.fireResize.$skipTimerCheck = true;
+        //</debug>
+
+        // IE8 does its own thing
+        if (winListeners) {
+            winListeners.scope = me;
+
+            // CSS layouts only require buffering to the next animation frame
+            if (Ext.isModern) {
+                winListeners.resize.onFrame = true;
+            } else {
+                winListeners.resize.buffer = me.resizeBuffer;
+            }
+
+            win.on(winListeners);
+        }
+
+        Ext.getDoc().on({
+            touchstart: 'fireMouseDown',
+            mousedown: 'fireMouseDown',
+            mouseup: 'fireMouseUp',
+            touchend: 'fireMouseUp',
+            drop: 'fireMouseUp',
+            dragend: 'fireMouseUp',
+            scope: me
+        });
     },
 
-    fireMouseDown: function(e) {
+    fireMouseDown: function (e) {
         this.fireEvent('mousedown', e);
+
+        // Synchronize floated component ordering.
+        // Note that this is an ASAP method and will complete asynchronously
+        // after this event has finished.
+        Ext.ComponentManager.handleDocumentMouseDown(e);
     },
 
-    fireResize: function() {
+    fireMouseUp: function (e) {
+        this.fireEvent('mouseup', e);
+        this.setPressedComponent(null);
+    },
+
+    fireResize: function () {
         var me = this,
             Element = Ext.Element,
             w = Element.getViewportWidth(),
             h = Element.getViewportHeight();
 
-         // In IE the resize event will sometimes fire even though the w/h are the same.
-         if (me.curHeight !== h || me.curWidth !== w) {
-             me.curHeight = h;
-             me.curWidth = w;
-             me.fireEvent('resize', w, h);
-         }
+        // In IE the resize event will sometimes fire even though the w/h are the same.
+        if (me.curHeight !== h || me.curWidth !== w) {
+            me.curHeight = h;
+            me.curWidth = w;
+
+            if (me.hasListeners.resize) {
+                me.fireEvent('resize', w, h);
+            }
+        }
+    },
+
+    handleOnlineChange: function () {
+        var online = Ext.isOnline();
+        if (online !== this.onlineState) {
+            this.onlineState = online;
+            this.fireEvent('onlinechange', online);
+        }
     }
 
 }, function(GlobalEvents) {
@@ -212,7 +311,25 @@ Ext.define('Ext.GlobalEvents', {
      *
      * @since 6.2.0
      */
-    Ext.fireEvent = function() {
+    Ext.fireEvent = function () {
         return GlobalEvents.fireEvent.apply(GlobalEvents, arguments);
     };
+
+    /**
+     * @member Ext
+     * @method fireIdle
+     * Fires the global `idle` event if there are any listeners registered.
+     *
+     * @since 6.5.1
+     * @private
+     */
+    Ext.fireIdle = function () {
+        if (GlobalEvents.hasListeners.idle && !Ext._suppressIdle) {
+            GlobalEvents.fireEventArgs('idle');
+        }
+
+        Ext._suppressIdle = false;
+    };
+
+    Ext._suppressIdle = false;
 });

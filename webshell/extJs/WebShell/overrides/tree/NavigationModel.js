@@ -66,7 +66,7 @@ Ext.define('override.tree.NavigationModel', {
                     me.record = me.column = me.recordIndex = me.columnIndex = null;
                 }
             }
-                // View node no longer in view. Clear current position.
+            // View node no longer in view. Clear current position.
             // Attempt to scroll to the record if it is in the store, but out of rendered range.
             else {
                 row = view.dataSource.indexOf(position.record);

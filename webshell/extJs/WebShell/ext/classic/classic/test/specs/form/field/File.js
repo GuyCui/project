@@ -1,8 +1,8 @@
-describe("Ext.form.field.File", function() {
+topSuite("Ext.form.field.File", function () {
     var field, makeField;
-    
-    beforeEach(function() {
-        makeField = function(cfg) {
+
+    beforeEach(function () {
+        makeField = function (cfg) {
             cfg = Ext.apply({
                 renderTo: Ext.getBody()
             }, cfg);

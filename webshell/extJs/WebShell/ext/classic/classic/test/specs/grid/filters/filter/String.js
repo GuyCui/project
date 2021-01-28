@@ -1,14 +1,16 @@
-describe("Ext.grid.filters.filter.String", function () {
-    var grid, store, plugin, columnFilter, menu,
-        synchronousLoad = true,
-        proxyStoreLoad = Ext.data.ProxyStore.prototype.load,
-        loadStore = function() {
-            proxyStoreLoad.apply(this, arguments);
-            if (synchronousLoad) {
-                this.flushLoad.apply(this, arguments);
-            }
-            return this;
-        };
+topSuite("Ext.grid.filters.filter.String",
+    ['Ext.grid.Panel', 'Ext.grid.filters.Filters'],
+    function () {
+        var grid, store, plugin, columnFilter, menu,
+            synchronousLoad = true,
+            proxyStoreLoad = Ext.data.ProxyStore.prototype.load,
+            loadStore = function () {
+                proxyStoreLoad.apply(this, arguments);
+                if (synchronousLoad) {
+                    this.flushLoad.apply(this, arguments);
+                }
+                return this;
+            };
 
     function createGrid(listCfg, storeCfg, gridCfg) {
         synchronousLoad = false;

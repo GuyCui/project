@@ -1,4 +1,6 @@
-describe("Ext.form.CheckboxGroup", function() {
+/* global Ext, expect, jasmine */
+
+topSuite("Ext.form.CheckboxGroup", ['Ext.app.ViewModel'], function () {
     var component;
 
     function makeComponent(config) {
@@ -8,7 +10,7 @@ describe("Ext.form.CheckboxGroup", function() {
         component = new Ext.form.CheckboxGroup(config);
     }
 
-    afterEach(function() {
+    afterEach(function () {
         Ext.destroy(component);
         component = null;
     });
@@ -92,13 +94,13 @@ describe("Ext.form.CheckboxGroup", function() {
                         checkboxes.push({
                             xtype: 'checkbox'
                         });
-                    }   
+                    }
                     return checkboxes;
                 })()
             });
             expect(component.getHeight()).toBe(100);
         });
-    })
+    });
 
     it("should fire the change event when a sub-checkbox is changed", function() {
         makeComponent({

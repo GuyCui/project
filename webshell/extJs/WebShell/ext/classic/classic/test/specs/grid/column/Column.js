@@ -1,14 +1,18 @@
-describe("Ext.grid.column.Column", function() {
+/* global Ext, expect, jasmine */
 
-    var defaultColumns = [
-            { header: 'Name',  dataIndex: 'name', width: 100 },
-            { header: 'Email', dataIndex: 'email', flex: 1 },
-            { header: 'Phone', dataIndex: 'phone', flex: 1, hidden: true }
+topSuite("Ext.grid.column.Column",
+    ['Ext.grid.Panel', 'Ext.grid.plugin.CellEditing', 'Ext.form.field.Text'],
+    function () {
+
+        var defaultColumns = [
+            {header: 'Name', dataIndex: 'name', width: 100},
+            {header: 'Email', dataIndex: 'email', flex: 1},
+            {header: 'Phone', dataIndex: 'phone', flex: 1, hidden: true}
         ], grid, store, colRef;
 
-    function createGrid(storeCfg, gridCfg) {
-        store = new Ext.data.Store(Ext.apply({
-            fields:['name', 'email', 'phone'],
+        function createGrid(storeCfg, gridCfg) {
+            store = new Ext.data.Store(Ext.apply({
+                fields: ['name', 'email', 'phone'],
             data: [
                 { 'name': 'Lisa',  "email":"lisa@simpsons.com",  "phone":"555-111-1224"  },
                 { 'name': 'Bart',  "email":"bart@simpsons.com",  "phone":"555-222-1234"  },
@@ -205,60 +209,59 @@ describe("Ext.grid.column.Column", function() {
                 }],
                 width: 400,
                 renderTo: Ext.getBody(),
-                style: 'position:absolute;top:0;left:0',
-                xhooks: {
-                    afterRender: function() {
-                        this.callParent(arguments);
-                        this.headerCt.el.select('span.x-column-header-text').setStyle('display', 'block');
-                    }
-                }
+                style: 'position:absolute;top:0;left:0'
             });
 
-            expect(grid.headerCt).toHaveLayout({
-               el: { xywh: '0 0 400 80' },
-               items: {
-                  0: {
-                     el: { xywh: '0 0 100 80' },
-                     textEl: { xywh: '6 33 87 13' },
-                     titleEl: { xywh: '0 0 99 80' }
-                  },
-                  1: {
-                     el: { xywh: '100 0 100 80' },
-                     textEl: { xywh: '106 4 87 13' },
-                     titleEl: { xywh: '100 0 99 22' },
-                     items: {
+            // IE appears to need some time to correct the table layout of the headers.
+            waits(Ext.isIE ? 100 : 0);
+
+            runs(function () {
+                expect(grid.headerCt).toHaveLayout({
+                    el: {xywh: '0 0 400 80'},
+                    items: {
                         0: {
-                           el: { xywh: '0 22 [99,100] 58' },
-                           textEl: { xywh: '6 44 [87,88] 13' },
-                           titleEl: { xywh: '0 23 [99,100] 57' }
-                        }
-                     }
-                  },
-                  2: {
-                     el: { xywh: '200 0 200 80' },
-                     textEl: { xywh: '206 4 187 13' },
-                     titleEl: { xywh: '200 0 199 22' },
-                     items: {
-                        0: {
-                           el: { xywh: '0 22 100 58' },
-                           textEl: { xywh: '6 44 87 13' },
-                           titleEl: { xywh: '0 23 99 57' }
+                            el: {xywh: '0 0 100 80'},
+                            textEl: {xywh: '6 33 87 13'},
+                            titleEl: {xywh: '0 0 99 80'}
                         },
                         1: {
-                           el: { xywh: '100 22 100 58' },
-                           textEl: { xywh: '106 26 87 26' },
-                           titleEl: { xywh: '100 23 99 34' },
-                           items: {
-                              0: {
-                                 el: { xywh: '0 35 100 22' },
-                                 textEl: { xywh: '6 39 87 13' },
-                                 titleEl: { xywh: '0 36 99 21' }
-                              }
-                           }
+                            el: {xywh: '100 0 100 80'},
+                            textEl: {xywh: '106 4 87 13'},
+                            titleEl: {xywh: '100 0 99 22'},
+                            items: {
+                                0: {
+                                    el: {xywh: '0 22 [99,100] 58'},
+                                    textEl: {xywh: '6 44 [87,88] 13'},
+                                    titleEl: {xywh: '0 23 [99,100] 57'}
+                                }
+                            }
+                        },
+                        2: {
+                            el: {xywh: '200 0 200 80'},
+                            textEl: {xywh: '206 4 187 13'},
+                            titleEl: {xywh: '200 0 199 22'},
+                            items: {
+                                0: {
+                                    el: {xywh: '0 22 100 58'},
+                                    textEl: {xywh: '6 44 87 13'},
+                                    titleEl: {xywh: '0 23 99 57'}
+                                },
+                                1: {
+                                    el: {xywh: '100 22 100 58'},
+                                    textEl: {xywh: '106 26 87 26'},
+                                    titleEl: {xywh: '100 23 99 34'},
+                                    items: {
+                                        0: {
+                                            el: {xywh: '0 35 100 22'},
+                                            textEl: {xywh: '6 39 87 13'},
+                                            titleEl: {xywh: '0 36 99 21'}
+                                        }
+                                    }
+                                }
+                            }
                         }
-                     }
-                  }
-               }
+                    }
+                });
             });
         });
 
@@ -348,22 +351,51 @@ describe("Ext.grid.column.Column", function() {
                     { header: 'Name',  columns: {
                         header: 'Foo', dataIndex: 'foo'
                     }},
-                    { header: 'Email', columns: {
-                        header: 'Bar', dataIndex: 'bar'
-                    }},
-                    { header: 'Phone', dataIndex: 'phone', flex: 1, hidden: true }
+                    {
+                        header: 'Email', columns: {
+                            header: 'Bar', dataIndex: 'bar'
+                        }
+                    },
+                    {header: 'Phone', dataIndex: 'phone', flex: 1, hidden: true}
                 ]
             });
 
             expect(grid.query('[isGroupHeader]').length).toBe(2);
         });
 
+        it('should seal all grouped columns when the grid is configured with sealedColumns true', function () {
+            var grouped, i;
+
+            createGrid({}, {
+                sealedColumns: true,
+                columns: [
+                    {
+                        header: 'Name', columns: {
+                            header: 'Foo', dataIndex: 'foo'
+                        }
+                    },
+                    {
+                        header: 'Email', columns: {
+                            header: 'Bar', dataIndex: 'bar'
+                        }
+                    },
+                    {header: 'Phone', dataIndex: 'phone', flex: 1, hidden: true}
+                ]
+            });
+
+            grouped = grid.query('[isGroupHeader]');
+
+            for (i = 0; i < grouped.length; i++) {
+                expect(grouped[i].isSealed()).toBe(true);
+            }
+        });
+
         it('should not have any isGroupHeader matches if there are no column groups', function () {
             createGrid({}, {
                 columns: [
-                    { header: 'Name',  dataIndex: 'name', width: 100 },
-                    { header: 'Email', dataIndex: 'email', flex: 1 },
-                    { header: 'Phone', dataIndex: 'phone', flex: 1, hidden: true }
+                    {header: 'Name', dataIndex: 'name', width: 100},
+                    {header: 'Email', dataIndex: 'email', flex: 1},
+                    {header: 'Phone', dataIndex: 'phone', flex: 1, hidden: true}
                 ]
             });
 

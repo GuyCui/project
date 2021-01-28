@@ -340,10 +340,9 @@ Ext.feature = {
         }
     },{
         /**
-         * @property Touch `true` if the browser supports touch input.
+         * @property {Boolean} Touch `true` if the browser supports touch input.
          *
          * This property is available at application boot time, before document ready.
-         * @type {Boolean}
          */
         name: 'Touch',
         fn: function() {
@@ -365,29 +364,84 @@ Ext.feature = {
                 return Ext.supports.TouchEvents || maxTouchPoints > 0;
             }
         }
-    },{
+    }, {
         /**
-         * @property TouchEvents `true` if the device supports touch events (`touchstart`,
-         * `touchmove`, `touchend`).
+         * @property {Boolean} PointerEvents
+         * @type {Boolean}
+         * @private
+         *
+         * `true` If the event system should use [pointer events](https://www.w3.org/TR/pointerevents/).
+         * Currently only set to true if the browser supports pointer events and does not
+         * also support touch events.  Touch events are preferred since they allow run-time
+         * cancellation of browser default behavior such as scrolling by invoking `e.preventDefault()`
+         * whereas pointer events require such intentions to be declared in advance via
+         * CSS [touch-action](https://www.w3.org/TR/pointerevents/#h3_the-touch-action-css-property).
+         * This means that when pointer events are used, certain interactions are not possible
+         * such as long-press to drag within a scrollable element.
+         */
+        name: 'PointerEvents',
+        fn: function () {
+            return !!(window.PointerEvent && !Ext.supports.TouchEvents);
+        }
+    }, {
+        /**
+         * @property {Boolean} MSPointerEvents
+         * @private
+         */
+        name: 'MSPointerEvents',
+        fn: function () {
+            return Ext.isIE10;
+        }
+    }, {
+        /**
+         * @property {Boolean} TouchEvents
+         *
+         * `true` if the device supports touch events (`touchstart`, `touchmove`, `touchend`).
          *
          * This property is available at application boot time, before document ready.
-         * @type {Boolean}
          */
         name: 'TouchEvents',
-        fn: function() {
+        fn: function () {
             return this.isEventSupported('touchend');
         }
-    },{
-        name: 'PointerEvents',
-        fn: function() {
-            return navigator.pointerEnabled;
+    }, {
+        /**
+         * @property {Boolean} TouchAction
+         * @private
+         *
+         * A bit flag representing which property values the browser recognizes as valid
+         * values of the CSS `touch-action` property.
+         *
+         *     panX            1  "00000001"
+         *     panY            2  "00000010"
+         *     pinchZoom       4  "00000100"
+         *     doubleTapZoom   8  "00001000"
+         */
+        name: 'TouchAction',
+        ready: true,
+        fn: function (doc, div) {
+            if (!window.getComputedStyle) {
+                return 0;
+            }
+
+            var values = ['pan-x', 'pan-y', 'pinch-zoom', 'double-tap-zoom'],
+                flags = [1, 2, 4, 8],
+                ln = values.length,
+                flag = 0,
+                i, value;
+
+            for (i = 0; i < ln; i++) {
+                value = values[i];
+                div.style.touchAction = value;
+
+                if (getComputedStyle(div).touchAction === value) {
+                    flag |= flags[i];
+                }
+            }
+
+            return flag;
         }
-    },{
-        name: 'MSPointerEvents',
-        fn: function() {
-            return navigator.msPointerEnabled;
-        }
-    },{
+    }, {
         /**
          * @property Orientation `true` if the device supports different orientations.
          * @type {Boolean}
@@ -395,7 +449,7 @@ Ext.feature = {
          * This property is available at application boot time, before document ready.
          */
         name: 'Orientation',
-        fn: function() {
+        fn: function () {
             return ('orientation' in window) && this.isEventSupported('orientationchange');
         }
     },{
@@ -432,7 +486,7 @@ Ext.feature = {
         /**
          * @property GeoLocation `true` if the device supports Geo-location.
          * @type {Boolean}
-         * @deprecated Use `Geolocation` instead (notice the lower-casing of 'L').
+         * @deprecated 5.0.0 Use `Geolocation` instead (notice the lower-casing of 'L').
          */
         names: [ 'Geolocation', 'GeoLocation' ],
         fn: function() {
@@ -537,7 +591,7 @@ Ext.feature = {
         /**
          * @property AudioTag `true` if the device supports the HTML5 `audio` tag.
          * @type {Boolean}
-         * @deprecated Use `Audio` instead.
+         * @deprecated 5.0.0 Use `Audio` instead.
          */
         names: [ 'Audio', 'AudioTag' ],
         fn: function() {
@@ -573,13 +627,37 @@ Ext.feature = {
                     localStorage.removeItem('sencha-localstorage-test');
                     return true;
                 }
-            } catch ( e ) {
+            } catch (e) {
                 // ignore
             }
 
             return false;
         }
-    },{
+    }, {
+        /**
+         * @property {Boolean} XmlQuerySelector `true` if the browsers supports querySelector
+         * and querySelectorAll methods on XML nodes.
+         *
+         * This property is available at application boot time, before document ready.
+         */
+        name: 'XmlQuerySelector',
+        fn: function () {
+            var xmlString = '<?xml version="1.0" encoding="UTF-8" standalone="yes" ?><root></root>',
+                xmlDoc;
+
+            // IE10 doesn't create IXMLDOMDocument via DOMParser
+            if (window.ActiveXObject) {
+                xmlDoc = new ActiveXObject("Microsoft.xmlDOM");
+                xmlDoc.async = false;
+                xmlDoc.loadXML(xmlString);
+            } else if (window.DOMParser) {
+                var parser = new DOMParser();
+                xmlDoc = parser.parseFromString(xmlString, 'text/xml');
+            }
+
+            return xmlDoc ? !!xmlDoc.lastChild.querySelector : false;
+        }
+    }, {
         /**
          * @property XHR2 `true` if the browser supports XMLHttpRequest
          *
@@ -587,9 +665,9 @@ Ext.feature = {
          * @type {Boolean}
          */
         name: 'XHR2',
-        fn: function() {
-          return window.ProgressEvent && window.FormData && window.XMLHttpRequest &&
-              ('withCredentials' in new XMLHttpRequest());
+        fn: function () {
+            return window.ProgressEvent && window.FormData && window.XMLHttpRequest &&
+                ('withCredentials' in new XMLHttpRequest());
         }
     }, {
         /**
@@ -740,7 +818,7 @@ Ext.feature = {
         ready: true,
         fn: function(doc, div, view) {
             view = doc.defaultView;
-            return view && view.getComputedStyle;
+            return !!(view && view.getComputedStyle);
         }
     },
 
@@ -1004,7 +1082,7 @@ Ext.feature = {
 
             if (Ext.getScrollbarSize().height) {
                 // must have space-consuming scrollbars for bug to be possible
-                el = this.getTestElement();
+                el = this.getTestElement('div', true);
                 style = el.style;
                 style.height = '50px';
                 style.width = '50px';
@@ -1138,14 +1216,22 @@ Ext.feature = {
         name: 'rtlVertScrollbarOverflowBug',
         ready: true,
         fn: function(doc, div) {
-           div.innerHTML = '<div style="height:100px;width:100px;direction:rtl;overflow:auto">' +
+            div.innerHTML = '<div style="height:100px;width:100px;direction:rtl;overflow:auto">' +
                 '<div style="width:95px;height:200px;"></div>' +
-            '</div>';
+                '</div>';
 
             // If the bug is present, the 95 pixel wide inner div, encroaches into the
             // vertical scrollbar, but does NOT trigger horizontal overflow, so the clientHeight remains
             // equal to the offset height.
-            var outerBox = div.firstChild;
+            var outerBox = div.firstChild,
+                style = div.style,
+                pos = style.position;
+
+            // This issue seems to require a repaint to measure correctly
+            style.position = 'absolute';
+            outerBox.offsetHeight;
+            style.position = pos;
+
             return outerBox.clientHeight === outerBox.offsetHeight;
         }
     },
@@ -1197,7 +1283,7 @@ Ext.feature = {
         fn: function() {
             return Ext.isWebKit ?
                 parseInt(navigator.userAgent.match(/AppleWebKit\/(\d+)/)[1], 10) >= 525 :
-                !(!(Ext.isGecko || Ext.isIE) || (Ext.isOpera && Ext.operaVersion < 12));
+                !(!(Ext.isGecko || Ext.isIE || Ext.isEdge) || (Ext.isOpera && Ext.operaVersion < 12));
         }
     },
     /**
@@ -1287,7 +1373,7 @@ Ext.feature = {
             // window.onfocusin will return undefined both in Chrome (where it is supported)
             // and in Firefox (where it is not supported); adding an element and trying to
             // focus it will fail when the browser window itself is not focused.
-            return !Ext.isGecko;
+            return !(Ext.isGecko && Ext.firefoxVersion < 52);
         }
     },
 
@@ -1312,9 +1398,6 @@ Ext.feature = {
     //</feature>
 
     /**
-     * @property {Boolean} HighContrastMode `true` if the browser is currently
-     * running in Windows High Contrast accessibility mode.
-     *
      * @property {Object} accessibility Accessibility features.
      *
      * @property {Boolean} accessibility.Images `true` if the browser is configured
@@ -1480,14 +1563,183 @@ Ext.feature = {
          */
         name: 'CSSScrollSnap',
         ready: false,
-        fn: function(doc) {
+        fn: function (doc) {
             var style = doc.documentElement.style;
 
             return 'scrollSnapType' in style || 'webkitScrollSnapType' in style || 'msScrollSnapType' in style;
         }
     },
+        /**
+         * @property TranslateYCausesHorizontalScroll
+         * @private
+         * @type {Boolean}
+         *
+         * Bug for Edge logged here: https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/9743268/
+         */
+        {
+            name: 'TranslateYCausesHorizontalScroll',
+            ready: true,
+            fn: function (doc, div) {
+                div.innerHTML = '<div style="position: relative; overflow: auto; height: 200px; width: 200px;">' +
+                    '<div>' +
+                    '<div style="transform: translateY(260px); width: 50px;">a</div>' +
+                    '</div>' +
+                    '</div>';
 
-    0] // placeholder so legacy browser detectors can come/go cleanly
+                return div.firstChild.scrollWidth > div.firstChild.clientWidth;
+            }
+        }, {
+            /**
+             * @property PercentageSizeFlexBug
+             * @private
+             * @type {Boolean}
+             *
+             * Detects https://bugs.webkit.org/show_bug.cgi?id=137730
+             */
+            name: 'PercentageSizeFlexBug',
+            ready: true,
+            fn: function (doc, div) {
+                if (Ext.isIE9m) {
+                    return false;
+                }
+                var style = div.style;
+
+                style.display = 'flex';
+                style.flexDirection = 'column';
+                style.height = style.width = '100px';
+
+                div.innerHTML = '<div style="flex: 1 1;"><div style="height:50%"></div></div>';
+
+                return div.firstChild.firstChild.offsetHeight !== 50;
+            }
+        },
+        {
+            /**
+             * @property CannotScrollExactHeight
+             * @type {Boolean}
+             *
+             * Feature detect the support of browsers that are unable to scroll elements that are the same
+             * height as the native scrollbar height.
+             */
+            name: 'CannotScrollExactHeight',
+            fn: function () {
+                return Ext.isIE10p;
+            }
+        },
+        {
+            /**
+             * @property WebKitTextInputMarginBug
+             * @private
+             * @type {Boolean}
+             *
+             * Detects the following bug:
+             * https://bugs.webkit.org/show_bug.cgi?id=137693
+             *
+             * Feb 22, 2017: This bug used to affect chrome as well, but appears to be fixed in
+             * Chrome 56. The issue still exists in safari 10
+             */
+            name: 'WebKitInputTableBoxModelBug',
+            ready: true,
+            fn: function (doc, div) {
+                var table = document.createElement('div'),
+                    cell = document.createElement('div'),
+                    input = document.createElement('input'),
+                    tableStyle = table.style,
+                    cellStyle = cell.style,
+                    inputStyle = input.style,
+                    body = doc.body,
+                    hasBug;
+
+                input.type = 'text';
+
+                tableStyle.display = 'table';
+                tableStyle.height = '100px';
+                cellStyle.display = 'table-cell';
+                inputStyle.border = '0';
+                inputStyle.padding = '10px';
+                inputStyle.boxSizing = 'border-box';
+                inputStyle.height = '100%';
+
+                cell.appendChild(input);
+                table.appendChild(cell);
+                body.appendChild(table);
+
+                hasBug = input.offsetHeight === 80;
+
+                body.removeChild(table);
+
+                return hasBug;
+            }
+        },
+        {
+            /**
+             * @property PassiveEventListener
+             * @private
+             * @type {Boolean}
+             *
+             * Detects support for the "passive" event listener option
+             */
+            name: 'PassiveEventListener',
+            fn: function (doc, div) {
+                var supportsPassive = false,
+                    options;
+
+                try {
+                    options = Object.defineProperty({}, 'passive', {
+                        get: function () {
+                            supportsPassive = true;
+                        }
+                    });
+                    window.addEventListener('e', null, options);
+                    window.removeEventListener('e', null, options);
+                } catch (e) {
+                }
+
+                return supportsPassive;
+            }
+        },
+        {
+            /**
+             * @property MinContent
+             * @private
+             * @type {Boolean}
+             *
+             * Detects support for CSS "min-content"
+             */
+            name: 'CSSMinContent',
+            ready: true,
+            fn: function (doc, div) {
+                // As of 3/24/2017 IE/Edge have no min-content support, and firefox has
+                // partial/buggy support: https://bugzilla.mozilla.org/show_bug.cgi?id=135015
+                // This feature detector is designed to return false if there is not "full" support.
+                div.innerHTML = '<div style="height:4px;width:4px;min-height:-webkit-min-content;min-height:-moz-min-content;min-height:min-content"><div style="height:8px;width:8px"></div></div>';
+
+                return div.firstChild.offsetHeight === 8;
+            }
+        },
+        {
+            name: 'ComputedSizeIncludesPadding',
+            ready: true,
+            fn: function (doc, div) {
+                var ret = false,
+                    bd = document.body,
+                    el, w;
+
+                if (window.getComputedStyle) {
+                    el = document.createElement('div');
+                    el.style.cssText = 'width:10px;padding:2px;' +
+                        '-webkit-box-sizing:border-box;box-sizing:border-box;';
+                    bd.appendChild(el);
+
+                    w = window.getComputedStyle(el, null).width;
+                    ret = w === '10px';
+
+                    bd.removeChild(el);
+                }
+                return ret;
+            }
+        },
+        0] // placeholder so legacy browser detectors can come/go cleanly
 };
 
 Ext.feature.tests.pop(); // remove the placeholder

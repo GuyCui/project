@@ -1,13 +1,13 @@
-describe("Ext.event.publisher.Focus", function() {
+topSuite("Ext.event.publisher.Focus", function () {
     var body = document.body,
         fired = false,
         a, b, c;
-    
+
     function fireIt() {
         fired = true;
     }
-    
-    beforeEach(function() {
+
+    beforeEach(function () {
         var markup = [
             '<div id="a1" tabindex="-1" style="width:300px;height:100px;">',
                 '<div id="b1" tabindex="-1" style="width:100px;height:100%;">',

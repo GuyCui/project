@@ -1,6 +1,6 @@
 .#{$prefix}form-no-input-borders > .#{$prefix}field {
-    .#{$prefix}input {
-        border: 0 !important;
+    .#{$prefix}input-wrap-el {
+      border: 0 !important;
     }
 }
 

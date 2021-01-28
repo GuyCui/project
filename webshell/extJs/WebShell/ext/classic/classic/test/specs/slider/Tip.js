@@ -1,11 +1,11 @@
-describe("Ext.slider.Tip", function() {
+topSuite("Ext.slider.Tip", ['Ext.slider.Single'], function () {
     var slider, tip, thumb0, spaceEl,
-        createSlider = function(config) {
+        createSlider = function (config) {
             tip = new Ext.slider.Tip();
-            
+
             spyOn(tip, "show").andCallThrough();
             spyOn(tip, "update").andCallThrough();
-            
+
             // make enough room to display tip correctly
             spaceEl = Ext.getBody().createChild({});
             spaceEl.setHeight(100);

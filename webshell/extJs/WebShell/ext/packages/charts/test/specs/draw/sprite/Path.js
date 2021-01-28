@@ -1,4 +1,8 @@
-describe("Ext.draw.sprite.Path", function () {
+topSuite("Ext.draw.sprite.Path", ['Ext.draw.*'], function () {
+    beforeEach(function () {
+        // Silence warnings regarding Sencha download server
+        spyOn(Ext.log, 'warn');
+    });
 
     describe("hitTest", function () {
         var sprite, surface, container;

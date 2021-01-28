@@ -107,7 +107,7 @@ Ext.define('Ext.util.Event', function() {
                 // be done in Ext.Element's doAddListener override, but since there are
                 // multiple paths for listener removal (un, clearListeners), it is best
                 // to keep all subscribe/unsubscribe logic here.
-                observable._getPublisher(eventName).subscribe(
+                observable._getPublisher(eventName, options.translate === false).subscribe(
                     observable,
                     eventName,
                     options.delegated !== false,
@@ -253,7 +253,7 @@ Ext.define('Ext.util.Event', function() {
                     listener.task.cancel();
                     delete listener.task;
                 }
-    
+
                 // cancel and remove all delayed handlers that haven't fired yet
                 i = listener.tasks && listener.tasks.length;
 
@@ -264,7 +264,10 @@ Ext.define('Ext.util.Event', function() {
 
                     delete listener.tasks;
                 }
-    
+
+                // Cancel the timer that could have been set if the event has already fired
+                listener.fireFn.timerId = Ext.undefer(listener.fireFn.timerId);
+
                 manager = listener.manager;
 
                 if (manager) {
@@ -292,7 +295,7 @@ Ext.define('Ext.util.Event', function() {
                 }
     
                 if (observable.isElement) {
-                    observable._getPublisher(eventName).unsubscribe(
+                    observable._getPublisher(eventName, options.translate === false).unsubscribe(
                         observable,
                         eventName,
                         options.delegated !== false,
@@ -389,8 +392,10 @@ Ext.define('Ext.util.Event', function() {
                         // This is more efficient than creating a new event object, and we
                         // don't want to change the type of the original event because it may
                         // be used asynchronously by other handlers
+                        // Translated events are not gestures. They must appear to be
+                        // atomic events, so that they can be stopped.
                         chained = e;
-                        e = args[0] = chained.chain({ type: type });
+                        e = args[0] = chained.chain({type: type, isGesture: false});
                     }
 
                     // In Ext4 Ext.EventObject was a singleton event object that was reused as events
@@ -406,7 +411,9 @@ Ext.define('Ext.util.Event', function() {
                         if (isElement) {
                             // prepending the currentTarget.id to the delegate selector
                             // allows us to match selectors such as "> div"
-                            delegateEl = e.getTarget('#' + e.currentTarget.id + ' ' + delegate);
+                            delegateEl = e.getTarget(typeof delegate === 'function' ?
+                                delegate : '#' + e.currentTarget.id + ' ' + delegate
+                            );
                             if (delegateEl) {
                                 args[1] = delegateEl;
                                 // save the current target before changing it to the delegateEl
@@ -453,22 +460,21 @@ Ext.define('Ext.util.Event', function() {
                 // We also need to clean up the listener to avoid it hanging around forever
                 // like a zombie. Scope can be null/undefined, that's normal.
                 if (fireScope && fireScope.destroyed) {
+                    me.removeListener(fireFn, fireScope, i);
+                    fireFn = null;
+
                     //<debug>
                     // DON'T raise errors if the destroyed scope is an Ext.container.Monitor!
                     // It is to be deprecated and removed shortly.
                     if (fireScope.$className !== 'Ext.container.Monitor') {
                         Ext.raise({
                             msg: 'Attempting to fire "' + me.name + '" event on destroyed ' +
-                                  (fireScope.$className || 'object') + ' instance with id: ' +
-                                  (fireScope.id || 'unknown'),
+                                (fireScope.$className || 'object') + ' instance with id: ' +
+                                (fireScope.id || 'unknown'),
                             instance: fireScope
                         });
                     }
                     //</debug>
-                    
-                    me.removeListener(fireFn, fireScope, i);
-                    
-                    fireFn = null;
                 }
                 
                 // N.B. This is where actual listener code is called. Step boldly into!
@@ -518,10 +524,11 @@ Ext.define('Ext.util.Event', function() {
         }
             
         fn = fromWrapped ? listener.fn : fireFn;
+
         //<debug>
         var name = fn;
-
         //</debug>
+
         if (listener.lateBound) {
             // handler is a function name - need to resolve it to a function reference
             if (!scope || namedScope) {
@@ -559,7 +566,7 @@ Ext.define('Ext.util.Event', function() {
         }
 
         // We can only ever be firing one event at a time, so just keep
-        // overwriting tghe object we've got in our closure, otherwise we'll be
+        // overwriting the object we've got in our closure, otherwise we'll be
         // creating a whole bunch of garbage objects
         fireArgs.fn = fn;
         fireArgs.scope = scope;
@@ -607,7 +614,14 @@ Ext.define('Ext.util.Event', function() {
 
     createBuffered: function (handler, listener, o, scope, wrapped) {
         listener.task = new Ext.util.DelayedTask();
-        return function() {
+
+        //<debug>
+        if (Ext.Timer.track) {
+            o.$delayedTask = listener.task;  // for unit test access
+        }
+        //</debug>
+
+        return function () {
             // If the listener is removed during the event call, the listener stays in the
             // list of listeners to be invoked in the fire method, but the task is deleted
             // So if we get here with no task, it's because the listener has been removed.
@@ -637,15 +651,22 @@ Ext.define('Ext.util.Event', function() {
                 fireInfo = listener.ev.getFireInfo(listener, true);
                 handler = fireInfo.fn;
                 scope = fireInfo.scope;
-                
+
                 // We don't want to keep closure and scope references on the Event prototype!
                 fireInfo.fn = fireInfo.scope = null;
             }
-                
+
             if (!listener.tasks) {
                 listener.tasks = [];
             }
             listener.tasks.push(task);
+
+            //<debug>
+            if (Ext.Timer.track) {
+                o.$delayedTask = task;  // for unit test access
+            }
+            //</debug>
+
             task.delay(o.delay || 10, handler, scope, toArray(arguments));
         };
     },
@@ -662,7 +683,9 @@ Ext.define('Ext.util.Event', function() {
             // listeners may bind multiple events (mousemove+touchmove) and they
             // need to act in tandem.
             if (observable) {
-                observable.removeListener(event.name, fn, scope);
+                if (!observable.destroyed) {
+                    observable.removeListener(event.name, fn, scope);
+                }
             } else {
                 event.removeListener(fn, scope);
             }

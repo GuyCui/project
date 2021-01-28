@@ -1,13 +1,12 @@
-describe("Ext.data.schema.Schema", function() {
-    
+topSuite("Ext.data.schema.Schema", ['Ext.data.Model'], function () {
     var M = Ext.data.Model,
         schema;
-        
-    beforeEach(function() {
+
+    beforeEach(function () {
         schema = Ext.data.Model.schema;
     });
-    
-    afterEach(function() {
+
+    afterEach(function () {
         schema = Ext.data.Model.schema;
         schema.clear(true);
         schema = null;   

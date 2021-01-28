@@ -1,12 +1,12 @@
-describe("Ext.util.Format", function() {
+topSuite("Ext.util.Format", function () {
     var savedFormatLocale = {
-            thousandSeparator: Ext.util.Format.thousandSeparator,
-            decimalSeparator: Ext.util.Format.decimalSeparator,
-            currencySign: Ext.util.Format.currencySign
-        };
+        thousandSeparator: Ext.util.Format.thousandSeparator,
+        decimalSeparator: Ext.util.Format.decimalSeparator,
+        currencySign: Ext.util.Format.currencySign
+    };
 
-    describe("undef", function() {
-        it("should return the value itself if defined", function() {
+    describe("undef", function () {
+        it("should return the value itself if defined", function () {
             expect(Ext.util.Format.undef("this is a defined value")).toBe("this is a defined value");
             expect(Ext.util.Format.undef(12345)).toBe(12345);
             expect(Ext.util.Format.undef(12345.67)).toBe(12345.67);

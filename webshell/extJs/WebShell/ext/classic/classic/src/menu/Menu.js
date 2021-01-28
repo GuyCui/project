@@ -52,10 +52,6 @@ Ext.define('Ext.menu.Menu', {
         'Ext.menu.Separator'
     ],
 
-    mixins: [
-        'Ext.util.FocusableContainer'
-    ],
-
     defaultType: 'menuitem',
 
     /**
@@ -126,9 +122,9 @@ Ext.define('Ext.menu.Menu', {
      * The delay in ms as to how long the framework should wait before firing a mouseleave event.
      * This allows submenus not to be collapsed while hovering other menu items.
      *
-     * Defaults to 100
+     * Defaults to 50
      */
-     mouseLeaveDelay: 100,
+    mouseLeaveDelay: 50,
 
     /**
      * @property {Boolean} isMenu
@@ -175,24 +171,26 @@ Ext.define('Ext.menu.Menu', {
      * 
      * See also the {@link #showSeparator} config.
      */
-    
+
     /**
+     * @cfg focusOnToFront
      * @inheritdoc
      */
     focusOnToFront: false,
-    
+
     bringParentToFront: false,
     alignOnScroll: false,
-    
+
     // Menus are focusable
     focusable: true,
     tabIndex: -1,
+    focusableContainer: true,
 
     // When a Menu is used as a carrier to float some focusable Component such as a DatePicker or ColorPicker
     // This will be used to delegate focus to its focusable child.
     // In normal usage, a Menu is a FocusableContainer, and this will not be consulted.
     defaultFocus: ':focusable',
-    
+
     // We need to focus disabled menu items when arrowing as per WAI-ARIA:
     // http://www.w3.org/TR/wai-aria-practices/#menu
     allowFocusingDisabledChildren: true,
@@ -283,7 +281,7 @@ Ext.define('Ext.menu.Menu', {
             me.constrain = false;
         }
 
-        me.callParent(arguments);
+        me.callParent();
 
         // Configure items prior to render with special classes to align
         // non MenuItem child components with their MenuItem siblings.
@@ -315,8 +313,8 @@ Ext.define('Ext.menu.Menu', {
 
     beforeRender: function() {
         var me = this;
-        
-        me.callParent(arguments);
+
+        me.callParent();
 
         // Menus are usually floating: true, which means they shrink wrap their items.
         // However, when they are contained, and not auto sized, we must stretch the items.
@@ -330,26 +328,15 @@ Ext.define('Ext.menu.Menu', {
         }
     },
 
-    onBoxReady: function() {
+    onBoxReady: function (width, height) {
         var me = this,
             iconSeparatorCls = me._iconSeparatorCls,
             keyNav = me.focusableKeyNav;
-        
+
         // Keyboard handling can be disabled, e.g. by the DatePicker menu
         // or the Date filter menu constructed by the Grid
         if (keyNav) {
-            keyNav.map.processEventScope = me;
-            keyNav.map.processEvent = function(e) {
-                // ESC may be from input fields, and FocusableContainers ignore keys from 
-                // input fields. We do not want to ignore ESC. ESC hide menus.
-                if (e.keyCode === e.ESC) {
-                    e.target = this.el.dom;
-                }
-                
-                return e;
-            };
-            
-           // Handle ESC key
+            // Handle ESC key
             keyNav.map.addBinding([{
                 key: Ext.event.Event.ESC,
                 handler: me.onEscapeKey,
@@ -368,14 +355,15 @@ Ext.define('Ext.menu.Menu', {
         else {
             // Even when FocusableContainer key event processing is disabled,
             // we still need to handle the Escape key!
-            me.escapeKeyNav = new Ext.util.KeyNav(me.el, {
+            me.escapeKeyNav = new Ext.util.KeyNav({
+                target: me.el,
                 eventName: 'keydown',
                 scope: me,
                 esc: me.onEscapeKey
             });
         }
 
-        me.callParent(arguments);
+        me.callParent([width, height]);
 
         // TODO: Move this to a subTemplate When we support them in the future
         if (me.showSeparator) {
@@ -566,7 +554,7 @@ Ext.define('Ext.menu.Menu', {
             cmp.setUI(ui);
         } else if (me.items.getCount() > 1 && !cmp.rendered && !cmp.dock) {
             cmpCls = me._itemCmpCls;
-            cls = [cmpCls + ' ' + cmpCls + '-' + ui];
+            cls = [cmpCls, cmpCls + '-' + ui];
 
             // The "plain" setting means that the menu does not look so much like a menu. It's more like a grey Panel.
             // So it has no vertical separator.
@@ -643,6 +631,7 @@ Ext.define('Ext.menu.Menu', {
             me.escapeKeyNav.destroy();
         }
 
+        me.itemOverTask.cancel();
         me.parentMenu = me.ownerCmp = me.escapeKeyNav = null;
         
         if (me.rendered) {
@@ -694,7 +683,11 @@ Ext.define('Ext.menu.Menu', {
         if (item) {
             // Activate the item in time specified by mouseLeaveDelay.
             // If we mouseout, or move to another item this invocation will be canceled.
-            me.itemOverTask.delay(me.mouseLeaveDelay, null, null, [e, item]);
+            if (e.pointerType === 'touch') {
+                me.handleItemOver(e, item);
+            } else {
+                me.itemOverTask.delay(me.expanded ? me.mouseLeaveDelay : 0, null, null, [e, item]);
+            }
         }
         if (mouseEnter) {
             me.fireEvent('mouseenter', me, e);
@@ -769,20 +762,24 @@ Ext.define('Ext.menu.Menu', {
             }
         }
 
-        me.callParent(arguments);
+        me.callParent();
     },
 
-    afterShow: function() {
+    afterShow: function (animateTarget, callback, scope) {
         var me = this,
             ariaDom = me.ariaEl.dom;
 
-        me.callParent(arguments);
+        me.callParent([animateTarget, callback, scope]);
         Ext.menu.Manager.onShow(me);
-        
+
+        if (me.parentMenu) {
+            me.parentMenu.expanded = true;
+        }
+
         if (me.floating && ariaDom) {
             ariaDom.setAttribute('aria-expanded', true);
         }
-        
+
         // Restore configured maxHeight
         if (me.floating) {
             me.maxHeight = me.savedMaxHeight;
@@ -799,7 +796,12 @@ Ext.define('Ext.menu.Menu', {
         me.callParent([animateTarget, cb, scope]);
         me.lastHide = Ext.Date.now();
         Ext.menu.Manager.onHide(me);
-        
+
+        if (me.parentMenu) {
+            me.parentMenu.expanded = false;
+        }
+
+
         if (me.floating && ariaDom) {
             ariaDom.setAttribute('aria-expanded', false);
         }
@@ -825,7 +827,7 @@ Ext.define('Ext.menu.Menu', {
          */
         applyDefaults: function (config) {
             if (!Ext.isString(config)) {
-                config = this.callParent(arguments);
+                config = this.callParent([config]);
             }
             return config;
         },
@@ -834,7 +836,7 @@ Ext.define('Ext.menu.Menu', {
             var me = this,
                 tabIndex = me.tabIndex,
                 el = me.el;
-            
+
             // Floating menus always need to have focusable main el
             // so that mouse clicks within the menu would not close it.
             // We're not checking focusable property here, Component
@@ -844,12 +846,35 @@ Ext.define('Ext.menu.Menu', {
                 el.dom.setAttribute('data-componentid', me.id);
             }
         },
-        
+
+        processFocusableContainerKeyEvent: function (e) {
+            // ESC may be from input fields, and FocusableContainers ignore keys from
+            // input fields. We do not want to ignore ESC. ESC hide menus.
+            if (e.keyCode === e.ESC) {
+                e.target = this.el.dom;
+            }
+            // TAB from textual input fields is converted into UP or DOWN.
+            else if (e.keyCode === e.TAB && Ext.fly(e.target).is('input[type=text],textarea')) {
+                e.preventDefault();
+                e.target = this.getItemFromEvent(e).el.dom;
+                if (e.shiftKey) {
+                    e.shiftKey = false;
+                    e.keyCode = e.UP;
+                } else {
+                    e.keyCode = e.DOWN;
+                }
+            } else {
+                return this.callParent([e]);
+            }
+
+            return e;
+        },
+
         // Tabbing in a floating menu must hide, but not move focus.
         // onHide takes care of moving focus back to an owner Component.
-        onFocusableContainerTabKey: function(e) {
+        onFocusableContainerTabKey: function (e) {
             var me = this;
-    
+
             if (me.floating) {
                 if (e.shiftKey) {
                     // We do not want TAB behaviour to proceed.

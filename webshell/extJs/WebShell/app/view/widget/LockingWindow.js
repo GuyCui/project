@@ -1,4 +1,4 @@
-//通用弹窗
+﻿//通用弹窗
 Ext.define('app.view.widget.LockingWindow', {
     extend: 'Ext.window.Window',
     xtype: 'lockingwindow',

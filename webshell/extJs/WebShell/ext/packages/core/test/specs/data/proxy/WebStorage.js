@@ -1,14 +1,16 @@
-describe("Ext.data.proxy.WebStorage", function() {
-    var proxy, config;
+topSuite("Ext.data.proxy.WebStorage",
+    ['Ext.data.ArrayStore', 'Ext.data.TreeStore', 'Ext.data.identifier.*'],
+    function () {
+        var proxy, config;
 
-    var fakeStorageObject = {
-        items: {},
-        getItem: function(key) {
-            return this.items[key] || null;
-        },
-        setItem: function(key, value) {
-            this.items[key] = value + '';
-        },
+        var fakeStorageObject = {
+            items: {},
+            getItem: function (key) {
+                return this.items[key] || null;
+            },
+            setItem: function (key, value) {
+                this.items[key] = value + '';
+            },
         removeItem: function(key) {
             delete this.items[key];
         },

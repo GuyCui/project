@@ -1,12 +1,12 @@
-describe("Ext.button.Split", function() {
+topSuite("Ext.button.Split", function () {
     var button;
-    
+
     function makeButton(config) {
         config = Ext.apply({
             renderTo: Ext.getBody(),
             text: 'foo'
         }, config);
-        
+
         return button = new Ext.button.Split(config);
     }
     

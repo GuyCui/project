@@ -1,16 +1,18 @@
 /* global Ext, expect, spyOn, jasmine, xit, MockAjaxManager */
 
-describe("grid-general-buffered-preserve-scroll", function() {
-    var grid, store,
-        synchronousLoad = true,
-        proxyStoreLoad = Ext.data.ProxyStore.prototype.load,
-        loadStore = function() {
-            proxyStoreLoad.apply(this, arguments);
-            if (synchronousLoad) {
-                this.flushLoad.apply(this, arguments);
-            }
-            return this;
-        };
+(Ext.isIE8 ? xtopSuite : topSuite)("grid-general-buffered-preserve-scroll",
+    [false, 'Ext.grid.Panel', 'Ext.data.ArrayStore'],
+    function () {
+        var grid, store,
+            synchronousLoad = true,
+            proxyStoreLoad = Ext.data.ProxyStore.prototype.load,
+            loadStore = function () {
+                proxyStoreLoad.apply(this, arguments);
+                if (synchronousLoad) {
+                    this.flushLoad.apply(this, arguments);
+                }
+                return this;
+            };
 
     beforeEach(function() {
         // Override so that we can control asynchronous loading
@@ -229,7 +231,7 @@ describe("grid-general-buffered-preserve-scroll", function() {
         it('should render page 1, and page 1 should still be in the page cache when returning to page 1 after scrolling down', function() {
             // Scroll to new areas of dataset.
             // Will queue a lot of page requests which we will satisfy in a while
-            waitsFor(function() {
+            waitsFor(scroller, function () {
                 //  Scroll until we have 20 page requests outstanding
                 if (Ext.Ajax.mockGetAllRequests().length > 20) {
                     return true;
@@ -261,10 +263,10 @@ describe("grid-general-buffered-preserve-scroll", function() {
             });
         });
 
-        it('Page 1 should still be rendered, and page 1 should still be in the page cache when returning to page 1 after scrolling down with only buffer zone pages loaded into store during scroll', function() {
+        it('should keep Page 1 rendered and in the page cache when returning to page 1 after scrolling down with only buffer zone pages loaded into store during scroll', function () {
             // Scroll to new areas of dataset.
             // Will queue a lot of page requests which we will satisfy in a while
-            waitsFor(function() {
+            waitsFor(function () {
                 //  Scroll until we have 20 page requests outstanding
                 if (Ext.Ajax.mockGetAllRequests().length > 20) {
                     return true;

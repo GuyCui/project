@@ -1,16 +1,19 @@
 /* global expect, Ext, jasmine, spyOn */
 
-describe("Ext.button.Button", function() {
-    var proto = Ext.button.Button.prototype,
-        button;
-    
-    function clickIt (event) {
-        jasmine.fireMouseEvent(button.el.dom, event || 'click');
-    }
+topSuite("Ext.button.Button",
+    ['Ext.Panel', 'Ext.button.Split', 'Ext.form.Label', 'Ext.app.ViewController',
+        'Ext.app.ViewModel'],
+    function () {
+        var proto = Ext.button.Button.prototype,
+            button;
 
-    function destroyButton () {
-        if (button) {
-            button.destroy();
+        function clickIt(event) {
+            jasmine.fireMouseEvent(button.el.dom, event || 'click');
+        }
+
+        function destroyButton() {
+            if (button) {
+                button.destroy();
         }
         button = null;
     }
@@ -1001,7 +1004,7 @@ describe("Ext.button.Button", function() {
     });
 
     describe("menu", function() {
-        it("should not include menu descendant items in its CQ children if the ">" operator is used", function() {
+        it("should not include menu descendant items in its CQ children if the &gt; combinator is used", function () {
             var queryResult;
 
             makeButton({
@@ -1084,6 +1087,7 @@ describe("Ext.button.Button", function() {
                 // Mousedown outside the menu hides it
                 clickIt("mousedown");
                 expect(menu.isVisible()).toBe(false);
+                clickIt('mouseup');
             });
             
             // Wait for 1ms hide timer set above to expire
@@ -5682,7 +5686,7 @@ describe("Ext.button.Button", function() {
             toolbar.destroy();
         });
 
-        it("should layout with overflowing text", function() {
+        TODO(Ext.isIE8).it("should layout with overflowing text", function() {
             button = Ext.create({
                 xtype: 'button',
                 renderTo: document.body,

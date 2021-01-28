@@ -1,13 +1,13 @@
-describe("Ext.data.proxy.SessionStorage", function() {
+topSuite("Ext.data.proxy.SessionStorage", ['Ext.data.ArrayStore'], function () {
     var proxy;
 
-    if (window.sessionStorage) {    
-        beforeEach(function() {
+    if (window.sessionStorage) {
+        beforeEach(function () {
             proxy = new Ext.data.proxy.SessionStorage({id: 1});
         });
-    
-        describe("instantiation", function() {
-            it("should extend Ext.data.proxy.WebStorage", function() {
+
+        describe("instantiation", function () {
+            it("should extend Ext.data.proxy.WebStorage", function () {
                 expect(proxy.superclass).toEqual(Ext.data.proxy.WebStorage.prototype);
             });
         });

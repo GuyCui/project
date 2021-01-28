@@ -1,11 +1,11 @@
-describe("Ext.tab.Panel", function() {
+topSuite("Ext.tab.Panel", ['Ext.form.field.Text', 'Ext.app.ViewModel'], function () {
     var tabPanel, fakeTabBar;
 
     function createTabPanel(config) {
         tabPanel = Ext.create(Ext.apply({
-                xtype: 'tabpanel',
-                renderTo: Ext.getBody()
-            }, config));
+            xtype: 'tabpanel',
+            renderTo: Ext.getBody()
+        }, config));
 
         return tabPanel;
     }
@@ -286,8 +286,10 @@ describe("Ext.tab.Panel", function() {
                         jasmine.fireMouseEvent(btn.getEl(), 'click');
                     }).not.toThrow();
                 });
-                
-                waitsFor(function() { return !!spy.callCount }, 'spy to be called', 100);
+
+                waitsFor(function () {
+                    return !!spy.callCount;
+                }, 'spy to be called', 100);
                 
                 runs(function() {
                     expect(spy).toHaveBeenCalled();
@@ -2073,14 +2075,23 @@ describe("Ext.tab.Panel", function() {
             });
             
             describe("aria-hidden", function() {
-                it("should be true on card1", function() {
+                it("should be true on card1", function () {
                     expect(card1).toHaveAttr('aria-hidden', 'true');
                 });
-                
-                it("should be false on card2", function() {
+
+                it("should be false on card2", function () {
                     expect(card2).toHaveAttr('aria-hidden', 'false');
                 });
             });
+        });
+    });
+
+    describe("layout counts", function () {
+        it("should only do a single layout when removing the active tab", function () {
+            createTabPanelWithTabs(2);
+            var cnt = tabPanel.componentLayoutCounter;
+            tabPanel.items.first().destroy();
+            expect(tabPanel.componentLayoutCounter - cnt).toBe(1);
         });
     });
 });

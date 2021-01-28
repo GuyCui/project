@@ -362,13 +362,14 @@ Ext.define('Ext.data.operation.Operation', {
     setCompleted: function() {
         var me = this,
             proxy = me.getProxy();
-        
+
         me.complete = true;
-        me.running  = false;
-        
+        me.running = false;
+
         me.triggerCallbacks();
-        
-        if (proxy) {
+
+        // Store and proxy could be destroyed in callbacks
+        if (proxy && !proxy.destroyed) {
             proxy.completeOperation(me);
         }
     },

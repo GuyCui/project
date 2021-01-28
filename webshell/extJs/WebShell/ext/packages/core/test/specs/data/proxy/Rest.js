@@ -1,12 +1,12 @@
-describe("Ext.data.proxy.Rest", function() {
+topSuite("Ext.data.proxy.Rest", ['Ext.data.ArrayStore'], function () {
     var proxy;
 
-    beforeEach(function() {
-        Ext.ClassManager.enableNamespaceParseCache = false; 
+    beforeEach(function () {
+        Ext.ClassManager.enableNamespaceParseCache = false;
         proxy = new Ext.data.proxy.Rest({});
     });
-    
-    afterEach(function() {
+
+    afterEach(function () {
         Ext.ClassManager.enableNamespaceParseCache = true;
     });
     

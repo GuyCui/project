@@ -1,10 +1,10 @@
 /* global expect, spyOn, Ext, jasmine */
 
-describe("Ext.form.field.Spinner", function() {
+topSuite("Ext.form.field.Spinner", function () {
     var component, makeComponent;
 
-    beforeEach(function() {
-        makeComponent = function(config) {
+    beforeEach(function () {
+        makeComponent = function (config) {
             config = config || {};
             Ext.applyIf(config, {
                 name: 'test',
@@ -294,13 +294,13 @@ describe("Ext.form.field.Spinner", function() {
             });
 
             it('should fire a spinend event when the spin stops', function() {
-                waitsFor(function() {
+                waitsFor(function () {
                     if (spinUpCount === 100) {
                         jasmine.fireKeyEvent(component.inputEl, 'keyup', Ext.event.Event.UP);
                         return true;
                     }
                     jasmine.fireKeyEvent(component.inputEl, 'keydown', Ext.event.Event.UP);
-                });
+                }, 'Spinner to fire all events', 5000);
 
                 // The firing of spinend is buffered because of the repeating, so it will fire soon.
                 runs(function() {

@@ -197,7 +197,7 @@ Ext.define('Ext.app.bind.Multi', {
     },
 
     isLoading: function () {
-        for (var bindings = this.bindings, n = bindings.length; n-- > 0; ) {
+        for (var bindings = this.bindings, n = bindings.length; n-- > 0;) {
             if (bindings[n].isLoading()) {
                 return true;
             }
@@ -206,11 +206,21 @@ Ext.define('Ext.app.bind.Multi', {
         return false;
     },
 
-    isBindingStatic: function(binding) {
+    isAvailable: function () {
+        for (var bindings = this.bindings, n = bindings.length; n-- > 0;) {
+            if (bindings[n].isAvailable()) {
+                return true;
+            }
+        }
+
+        return false;
+    },
+
+    isBindingStatic: function (binding) {
         return binding.isTemplateBinding && binding.isStatic;
     },
 
-    isStatic: function() {
+    isStatic: function () {
         var bindings = this.bindings,
             len = bindings.length,
             i, binding;

@@ -1,13 +1,13 @@
-describe("Ext.data.writer.Json", function(){
+topSuite("Ext.data.writer.Json", ['Ext.data.ArrayStore'], function () {
     var writer, buildWriter, buildRecords, makeOperation, Article, simpleData = {
         id: 1,
         title: 'Article 1',
         body: 'content1'
     };
-    
-    beforeEach(function(){
+
+    beforeEach(function () {
         Ext.ClassManager.enableNamespaceParseCache = false;
-        buildWriter = function(cfg){
+        buildWriter = function (cfg) {
             cfg = Ext.apply({
                 writeAllFields: true
             }, cfg);

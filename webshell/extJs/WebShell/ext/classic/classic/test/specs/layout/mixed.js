@@ -1,14 +1,16 @@
-describe("mixed layout tests", function() {
-    it("mixed test 1 - no failure", function() {
-        var vp;
-        expect(function() {
-            vp = new Ext.container.Viewport({
-                renderTo: Ext.getBody(),
-                layout: "fit",
-                items: [{
-                    autoScroll: true,
-                    layout: {
-                        type: "vbox",
+topSuite("Ext.layout.mixed",
+    [false, 'Ext.container.Viewport', 'Ext.layout.*', 'Ext.tab.Panel'],
+    function () {
+        it("mixed test 1 - no failure", function () {
+            var vp;
+            expect(function () {
+                vp = new Ext.container.Viewport({
+                    renderTo: Ext.getBody(),
+                    layout: "fit",
+                    items: [{
+                        autoScroll: true,
+                        layout: {
+                            type: "vbox",
                         align: "stretch"
                     },
                     items: [{

@@ -1,13 +1,13 @@
-describe("Ext.Error", function() { 
+topSuite("Ext.Error", function () {
     var global;
 
-    beforeEach(function() {
+    beforeEach(function () {
         global = Ext.global;
 
         // mock the console to avoid logging to the real console during the tests
         Ext.global = {
             console: {
-                dir: function(s) {
+                dir: function (s) {
                     return s;
                 },
                 log: function(s) {

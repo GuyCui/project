@@ -1,11 +1,11 @@
-describe("Ext.dom.Layer", function() {
+topSuite("Ext.dom.Layer", function () {
     var layer;
 
-    afterEach(function() {
+    afterEach(function () {
         layer.destroy();
     });
 
-    it("should create a div by default", function() {
+    it("should create a div by default", function () {
         layer = new Ext.dom.Layer();
 
         expect(layer.dom.tagName).toBe('DIV');

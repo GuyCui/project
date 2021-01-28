@@ -8,23 +8,23 @@
  * and targets can interact with each other, the conditions are evaluated in this order:
  *
  * ### {@link #isDisabled Disabled State}
- * If the target is disabled, the {@link Ext.drag.Source source} 
+ * If the target is disabled, the {@link Ext.drag.Source source}
  * cannot interact with it.
  *
  * ### {@link #groups Groups}
- * Both the {@link Ext.drag.Source source} and target can belong to multiple groups. 
+ * Both the {@link Ext.drag.Source source} and target can belong to multiple groups.
  * They may interact if:
  * - Neither has a group
  * - Both have one (or more) of the same group
  *
- * ### {@link #accepts Accept}
+ * ### {@link #method!accepts Accept}
  * This method is called each time a {@link Ext.drag.Source source} enters this
  * target. If the method returns `false`, the drag is not considered valid.
  *
  * ## Asynchronous drop processing
  *
  *  When the drop completes, the {@link #drop} event will fire, however the underlying data
- * may not be ready to be consumed. By returning a {@link Ext.Promise Promise} from the data, 
+ * may not be ready to be consumed. By returning a {@link Ext.Promise Promise} from the data,
  * it allows either:
  * - The data to be fetched (either from a remote source or generated if expensive).
  * - Any validation to take place before the drop is finalized.
@@ -115,7 +115,7 @@ Ext.define('Ext.drag.Target', {
         invalidCls: '',
 
         /**
-         * @cfg {String} invalidCls
+         * @cfg {String} validCls
          * A class to add to the {@link #element} when an
          * invalid drag is over this target.
          */
@@ -309,6 +309,7 @@ Ext.define('Ext.drag.Target', {
         },
 
         /**
+         * @method
          * @inheritdoc
          */
         getElListeners: function() {

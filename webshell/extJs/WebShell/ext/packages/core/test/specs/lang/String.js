@@ -1,12 +1,12 @@
-describe("Ext.String", function() {
-    
+topSuite("Ext.String", function () {
+
     var S = Ext.String;
 
-    describe("ellipsis", function() {
+    describe("ellipsis", function () {
         var shortString = "A short string",
-            longString  = "A somewhat longer string";
-        
-        it("should keep short strings intact", function() {
+            longString = "A somewhat longer string";
+
+        it("should keep short strings intact", function () {
             expect(S.ellipsis(shortString, 100)).toEqual(shortString);
         });
         

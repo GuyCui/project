@@ -1,12 +1,14 @@
-describe("Ext.app.Controller", function() {
+/* global Ext, spyOn, expect */
+
+topSuite("Ext.app.Controller", ['Ext.app.Application', 'Ext.Panel'], function () {
     var panelEventFired = false,
         customEventFired = false,
         Controller = Ext.app.Controller,
         Class, fooPanel, bazPanelId, ctrl;
 
-    beforeEach(function() {
+    beforeEach(function () {
         this.addMatchers({
-            toBeFunction: function(expected) {
+            toBeFunction: function (expected) {
                 var actual = this.actual;
 
                 return expected ? Ext.isFunction(actual) && actual === expected
@@ -614,17 +616,19 @@ describe("Ext.app.Controller", function() {
                 extend: 'Ext.app.Application',
                 
                 name: 'TestController',
-                
+
                 controllers: ['Parent']
             });
-            
-            new TestController.Application();
-            
+
+            var testApp = new TestController.Application();
+
             expect(called1).toBeTruthy();
             // AND
             expect(called2).toBeTruthy();
             // AND
             expect(called3).toBeTruthy();
+
+            testApp.destroy();
         });
     });
 

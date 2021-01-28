@@ -1,5 +1,4 @@
-describe("Ext.tip.Tip", function() {
-
+topSuite("Ext.tip.Tip", function () {
     var tip;
 
     function createTip(config) {
@@ -7,7 +6,7 @@ describe("Ext.tip.Tip", function() {
         return tip;
     }
 
-    afterEach(function() {
+    afterEach(function () {
         if (tip) {
             tip.destroy();
             tip = null;

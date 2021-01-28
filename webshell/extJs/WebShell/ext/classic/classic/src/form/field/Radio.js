@@ -188,14 +188,40 @@ Ext.define('Ext.form.field.Radio', {
      */
 
     inputType: 'radio',
-    
+
     formId: null,
+
+    /**
+     * @cfg {Boolean/String/Number} [modelValue=inputValue]
+     * The value to use for {@link #getModelData} when checked. Uses the {@link #inputValue}
+     * by default.
+     *
+     * @since 6.2.1
+     */
+    modelValue: undefined,
+
+    /**
+     * @cfg {Boolean/String/Number} modelValueUnchecked
+     * The value to use for {@link #getModelData} when unchecked.
+     *
+     * @since 6.2.1
+     */
+    modelValueUnchecked: null,
+
+    initComponent: function () {
+        var me = this;
+
+        if (me.modelValue === undefined) {
+            me.modelValue = me.inputValue;
+        }
+        me.callParent();
+    },
 
     /**
      * If this radio is part of a group, it will return the selected value
      * @return {String}
      */
-    getGroupValue: function() {
+    getGroupValue: function () {
         var selected = this.getManager().getChecked(this.name, this.getFormId());
         return selected ? selected.inputValue : null;
     },

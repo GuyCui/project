@@ -1,13 +1,13 @@
 /* global expect, Ext, jasmine */
 
-describe("Ext.button.Cycle", function() {
+topSuite("Ext.button.Cycle", ['Ext.app.ViewController'], function () {
     var button;
 
-    function clickIt (event) {
+    function clickIt(event) {
         jasmine.fireMouseEvent(button.el.dom, event || 'click');
     }
 
-    function makeButton (config) {
+    function makeButton(config) {
         // ARIA errors and warnings are expected
         spyOn(Ext.log, 'error');
         spyOn(Ext.log, 'warn');

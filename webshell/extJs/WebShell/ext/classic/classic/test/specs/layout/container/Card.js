@@ -1,14 +1,16 @@
-describe("Ext.layout.container.Card", function() {
-    var comp;
+topSuite("Ext.layout.container.Card",
+    ['Ext.grid.Panel', 'Ext.tab.Panel', 'Ext.layout.container.Border'],
+    function () {
+        var comp;
 
-    function createCardContainer(config) {
-        comp = Ext.widget(Ext.apply({
-            xtype: config.xtype || 'container',
-            width: 100,
-            height: 100,
-            layout: {
-                type: 'card',
-                deferredRender: config.deferredRender
+        function createCardContainer(config) {
+            comp = Ext.widget(Ext.apply({
+                xtype: config.xtype || 'container',
+                width: 100,
+                height: 100,
+                layout: {
+                    type: 'card',
+                    deferredRender: config.deferredRender
             },
             renderTo: document.body
         }, config));

@@ -110,7 +110,7 @@ Ext.define('Ext.app.bind.AbstractStub', {
     },
 
     getValue: function () {
-        return this.isLoading() ? null : this.getRawValue();
+        return this.isAvailable() ? this.getRawValue() : null;
     },
 
     graft: function (replacement) {
@@ -141,7 +141,7 @@ Ext.define('Ext.app.bind.AbstractStub', {
     },
 
     isDescendantOf: function (item) {
-        for (var parent = this; parent = parent.parent; ) {
+        for (var parent = this; parent = parent.parent;) {
             if (parent === item) {
                 return true;
             }
@@ -149,7 +149,15 @@ Ext.define('Ext.app.bind.AbstractStub', {
         return false;
     },
 
-    onSchedule: function() {
+    isAvailable: function () {
+        return true;
+    },
+
+    isLoading: function () {
+        return false;
+    },
+
+    onSchedule: function () {
         // When a stub changes, say "foo.bar.baz" we may need to notify bindings on our
         // parents "foo.bar" and "foo", This is true especially when these are targets of
         // links. To economize on this we require that bindings that want to be notified

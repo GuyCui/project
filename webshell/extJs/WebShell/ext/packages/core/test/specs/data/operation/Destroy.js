@@ -1,12 +1,12 @@
-describe("Ext.data.operation.Destroy", function() {
-    
+topSuite("Ext.data.operation.Destroy", ['Ext.data.ArrayStore'], function () {
+
     var op;
-    
+
     function makeOperation(cfg) {
         op = new Ext.data.operation.Destroy(cfg);
     }
-    
-    afterEach(function() {
+
+    afterEach(function () {
         op = null;
         Ext.data.Model.schema.clear();
         Ext.undefine('spec.User');

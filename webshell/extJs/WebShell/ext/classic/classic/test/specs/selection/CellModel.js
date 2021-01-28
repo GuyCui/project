@@ -1,21 +1,31 @@
-describe("Ext.selection.CellModel", function() {
-    
-    var grid, view, store, selModel, colRef;
-    
-    function triggerCellMouseEvent(type, rowIdx, cellIdx, button, x, y) {
-        var target = findCell(rowIdx, cellIdx);
-        jasmine.fireMouseEvent(target, type, x, y, button);
-    }
-    
-    function findCell(rowIdx, cellIdx) {
-        return grid.getView().getCellInclusive({
-            row: rowIdx,
-            column: cellIdx
-        }, true);
-    }
-    
-    function makeGrid(columns, cfg, selModelCfg) {
-        Ext.define('spec.CellModel', {
+/* global Ext, expect, jasmine, xit */
+
+topSuite("Ext.selection.CellModel",
+    ['Ext.grid.Panel', 'Ext.app.ViewModel', 'Ext.grid.plugin.DragDrop'],
+    function () {
+        var itNotTouch = jasmine.supportsTouch ? xit : it,
+            grid, view, store, selModel, colRef;
+
+        function triggerCellMouseEvent(type, rowIdx, cellIdx, button, x, y) {
+            var target = findCell(rowIdx, cellIdx);
+            jasmine.fireMouseEvent(target, type, x, y, button);
+        }
+
+        function triggerCellContextMenu(rowIdx, cellIdx) {
+            var target = findCell(rowIdx, cellIdx);
+            jasmine.fireMouseEvent(target, 'mousedown', 0, 0, 2);
+            jasmine.doFireMouseEvent(target, 'contextmenu');
+        }
+
+        function findCell(rowIdx, cellIdx) {
+            return grid.getView().getCellInclusive({
+                row: rowIdx,
+                column: cellIdx
+            }, true);
+        }
+
+        function makeGrid(columns, cfg, selModelCfg) {
+            Ext.define('spec.CellModel', {
             extend: 'Ext.data.Model',
             fields: [
                 'field1',
@@ -74,12 +84,12 @@ describe("Ext.selection.CellModel", function() {
         Ext.data.Model.schema.clear();
     });
 
-    it('should select when right-clicking', function () {
-        makeGrid();
-        triggerCellMouseEvent('click', 0, 0, 3);
+        itNotTouch('should select when right-clicking', function () {
+            makeGrid();
+            triggerCellContextMenu(0, 0);
 
-        expect(selModel.getSelection().length).toBe(1);
-    });
+            expect(selModel.getSelection().length).toBe(1);
+        });
 
     describe("deselectOnContainerClick", function() {
         it("should default to false", function() {
@@ -250,16 +260,24 @@ describe("Ext.selection.CellModel", function() {
             });
             var plugin = grid.view.findPlugin('gridviewdragdrop');
 
-            runs(function() {
+            runs(function () {
                 triggerCellMouseEvent('mousedown', 0, 0, null, 10, 30);
+            });
+
+            // Longpress to drag on touch
+            if (jasmine.supportsTouch) {
+                waits(1500);
+            }
+
+            runs(function () {
                 jasmine.fireMouseEvent(document.body, 'mousemove', 20, 20);
             });
 
-            waitsFor(function() {
+            waitsFor(function () {
                 return plugin.dragZone.proxy.el.isVisible();
             });
 
-            runs (function() {
+            runs(function () {
                 var proxyInner;
 
                 // The proxy should contain the configured dragText

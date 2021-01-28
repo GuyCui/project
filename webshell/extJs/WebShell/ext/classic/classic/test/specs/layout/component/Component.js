@@ -1,12 +1,12 @@
-describe("Ext.layout.component.Component", function() {
+topSuite("Ext.layout.component.Component", ['Ext.Panel'], function () {
     var c;
 
-    afterEach(function() {
+    afterEach(function () {
         c = Ext.destroy(c);
     });
 
-    describe("retaining dimensions between layout runs", function() {
-        it("should use the last calculated width when running a top level layout & previously had a value", function() {
+    describe("retaining dimensions between layout runs", function () {
+        it("should use the last calculated width when running a top level layout & previously had a value", function () {
             c = new Ext.container.Container({
                 layout: {
                     type: 'vbox',

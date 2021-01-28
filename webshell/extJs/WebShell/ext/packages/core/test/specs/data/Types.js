@@ -1,13 +1,13 @@
-describe("Ext.data.Types", function() {
-    var conv = function(type, scope, value) {
+topSuite("Ext.data.Types", function () {
+    var conv = function (type, scope, value) {
         var cfg = Ext.apply(scope || {}, {
-            getAllowNull: function() {
+            getAllowNull: function () {
                 return scope ? scope.allowNull : false;
             },
-            getDateFormat: function() {
-                return scope ? scope.dateFormat : null    
+            getDateFormat: function () {
+                return scope ? scope.dateFormat : null
             },
-            getDateReadFormat: function() {
+            getDateReadFormat: function () {
                 return scope ? scope.dateReadFormat : null    
             }
         });

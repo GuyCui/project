@@ -1,14 +1,16 @@
-describe("Ext.ClassManager", function() {
+topSuite("Ext.ClassManager", function () {
     var manager = Ext.ClassManager,
-        cls, emptyFn = function(){};
+        cls, emptyFn = function () {
+        };
 
 
-
-    beforeEach(function() {
+    beforeEach(function () {
         manager.enableNamespaceParseCache = false;
         window.My = {
             awesome: {
-                Class: function(){console.log(11);},
+                Class: function () {
+                    console.log(11);
+                },
                 Class1: function(){console.log(12);},
                 Class2: function(){console.log(13);}
             },
@@ -314,7 +316,7 @@ describe("Ext.ClassManager", function() {
                         this.foo = 1;
                         this.T = Self;
                     }
-                }
+                };
             });
             
             var obj = new T();

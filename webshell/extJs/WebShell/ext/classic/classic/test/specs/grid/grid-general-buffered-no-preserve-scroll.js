@@ -1,16 +1,18 @@
 /* global Ext, expect, spyOn, jasmine, xit, MockAjaxManager */
 
-describe("grid-general-buffered-no-preserv-scroll", function() {
-    var grid, store,
-        synchronousLoad = true,
-        proxyStoreLoad = Ext.data.ProxyStore.prototype.load,
-        loadStore = function() {
-            proxyStoreLoad.apply(this, arguments);
-            if (synchronousLoad) {
-                this.flushLoad.apply(this, arguments);
-            }
-            return this;
-        };
+topSuite("grid-general-buffered-no-preserve-scroll",
+    [false, 'Ext.grid.Panel', 'Ext.data.ArrayStore'],
+    function () {
+        var grid, store,
+            synchronousLoad = true,
+            proxyStoreLoad = Ext.data.ProxyStore.prototype.load,
+            loadStore = function () {
+                proxyStoreLoad.apply(this, arguments);
+                if (synchronousLoad) {
+                    this.flushLoad.apply(this, arguments);
+                }
+                return this;
+            };
 
     beforeEach(function() {
         // Override so that we can control asynchronous loading
@@ -119,7 +121,8 @@ describe("grid-general-buffered-no-preserv-scroll", function() {
                         type: 'json',
                         rootProperty: 'data'
                     }
-                }
+                },
+                asynchronousLoad: false
             });
             store.loadPage(1);
             satisfyRequests();
@@ -172,8 +175,9 @@ describe("grid-general-buffered-no-preserv-scroll", function() {
 
             bufferedRenderer.scrollTo(1000, {
                 select: true,
-                focus: true,
-                callback: function() {
+                focus: false,   // MUST NOT focus - focus restoration scrolls on refresh
+                                // whcih breaks the test expectations
+                callback: function () {
                     scrollDone = true;
                 }
             });

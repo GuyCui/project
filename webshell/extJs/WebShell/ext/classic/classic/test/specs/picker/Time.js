@@ -1,8 +1,8 @@
-describe("Ext.picker.Time", function() {
+topSuite("Ext.picker.Time", function () {
     var component, makeComponent;
 
-    beforeEach(function() {
-        makeComponent = function(config) {
+    beforeEach(function () {
+        makeComponent = function (config) {
             config = Ext.applyIf(config || {}, {
                 renderTo: Ext.getBody()
             });

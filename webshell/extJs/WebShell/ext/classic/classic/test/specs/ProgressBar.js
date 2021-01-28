@@ -1,5 +1,4 @@
-describe("Ext.ProgressBar", function() {
-
+topSuite("Ext.ProgressBar", function () {
     var c;
 
     function makeProgress(config) {
@@ -8,7 +7,7 @@ describe("Ext.ProgressBar", function() {
             width: 100
         }, config));
     }
-    
+
     function expectHtml(want) {
         var have = c.textEl.elements[0].innerHTML;
         
@@ -165,9 +164,9 @@ describe("Ext.ProgressBar", function() {
                 expect(c.text).toBe('Foo...');
             });
 
-            waitsFor(function() {
+            waitsFor(function () {
                 return c.text !== 'Foo...';
-            }, 'callback text');
+            }, 'callback text', 2000);
 
             runs(function (){
                 expect(c.text).toBe('Bar');

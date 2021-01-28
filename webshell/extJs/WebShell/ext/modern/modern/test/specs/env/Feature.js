@@ -1,12 +1,12 @@
-xdescribe("Ext.env.Feature", function(){
-    describe("on created", function(){
-        it("should create a default instance of itself in Ext.feature", function(){
+xtopSuite("Ext.env.Feature", false, function () {
+    describe("on created", function () {
+        it("should create a default instance of itself in Ext.feature", function () {
             expect(Ext.feature).toBeDefined();
             expect(Ext.feature instanceof Ext.env.Feature).toBe(true);
         });
     });
 
-    describe("class methods", function(){
+    describe("class methods", function () {
         var featureEnv;
 
         beforeEach(function(){

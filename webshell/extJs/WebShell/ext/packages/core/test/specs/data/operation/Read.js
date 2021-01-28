@@ -1,12 +1,12 @@
-describe("Ext.data.operation.Read", function() {
-    
+topSuite("Ext.data.operation.Read", ['Ext.data.ArrayStore'], function () {
+
     var op;
-    
+
     function makeOperation(cfg) {
         op = new Ext.data.operation.Read(cfg);
     }
-    
-    afterEach(function() {
+
+    afterEach(function () {
         op = null;
     });
     

@@ -1,14 +1,18 @@
-describe("Ext.resizer.Splitter", function () {
-    var splitter, c;
+/* global Ext, expect, jasmine */
 
-    function makeContainer(splitterCfg) {
-        splitter = new Ext.resizer.Splitter(splitterCfg || {});
+topSuite("Ext.resizer.Splitter",
+    ['Ext.Panel', 'Ext.layout.container.Border'],
+    function () {
+        var splitter, c;
 
-        c = new Ext.Container({
-            layout: 'hbox',
-            width: 500,
-            height: 500,
-            defaultType: 'container',
+        function makeContainer(splitterCfg) {
+            splitter = new Ext.resizer.Splitter(splitterCfg || {});
+
+            c = new Ext.Container({
+                layout: 'hbox',
+                width: 500,
+                height: 500,
+                defaultType: 'container',
             items: [{
                 html: 'foo',
                 flex: 1
@@ -112,7 +116,7 @@ describe("Ext.resizer.Splitter", function () {
                     width: 200,
                     region: 'west',
                     split: true,
-                    collapsible: true,
+                    collapsible: true
                 }, iframe]
             });
             splitter = c.down('splitter');
@@ -143,6 +147,7 @@ describe("Ext.resizer.Splitter", function () {
             c.down('panel').collapse();
             jasmine.fireMouseEvent(splitter, 'mousedown');
             expect(Ext.fly(iframe.el.dom.parentNode).isMasked()).toBe(false);
+            jasmine.fireMouseEvent(splitter, 'mouseup');
         });
     });
 

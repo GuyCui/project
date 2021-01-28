@@ -17,6 +17,18 @@ Ext.define('Ext.drag.Item', {
         autoDestroy: true,
 
         /**
+         * @cfg {Ext.Component} component
+         * The component for this item. This implicity sets the `element` config to be
+         * the component's primary `element`. By providing the `component`, drag operations
+         * will act upon the component's `x` and `y` configs (if `floated`) or `left` and
+         * `top` configs otherwise.
+         * @since 6.5.0
+         *
+         * @private
+         */
+        component: null,
+
+        /**
          * @cfg {String/HTMLElement/Ext.dom.Element} element
          * The id, dom or Element reference for this item.
          */
@@ -55,19 +67,33 @@ Ext.define('Ext.drag.Item', {
      * Enable the current item to allow it to participate in
      * drag/drop operations.
      */
-    enable: function() {
+    enable: function () {
         this.disabled = false;
     },
 
-    applyElement: function(element) {
+    updateComponent: function (comp, was) {
+        var el;
+
+        if (comp) {
+            el = comp.el;
+        } else if (was && was.el === this.getElement()) {
+            el = null;
+        } else {
+            return;
+        }
+
+        this.setElement(el);
+    },
+
+    applyElement: function (element) {
         return element ? Ext.get(element) : null;
     },
 
-    updateElement: function(element) {
+    updateElement: function () {
         this.setupListeners();
     },
 
-    applyGroups: function(group) {
+    applyGroups: function (group) {
         if (typeof group === 'string') {
             group = [group];
         }
@@ -89,14 +115,28 @@ Ext.define('Ext.drag.Item', {
 
     privates: {
         /**
-        * @property {Boolean} disabled
-        * `true` if this item is disabled.
-        *
-        * @private
-        */
+         * @property {Boolean} disabled
+         * `true` if this item is disabled.
+         *
+         * @private
+         */
         disabled: false,
 
+        convertToLocalXY: function (xy) {
+            var c = this.getComponent();
+
+            if (c) {
+                xy = c.convertToLocalXY(xy);
+            } else {
+                xy = this.getElement().translateXY(xy[0], xy[1]);
+                xy = [xy.x, xy.y];
+            }
+
+            return xy;
+        },
+
         /**
+         * @method
          * Gets any listeners to attach for the current element.
          * @return {Object} The listeners for thie element.
          *

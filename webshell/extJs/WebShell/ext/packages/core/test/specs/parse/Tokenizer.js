@@ -1,14 +1,14 @@
-describe('Ext.parse.Tokenizer', function () {
+topSuite('Ext.parse.Tokenizer', function () {
     var tokenizer,
         OPERATORS = {
-            '+': { type: 'operator', value: '+', is: { operator: true, plus: true } },
-            '-': { type: 'operator', value: '-', is: { operator: true, minus: true } },
-            '*': { type: 'operator', value: '*', is: { operator: true, multiply: true } },
-            '/': { type: 'operator', value: '/', is: { operator: true, divide: true } },
-            '!': { type: 'operator', value: '!', is: { operator: true, bang: true } },
-            ',': { type: 'operator', value: ',', is: { operator: true, comma: true } },
-            ':': { type: 'operator', value: ':', is: { operator: true, colon: true } },
-            '[': { type: 'operator', value: '[', is: { operator: true, arrayOpen: true } },
+            '+': {type: 'operator', value: '+', is: {operator: true, plus: true}},
+            '-': {type: 'operator', value: '-', is: {operator: true, minus: true}},
+            '*': {type: 'operator', value: '*', is: {operator: true, multiply: true}},
+            '/': {type: 'operator', value: '/', is: {operator: true, divide: true}},
+            '!': {type: 'operator', value: '!', is: {operator: true, bang: true}},
+            ',': {type: 'operator', value: ',', is: {operator: true, comma: true}},
+            ':': {type: 'operator', value: ':', is: {operator: true, colon: true}},
+            '[': {type: 'operator', value: '[', is: {operator: true, arrayOpen: true}},
             ']': { type: 'operator', value: ']', is: { operator: true, arrayClose: true } },
             '{': { type: 'operator', value: '{', is: { operator: true, curlyOpen: true } },
             '}': { type: 'operator', value: '}', is: { operator: true, curlyClose: true } },

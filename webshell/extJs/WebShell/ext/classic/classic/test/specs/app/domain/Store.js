@@ -1,13 +1,13 @@
-describe("Ext.app.domain.Store", function() {
+topSuite("Ext.app.domain.Store", function () {
     var ctrl, storeFoo, storeBar, handlerFoo, handlerBar;
-    
-    beforeEach(function() {
+
+    beforeEach(function () {
         storeFoo = new Ext.data.Store({
             storeId: 'foo',
-            
+
             fields: ['foo', 'bar']
         });
-        
+
         storeBar = new Ext.data.Store({
             storeId: 'bar',
             

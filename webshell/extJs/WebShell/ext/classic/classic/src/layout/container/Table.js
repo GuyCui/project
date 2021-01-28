@@ -237,7 +237,7 @@ Ext.define('Ext.layout.container.Table', {
             dom = dom.parentNode;
         } 
         
-        Ext.getDetachedBody().appendChild(el);
+        Ext.getDetachedBody().appendChild(el, true);
     },
 
     calculate: function (ownerContext) {
@@ -384,11 +384,31 @@ Ext.define('Ext.layout.container.Table', {
         return result;
     },
 
-    isValidParent: function(item, target, rowIdx, cellIdx) {
+    isValidParent: function (item, target, rowIdx, cellIdx) {
         // If we were called with the 3 arg signature just check that the item is within our table,
         if (arguments.length === 3) {
             return this.table.isAncestor(item.el);
         }
         return item.el.dom.parentNode === this.tbody.dom.rows[rowIdx].cells[cellIdx];
+    },
+
+    destroy: function () {
+        // Table layout cells will be referenced by child items who will create
+        // Element instances for their container (layout cell). We need to clean up
+        // these Element instances.
+        if (this.owner.rendered) {
+            var targetEl = this.getRenderTarget(),
+                cells, i, len;
+
+            if (targetEl) {
+                cells = targetEl.query('.' + this.cellCls, false);
+
+                for (i = 0, len = cells.length; i < len; i++) {
+                    cells[i].destroy();
+                }
+            }
+        }
+
+        this.callParent();
     }
 });

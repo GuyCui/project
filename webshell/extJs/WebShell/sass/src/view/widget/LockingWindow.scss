@@ -1,9 +1,8 @@
 .auth-locked-window {
     .x-window-body {
-        //background-image: url('images/lock-screen-background.jpg');
-        background-image: url('https://up.enterdesk.com/edpic_source/d1/eb/89/d1eb89a77d030d052d0cbe7e494aa6d4.jpg');
-        background-size: cover;
-        background-repeat: repeat;
+      background-image: url('images/lock-screen-background.jpg');
+      background-size: cover;
+      background-repeat: repeat;
     }
 
     &.x-window-default {

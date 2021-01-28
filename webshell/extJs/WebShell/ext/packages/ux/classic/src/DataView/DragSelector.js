@@ -3,11 +3,12 @@
  */
 Ext.define('Ext.ux.DataView.DragSelector', {
     requires: ['Ext.dd.DragTracker', 'Ext.util.Region'],
+    alias: 'plugin.dataviewdragselector',
 
     /**
      * Initializes the plugin by setting up the drag tracker
      */
-    init: function(dataview) {
+    init: function (dataview) {
         var scroller = dataview.getScrollable();
 
         // If the client dataview is scrollable, and this is a PointerEvents device

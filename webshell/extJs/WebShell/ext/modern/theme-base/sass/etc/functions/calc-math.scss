@@ -39,13 +39,21 @@
         @return calc(#{$one} - #{$two});
     }
 
-    @if $one != null {
-        @return $one;
-    }
+  @if $one != null {
+    @return $one;
+  }
 
-    @if $two != null {
-        @return $two;
-    }
+  @if $two != null {
+    @return $two;
+  }
 
+  @return null;
+}
+
+@function add-if ($value1, $value2) {
+  @if $value1 == null or $value2 == null {
     @return null;
+  }
+
+  @return $value1 + $value2;
 }

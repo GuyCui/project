@@ -1,15 +1,18 @@
-describe('Ext.grid.column.Date', function () {
-    var panel, container, store,
-        synchronousLoad = true,
-        proxyStoreLoad = Ext.data.ProxyStore.prototype.load,
-        loadStore, Controller;
+topSuite("Ext.grid.column.Date",
+    ['Ext.grid.Grid', 'Ext.data.ArrayStore', 'Ext.layout.Fit',
+        'Ext.app.ViewModel', 'Ext.app.ViewController'],
+    function () {
+        var panel, store,
+            synchronousLoad = true,
+            proxyStoreLoad = Ext.data.ProxyStore.prototype.load,
+            loadStore, Controller;
 
-    function createGrid(gridCfg, storeCfg) {
-        store = new Ext.data.Store(Ext.apply({
-            fields: ['name', 'email', 'phone', {name: 'bday', type:'date' }],
-            data: [
-                { 'name': 'Lisa',  'email':'lisa@simpsons.com',  'phone':'555-111-1224', bday: '01/01/1980' },
-                { 'name': 'Bart',  'email':'bart@simpsons.com',  'phone':'555-222-1234', bday: '12/31/1981' },
+        function createGrid(gridCfg, storeCfg) {
+            store = new Ext.data.Store(Ext.apply({
+                fields: ['name', 'email', 'phone', {name: 'bday', type: 'date'}],
+                data: [
+                    {'name': 'Lisa', 'email': 'lisa@simpsons.com', 'phone': '555-111-1224', bday: '01/01/1980'},
+                    {'name': 'Bart', 'email': 'bart@simpsons.com', 'phone': '555-222-1234', bday: '12/31/1981'},
                 { 'name': 'Homer', 'email':'homer@simpsons.com', 'phone':'555-222-1244', bday: '02/28/1947' },
                 { 'name': 'Marge', 'email':'marge@simpsons.com', 'phone':'555-222-1254', bday: '04/01/1950' }
             ],
@@ -27,8 +30,6 @@ describe('Ext.grid.column.Date', function () {
             height: 200,
             width: 400
         }, gridCfg));
-        container = panel.container;
-        panel.onContainerResize(container, { height: container.element.getHeight() });
     }
 
     function getCell(row, column) {
@@ -72,10 +73,10 @@ describe('Ext.grid.column.Date', function () {
                 renderTo: Ext.getBody()
             });
 
-            expect(getCell(0, 0).el.down('.x-inner-el', true).innerHTML).toBe('01/01/1980');
-            expect(getCell(1, 0).el.down('.x-inner-el', true).innerHTML).toBe('12/31/1981');
-            expect(getCell(2, 0).el.down('.x-inner-el', true).innerHTML).toBe('02/28/1947');
-            expect(getCell(3, 0).el.down('.x-inner-el', true).innerHTML).toBe('04/01/1950');
+            expect(getCell(0, 0).el.down('.x-body-el', true).innerHTML).toBe('01/01/1980');
+            expect(getCell(1, 0).el.down('.x-body-el', true).innerHTML).toBe('12/31/1981');
+            expect(getCell(2, 0).el.down('.x-body-el', true).innerHTML).toBe('02/28/1947');
+            expect(getCell(3, 0).el.down('.x-body-el', true).innerHTML).toBe('04/01/1950');
         });
 
         it('should apply the format correctly', function () {
@@ -87,10 +88,10 @@ describe('Ext.grid.column.Date', function () {
                 renderTo: Ext.getBody()
             });
 
-            expect(getCell(0, 0).el.down('.x-inner-el', true).innerHTML).toBe('01.01.1980');
-            expect(getCell(1, 0).el.down('.x-inner-el', true).innerHTML).toBe('31.12.1981');
-            expect(getCell(2, 0).el.down('.x-inner-el', true).innerHTML).toBe('28.02.1947');
-            expect(getCell(3, 0).el.down('.x-inner-el', true).innerHTML).toBe('01.04.1950');
+            expect(getCell(0, 0).el.down('.x-body-el', true).innerHTML).toBe('01.01.1980');
+            expect(getCell(1, 0).el.down('.x-body-el', true).innerHTML).toBe('31.12.1981');
+            expect(getCell(2, 0).el.down('.x-body-el', true).innerHTML).toBe('28.02.1947');
+            expect(getCell(3, 0).el.down('.x-body-el', true).innerHTML).toBe('01.04.1950');
         });
 
         it('should apply the cell format correctly from a VM', function () {
@@ -114,10 +115,10 @@ describe('Ext.grid.column.Date', function () {
             });
 
             vm.notify();
-            expect(getCell(0, 0).el.down('.x-inner-el', true).innerHTML).toBe('01.01.1980');
-            expect(getCell(1, 0).el.down('.x-inner-el', true).innerHTML).toBe('31.12.1981');
-            expect(getCell(2, 0).el.down('.x-inner-el', true).innerHTML).toBe('28.02.1947');
-            expect(getCell(3, 0).el.down('.x-inner-el', true).innerHTML).toBe('01.04.1950');
+            expect(getCell(0, 0).el.down('.x-body-el', true).innerHTML).toBe('01.01.1980');
+            expect(getCell(1, 0).el.down('.x-body-el', true).innerHTML).toBe('31.12.1981');
+            expect(getCell(2, 0).el.down('.x-body-el', true).innerHTML).toBe('28.02.1947');
+            expect(getCell(3, 0).el.down('.x-body-el', true).innerHTML).toBe('01.04.1950');
         });
 
     });

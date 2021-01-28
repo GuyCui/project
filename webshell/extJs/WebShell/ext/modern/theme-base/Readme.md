@@ -476,18 +476,15 @@ the pressed state as follows:
 ### Child vs Descendant Selectors
 
 When styling a component's inner elements descendant selectors such as `.x-foo .x-bar`
-should be preferred over direct child selectors like `.x-foo > .x-bar`.  This allows for
-much more flexibility in the markup and allows it to tolerate more change, such as the
-insertion of a wrapping element in between `x-foo` and `x-bar` without potentially breaking
-the styling.  The only exception to this rule is when there is the potential for nesting.
-For example, a panel might use a selector such as `.x-panel > .x-body-el` in order to only
-style its own body element, and not the body elements of other panels nested within it.
-In some cases when there may be  a varying number of dom elements in between
-the container element and it's child it may be necessary to add UI-specific
-class names to the child element, but this should be treated as the exception,
-not the rule.  An example of this is `Ext.Container`.  It adds a UI-specific
-class for each `classCls` to its `innerElement` because there can be a varying
-number of DOM ancestors in between the `innerElement` and the `element`
+should be preferred over direct child selectors like `.x-foo > .x-bar`. This allows for much more flexibility in the
+markup and allows it to tolerate more change, such as the insertion of a wrapping element in between `x-foo` and `x-bar`
+without potentially breaking the styling. The only exception to this rule is when there is the potential for nesting.
+For example, a panel might use a selector such as `.x-panel > .x-body-el` in order to only style its own body element,
+and not the body elements of other panels nested within it. In some cases when there may be a varying number of dom
+elements in between the container element and it's child it may be necessary to add UI-specific class names to the child
+element, but this should be treated as the exception, not the rule. An example of this is `Ext.Container`. It adds a
+UI-specific class for each `classCls` to its `bodyElement` because there can be a varying number of DOM ancestors in
+between the `bodyElement` and the `element`
 depending on whether or not the container has docked items.
 
 

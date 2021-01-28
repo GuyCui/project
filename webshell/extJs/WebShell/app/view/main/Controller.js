@@ -183,6 +183,7 @@ Ext.define('app.view.main.Controller', {
             //导航菜单是否折叠
             collapsing = !navigationList.getMicro(),
             new_width = collapsing ? 64 : 250;
+        console.log("导航树", this)
 
         if (Ext.isIE9m || !Ext.os.is.Desktop) {
             //ie9以及其他低版本浏览器处理逻辑
@@ -257,12 +258,12 @@ Ext.define('app.view.main.Controller', {
 
     //容器初始化时
     onMainViewRender: function() {
-        let me = this,
+        var me = this,
             //获取默认路由
             hash = window.location.hash.replace('#', '');
         me.onAjaxInit();
         //不能是登录页
-        if (hash === 'view.login') {
+        if (hash == 'view.login') {
             hash = '';
         }
         //记录默认路由
@@ -277,7 +278,7 @@ Ext.define('app.view.main.Controller', {
     onAjaxInit: function() {
         console.log('监听ajax，增加自动遮罩功能');
         //如果500毫秒类再次触发，之前触发的会自动取消
-        const me = this;
+        var me = this;
         //监听ajax事件，开始请求时显示遮罩
         Ext.Ajax.on('beforerequest',
             function(connection, options) {
@@ -352,7 +353,7 @@ Ext.define('app.view.main.Controller', {
 
     //登录成功
     loginSuccess: function() {
-        const me = this;
+        var me = this;
         me.loadNavigation();
         //绑定用户信息到数据源中
         me.getViewModel().setData({ userData: config.userData, isHiddenMain: false });
@@ -360,7 +361,7 @@ Ext.define('app.view.main.Controller', {
     //加载导航树
     loadNavigation: function() {
         console.log('正在加载导航树');
-        const me = this,
+        var me = this,
             store = Ext.getStore('navigationTree');
 
         store.on({
@@ -369,7 +370,7 @@ Ext.define('app.view.main.Controller', {
             //监听菜单请求完成事件
             load: function(t, records) {
                 //console.log('用户菜单请求完成');
-                let data, rec, tree;
+                var data, rec, tree;
                 if (records.length > 0) {
                     //获取第一个菜单
                     rec = records[0];
@@ -507,9 +508,4 @@ Ext.define('app.view.main.Controller', {
             view.fireEvent('treeSelect', tree, view, record);
         }
     },
-    onClickButton: function () {
-        //直接刷新页面，避免出错
-        window.location.reload();
-        config.userData = null;
-    }
 });

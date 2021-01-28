@@ -1,10 +1,9 @@
-describe("Ext.Img", function() {
+topSuite("Ext.Img", function () {
     var senchaPng = '../../../../test/local/sencha.png',
         img, defaultFamily;
 
     function makeBaseImage(cfg) {
-        img = new Ext.Img(Ext.apply({
-        }, cfg));
+        img = new Ext.Img(Ext.apply({}, cfg));
     }
 
     function makeImage(cfg) {

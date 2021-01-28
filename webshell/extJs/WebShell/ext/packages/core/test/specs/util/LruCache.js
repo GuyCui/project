@@ -1,14 +1,14 @@
-describe("Ext.util.LruCache", function(){
+topSuite("Ext.util.LruCache", function () {
     var cache,
-        obj1  = {objIdx:1},
-        obj2  = {objIdx:2},
-        obj3  = {objIdx:3},
-        obj4  = {objIdx:4},
-        obj5  = {objIdx:5},
-        obj6  = {objIdx:6},
-        obj7  = {objIdx:7},
-        obj8  = {objIdx:8},
-        obj9  = {objIdx:9},
+        obj1 = {objIdx: 1},
+        obj2 = {objIdx: 2},
+        obj3 = {objIdx: 3},
+        obj4 = {objIdx: 4},
+        obj5 = {objIdx: 5},
+        obj6 = {objIdx: 6},
+        obj7 = {objIdx: 7},
+        obj8 = {objIdx: 8},
+        obj9 = {objIdx: 9},
         obj10 = {objIdx:10};
 
     function createCache(config) {

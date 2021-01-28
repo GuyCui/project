@@ -68,13 +68,30 @@ Ext.define('Ext.mixin.Observable', function(Observable) {
         protectedProps = ['events', 'hasListeners', 'managedListeners', 'eventedBeforeEventNames'];
 
     ListenerRemover.prototype.destroy = function() {
-        this.destroy = Ext.emptyFn;
-        var observable = this.observable;
-        
+        var me = this,
+            args = me.args,
+            observable = me.observable,
+
+            // Extract the element reference from the options object.
+            // Single arg form first, options is args[3] in multi arg form.
+            elementName = args[0].element || (args[3] && args[3].element);
+
+        // If it was an element listener, then the listener is added to that element reference.
+        if (elementName) {
+            //<debug>
+            if (Ext.Array.indexOf(observable.referenceList, elementName) === -1) {
+                Ext.Logger.error("Destroying event listener with an invalid element reference of '" + elementName +
+                    "' for this component. Available values are: '" + observable.referenceList.join("', '") + "'", observable);
+            }
+            //</debug>
+            observable = observable[elementName];
+        }
+
         // If that observable is already destroyed, all its listeners were cleared
         if (!observable.destroyed) {
-            observable[this.managedListeners ? 'mun' : 'un'].apply(observable, this.args);
+            observable[me.managedListeners ? 'mun' : 'un'].apply(observable, me.args);
         }
+        me.destroy = Ext.emptyFn;
     };
 
     return {
@@ -137,21 +154,21 @@ Ext.define('Ext.mixin.Observable', function(Observable) {
             /**
             * Sets observability on the passed class constructor.
             *
-            * This makes any event fired on any instance of the passed class also fire a single event through
-            * the **class** allowing for central handling of events on many instances at once.
-            *
-            * Usage:
-            *
-            *     Ext.util.Observable.observe(Ext.data.Connection);
-            *     Ext.data.Connection.on('beforerequest', function(con, options) {
-            *         console.log('Ajax request made to ' + options.url);
-            *     });
-            *
-            * @param {Function} c The class constructor to make observable.
-            * @param {Object} listeners An object containing a series of listeners to 
-            * add. See {@link Ext.util.Observable#addListener addListener}.
-            * @static
-            */
+             * This makes any event fired on any instance of the passed class also fire a single event through
+             * the **class** allowing for central handling of events on many instances at once.
+             *
+             * Usage:
+             *
+             *     Ext.util.Observable.observe(Ext.data.Connection);
+             *     Ext.data.Connection.on('beforerequest', function(con, options) {
+             *         console.log('Ajax request made to ' + options.url);
+             *     });
+             *
+             * @param {Function} cls The class constructor to make observable.
+             * @param {Object} listeners An object containing a series of listeners to
+             * add. See {@link Ext.util.Observable#addListener addListener}.
+             * @static
+             */
             observe: function(cls, listeners) {
                 if (cls) {
                     if (!cls.isObservable) {
@@ -166,13 +183,14 @@ Ext.define('Ext.mixin.Observable', function(Observable) {
             },
 
             /**
-            * Prepares a given class for observable instances. This method is called when a
-            * class derives from this class or uses this class as a mixin.
-            * @param {Function} T The class constructor to prepare.
-            * @param {Ext.util.Observable} mixin The mixin if being used as a mixin.
-            * @param {Object} data The raw class creation data if this is an extend.
-            * @private
-            */
+             * @method prepareClass
+             * Prepares a given class for observable instances. This method is called when a
+             * class derives from this class or uses this class as a mixin.
+             * @param {Function} T The class constructor to prepare.
+             * @param {Ext.util.Observable} mixin The mixin if being used as a mixin.
+             * @param {Object} data The raw class creation data if this is an extend.
+             * @private
+             */
             prepareClass: function (T, mixin, data) {
                 // T.hasListeners is the object to track listeners on class T. This object's
                 // prototype (__proto__) is the "hasListeners" of T.superclass.
@@ -297,14 +315,15 @@ Ext.define('Ext.mixin.Observable', function(Observable) {
         * `true` in this class to identify an object as an instantiated Observable, or subclass thereof.
         */
         isObservable: true,
-        
+
         /**
-         * @private We don't want the base destructor to clear the prototype because
+         * @private
+         * We don't want the base destructor to clear the prototype because
          * our destroyObservable handler must be called the very last. It will take care
          * of the prototype after completing Observable destruction sequence.
          */
         $vetoClearingPrototypeOnDestroy: true,
-        
+
         /**
         * @private
         * Initial suspended call count. Incremented when {@link #suspendEvents} is called, decremented when {@link #resumeEvents} is called.
@@ -485,36 +504,37 @@ Ext.define('Ext.mixin.Observable', function(Observable) {
         * However, if the observable instance and scope are not the same object you 
         * still need to use `mon` or `addManagedListener` if you want the listener to be 
         * managed.
-        *
-        * @param {Ext.util.Observable/Ext.dom.Element} item The item to which to add a listener/listeners.
-        * @param {Object/String} ename The event name, or an object containing event name properties.
-        * @param {Function/String} fn (optional) If the `ename` parameter was an event 
-        * name, this is the handler function or the name of a method on the specified 
-        * `scope`.
-        * @param {Object} scope (optional) If the `ename` parameter was an event name, this is the scope (`this` reference)
-        * in which the handler function is executed.
-        * @param {Object} options (optional) If the `ename` parameter was an event name, this is the
-        * {@link Ext.util.Observable#addListener addListener} options.
-        * @return {Object} **Only when the `destroyable` option is specified. **
-        *
-        *  A `Destroyable` object. An object which implements the `destroy` method which removes all listeners added in this call. For example:
-        *
-        *     this.btnListeners = myButton.mon({
-        *         destroyable: true
-        *         mouseover:   function() { console.log('mouseover'); },
-        *         mouseout:    function() { console.log('mouseout'); },
-        *         click:       function() { console.log('click'); }
-        *     });
-        *
-        * And when those listeners need to be removed:
-        *
-        *     Ext.destroy(this.btnListeners);
-        *
-        * or
-        *
-        *     this.btnListeners.destroy();
-        */
-        addManagedListener: function(item, ename, fn, scope, options, /* private */ noDestroy) {
+         *
+         * @param {Ext.util.Observable/Ext.dom.Element} item The item to which to add a listener/listeners.
+         * @param {Object/String} ename The event name, or an object containing event name properties.
+         * @param {Function/String} fn (optional) If the `ename` parameter was an event
+         * name, this is the handler function or the name of a method on the specified
+         * `scope`.
+         * @param {Object} scope (optional) If the `ename` parameter was an event name, this is the scope (`this` reference)
+         * in which the handler function is executed.
+         * @param {Object} options (optional) If the `ename` parameter was an event name, this is the
+         * {@link Ext.util.Observable#addListener addListener} options.
+         * @param {Boolean} noDestroy (private)
+         * @return {Object} **Only when the `destroyable` option is specified. **
+         *
+         *  A `Destroyable` object. An object which implements the `destroy` method which removes all listeners added in this call. For example:
+         *
+         *     this.btnListeners = myButton.mon({
+         *         destroyable: true
+         *         mouseover:   function() { console.log('mouseover'); },
+         *         mouseout:    function() { console.log('mouseout'); },
+         *         click:       function() { console.log('click'); }
+         *     });
+         *
+         * And when those listeners need to be removed:
+         *
+         *     Ext.destroy(this.btnListeners);
+         *
+         * or
+         *
+         *     this.btnListeners.destroy();
+         */
+        addManagedListener: function (item, ename, fn, scope, options, noDestroy) {
             var me = this,
                 managedListeners = me.managedListeners = me.managedListeners || [],
                 config, passedOptions;
@@ -592,17 +612,17 @@ Ext.define('Ext.mixin.Observable', function(Observable) {
         },
 
         /**
-        * Fires the specified event with the passed parameters (minus the event name, plus the `options` object passed
-        * to {@link Ext.util.Observable#addListener addListener}).
-        *
-        * An event may be set to bubble up an Observable parent hierarchy (See {@link Ext.Component#getBubbleTarget}) by
-        * calling {@link #enableBubble}.
-        *
-        * @param {String} eventName The name of the event to fire.
-        * @param {Object...} args Variable number of parameters are passed to handlers.
-        * @return {Boolean} returns false if any of the handlers return false otherwise it returns true.
-        */
-        fireEvent: function(eventName) {
+         * Fires the specified event with the passed parameters (minus the event name, plus the `options` object passed
+         * to {@link Ext.util.Observable#addListener addListener}).
+         *
+         * An event may be set to bubble up an Observable parent hierarchy (See {@link Ext.Component#getBubbleTarget}) by
+         * calling {@link #enableBubble}.
+         *
+         * @param {String} eventName The name of the event to fire.
+         * @param {Object...} args Variable number of parameters are passed to handlers.
+         * @return {Boolean} returns false if any of the handlers return false otherwise it returns true.
+         */
+        fireEvent: function (eventName) {
             return this.fireEventArgs(eventName, arraySlice.call(arguments, 1));
         },
         
@@ -968,18 +988,21 @@ Ext.define('Ext.mixin.Observable', function(Observable) {
          *   before firing the handler.
          *
          * @param {Array} [options.args]
-         *   Optional arguments to pass to the handler function. Any additional arguments
-         *   passed to {@link Ext.util.Observable#fireEvent fireEvent} will be appended 
-         *   to these arguments.
+         *
+         * Optional set of arguments to pass to the handler function before the actual
+         * fired event arguments. For example, if `args` is set to `['foo', 42]`,
+         * the event handler function will be called with an arguments list like this:
+         *
+         *      handler('foo', 42, <actual event arguments>...);
          *
          * @param {Boolean} [options.destroyable=false]
-         *   When specified as `true`, the function returns a `destroyable` object. An object 
+         *   When specified as `true`, the function returns a `destroyable` object. An object
          *   which implements the `destroy` method which removes all listeners added in this call.
-         *   This syntax can be a helpful shortcut to using {@link #un}; particularly when 
+         *   This syntax can be a helpful shortcut to using {@link #un}; particularly when
          *   removing multiple listeners.  *NOTE* - not compatible when using the _element_
          *   option.  See {@link #un} for the proper syntax for removing listeners added using the
          *   _element_ config.
-         *   
+         *
          * @param {Number} [options.priority]
          *   An optional numeric priority that determines the order in which event handlers
          *   are run. Event handlers with no priority will be run as if they had a priority
@@ -1003,6 +1026,8 @@ Ext.define('Ext.mixin.Observable', function(Observable) {
          * @param {String} [order='current']
          *   A shortcut for the `order` event option.  Provided for backward compatibility.
          *   Please use the `priority` event option instead.
+         *
+         * @param caller (private)
          *
          * **Combining Options**
          *
@@ -1078,15 +1103,15 @@ Ext.define('Ext.mixin.Observable', function(Observable) {
          * or
          *
          *     this.btnListeners.destroy();
-         */  
-        addListener: function(ename, fn, scope, options, order, /* private */ caller) {
+         */
+        addListener: function (eventName, fn, scope, options, order, caller) {
             var me = this,
                 namedScopes = Ext._namedScopes,
                 config, namedScope, isClassListener, innerScope, eventOptions;
 
             // Object listener hash passed
-            if (typeof ename !== 'string') {
-                options = ename;
+            if (typeof eventName !== 'string') {
+                options = eventName;
                 scope = options.scope;
                 namedScope = scope && namedScopes[scope];
                 isClassListener = namedScope && namedScope.isSelf;
@@ -1095,9 +1120,9 @@ Ext.define('Ext.mixin.Observable', function(Observable) {
                 eventOptions = ((me.isComponent || me.isWidget) && options.element) ?
                     me.$elementEventOptions : me.$eventOptions;
 
-                for (ename in options) {
-                    config = options[ename];
-                    if (!eventOptions[ename]) {
+                for (eventName in options) {
+                    config = options[eventName];
+                    if (!eventOptions[eventName]) {
                         /* This would be an API change so check removed until https://sencha.jira.com/browse/EXTJSIV-7183 is fully implemented in 4.2
                         // Test must go here as well as in the simple form because of the attempted property access here on the config object.
                         //<debug>
@@ -1120,7 +1145,7 @@ Ext.define('Ext.mixin.Observable', function(Observable) {
                             }
                         }
 
-                        me.doAddListener(ename, config.fn || config, innerScope || scope, config.fn ? config : options, order, caller);
+                        me.doAddListener(eventName, config.fn || config, innerScope || scope, config.fn ? config : options, order, caller);
                     }
 
                 }
@@ -1128,10 +1153,10 @@ Ext.define('Ext.mixin.Observable', function(Observable) {
                     return new ListenerRemover(me, options);
                 }
             } else {
-                me.doAddListener(ename, fn, scope, options, order, caller);
+                me.doAddListener(eventName, fn, scope, options, order, caller);
 
                 if (options && options.destroyable) {
-                    return new ListenerRemover(me, ename, fn, scope, options);
+                    return new ListenerRemover(me, eventName, fn, scope, options);
                 }
             }
             return me;
@@ -1141,16 +1166,17 @@ Ext.define('Ext.mixin.Observable', function(Observable) {
          * Removes an event handler.
          *
          * @param {String} eventName The type of event the handler was associated with.
-         * @param {Function} fn The handler to remove. **This must be a reference to the function 
+         * @param {Function} fn The handler to remove. **This must be a reference to the function
          * passed into the
          * {@link Ext.util.Observable#addListener addListener} call.**
-         * @param {Object} scope (optional) The scope originally specified for the handler. It 
-         * must be the same as the scope argument specified in the original call to 
+         * @param {Object} scope (optional) The scope originally specified for the handler. It
+         * must be the same as the scope argument specified in the original call to
          * {@link Ext.util.Observable#addListener} or the listener will not be removed.
-         * 
+         * @param eventOptions (private)
+         *
          * **Convenience Syntax**
          *
-         * You can use the {@link Ext.util.Observable#addListener addListener} 
+         * You can use the {@link Ext.util.Observable#addListener addListener}
          * `destroyable: true` config option in place of calling un().  For example:
          *
          *     var listeners = cmp.on({
@@ -1183,25 +1209,25 @@ Ext.define('Ext.mixin.Observable', function(Observable) {
          *         click: 'onBodyCLick'
          *     });
          */
-        removeListener: function(ename, fn, scope, /* private */ eventOptions) {
+        removeListener: function (eventName, fn, scope, eventOptions) {
             var me = this,
                 config, options;
 
-            if (typeof ename !== 'string') {
-                options = ename;
+            if (typeof eventName !== 'string') {
+                options = eventName;
                 // give subclasses the opportunity to switch the valid eventOptions
                 // (Ext.Component uses this when the "element" option is used)
                 eventOptions = eventOptions || me.$eventOptions;
-                for (ename in options) {
-                    if (options.hasOwnProperty(ename)) {
-                        config = options[ename];
-                        if (!me.$eventOptions[ename]) {
-                            me.doRemoveListener(ename, config.fn || config, config.scope || options.scope);
+                for (eventName in options) {
+                    if (options.hasOwnProperty(eventName)) {
+                        config = options[eventName];
+                        if (!me.$eventOptions[eventName]) {
+                            me.doRemoveListener(eventName, config.fn || config, config.scope || options.scope);
                         }
                     }
                 }
             } else {
-                me.doRemoveListener(ename, fn, scope);
+                me.doRemoveListener(eventName, fn, scope);
             }
 
             return me;
@@ -1331,24 +1357,33 @@ Ext.define('Ext.mixin.Observable', function(Observable) {
         */
         clearManagedListeners: function() {
             var me = this,
-                managedListeners = me.managedListeners ? me.managedListeners.slice() : [],
-                i = 0,
-                len = managedListeners.length;
+                managedListeners = me.managedListeners,
+                i, len;
 
-            for (; i < len; i++) {
-                me.removeManagedListenerItem(true, managedListeners[i]);
+            if (managedListeners) {
+                // So that Event#removeListener doesn't find a managedListeners array from which to remove
+                // the listener it is removing. It iterates the array to find a match, and splices it.
+                me.managedListeners = null;
+                for (i = 0, len = managedListeners.length; i < len; i++) {
+                    me.removeManagedListenerItem(true, managedListeners[i]);
+                }
+                managedListeners.length = 0;
             }
 
-            me.managedListeners = [];
+            me.managedListeners = managedListeners;
         },
 
         /**
-        * Remove a single managed listener item
-        * @private
-        * @param {Boolean} isClear True if this is being called during a clear
-        * @param {Object} managedListener The managed listener item
-        * See removeManagedListener for other args
-        */
+         * Remove a single managed listener item
+         * @private
+         * @param {Boolean} isClear True if this is being called during a clear
+         * @param {Object} managedListener The managed listener item
+         * @param {Object} item
+         * @param {String} ename
+         * @param {Function} fn
+         * @param {Object} scope
+         * See removeManagedListener for other args
+         */
         removeManagedListenerItem: function(isClear, managedListener, item, ename, fn, scope){
             if (isClear || (managedListener.item === item && managedListener.ename === ename && (!fn || managedListener.fn === fn) && (!scope || managedListener.scope === scope))) {
                 // Pass along the options for mixin.Observable, for example if using delegate.
@@ -1371,17 +1406,17 @@ Ext.define('Ext.mixin.Observable', function(Observable) {
             return this.clearManagedListeners.apply(this, arguments);
         },
         //</debug>
-        
+
         /**
-        * Checks to see if this object has any listeners for a specified event, or whether the event bubbles. The answer
-        * indicates whether the event needs firing or not.
-        *
-        * @param {String} eventName The name of the event to check for
-        * @return {Boolean} `true` if the event is being listened for or bubbles, else `false`
-        */
-        hasListener: function(ename) {
-            ename = Ext.canonicalEventName(ename);
-            return !!this.hasListeners[ename];
+         * Checks to see if this object has any listeners for a specified event, or whether the event bubbles. The answer
+         * indicates whether the event needs firing or not.
+         *
+         * @param {String} eventName The name of the event to check for
+         * @return {Boolean} `true` if the event is being listened for or bubbles, else `false`
+         */
+        hasListener: function (eventName) {
+            eventName = Ext.canonicalEventName(eventName);
+            return !!this.hasListeners[eventName];
         },
         
         /**
@@ -1524,24 +1559,24 @@ Ext.define('Ext.mixin.Observable', function(Observable) {
         * Now the grid will forward 'load' and 'clear' events of store as 'storeload' and 'storeclear'.
         *
         * @return {Object} A `Destroyable` object. An object which implements the `destroy` method which, when destroyed, removes all relayers. For example:
-        *
-        *     this.storeRelayers = this.relayEvents(this.getStore(), ['load', 'clear'], 'store');
-        *
-        * Can be undone by calling
-        *
-        *     Ext.destroy(this.storeRelayers);
-        *
-        * or
-        *     this.store.relayers.destroy();
-        */
-        relayEvents : function(origin, events, prefix) {
+         *
+         *     this.storeRelayers = this.relayEvents(this.getStore(), ['load', 'clear'], 'store');
+         *
+         * Can be undone by calling
+         *
+         *     Ext.destroy(this.storeRelayers);
+         *
+         * or
+         *     this.store.relayers.destroy();
+         */
+        relayEvents: function (origin, events, prefix) {
             var me = this,
                 len = events.length,
                 i = 0,
                 oldName, newName,
                 relayers = {};
 
-            if(Ext.isObject(events)) {
+            if (Ext.isObject(events)) {
                 for (i in events) {
                     newName = events[i];
                     relayers[i] = me.createRelayer(newName);
@@ -1639,9 +1674,10 @@ Ext.define('Ext.mixin.Observable', function(Observable) {
                 }
             }
         },
-        
+
         /**
-         * @private Destructor for classes that extend Observable.
+         * @private
+         * Destructor for classes that extend Observable.
          */
         destroy: function() {
             this.clearListeners();
@@ -1650,23 +1686,28 @@ Ext.define('Ext.mixin.Observable', function(Observable) {
         },
 
         destroyObservable: function(skipClearListeners) {
-            var me = this;
-            
+            var me = this,
+                clearPropertiesOnDestroy = me.clearPropertiesOnDestroy;
+
             if (me.$observableDestroyed) {
                 return;
             }
-            
+
             if (!skipClearListeners) {
                 me.clearListeners();
             }
-            
+
             // This method is called after the Base destructor, and most of the instances
             // should be already destroyed at this point. However Classic Components are
             // conditionally destructible and so can possibly *not* be destroyed before
             // our mixed-in destructor is called. Component's destructor will take care
             // of that by calling this method explicitly.
             if (me.destroyed) {
-                if (me.clearPropertiesOnDestroy) {
+                if (clearPropertiesOnDestroy) {
+                    if (clearPropertiesOnDestroy === true && !me.$nulled) {
+                        me.$reap();
+                    }
+
                     // At this point we can safely assume that the instance is completely
                     // destroyed and should not be able to fire events anymore. We don't
                     // want to do this when the prototype is going to be cleared below,
@@ -1892,8 +1933,8 @@ Ext.define('Ext.mixin.Observable', function(Observable) {
          * An alias for {@link Ext.util.Observable#addListener addListener}.  In 
          * versions prior to 5.1, {@link #listeners} had a generated setter which could 
          * be called to add listeners.  In 5.1 the listeners config is not processed 
-         * using the config system and has no generated setter, so this method is 
-         * provided for backward compatibility.  The preferred way of adding listeners 
+         * using the config system and has no generated setter, so this method is
+         * provided for backward compatibility.  The preferred way of adding listeners
          * is to use the {@link #on} method.
          * @param {Object} listeners The listeners
          */
@@ -1903,107 +1944,119 @@ Ext.define('Ext.mixin.Observable', function(Observable) {
     //deprecated, will be removed in 5.0
     Observable.observeClass = Observable.observe;
 
-    // this is considered experimental (along with beforeMethod, afterMethod, removeMethodListener?)
-    // allows for easier interceptor and sequences, including cancelling and overwriting the return value of the call
-    // private
-    function getMethodEvent(method){
-        var e = (this.methodEvents = this.methodEvents || {})[method],
+    // Used by Ext.mixin.Hookable to create sequences.
+    function getMethodEvent(method) {
+        var event = (this.methodEvents = this.methodEvents || {})[method],
             returnValue,
             v,
             cancel,
-            obj = this,
+            me = this,
             makeCall;
 
-        if (!e) {
-            this.methodEvents[method] = e = {};
-            e.originalFn = this[method];
-            e.methodName = method;
-            e.before = [];
-            e.after = [];
+        if (!event) {
+            me.methodEvents[method] = event = {};
+            event.originalFn = me[method];
+            event.methodName = method;
+            event.before = [];
+            event.after = [];
 
-            makeCall = function(fn, scope, args){
-                if((v = fn.apply(scope || obj, args)) !== undefined){
+            makeCall = function (fn, scope, args) {
+                scope = scope || me;
+                if (typeof fn === 'string') {
+                    fn = scope[fn];
+                }
+                if ((v = fn.apply(scope, args)) !== undefined) {
                     if (typeof v == 'object') {
-                        if(v.returnValue !== undefined){
+                        if (v.returnValue !== undefined) {
                             returnValue = v.returnValue;
-                        }else{
+                        } else {
                             returnValue = v;
                         }
                         cancel = !!v.cancel;
+                    } else if (v === false) {
+                        cancel = true;
+                    } else {
+                        returnValue = v;
                     }
-                    else
-                        if (v === false) {
-                            cancel = true;
-                        }
-                        else {
-                            returnValue = v;
-                        }
                 }
             };
 
-            this[method] = function(){
+            me[method] = function () {
                 var args = Array.prototype.slice.call(arguments, 0),
+                    argsLen = args.length,
                     b, i, len;
                 returnValue = v = undefined;
                 cancel = false;
 
-                for(i = 0, len = e.before.length; i < len; i++){
-                    b = e.before[i];
+                for (i = 0, len = event.before.length; i < len; i++) {
+                    b = event.before[i];
+                    if (b.extraArgs) {
+                        args.push.apply(args, b.extraArgs);
+                    }
+
                     makeCall(b.fn, b.scope, args);
-                    if (cancel) {
+                    args.length = argsLen;
+                    if (cancel || b.preventDefault) {
                         return returnValue;
                     }
                 }
 
-                if((v = e.originalFn.apply(obj, args)) !== undefined){
+                if ((v = event.originalFn.apply(me, args)) !== undefined) {
                     returnValue = v;
                 }
 
-                for(i = 0, len = e.after.length; i < len; i++){
-                    b = e.after[i];
+                for (i = 0, len = event.after.length; i < len; i++) {
+                    b = event.after[i];
+                    if (b.extraArgs) {
+                        args.push.apply(args, b.extraArgs);
+                    }
+
                     makeCall(b.fn, b.scope, args);
-                    if (cancel) {
+                    args.length = argsLen;
+                    if (cancel || b.preventDefault) {
                         return returnValue;
                     }
                 }
                 return returnValue;
             };
         }
-        return e;
+        return event;
     }
 
     Ext.apply(proto, {
         onClassMixedIn: prepareMixin,
 
-        // these are considered experimental
-        // allows for easier interceptor and sequences, including cancelling and overwriting the return value of the call
         // adds an 'interceptor' called before the original method
-        beforeMethod : function(method, fn, scope){
+        beforeMethod: function (method, fn, scope, preventDefault, extraArgs) {
             getMethodEvent.call(this, method).before.push({
                 fn: fn,
-                scope: scope
+                scope: scope,
+                extraArgs: extraArgs,
+                preventDefault: preventDefault
             });
         },
 
         // adds a 'sequence' called after the original method
-        afterMethod : function(method, fn, scope){
+        afterMethod: function (method, fn, scope, preventDefault, extraArgs) {
             getMethodEvent.call(this, method).after.push({
                 fn: fn,
-                scope: scope
+                scope: scope,
+                extraArgs: extraArgs,
+                preventDefault: preventDefault
             });
         },
 
-        removeMethodListener: function(method, fn, scope){
-            var e = this.getMethodEvent(method),
+        removeMethodListener: function (method, fn, scope) {
+            var e = getMethodEvent.call(this, method),
                 i, len;
-            for(i = 0, len = e.before.length; i < len; i++){
-                if(e.before[i].fn == fn && e.before[i].scope == scope){
+            for (i = 0, len = e.before.length; i < len; i++) {
+                if (e.before[i].fn == fn && e.before[i].scope == scope) {
                     Ext.Array.erase(e.before, i, 1);
                     return;
                 }
             }
-            for(i = 0, len = e.after.length; i < len; i++){
-                if(e.after[i].fn == fn && e.after[i].scope == scope){
+            for (i = 0, len = e.after.length; i < len; i++) {
+                if (e.after[i].fn == fn && e.after[i].scope == scope) {
                     Ext.Array.erase(e.after, i, 1);
                     return;
                 }

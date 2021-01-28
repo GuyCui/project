@@ -1,13 +1,13 @@
-describe("Ext.Util", function() {
-    describe("Ext.callback", function() {
+topSuite("Ext.Util", false, function () {
+    describe("Ext.callback", function () {
         var spy;
 
-        beforeEach(function() {
+        beforeEach(function () {
             spy = jasmine.createSpy();
         });
 
         it('should not fail if given a null callback', function () {
-            expect(function() {
+            expect(function () {
                 Ext.callback(null);
             }).not.toThrow();
         });
@@ -55,14 +55,36 @@ describe("Ext.Util", function() {
         });
         
         describe("scoping", function() {
-            describe("with a function", function() {
-                describe("scope 'this'", function() {
-                    it("should resolve the scope to the defaultScope", function() {
+            describe('up', function () {
+                it('should find the appropriate scope', function () {
+                    var top = {
+                        foo: function (x) {
+                            top.x = x;
+                            return x * 2;
+                        }
+                    };
+                    var bottom = {
+                        up: function (query) {
+                            expect(query).toBe(undefined); // doesn't use CQ
+                            return top;
+                        }
+                    };
+
+                    var y = Ext.callback('up.foo', null, [21], 0, bottom);
+
+                    expect(y).toBe(42);
+                    expect(top.x).toBe(21);
+                });
+            });
+
+            describe("with a function", function () {
+                describe("scope 'this'", function () {
+                    it("should resolve the scope to the defaultScope", function () {
                         Ext.callback(spy, 'this', undefined, undefined, undefined, fakeScope);
                         expect(spy.mostRecentCall.object).toBe(fakeScope);
                     });
 
-                    it("should resolve the scope to the caller", function() {
+                    it("should resolve the scope to the caller", function () {
                         Ext.callback(spy, 'this', undefined, undefined, fakeScope);
                         expect(spy.mostRecentCall.object).toBe(fakeScope);
                     });

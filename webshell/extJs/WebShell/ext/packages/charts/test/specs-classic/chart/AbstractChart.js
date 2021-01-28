@@ -1,14 +1,16 @@
-describe('Ext.chart.AbstractChart.classic', function () {
-    var chart, store;
+topSuite("Ext.chart.AbstractChart.classic",
+    [false, 'Ext.chart.*', 'Ext.data.ArrayStore'],
+    function () {
+        var chart, store;
 
-    var Model = Ext.define(null, {
-        extend: 'Ext.data.Model',
-        fields: ['label', 'value']
-    });
+        var Model = Ext.define(null, {
+            extend: 'Ext.data.Model',
+            fields: ['label', 'value']
+        });
 
-    function makeStore(rows) {
-        var data = [],
-            i;
+        function makeStore(rows) {
+            var data = [],
+                i;
 
         for (i = 1; i <= rows; ++i) {
             data.push({

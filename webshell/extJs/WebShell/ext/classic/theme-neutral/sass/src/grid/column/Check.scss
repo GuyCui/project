@@ -8,8 +8,10 @@
 
     @if $grid-no-row-lines-show-focus-border {
         .#{$prefix}grid-no-row-lines .#{$prefix}grid-row-focused & {
+          .#{$prefix}keyboard-mode & {
             padding-top: top($grid-checkcolumn-cell-padding) - $grid-row-cell-border-width;
             padding-bottom: bottom($grid-checkcolumn-cell-padding) - $grid-row-cell-border-width;
+          }
         }
     }
     text-overflow: clip;
@@ -64,11 +66,16 @@
 
 // Checked checkbox image for data cell when it's a selection model column
 .#{$prefix}grid-item-selected .#{$prefix}selmodel-column .#{$prefix}grid-checkcolumn {
-    @if $enable-font-icons and ($checkbox-selection-model-checked-glyph != null) {
-        @include font-icon($checkbox-selection-model-checked-glyph, "after", $color: $checkbox-selection-model-glyph-color, $style-pseudo: true);
-    } @else {
-        &:after {
-            background-position: 0 (-$form-checkbox-size);
-        }
+  @if $enable-font-icons and ($checkbox-selection-model-checked-glyph != null) {
+    @include font-icon($checkbox-selection-model-checked-glyph, "after", $color: $checkbox-selection-model-glyph-color, $style-pseudo: true);
+  } @else {
+    &:after {
+      background-position: 0 (-$form-checkbox-size);
     }
+  }
+}
+
+// Firefox needs pointer-events: none on the checkbox span to work around focusing issues
+.#{$prefix}gecko .#{$prefix}selmodel-checkbox .#{$prefix}grid-checkcolumn {
+  pointer-events: none;
 }

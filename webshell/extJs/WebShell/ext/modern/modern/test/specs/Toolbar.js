@@ -1,10 +1,8 @@
-describe('Ext.Toolbar', function() {
+topSuite("Ext.Toolbar", function () {
     var toolbar;
-    
+
     function createToolbar(config) {
-        config = Ext.apply({
-            
-        }, config);
+        config = Ext.apply({}, config);
 
         toolbar = Ext.create('Ext.Toolbar', config);
     };

@@ -1,12 +1,12 @@
-describe("Ext.data.ErrorCollection", function() {
+topSuite("Ext.data.ErrorCollection", function () {
     var errors;
 
-    beforeEach(function() {
+    beforeEach(function () {
         errors = new Ext.data.ErrorCollection();
     });
 
-    describe("if valid", function() {
-        it("should return true to isValid", function() {
+    describe("if valid", function () {
+        it("should return true to isValid", function () {
             expect(errors.isValid()).toBe(true);
         });
     });

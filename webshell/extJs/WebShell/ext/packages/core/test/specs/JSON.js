@@ -1,13 +1,13 @@
-describe("Ext.JSON", function() {
+topSuite("Ext.JSON", function () {
     var nativeJson;
 
-    beforeEach(function() {
+    beforeEach(function () {
         nativeJson = Ext.USE_NATIVE_JSON;
         Ext.USE_NATIVE_JSON = false;
 
     });
 
-    afterEach(function() {
+    afterEach(function () {
         Ext.USE_NATIVE_JSON = nativeJson;
     });
 

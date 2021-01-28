@@ -1,10 +1,10 @@
-describe("Ext.util.DelayedTask", function() {
+topSuite("Ext.util.DelayedTask", function () {
 
-    it('should delay the call', function() {
+    it('should delay the call', function () {
         var d,
             called = false;
 
-        d = new Ext.util.DelayedTask(function() {
+        d = new Ext.util.DelayedTask(function () {
             called = true;
         });
         d.delay(100);

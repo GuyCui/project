@@ -1,14 +1,15 @@
-describe("Ext.Element.style", function() {
+// false in dependencies to avoid loading "Ext.dom.Element.style"
+topSuite("Ext.dom.Element.style", [false, 'Ext.dom.Element'], function () {
     var testEl;
-    
-    beforeEach(function() {
+
+    beforeEach(function () {
         testEl = Ext.getBody().createChild({
-            id      : 'ExtElementHelper',
-            style   : 'position:absolute;'
+            id: 'ExtElementHelper',
+            style: 'position:absolute;'
         });
     });
-    
-    afterEach(function() {
+
+    afterEach(function () {
         testEl.destroy();
     });
     
@@ -139,12 +140,11 @@ describe("Ext.Element.style", function() {
             });
         });
 
-        describe('font-family', function() {
-            it('should set the font family', function() {
+        describe('font-family', function () {
+            it('should set the font family', function () {
                 el.setStyle('font-family', 'Courier');
                 expect(el.getStyle('font-family').toLowerCase().indexOf('courier')).toBeGreaterThan(-1);
             });
         });
     });
-
-}, "/src/dom/Element.style.js");
+});

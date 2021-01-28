@@ -1,19 +1,22 @@
 .#{$prefix}form-trigger-wrap {
-    display: table;
-    // fill body width
-    width: 100%;
+  display: table;
+  // fill body width
+  width: 100%;
+
+  .#{$prefix}form-text-heighted & {
     // expand to fill body height when the field's main element has a height
     height: 100%;
+  }
 
-    @if $include-ff {
-        // https://sencha.jira.com/browse/EXTJS-13752
-        // in firefox a wrapping label which causes the field's outer element to expand in
-        // height will also cause the triggerWrap to grow vertically due to the height:100%
-        // set above.  inline-flex elements are not affected by this bug, but table (and
-        // inline-table) are.
-        .#{$prefix}gecko & {
-            display: -moz-inline-box; // ff < 28
-            display: inline-flex;
+  @if $include-ff {
+    // https://sencha.jira.com/browse/EXTJS-13752
+    // in firefox a wrapping label which causes the field's outer element to expand in
+    // height will also cause the triggerWrap to grow vertically due to the height:100%
+    // set above.  inline-flex elements are not affected by this bug, but table (and
+    // inline-table) are.
+    .#{$prefix}gecko & {
+      display: -moz-inline-box; // ff < 28
+      display: inline-flex;
             vertical-align: top;
         }
     }
@@ -59,13 +62,6 @@
     background: repeat-x 0 0;
     width: 100%;
     height: 100%;
-    @if $include-webkit {
-        .#{$prefix}webkit & {
-            // webkit adds a mysterious extra 3px of space under the textarea when it
-            // is height:100% of its parent
-            height: calc(100% + 3px);
-        }
-    }
 }
 
 .#{$prefix}form-trigger {
