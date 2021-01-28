@@ -17,7 +17,7 @@ Ext.define('app.data.user.Navigation', {
             //是否有子节点
             leaf: true
         },
-        {
+        /*{
             text: '统计报表',
             iconCls: 'x-fa fa-pie-chart',
             viewType: 'reportHome',
@@ -88,6 +88,6 @@ Ext.define('app.data.user.Navigation', {
                 viewType: 'page500',
                 leaf: true
             }]
-        }]
+        }*/]
     }
 });
