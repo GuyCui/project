@@ -1,6 +1,5 @@
 <!doctype html>
 <html>
-<meta charset="UTF-8">
 <head>
     <title>WebSSH</title>
     <link href="../css/xterm.css" rel="stylesheet"/>
@@ -12,11 +11,17 @@
 <script charset="utf-8" src="../js/xterm.js"></script>
 <script charset="utf-8" src="../js/webssh.js"></script>
 <script>
+    openTerminal({
+        operate: 'connect',
+        ip: '118.190.39.10',//IP
+        port: '22',//端口号
+        userName: 'root',//用户名
+        password: 'Cuizhihui52!'//密码
+    });
 
     function openTerminal(options) {
-        console.log("options",options)
-        const client = new WSSHClient();
-        const term = new Terminal({
+        var client = new WSSHClient();
+        var term = new Terminal({
             cols: 97,
             rows: 37,
             cursorBlink: true, // 光标闪烁
@@ -25,18 +30,19 @@
             tabStopWidth: 8, //制表宽度
             screenKeys: true
         });
+
         term.on('data', function (data) {
             //键盘输入时的回调函数
             client.sendClientData(data);
         });
         term.open(document.getElementById('terminal'));
         //在页面上显示连接中...
-        term.write('玩命连接...' + '\r\n');
+        term.write('Connecting...');
         //执行连接操作
         client.connect({
             onError: function (error) {
                 //连接失败回调
-                term.write('错误: ' + error + '\r\n');
+                term.write('Error: ' + error + '\r\n');
             },
             onConnect: function () {
                 //连接成功回调
@@ -44,7 +50,7 @@
             },
             onClose: function () {
                 //连接关闭回调
-                term.write("\r连接 关闭");
+                term.write("\rconnection closed");
             },
             onData: function (data) {
                 //收到数据时回调

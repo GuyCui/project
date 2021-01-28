@@ -26,6 +26,5 @@ public class RouterController {
         webShell.setPassword(password);
 
         return ExtResult.success(webShell,"登录成功");
-        // return "webssh";
     }
 }
