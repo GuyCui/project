@@ -29,9 +29,9 @@ Ext.define('app.view.user.Login', {
             {
                 xtype: 'textfield',
                 name: 'ip',
-                inputType: 'numberDecimal',
                 fieldLabel: 'IP地址',
-                allowBlank: false,
+                allowOnlyWhitespace: false,
+                style: 'margin-top: 20px;',
                 triggers: {
                     glyphed: {
                         cls: 'trigger-glyph-noop  fa-desktop fa-fw fa-2x'
@@ -43,7 +43,7 @@ Ext.define('app.view.user.Login', {
                 name: 'port',
                 value: 22,
                 fieldLabel: '端口',
-                allowBlank: false,
+                allowOnlyWhitespace: false,
                 triggers: {
                     glyphed: {
                         cls: 'trigger-glyph-noop fa-circle-o fa-fw fa-2x'

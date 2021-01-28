@@ -258,12 +258,12 @@ Ext.define('app.view.main.Controller', {
 
     //容器初始化时
     onMainViewRender: function() {
-        var me = this,
+        let me = this,
             //获取默认路由
             hash = window.location.hash.replace('#', '');
         me.onAjaxInit();
         //不能是登录页
-        if (hash == 'view.login') {
+        if (hash === 'view.login') {
             hash = '';
         }
         //记录默认路由
@@ -278,7 +278,7 @@ Ext.define('app.view.main.Controller', {
     onAjaxInit: function() {
         console.log('监听ajax，增加自动遮罩功能');
         //如果500毫秒类再次触发，之前触发的会自动取消
-        var me = this;
+        const me = this;
         //监听ajax事件，开始请求时显示遮罩
         Ext.Ajax.on('beforerequest',
             function(connection, options) {
@@ -361,7 +361,7 @@ Ext.define('app.view.main.Controller', {
     //加载导航树
     loadNavigation: function() {
         console.log('正在加载导航树');
-        var me = this,
+        const me = this,
             store = Ext.getStore('navigationTree');
 
         store.on({
@@ -461,6 +461,7 @@ Ext.define('app.view.main.Controller', {
 
     //退出登录
     onLoginOut: function() {
+        localStorage.removeItem('TutorialLoggedIn');
         config.userData = null;
         //直接刷新页面，避免出错
         window.location.reload();

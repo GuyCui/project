@@ -33,7 +33,6 @@ Ext.define('app.view.user.Controller', {
                 console.log("返回值：",response)
                 if (response.success) {
                     btn.setDisabled(false);
-                    localStorage.setItem("TutorialLoggedIn", true);
                     me.keepUser(values);
                     //登录成功
                     me.loginSuccess(response.data);
@@ -54,8 +53,9 @@ Ext.define('app.view.user.Controller', {
         //全局变量写入用户信息
         config.userData = data;
         console.log("全局变量本地用户信息:", data)
+          localStorage.setItem("TutorialLoggedIn", true);
         //关闭弹窗
-        this.getView().close();
+          this.getView().destroy();
         //触发路由
         //由核心控制器接收路由，处理登录成功流程
         this.redirectTo('user.home');

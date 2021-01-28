@@ -71,8 +71,8 @@ Ext.define('app.view.main.Box', {
                 //相当于一个label
                 xtype: 'tbtext',
                 //动态绑定名称
-                bind: '{userData.fullName}'
-            },
+                bind: '{userData.userName}'
+            }/*,
             {
                 //图片
                 xtype: 'image',
@@ -84,7 +84,7 @@ Ext.define('app.view.main.Box', {
                 bind: {
                     src: '{userData.img}'
                 }
-            }
+            }*/
         ]
     },
         {

@@ -6,15 +6,15 @@ Ext.define('app.model.User', {
     fields: [
         {
             name: 'ip',
-            type: 'string'
+            type: 'int'
         },
         {
             name: 'port',
-            type: 'string'
+            type: 'int'
         },
         {
             name: 'userName',
-            type: 'int'
+            type: 'string'
         },
         {
             name: 'password',

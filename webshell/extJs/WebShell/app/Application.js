@@ -21,11 +21,12 @@ Ext.define('app.Application', {
         //移除加载动画
         Ext.fly('loading-mask').destroy();
         console.log('当前版本号：', config.ver);
-        var eq = util.equals({ a: 1 }, { b: 2 });
-        console.log('{ a: 1 } 与 { b: 2 }是否相同：', eq);
-        eq = util.equals({ a: 1, c: { a: 1 } }, { a: 1, c: { a: 1 } });
-        console.log('{ a: 1, c: { a: 1 } } 与 { a: 1, c: { a: 1 } }是否相同：', eq);
-        //util.neuropathyData('name', 10, 1, { a: 1, b: 2, c: 3 }, ['a', 'b']);
+        let loggedIn;
+        loggedIn = localStorage.getItem("TutorialLoggedIn");
+        //this.redirectTo(loggedIn ? 'user.home' : 'view.login');
+        Ext.create({
+            xtype: loggedIn ? 'user.home' : 'login'
+        });
         const link = document.createElement('link');
         link.type = 'image/x-icon';
         link.rel = 'shortcut icon';
