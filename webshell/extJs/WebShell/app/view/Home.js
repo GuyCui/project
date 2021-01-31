@@ -6,13 +6,16 @@ Ext.define('app.view.Home', {
     width: '100%',
     height: '100%',
     layout: 'column',
-    // padding: 10,
-    html: '<head><link href="../../sass/src/view/Home.css" rel="stylesheet"/><title>webssh</title></head>\n' +
+    renderTpl: [
+        '<head><link href="../../sass/src/view/Home.css" rel="stylesheet"/><title>web_ssh</title></head>\n' +
         '<body><div id="terminal" style="width: 100%;height: 100%"></div>\n' +
         '<script src="../utils/jquery-3.4.1.min.js"></script>\n' +
         '<script charset="utf-8" src="../utils/xterm.js"></script>\n' +
         '<script charset="utf-8" src="../utils/webssh.js"></script></body>',
+    ],
+    // padding: 10,
 });
+
 openTerminal({
     operate: 'connect',
     ip: '127.0.0.1',//IP
